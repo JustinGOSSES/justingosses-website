@@ -21,12 +21,13 @@ export default function Home({ posts }) {
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       {/* <div style="color:black">test</div> */}
 
-
-  <div class="w-full+90 h-screen bg-center bg-no-repeat background-image z+1">
-    <div class="w-full h-screen bg-opacity-10 bg-black flex justify-center items-center">
-        <div class="mx-4 text-center text-white">
-            <h1 class="font-bold text-6xl mb-4">Justin Gosses</h1>
-            <h2 class="font-bold text-3xl mb-12">Code, Data, Rocks, Maps, Sharing at Scale, and Other Stuff</h2>
+      <div className="w-full+90 background-image z+1 h-screen bg-center bg-no-repeat">
+        <div className="flex h-screen w-full items-center justify-center bg-black bg-opacity-10">
+          <div className="mx-4 text-center text-white">
+            <h1 className="mb-4 text-6xl font-bold">Justin Gosses</h1>
+            <h2 className="mb-12 text-3xl font-bold">
+              Code, Data, Rocks, Maps, Sharing at Scale, and Other Stuff
+            </h2>
             {/* <div>
                 <a href="" class="bg-blue-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-2">
                     Code Side Projects
@@ -38,30 +39,35 @@ export default function Home({ posts }) {
                     Resume
                 </a>
             </div> */}
+          </div>
         </div>
-    </div>
-</div>
-      
-      <div className="divide-y divide-gray-200 dark:divide-gray-700 mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+      </div>
+
+      <div className="mx-auto max-w-3xl divide-y divide-gray-200 px-4 dark:divide-gray-700 sm:px-6 xl:max-w-5xl xl:px-0">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Hello
+            Hello
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
           </p>
+          <p>Welcome to my website!</p>
           <p>
-            Welcome to my website!
+            I use this website as a place to share information about myself, write blog posts, and
+            establish a record of side projects as a mind trick againts myself to finish them.
           </p>
           <p>
-          I use this website as a place to share information about myself, write blog posts, and establish a record of side projects as a mind trick againts myself to finish them.
-
-          </p>
-          <p>
-            You can find more information about me in the <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/about">About</a> page.
+            You can find more information about me in the{' '}
+            <a
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+              href="/about"
+            >
+              About
+            </a>{' '}
+            page.
           </p>
         </div>
-        
+
         {/* <div class="py-20" >
         <div class="container mx-auto px-6">
           <h2 class="text-4xl font-bold mb-2 text-white">

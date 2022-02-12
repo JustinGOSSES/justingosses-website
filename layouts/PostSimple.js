@@ -11,14 +11,13 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
   const { date, title } = frontMatter
 
   return (
-
     <SectionContainer>
       <BlogSEO url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
       <ScrollTopAndComment />
       <article>
         <div>
           <header>
-            <div className="space-y-1 border-b border-gray-200 pb-10 text-center dark:border-gray-700 mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+            <div className="mx-auto max-w-3xl space-y-1 border-b border-gray-200 px-4 pb-10 text-center dark:border-gray-700 sm:px-6 xl:max-w-5xl xl:px-0">
               <dl>
                 <div>
                   <dt className="sr-only">Published on</dt>

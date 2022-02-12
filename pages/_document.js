@@ -41,7 +41,6 @@ class MyDocument extends Document {
           {/* <div className="w-full h-screen bg-opacity-10 bg-black flex justify-center items-center absolute z-10">
           </div> */}
         {/* </div> */}
-        
           <Main />
           <NextScript />
         </body>
