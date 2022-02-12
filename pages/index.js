@@ -58,12 +58,12 @@ export default function Home({ posts }) {
           </p>
           <p>
             You can find more information about me in the{' '}
-            <a
-              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+            <Link
               href="/about"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
             >
-              About
-            </a>{' '}
+              <a>About</a>
+            </Link>{' '}
             page.
           </p>
         </div>
