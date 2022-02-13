@@ -52,6 +52,7 @@ export default function Home({ posts }) {
             {siteMetadata.description}
           </p>
           <p>Welcome to my website!</p>
+          <p>IT IS STILL BEING BUILT!   -   Go to <a href="https://justingosses.com">https://justingosses.com</a> for the old version that is currently still live!</p>
           <p>
             I use this website as a place to share information about myself, write blog posts, and
             establish a record of side projects as a mind trick againts myself to finish them.

@@ -13,7 +13,7 @@ Justin Gosses has been a Program Manager, Data Scientist, Software Developer, an
 
 Justin lives in Houston, Texas with his wife and dog Momo. Friends, good food at all the price points, and easy access to shallow water for kayaking and paddle boarding keep him there.
 
-Interests include:
+## Interests include:
 - Things that could exist but don't yet.
 - Things at the intersection of geology & code.
 - Little web-based services that help make decisions for water-based outdoor activities. 
@@ -42,4 +42,11 @@ Johnson Space Center Data Science Day 2017 – <a href="https://54.87.153.110/pr
 
 https://orcid.org/0000-0002-5351-7295
 
+
+## Community Involvement
+<a href="https://houstondatavis.github.io/">Houston Data Visualization Meetup</a> – co-lead
+
+<a href="http://www.gcssepm.org/">Gulf Coast Section of SEPM</a> (sedimentology geology) – former social media manager
+
 !["A photograph of a toy dinosurce holding Justin Gosses's business card."](static/images/Dino_BusinessCard_big_Best-773x1024.png)
+A helpful Parasaurolophus displays my business card.
