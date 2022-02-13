@@ -1,3 +1,22 @@
+# justingosses-website
+Draft website to create existing 6 year old WordPress version of justingosses.com
+
+## Tech Stack
+Next.js & Tailwind CSS deployed on Azure static web apps
+
+## Deployment
+- run `npm run build` . This runs the script `next build && next export` as defined in package.json and should output static website into a folder named 'out'.
+- run `git add *`
+- run `git commit -m updates`
+- run `git push origin main` <= This will kick off a github actions script that should deploy the page to Azure Static Web Apps
+
+## URL of Deployed Website
+https://witty-hill-0659b8610.1.azurestaticapps.net/
+
+Original README for template below
+
+
+--------------------
 ![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
 
 # Tailwind Nextjs Starter Blog
