@@ -23,9 +23,9 @@ module.exports = {
       },
       colors: {
         //primary: colors.teal,
-        primary: colors.orange,
+        primary: colors.teal,
         gray: colors.neutral,
-        orange: '#fb923c',
+        //orange: '#fb923c',
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -107,11 +107,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.orange.500'),
+              color: theme('colors.primary.500'),
               '&:hover': {
-                color: `${theme('colors.orange.400')} !important`,
+                color: `${theme('colors.primary.400')} !important`,
               },
-              code: { color: theme('colors.orange.400') },
+              code: { color: theme('colors.primary.400') },
             },
             h1: {
               fontWeight: '700',

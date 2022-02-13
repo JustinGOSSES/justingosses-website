@@ -10,12 +10,13 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'address@yoursite.com',
+  email: 'jgosses82@gmail.com',
   github: 'https://github.com/JustinGOSSES',
   twitter: 'https://mobile.twitter.com/JustinGinHou',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/in/justingosses/',
+  observable: 'https://observablehq.com/@justingosses',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the

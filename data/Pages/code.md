@@ -1,0 +1,66 @@
+---
+name: Justin Gosses
+avatar: /static/images/avatar.png
+occupation: Code Person
+# company: Stanford University
+# email: address@yoursite.com
+# twitter: https://twitter.com/Twitter
+# linkedin: https://www.linkedin.com
+github: https://github.com/JustinGOSSES
+observable: https://observablehq.com/@justingosses
+---
+
+### What types of code?
+I write machine-learning, data visualization, and web development code. Mostly, I write in Python or JavaScript with smaller amounts of Ruby, R, PHP, sed/awk, C++, and Java.
+
+### Writing Code For Work
+Currently I work for Microsoft as a Senior Program Manager focused on improving the inner source experience. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new, but suspect I'll be writing lots of <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, and C#. 
+
+Previously, I worked on a consulting agency data analytics team within <a href="https://www.nasa.gov/offices/ocio/home/index.html">NASA’s Office of the Chief Information Officer’s</a> Technology and Innovation division, now re-orged into <a href="https://www.nasa.gov/offices/ocio/operations">IDAS</a>.  I’m also the technical program manager for a portion of NASA’s open-data activities. Lots of JavaScript & Python focused on metadata manipulation, natural language processes, image recognition, tabular data machine learning, and web-based data visualization.
+
+Before that I worked at BP where I wrote data processing scripts in sed/awk when domain software didn't quite do what was needed. I also put together prototypes combining Python with ArcGIS and Excel based data inputs to identify risks to reservoir quality. 
+
+### Perspective on Building Solutions With Code
+A few personal opinions that define how I approach data science include:
+
+- I have a soft spot for things at the intersection of metadata, natural language processing, semantic tooling, and user interfaces as technology improvements have opened up a lot of possibilities there that have yet to be built.
+- I love finding ways to use data gathered for one purpose for a completely new purpose. It’s like finding free money.
+- I think data visualization is vastly undervalued due to so much of the understanding we get from it happening faster than we can cognitively grasp it.
+- I think we focus too much on applying machine-learning to things humans already do fairly often and not enough thinking about tasks machine-learning would be great at that we never do, because they would be too boring or time consuming.
+- Understanding how people interact with the analysis, tools, and products we create and how things get built or not built within the larger organizational context is more often the controlling variable on a successful product than the technical details or prediction accuracy.
+
+## Code Side-Projects
+Side projects are a major way I add to my skills, so I always have several in development or on the to-do list.
+
+#### Previous Side-Projects
+- Assembled a <a href="https://54.87.153.110/raspberry-shake-personal-seismometer/">Raspberry Shake, a personal seismometer</a>.
+- Built an <a href="https://twitter.com/JustinGosses/status/793264892652380160">internet connected pumpkin</a> for Halloween that talked to small children.
+- Presented a <a href="https://www.meetup.com/Houston-Data-Visualization-Meetup/events/233893631/">talk on the changing data visualization landscape in large organizations (1974-2016)</a>.
+- Competed in a <a href="https://twitter.com/JustinGosses/status/827585546247618560">machine-learning contest to predict well log facies</a> put on by a geophysics journal.
+- Created an <a href="https://justingosses.github.io/AR_BusinessCard/">augmented reality webpage / business card</a> using AR.js, which leverages three.js, aframe.js, and ARtoolkit.
+- Used <a href="https://github.com/yuriyi/hackathon2017/blob/master/README.md">SVM machine-learning approach to identify direct returns, reflections, multiples, and coherent noise in seismic gathers as part of a Geoscience Hackathon</a> organized by Agile Scientific and Total. I participated virtually and the rest of my team was physically present in Paris.
+- <a href="https://sketchcity.org/category/harvey/">Helped build map applications to assist in the spreading and collection of accurate information about shelters and flooding post-Hurricane Harvey</a> in collaboration with a large number of other volunteers via <a href="http://sketchcity.org/">SketchCity</a>, a civic tech organization.
+- Built version zero of an <a href="https://github.com/JustinGOSSES/SurViz_dcjs_googleform">application that can take in any google forms results csv files, pick the right charts, and create a data visualization</a> such that clicking on an answer to a question filters the answers to every other question.
+- Participating in a <a href="https://agilescientific.com/events/2017/9/22/geophysics-hackathon">geoscience hackathon</a> run by AgileScientific before the annual Society of Exploration Geophysicists Conference in Houston. Built a python-based machine-learning model to mimic geologists’ stratigraphic picks of the top of the McMurry Formation in Canada. Still working on this project as I get spare cycles.
+- Building a “where science happens in Houston” map that leverages web-scraping and machine-learning.
+- Played around with using three.js to make three-dimensional <a href="https://justingosses.github.io/lidar_threejs_playground/">data visualizations from car-based lidar data</a>.
+- Did a quick bit of machine-learning in a jupyter notebook to <a href="https://github.com/JustinGOSSES/WhichJobTitle">answer the question, “software engineer or data scientist”?</a>
+- <a href="https://github.com/JustinGOSSES/wellio.js">Built a well log file uploader & parser called “wellio.js”</a> that converts LAS files into JSON files, so the data can be manipulated by JavaScript. This enables other applications to be built that load local LAS files and manipulate/visualize them in the browser without needing python, server, or a proprietary application.
+- <a href="https://beta.observablehq.com/@justingosses/">Wrote a bunch of small JavaScript data visualization experiments on ObservableHQ</a>, which is a new way to write public, live, forkable JavaScript in a way that feels a lot like a more easily sharable Jupyter notebook Specifically, messing around with machine-learning, data parsing, and sonification of data in JavaScript, often with geology or NASA data.
+- Presented work on using machine learning to predict well log tops at the annual AAPG conference in San Antonio in May of 2019. You can find the <a href="https://justingosses.github.io/predictatops/html/index.html">Predictatops project on github with links to the presentation</a>.
+- Participated in the 2 day <a href="https://glasstire.com/">Glasstire</a> Datahack. Glasstire is an art website with 18 years of art event data in the city of Houston. I combined the art dataset with an older half-cleaned dataset of locations for companies advertising science jobs in Houston to create <a href="https://justingosses.github.io/glasstiredatahack/kepler/index.html">a visualization of the distribution of Art and Science in the city of Houston</a>. I leveraged a random forest model to clean the science data. <a href="https://github.com/JustinGOSSES/glasstiredatahack">Datahack code repository</a>. Old <a href="https://github.com/JustinGOSSES/HoustonScienceCity">science city repository</a>. <a href="https://justingosses.github.io/glasstiredatahack/kepler/index.html">Hackathon product</a>.
+- Playing around in ObservableHQ.com with the notion of an <a href="https://observablehq.com/@justingosses/overly-simplified-stratigraphic-modeling">explorable explainable for basic stratigraphy concepts</a> related to sea-level and shoreface depositional environments.
+- <a href="https://github.com/JustinGOSSES/wellioviz">Building Wellioviz.js a javascript library for building well log visualizations on the web</a>. While wellio.js focuses on converting LAS 2.0 well logs to JSON, there wasn’t really anything, at least open-source, to visualize well logs in modern JavaScript. G3.js existed but was no longer being developed. Plus, it relies on the older d3.js version 3.  Hoping to eventually build a web UI so users can load well logs and change their visualization without any code knowledge or use of a paid product. Wellioviz.js takes in all plotting data and style instructions via a JSON so it should be possible to eventually connect it to Python code as well.
+- Participated in <a href='https://softwareunderground.org/blog'>Transform2020</a>, an online week long meeting put together by SWUNG (Software Underground).  Transform2020 was a great example of what is possible when you design an event with a digital first perspective as opposed to replicating an in-person meeting via teleconference. Transform had hackathons/sprints, unsessions , tutorials, and lightning talks. I participated in the hackathon by leading a sprint around wellioviz, and I also gave <a href="https://observablehq.com/@justingosses/draft-shifting-from-scientific-python-to-a-javascript-mind">this 5 minute lightning talk about advice I give Pythonistas starting off in JavaScript</a>. The slides were, of course, built with JavaScript.
+- Created repository <a href="https://github.com/JustinGOSSES/geoVec-playground">“geoVec-playground” that takes a glove model trained on thousands of geoscience papers (with focus on soils) and represents the words in a 3D embedding space</a> using google’s stand alone embedding projector as a way to explore the model and gain a better understanding of its performance. Also, just interested in how to convert pre-trained glove models to tensorflow word2vec style format, so I can reuse some tools across different word embeddings.
+- Wrote medium blog post <a href="https://justingosses.medium.com/alternatives-to-iris-finding-drop-in-replacements-for-overused-example-datasets-ecea03b4ad00">“Alternatives to Iris: Finding Drop-in Replacements for Overused Example Datasets”</a> as part of a thought experiment part of the way towards the goal I really want to get to, which is programmatically finding datasets that could be used for specific workflows / end projects based on characteristics of the known datasets used in those workflows.
+- Finally got around to try some generative art code via some quick notebooks on Observable <a href="https://observablehq.com/@justingosses/messing-around-with-a-fork-2342">here</a> and <a href="https://observablehq.com/@justingosses/svg-rectangles">here</a>. Pleasantly surprised how easy it was after the first little learning hump, so will try more of this in future.
+- Whenever I try to get on the water be it surfing, paddle boarding, fishing, or sailing in the ocean, bay, lake, or river I check a variety of different sources of information. There’s a folder on my phone with  10 different pages. Brainstorming what I could do to <a href="https://github.com/JustinGOSSES/sideproject_planning/blob/master/water_activities_dashboard_houston.md">combine</a> some of those into one page via iframes or data visualizations. The first draft is a single GitHubPages page in a repo called <a href="https://github.com/JustinGOSSES/water-check-houston">water-check-houston</a>.
+- Doing a bit of research into application of deep learning and image recognition to generating data products that describe wave properties and surfers.
+
+#### Side-Projects over the last couple months
+- Was recognized as a <a href="https://observablehq.com/community">“Featured Creator”</a> on Observablehq.com, a website / tool for data visualization.
+- Wrote <a href="https://justingosses.medium.com/beyond-awesome-lists-3ccb074f7859">this</a> Medium post about an in progress side project to create an easily forkable repository template that visualizes the de-facto community of related code & developers that is sometimes described by Awesome lists.
+- Finally attempted to organize my side projects a bit with a <a href="https://github.com/JustinGOSSES/sideproject_planning/blob/master/README.md">README</a> that splits out what is active, stalled, or just in idea phase.
+- Wrote a little draft Observable notebook that takes your location and uses text-to-speech web API and a geology API called Macrosoft to <a href="https://observablehq.com/@justingosses/stratigraphy-speech">tell you verbally about the geology of the rocks where you are</a>. This was prompted by a tweet by <a href="https://twitter.com/DynamicWebPaige">DynamicWebPaige</a> wanting an audio book about local geology she could use on a train and a previous Observable notebook by <a href="https://observablehq.com/@ananya-roy/stratigraphy-visualizer">Ananya Roy</a>. 
+- Redoing my website. I've been using a WordPress based site for 6 year and trying to recreate it in Next.js & tailwind.css with deployment to Azure Static Web Apps.

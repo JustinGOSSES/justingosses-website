@@ -55,7 +55,7 @@ const securityHeaders = [
 module.exports = withBundleAnalyzer({
   images: {
     loader: "imgix",
-    path: "https://noop/",
+    path: "https://raw.githubusercontent.com/JustinGOSSES/justingosses-website/main/public/",
   },
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],

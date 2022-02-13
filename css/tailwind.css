@@ -19,13 +19,13 @@
 }
 
 
-  a {
-    color:orange;
+  /* a {
+    color:orange; <=== NOTE: Instead make these changes in tailwind.config.js file!
   }
 
   Link {
     color:orange;
-  }
+  } */
 
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
 input:-webkit-autofill,
