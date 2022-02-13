@@ -22,19 +22,28 @@ module.exports = {
         sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: colors.teal,
+        //primary: colors.teal,
+        primary: colors.orange,
         gray: colors.neutral,
+        orange: '#fb923c',
       },
       typography: (theme) => ({
         DEFAULT: {
           css: {
             color: theme('colors.gray.700'),
+            // a: {
+            //   color: theme('colors.primary.500'),
+            //   '&:hover': {
+            //     color: `${theme('colors.primary.600')} !important`,
+            //   },
+            //   code: { color: theme('colors.primary.400') },
+            // },
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.primary.200'),
               '&:hover': {
-                color: `${theme('colors.primary.600')} !important`,
+                color: `${theme('colors.primary.300')} !important`,
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.primary.100') },
             },
             h1: {
               fontWeight: '700',
@@ -98,11 +107,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.orange.500'),
               '&:hover': {
-                color: `${theme('colors.primary.400')} !important`,
+                color: `${theme('colors.orange.400')} !important`,
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.orange.400') },
             },
             h1: {
               fontWeight: '700',

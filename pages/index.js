@@ -22,12 +22,12 @@ export default function Home({ posts }) {
       {/* <div style="color:black">test</div> */}
 
       <div className="w-full+90 background-image z+1 h-screen bg-center bg-no-repeat">
-        <div className="flex h-screen w-full items-center justify-center bg-black bg-opacity-10">
+        <div className="flex h-screen w-full items-center justify-center bg-black bg-opacity-0 dark:bg-opacity-20">
           <div className="mx-4 text-center text-white">
-            <h1 className="mb-4 text-6xl font-bold">Justin Gosses</h1>
-            <h2 className="mb-12 text-3xl font-bold">
+            <h1 className="mb-4 text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Justin Gosses</h1>
+            <h3 className="mb-12 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Code, Data, Rocks, Maps, Sharing at Scale, and Other Stuff
-            </h2>
+            </h3>
             {/* <div>
                 <a href="" class="bg-blue-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-2">
                     Code Side Projects
@@ -105,7 +105,7 @@ export default function Home({ posts }) {
                               href={`/blog/${slug}`}
                               className="text-gray-900 dark:text-gray-100"
                             >
-                              {title}
+                              <a>{title}</a>
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">

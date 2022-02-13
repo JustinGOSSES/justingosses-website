@@ -17,7 +17,12 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
       <article>
         <div>
           <header>
-            <div className="mx-auto max-w-3xl space-y-1 border-b border-gray-200 px-4 pb-10 text-center dark:border-gray-700 sm:px-6 xl:max-w-5xl xl:px-0">
+            {/* <div className="mx-auto max-w-3xl space-y-1 border-b border-gray-200 px-4 pb-10 text-center dark:border-gray-700 sm:px-6 xl:max-w-5xl xl:px-0"> */}
+            {/* <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:divide-y xl:divide-gray-200 xl:px-0 xl:dark:divide-gray-700"> */}
+            {/* <div className="mx-auto max-w-3xl divide-y px-4 sm:px-6 xl:max-w-5xl xl:px-0"> */}
+             {/* <div className="max-w-3xl space-y-1 border-b border-gray-200 px-4 pb-10 text-center dark:border-gray-700 sm:px-6 xl:max-w-5xl xl:px-0"> */}
+             <div className="mx-auto max-w-3xl divide-y px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+              
               <dl>
                 <div>
                   <dt className="sr-only">Published on</dt>
@@ -31,8 +36,12 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </div>
             </div>
           </header>
-          <div
+          {/* <div
             className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0 "
+            style={{ gridTemplateRows: 'auto 1fr' }}
+          > */}
+          <div
+            className="mx-auto max-w-3xl divide-y px-4 sm:px-6 xl:max-w-5xl xl:px-0 "
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
