@@ -1,11 +1,5 @@
 ---
 name: Justin Gosses
-avatar: /static/images/avatar.png
-occupation: Code Person
-# company: Stanford University
-# email: address@yoursite.com
-# twitter: https://twitter.com/Twitter
-# linkedin: https://www.linkedin.com
 github: https://github.com/JustinGOSSES
 observable: https://observablehq.com/@justingosses
 ---
