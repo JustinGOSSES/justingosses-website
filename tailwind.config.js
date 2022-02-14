@@ -39,11 +39,11 @@ module.exports = {
             //   code: { color: theme('colors.primary.400') },
             // },
             a: {
-              color: theme('colors.primary.200'),
+              color: theme('colors.primary.600'),
               '&:hover': {
-                color: `${theme('colors.primary.300')} !important`,
+                color: `${theme('colors.primary.800')} !important`,
               },
-              code: { color: theme('colors.primary.100') },
+              code: { color: theme('colors.primary.500') },
             },
             h1: {
               fontWeight: '700',

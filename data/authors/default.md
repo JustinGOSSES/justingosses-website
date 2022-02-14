@@ -1,6 +1,6 @@
 ---
 name: Justin Gosses
-avatar: /static/images/avatar.png
+avatar: /static/images/JustinPhoto.jpg
 occupation: Code Person
 # company: Stanford University
 # email: address@yoursite.com
@@ -9,9 +9,9 @@ occupation: Code Person
 # github: https://github.com/JustinGOSSES
 ---
 
-Justin Gosses has been a Program Manager, Data Scientist, Software Developer, and Geoscientist.
+<i>A litle about me....</i>
 
-Justin lives in Houston, Texas with his wife and dog Momo. Friends, good food at all the price points, and easy access to shallow water for kayaking and paddle boarding keep him there.
+I live in Houston, Texas with my wife and dog Momo. Friends, good food at all the price points, and easy access to shallow water for kayaking and paddle boarding keep me here.
 
 ## Interests include:
 - Things that could exist but don't yet.
@@ -20,7 +20,20 @@ Justin lives in Houston, Texas with his wife and dog Momo. Friends, good food at
 - Open source geospatial tools
 - Natural Language Processing
 - Sharing at Scale:
-    - This includes questions like comparing different benefits and costs of open data catalogs, APIs, and dashboards; code citation tooling as a way to change its cultural value; group membership and behaviors in open source that impact how science is done; different incentives and participation drivers between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
+    - This includes questions like the costs and benefits for administration and user experience of different open data interfaces across catalogs, APIs, and dashboards; code citation tooling as a way to change its cultural value; group membership and behaviors in open source that impact how science is done; different incentives and participation drivers between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
+
+## Professional History
+I have been a Program Manager, Data Scientist, Software Developer, and Geoscientist.
+
+Currently, I work at Microsoft as a Senior Program Manager focused on improving the <a href='https://innersourcecommons.org/'>inner source</a> experience, or use and reuse of code across organizational boundaries. 
+
+I previously worked as a NASA contractor, supporting NASA’s Office of the Chief Information Officer’s Transformation & Data division in two roles.
+
+(1.)  As Principal Data Scientist data analytics team, I worked on projects that leverage modern data science, data visualization, and machine-learning approaches to solve client problems and help speed adoption of the latest tools. In the earliest form of the role, I focused on providing advise, consulting, and prototypes for internal NASA customers in finance, human resources, facilities, space technology, and other domains. Later on, I worked on enterprise level processes and tooling for data warehousing, data analytics, data catalogs, and metadata standards. I’ve done machine-learning projects in NLP (natural language processing), automated speech recognition, image recognition, as well as with tabular data in different forms.
+
+(2.) I was also the technical program manager for Open-Innovation program, responsible for sharing NASA’s open data and open source code through the public facing websites data.nasa.gov, code.nasa.gov, api.nasa.gov, github.com/nasa as well as the programs and infrastructure to support internal-facing inner source activities.
+
+Before NASA, I worked as a geoscientist for BP and got to dig into data to answer questions that drove business questions across Canada, U.S., and Brazil. Towards the end of my time there I also got to use code to build solutions that domain specific software applications couldn't be twisted into answering via graphics user interfaces alone.
 
 ## Recent Talks
 
