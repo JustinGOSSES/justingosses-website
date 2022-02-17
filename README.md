@@ -4,6 +4,25 @@ Draft website to create existing 6 year old WordPress version of justingosses.co
 ## Tech Stack
 Next.js & Tailwind CSS deployed on Azure static web apps
 
+## Development
+
+First, run the development server:
+
+`npm start`
+
+or
+
+`npm run dev`
+
+If you get errors like `npm ERR! Failed at the tailwind-nextjs-starter-blog@1.5.0 dev script 'next dev'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.` then check if you're using system node.js or the latest version. 
+If you're using nvm, you can run `nvm list` to see what version of node your terminal window is running.
+
+Open http://localhost:3000 with your browser to see the result.
+
+You can start editing the page by modifying pages/index.js. The page auto-updates as you edit the file.
+
+
 ## Deployment
 - run `npm run build` . This runs the script `next build && next export` as defined in package.json and should output static website into a folder named 'out'.
 - run `git add *`
