@@ -1,7 +1,7 @@
 ---
 title: 'Visualization of Awesome Lists'
 date: 2021-12-10T15:32:14Z
-lastmod: '2021-12-10'
+lastmod: '2021-05-31'
 tags: ['data-visuailzation', 'awsome-lists', 'community','open-source','github','developers','SWUNG','ideas','code','metadata','API','reuse','nudge']
 draft: false
 summary: 'What if Awesome Lists weren’t just lists, but enabled views of the open source community?'
