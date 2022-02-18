@@ -23,7 +23,7 @@ There is a geologist saying that whoever sees the most rocks wins. I’ve not se
         - social media chair
     - The American Association for the Advancement of Science (AAAS)
 
-## Oil & Gas
+## Previous Geologist Career
 
 I worked for BP exploration and production for nine years, including two years as an expat in the Calgary, Canada office. For additional details, please see the RESUME page.
 Academic Research

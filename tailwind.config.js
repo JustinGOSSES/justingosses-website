@@ -23,7 +23,7 @@ module.exports = {
       },
       colors: {
         //primary: colors.teal,
-        primary: colors.teal,
+        primary: colors.orange,
         gray: colors.neutral,
         //orange: '#fb923c',
       },
