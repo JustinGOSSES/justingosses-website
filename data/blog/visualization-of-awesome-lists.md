@@ -12,24 +12,21 @@ canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/visualizat
 
 ## Overview
 
-What if Awesome Lists weren’t just lists, but enabled views of the open source community?
-
-### Table of Contents
-<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
-
-<i>
 Awesome lists are…. awesome. But could they be even more useful? What if instead of just a curated list you also got a view into a wider community?
+
+<small><i>
 
     NOTE 1: this is was also written up on <a href="https://justingosses.medium.com/beyond-awesome-lists-3ccb074f7859">Medium</a> and is described from a slightly different perspective in <a href="https://observablehq.com/@justingosses/more-visible-connections-between-projects-can-nudge-devel">these slides on Observable</a>.
 
     NOTE 2: Since writing this blog post, I’ve continued working on this idea and <a href="https://github.com/JustinGOSSES/awsome-list-visual-explorer-template">made a reusable template</a> that you can use to start a new code repository, change a few lines in a configuration file, run two scripts, and get a whole new website with interactive visualizations to help you understand the code community documented in an Awesome List.
-</i>
+</i></small>
+
+### Table of Contents
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
 
 ## What is an Awesome list?
 
 An Awesome List is a community curated list of code projects within a specific domain, application, or use case. You can read more in the “<a href="https://github.com/sindresorhus/awesome/blob/main/awesome.md">Awesome Manifesto</a>” on <a href="https://github.com/sindresorhus">sindresorhus/awesome</a>.
-
-View Post
 
 They are great places to first look for open source code projects that others have found highly use in your problem space, be it markdown editors, JavaScript data visualization, Jupyter notebook widgets, GraphQL, spatial analysis, robotics, or <a href="https://project-awesome.org/phillipadsmith/awesome-github">hundreds</a> of other things. Other places people might discover code are word of mouth, google searches, trolling GitHub, seeing the packages used in other code, or having it recommended by a mentor or peer.
 
@@ -79,34 +76,29 @@ Beyond “curated list” and into “community level view”
 
 The visualizations father down are static images, but the first one is an iframe embed. Most of the visualizations are interactive so best explored on the <a href="https://softwareunderground.github.io/open_geosciene_code_projects_viz/">actual website</a>. The data visualizations allow for many questions to answered that provide a community level view of the code projects curated on the Awesome list.
 
-!["Repository creation statistics over time showing more repos since 2009"]("static/images/awesome/repo_creation_history.png")
+!["Repository creation statistics over time showing more repos since 2009"](../static/images/awesome/repo_creation_history.png)
 <i>How often does a new code project in this space appear? How old are the older ones?</i>
 
 
-!["Number of stars given to each repository over time as shown in multiline graph."]("static/images/awesome/number-of-stars-over-time.png")
+!["Number of stars given to each repository over time as shown in multiline graph."](../static/images/awesome/number-of-stars-over-time.png)
 <i>How fast are people starting this new project versus older projects? Has the number of new stars flatlined as people migrate to a new project?</i>
 
 
-!["Donut charge of languages used across all repos by bytes and word chart of most common topics."]("static/images/awesome/language-and-topics.png")
+!["Donut charge of languages used across all repos by bytes and word chart of most common topics."](../static/images/awesome/language-and-topics.png)
 <i>What are the most common languages within this Awesome list? What topics are the most common across all projects?</i>
 
 
-!["A circle packing chart that shows which contributers are in which organizations and how much they contribute to geoscience repositories."]("static/images/awesome/org_repo_circle_packing.png")
+!["A circle packing chart that shows which contributers are in which organizations and how much they contribute to geoscience repositories."](../static/images/awesome/org_repo_circle_packing.png)
 <i>What organization or developer owns the most projects on the Awesome list? What projects only have contributions from the code owners vs. contributions from many external parties and therefore might be better places to submit a pull request? </i>
 
-!["A line chart showing contributer activity across all geoscience repositories tracked over time for past year."]("static/images/awesome/activitiy_across_all_repos.png")
+!["A line chart showing contributer activity across all geoscience repositories tracked over time for past year."](../static/images/awesome/activitiy_across_all_repos.png)
 <i>Has activity jumped around a conference or other event?</i>
 
-!["Number of stars given to each repository over time as shown in multiline graph."]("static/images/awesome/dependency_graph.png")
-<i>What projects on the Awesome list are used as a dependency by other projects on the Awesome list?</i>
+!["Number of stars given to each repository over time as shown in multiline graph."](../static/images/awesome/dependency_graph.png)
+<i>What projects on the Awesome list are used as a dependency by other projects on the Awesome list? Where to make contributions such that your code is reused by the highest number of projects? What projects are built entirely different than the norm? sWhat projects is it more likely you could jump in and contribute to as the dependencies are already very similar to your existing work?</i>
 
-<i>Where to make contributions such that your code is reused by the highest number of projects?</i>
 
-<i>What projects are built entirely different than the norm?</i>
-
-<i>What projects is it more likely you could jump in and contribute to as the dependencies are already very similar to your existing work?</i>
-
-!["A pie chart that represents the popularity of open source licenses across the tracked geoscience repositories."]("static/images/awesome/Repo-licenses.png")
+!["A pie chart that represents the popularity of open source licenses across the tracked geoscience repositories."](../static/images/awesome/Repo-licenses.png)
 <i>Picking a license can be hard. Is there a pattern in terms of what others in your community have gone with? Can you use this to help guide your choice?</i>
 
 ## Additional Questions that Could be Answered that Would “Nudge” Developers
