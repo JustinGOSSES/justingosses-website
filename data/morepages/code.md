@@ -4,29 +4,16 @@ github: https://github.com/JustinGOSSES
 observable: https://observablehq.com/@justingosses
 ---
 
-### What types of code?
-I write machine-learning, data visualization, and web development code. Mostly, I write in Python or JavaScript with smaller amounts of Ruby, R, PHP, sed/awk, C++, and Java.
-
-### Writing Code For Work
-Currently I work for Microsoft as a Senior Program Manager focused on improving the inner source experience. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new, but suspect I'll be writing lots of <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, and C#. 
-
-Previously, I worked on a consulting agency data analytics team within <a href="https://www.nasa.gov/offices/ocio/home/index.html">NASA’s Office of the Chief Information Officer’s</a> Technology and Innovation division, now re-orged into <a href="https://www.nasa.gov/offices/ocio/operations">IDAS</a>.  I’m also the technical program manager for a portion of NASA’s open-data activities. Lots of JavaScript & Python focused on metadata manipulation, natural language processes, image recognition, tabular data machine learning, and web-based data visualization.
-
-Before that I worked at BP where I wrote data processing scripts in sed/awk when domain software didn't quite do what was needed. I also put together prototypes combining Python with ArcGIS and Excel based data inputs to identify risks to reservoir quality. 
-
-### Perspective on Building Solutions With Code
-A few personal opinions that define how I approach data science include:
-
-- I have a soft spot for things at the intersection of metadata, natural language processing, semantic tooling, and user interfaces as technology improvements have opened up a lot of possibilities there that have yet to be built.
-- I love finding ways to use data gathered for one purpose for a completely new purpose. It’s like finding free money.
-- I think data visualization is vastly undervalued due to so much of the understanding we get from it happening faster than we can cognitively grasp it.
-- I think we focus too much on applying machine-learning to things humans already do fairly often and not enough thinking about tasks machine-learning would be great at that we never do, because they would be too boring or time consuming.
-- Understanding how people interact with the analysis, tools, and products we create and how things get built or not built within the larger organizational context is more often the controlling variable on a successful product than the technical details or prediction accuracy.
-
-## Code Side-Projects
+## About My Code Side-Projects
 Side projects are a major way I add to my skills, so I always have several in development or on the to-do list.
 
-#### Previous Side-Projects
+Putting them in a list is a bit of a self-hack to limit the sprawl and push things to completion. 
+It serves as a good reminder what isn't completely done and helps to prioritize.
+
+### What types of code do I write?
+I write machine-learning, data visualization, and web development code. Mostly, I write in Python or JavaScript with smaller amounts of Ruby, R, PHP, sed/awk, C++, and Java. A lot of my side projects are in JavaScript as it is the easiest for me to jump into and quickly produce something with an easy to share visual.
+
+### Previous Side-Projects
 - Assembled a <a href="https://54.87.153.110/raspberry-shake-personal-seismometer/">Raspberry Shake, a personal seismometer</a>.
 - Built an <a href="https://twitter.com/JustinGosses/status/793264892652380160">internet connected pumpkin</a> for Halloween that talked to small children.
 - Presented a <a href="https://www.meetup.com/Houston-Data-Visualization-Meetup/events/233893631/">talk on the changing data visualization landscape in large organizations (1974-2016)</a>.
@@ -52,7 +39,7 @@ Side projects are a major way I add to my skills, so I always have several in de
 - Whenever I try to get on the water be it surfing, paddle boarding, fishing, or sailing in the ocean, bay, lake, or river I check a variety of different sources of information. There’s a folder on my phone with  10 different pages. Brainstorming what I could do to <a href="https://github.com/JustinGOSSES/sideproject_planning/blob/master/water_activities_dashboard_houston.md">combine</a> some of those into one page via iframes or data visualizations. The first draft is a single GitHubPages page in a repo called <a href="https://github.com/JustinGOSSES/water-check-houston">water-check-houston</a>.
 - Doing a bit of research into application of deep learning and image recognition to generating data products that describe wave properties and surfers.
 
-#### Side-Projects over the last couple months
+### Side-Projects over the last couple months
 - Was recognized as a <a href="https://observablehq.com/community">“Featured Creator”</a> on Observablehq.com, a website / tool for data visualization.
 - Wrote <a href="https://justingosses.medium.com/beyond-awesome-lists-3ccb074f7859">this</a> Medium post about an in progress side project to create an easily forkable repository template that visualizes the de-facto community of related code & developers that is sometimes described by Awesome lists.
 - Finally attempted to organize my side projects a bit with a <a href="https://github.com/JustinGOSSES/sideproject_planning/blob/master/README.md">README</a> that splits out what is active, stalled, or just in idea phase.

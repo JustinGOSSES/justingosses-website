@@ -51,11 +51,15 @@ export default function Home({ posts }) {
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
           </p>
+
           <p>Welcome to my website!</p>
-          <p>IT IS STILL BEING BUILT!   -   Go to <a href="https://justingosses.com">https://justingosses.com</a> for the old version that is currently still live!</p>
+          <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            IT IS STILL BEING BUILT!   -   Go to <a href="https://justingosses.com">https://justingosses.com</a> for the old version that is currently still live!
+
+          </h2>
           <p>
             I use this website as a place to share information about myself, write blog posts, and
-            establish a record of side projects as a mind trick againts myself to finish them.
+            establish a record of side projects as a self-hack to prioritize side projects better.
           </p>
           <p>
             You can find more information about me in the{' '}

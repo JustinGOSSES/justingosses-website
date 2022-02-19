@@ -12,7 +12,7 @@ export default function CodeLayout({ children, frontMatter }) {
       <div className="mx-auto max-w-3xl divide-y px-4 sm:px-6 xl:max-w-5xl xl:px-0">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Code
+            Side Projects
           </h1>
         </div>
         <div className="items-start space-y-2 ">
@@ -26,7 +26,7 @@ export default function CodeLayout({ children, frontMatter }) {
               className="h-48 w-48 rounded-full"
             /> */}
             {/* <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">{name}</h3> */}
-             <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">Links to Code</h3>
+             <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">Links to More Code Projects</h3>
             {/* <div className="text-gray-500 dark:text-gray-400">{occupation}</div> 
             <div className="text-gray-500 dark:text-gray-400">{company}</div> */}
             <div className="flex space-x-3 pt-6">
