@@ -14,7 +14,7 @@ const LayoutWrapper = ({ children }) => {
         <header className="flex items-center justify-between py-5">
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between px-2">
                 <div className="mr-3">
                   <Logo />
                 </div>

@@ -9,18 +9,18 @@ occupation: Code Person
 # github: https://github.com/JustinGOSSES
 ---
 
-<i>A litle about me....</i>
 
-I live in Houston, Texas with my wife and dog Momo. Friends, good food at all the price points, and easy access to shallow water for kayaking and paddle boarding keep me here.
+
+Justin lives in Houston, Texas with my wife and dog Momo. 
 
 ## Interests include:
 - Things that could exist but don't yet.
+- Water based things like kayaking, surfing, paddle boarding, and little web-based services that help me decide when and where to go.
 - Things at the intersection of geology & code.
-- Little web-based services that help make decisions for water-based outdoor activities. 
 - Open source geospatial tools
 - Natural Language Processing
 - Sharing at Scale:
-    - This includes questions like the costs and benefits for administration and user experience of different open data interfaces across catalogs, APIs, and dashboards; code citation tooling as a way to change its cultural value; group membership and behaviors in open source that impact how science is done; different incentives and participation drivers between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
+    - This includes questions like open data interface design; code citation tooling as a way to change its perceived value; group membership and behaviors in open source that impact how science gets done; different incentives between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
 
 ## Professional History
 I have been a Program Manager, Data Scientist, Software Developer, and Geoscientist.
