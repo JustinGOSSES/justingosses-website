@@ -9,11 +9,17 @@ occupation: Code Person
 # github: https://github.com/JustinGOSSES
 ---
 
-
-
 Justin lives in Houston, Texas with my wife and dog Momo. 
 
-## Interests include:
+### Table of Contents
+- <a href="#interests">Interests</a>
+- <a href="#professional-history">Professional History</a>
+- <a href="#recent-talks">Recent Talks</a>
+- <a href="#publications">Publications</a>
+- <a href="#community-involvement">Community Involvement</a>
+
+
+## Interests:
 - Things that could exist but don't yet.
 - Water based things like kayaking, surfing, paddle boarding, and little web-based services that help me decide when and where to go.
 - Things at the intersection of geology & code.

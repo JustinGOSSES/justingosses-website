@@ -1,5 +1,6 @@
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
+import Link from '@/components/Link'
 
 // import dynamic from 'next/dynamic';
 
@@ -16,11 +17,15 @@ export default function About({ authorDetails }) {
   return (
     <MDXLayoutRenderer
       layout={frontMatter.layout || DEFAULT_LAYOUT}
+      // toc={toc}
       mdxSource={mdxSource}
       frontMatter={frontMatter}
     />
   )
 }
+
+
+
 
 
 // const FileViewer = dynamic(() => import('react-file-viewer'), {
