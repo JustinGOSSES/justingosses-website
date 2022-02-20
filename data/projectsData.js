@@ -75,7 +75,7 @@ const projectsData = [
     description: `A Houston Data Visualization Meetup data jam using major element data from MarsScienceLaboratory 
     (Curiosity Rover) ChemCam rock sample data. This type of data has been visualized statically in the same way 
     for decades. We challenged non-geologists to do new and interactive things with it.`,
-    imgSrc: '/static/images/projects/datajam_Mars_MajorElements/master/ScreenShot_HighCa_OnlyEarlyDay.png',
+    imgSrc: '/static/images/projects/MarsMajorElements.png',
     href: 'https://github.com/JustinGOSSES/datajam_Mars_MajorElements',
   },
   {
