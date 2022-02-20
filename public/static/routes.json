@@ -4,5 +4,23 @@
         "errorType": "NotFound",
         "serve": "/404.html"
         }
+    ],
+    "routes":[
+        {
+            "route": "/finding-a-nasa-contractor-job/",
+            "rewrite": "blog/finding-a-nasa-contractor-job/"
+        },
+       {
+        "route": "/what-if-awesome-lists-werent-just-lists-but-enabled-views-of-the-open-source-community/",
+        "rewrite": "blog/visualization-of-awesome-listss"
+        },
+        {
+            "route": "/wellio-wellioviz/",
+            "rewrite": "/blog/wellio-wellioviz/"
+        },
+        {
+            "route": "creating-new-metadata-from-old-metadata-using-machine-learning-a-poster-presentation-at-american-geophysical-union-conference-2019/",
+            "rewrite": "blog/creating-new-metadata-from-old-metadata-using-machine-learning-a-poster-presentation-at-american-geophysical-union-conference-2019/"
+        }  
     ]
 }

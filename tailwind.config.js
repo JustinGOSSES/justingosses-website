@@ -113,6 +113,18 @@ module.exports = {
               },
               code: { color: theme('colors.primary.400') },
             },
+            button: {
+              padding: '0.5rem 1rem',
+              outline: `2px solid`,
+              borderRadius: '0.5rem',
+              letterSpacing: theme('letterSpacing.tight'),
+              backgroundColor: theme('colors.gray.200'),
+              color: theme('colors.primary.900'),
+              '&:hover': {
+                color: `${theme('colors.primary.400')} !important`,
+              },
+              code: { color: theme('colors.primary.400') },
+            },
             h1: {
               fontWeight: '700',
               letterSpacing: theme('letterSpacing.tight'),

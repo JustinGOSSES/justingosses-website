@@ -1,0 +1,58 @@
+---
+title: 'Visualizing Well Logs on the web with Wellio & Wellioviz'
+date: 2021-01-21T15:32:14Z
+lastmod: '2021-01-21'
+tags: ['data-visuailzation', 'geology', 'visualization','open-source','d3.js','SWUNG','ideas','code','metadata','formats','science','friction','wells','logs','wellio','wellioviz']
+draft: false
+summary: 'Wellio & Wellioviz are open source JavaScript libraries for converting LAS well log files into JSON and viewing them in the browser.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/wellio-wellioviz/
+---
+
+## Overview
+
+
+### Table of Contents
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Why?
+
+Like many side projects, they were built around the idea that certain experiences could be a little bit better.
+
+A number of government sites provide open-source well log data in LAS format. To find out what’s in a LAS file though, 
+you usually have to download the files and view them with proprietary products or open-source Python tools like Lasio & Welly. 
+But what if you just want to take a quick look to figure out if the data’s useful to your purpose? What if you don’t have proprietary tools or know Python? 
+You’re out of luck. This is what prompted initial development of wellio and then wellioviz.
+
+!["Screenshot of well logs visualized with wellioviz."](../static/images/blog/wellio-wellioviz/well_log_screenshot_new.png)
+<i>Image of what wellioviz produces.</i>
+
+## Demos
+The demo webpage at the button below lets you visualize any well log available from a link with only a browser. Nothing to download or learn. Example data sites with well logs in LAS 2.0 format are provided from USGS and Kansas Geological Survey. It is built into a Observable notebook, which is similar to a jupyter notebook, but all the code is live by default.
+
+
+<button onclick="window.location.href='https://observablehq.com/@justingosses/a-notebook-using-wellio-js-wellioviz-js-for-quick-looks-of-la';">GO TO DEMO FOR VIEWING WELL LOGS FROM GOVERNMENT SITES</button>
+
+There’s also a demo built into the docs for wellioviz.js. This demo either uses a default LAS 2.0 format well log embedded in the website or lets you upload a LAS file from your local computer. As it is only a front-end site, none of the data goes to a server. Everything stays in your browser.
+
+
+<button onclick="window.location.href='https://observablehq.com/@justingosses/a-notebook-using-wellio-js-wellioviz-js-for-quick-looks-of-la';">GO TO DEMO WITH AN EMBEDDED WELL OR UPLOAD A WELL FROM YOUR COMPUTER</button>
+
+
+!["Screenshot of demo page that is off the Wellioviz repository docs."](../static/images/blog/wellio-wellioviz/wellioviz_demo1.png)
+<i>Screenshot of the demo page in wellioviz docs.</i>
+
+## Development
+Wellio and Wellioviz both had a similar history in terms of getting unexpectedly far in a single weekend and taking a lot more time in small chunks over a 
+long period to get where they are now. Both are side projects, to be sure, but are at a stage where they can be built into other projects.
+
+Both have open source licenses and have been improved through the technical contributions of others beyond myself. <a src="https://github.com/dcslagel">DC Slagel</a> and <a href="https://github.com/nathangeology">nathangeology</a> have made 
+substantial contributions. You can find the full list of contributors on the repos themselves. The main contributors to the most used python libraries in this space, 
+LASIO (<a href="https://github.com/kinverarity1">kinverarity1</a>), and Welly (<a href="https://github.com/">kwinkunks</a>) have been great at providing examples of “bad” wells, workflow examples, and loose coordination. Wellioviz received a 
+lot of helpful attention in a <a href="https://softwareunderground.org/">SoftwareUnderground</a>‘s online hackathon/conference in mid 2020 called <a href="https://softwareunderground.org/blog/2020/6/29/the-transform-2020-hackathon-part-1">Transform2020</a>. Wellioviz was pushed from initial 
+proof-of-concept to working package via a little funding from parties that wish to remain anonymous using <a href="https://github.com/sponsors">GithubSponsors</a>.
+
+If you would like to help develop them further, please check out the “contributing” sections of the documentation for <a href="https://github.com/JustinGOSSES/wellio.js">wellio</a> and <a href="https://justingosses.github.io/wellioviz/#contributing">wellioviz</a> on Github. 
+If you’d like to learn more about parsing text with JavaScript, wellio is a good project to contribute to. In comparison, Wellioviz would be a good place to 
+learn if you want to dive into JSON templates or visualization via d3.js. Both projects have issues tagged as good for beginners and an active backlog of issues.
