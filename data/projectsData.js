@@ -63,11 +63,10 @@ const projectsData = [
     title: 'Augmented Reality Business Card',
     type: 'AR Web App',
     tools: 'AR.js, aframe.js, three.js, Artoolkit.js',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
+    description: `Made an entirely browser-based (no apps required) augmented reality back for my business card. 
+    The 3D model is a topographic model of Jezero Crater on Mars. The previous 3D model was Gale Crater derived from data from ESA's Mars Express mission. `,
     imgSrc: '/static/images/projects/augmentedreality_2.png',
-    href: '/blog/the-time-machine',
+    href: 'https://github.com/JustinGOSSES/AR_BusinessCard',
   },
   {
     title: 'The Time Machine',
