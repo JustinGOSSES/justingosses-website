@@ -4,13 +4,14 @@ export default function FourZeroFour() {
   return (
     <div className=" md:mt-24 md:items-center md:justify-center md:space-x-6">
       <div className="px-4">
-        <h2>Sorry your page isn't here.</h2>
+        <h1>Sorry your page isn't here. We have 404ed</h1>
       </div>
       <div className="px-4 py-5">
-        <h2><Link href="https://observablehq.com/@justingosses/fourzerofour">CLICK HERE</Link> to wander around this abandoned industrial island in dispair.</h2>
+      <h2><Link href="/">CLICK HERE</Link> to go to the homepage.</h2>
+     
       </div>
       <div className="px-4">
-        <h2> Or <Link href="/">CLICK HERE</Link> to go to the homepage.</h2>
+      <h2>OR wander around <Link href="https://observablehq.com/@justingosses/fourzerofour">THIS abandoned industrial island in dispair</Link>.</h2>
       </div>
       <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2sus!4v1487820746671!6m8!1m7!1sA3tTI4JZsf22r2rcUZch3w!2m2!1d32.62712480678462!2d129.7386352339616!3f41.1332668802539!4f-3.7115668392063412!5f0.7820865974627469" height="600px" width="100%"></iframe>
       {/* <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2sus!4v1487820746671!6m8!1m7!1sA3tTI4JZsf22r2rcUZch3w!2m2!1d32.62712480678462!2d129.7386352339616!3f41.1332668802539!4f-3.7115668392063412!5f0.7820865974627469" height="100%" width="100%"></iframe> */}
