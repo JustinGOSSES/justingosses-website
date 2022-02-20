@@ -44,6 +44,42 @@ const projectsData = [
     href: 'https://public.tableau.com/app/profile/justin.gosses/viz/Harvey_FEMA-HCADmerge_vD_20170907/Story1#streetView',
   },
   {
+    title: 'Game of Trones Parallel Sets',
+    type: 'Interative Data Visualization',
+    tools: 'D3.js',
+    description: `Built my own implimentation of parallel sets with some interactive draggable features using a dataset of game of thrones battles.`,
+    imgSrc: '/static/images/projects/paraset_screenshot.png',
+    href: 'https://justingosses.github.io/ParallelSets_GameOfThrones/',
+  },
+  {
+    title: 'Can Sound Add Value to a Data Visualization',
+    type: 'Observable Notebook',
+    tools: 'Tone.js, Observable, D3.js',
+    description: `An experiment using tone.js to add sound to a data visualization built with d3.js that represents the GISS Surface Temperature Analysis dataset from NASA's Goddard Institute for Space Studies.`,
+    imgSrc: '/static/images/projects/viz_as_sound.png',
+    href: 'https://observablehq.com/@justingosses/can-sound-add-value-to-data-visualizations',
+  },
+  {
+    title: 'Augmented Reality Business Card',
+    type: 'AR Web App',
+    tools: 'AR.js, aframe.js, three.js, Artoolkit.js',
+    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
+    to the desired date and press "Go". No more worrying about lost keys or
+    forgotten headphones with this simple yet affordable solution.`,
+    imgSrc: '/static/images/projects/augmentedreality_2.png',
+    href: '/blog/the-time-machine',
+  },
+  {
+    title: 'The Time Machine',
+    type: 'Web App',
+    tools: 'React, Node.js, Express, MongoDB',
+    description: `Made an entirely browser-based (no apps required) augmented reality back for my
+     business card. The 3D model is a topographic model of Gale Crater derived from data from 
+     ESA's Mars Express mission. `,
+    imgSrc: '/static/images/time-machine.jpg',
+    href: '/blog/the-time-machine',
+  },
+  {
     title: 'The Time Machine',
     type: 'Web App',
     tools: 'React, Node.js, Express, MongoDB',
@@ -54,14 +90,14 @@ const projectsData = [
     href: '/blog/the-time-machine',
   },
   {
-    title: 'A Search Engine',
+    title: 'The Time Machine',
     type: 'Web App',
     tools: 'React, Node.js, Express, MongoDB',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
+    to the desired date and press "Go". No more worrying about lost keys or
+    forgotten headphones with this simple yet affordable solution.`,
+    imgSrc: '/static/images/time-machine.jpg',
+    href: '/blog/the-time-machine',
   },
   {
     title: 'The Time Machine',
