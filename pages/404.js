@@ -3,7 +3,8 @@ import Link from '@/components/Link'
 export default function FourZeroFour() {
   return (
     <div className="flex flex-col items-start justify-start md:mt-24 md:flex-row md:items-center md:justify-center md:space-x-6">
-      <div className="space-x-2 pt-6 pb-8 md:space-y-5">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2sus!4v1487820746671!6m8!1m7!1sA3tTI4JZsf22r2rcUZch3w!2m2!1d32.62712480678462!2d129.7386352339616!3f41.1332668802539!4f-3.7115668392063412!5f0.7820865974627469" height="100%" width="100%"></iframe>
+      {/* <div className="space-x-2 pt-6 pb-8 md:space-y-5">
         <h1 className="text-6xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 md:border-r-2 md:px-6 md:text-8xl md:leading-14">
           404
         </h1>
@@ -18,7 +19,7 @@ export default function FourZeroFour() {
             Back to homepage
           </button>
         </Link>
-      </div>
+      </div> */}
     </div>
   )
 }

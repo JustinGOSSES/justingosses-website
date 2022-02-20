@@ -1,7 +1,7 @@
 ---
 name: Justin Gosses
 avatar: /static/images/JustinPhoto.jpg
-occupation: Code Person
+occupation: 
 # company: Stanford University
 # email: address@yoursite.com
 # twitter: https://twitter.com/Twitter
@@ -22,10 +22,10 @@ Justin lives in Houston, Texas with my wife and dog Momo.
 
 ## Interests:
 - Things that could exist but don't yet.
-- Water based things like kayaking, surfing, paddle boarding, and little web-based services that help me decide when and where to go.
-- Things at the intersection of geology & code.
 - Open source geospatial tools
+- Things at the intersection of geology & code.
 - Natural Language Processing
+- Water based things like kayaking and paddle boarding. Also small web-based services that help me decide when and where to go.
 - Sharing at Scale:
     - This includes questions like open data interface design; code citation tooling as a way to change its perceived value; group membership and behaviors in open source that impact how science gets done; different incentives between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
 
@@ -42,22 +42,22 @@ A few personal opinions that define how I approach data science include:
 
 <b>I have been a Program Manager, Data Scientist, Software Developer, and Geoscientist.</b>
 
-Here's a few highlights of my professional history with an emphasis on what types of code I've built solutions with.
+Here's a few highlights of my professional history with an emphasis on what types of code I used in each role and what types of problems were solved.
 
 #### Microsoft
 
-Currently, I work at Microsoft as a Senior Program Manager focused on improving the <a href='https://innersourcecommons.org/'>inner source</a> experience, or use and reuse of code across organizational boundaries. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new, but suspect I'll be writing <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, C#, and Python. 
+Currently, I work at Microsoft as a Senior Program Manager focused on improving the <a href='https://innersourcecommons.org/'>inner source</a> experience, or use and reuse of code across organizational boundaries. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new and stil gaining understanding of the role, but suspect I'll be writing <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, C#, and Python to understand current rates & patterns of code collaboration as we attempt to reduce friction and better align tooling and incentives. 
 
 #### NASA Contractor
 I previously worked as a NASA contractor, supporting <a href="https://www.nasa.gov/offices/ocio/home/index.html">NASA’s Office of the Chief Information Officer’s</a> Technology and Innovation division, now re-orged into <a href="https://www.nasa.gov/offices/ocio/operations">IDAS</a> in two roles.
 
 (1.)  As Principal Data Scientist data analytics team, I worked on projects that leverage modern data science, data visualization, and machine-learning approaches to solve client problems and help speed adoption of the latest tools. In the earliest form of the role, I focused on providing advise, consulting, and prototypes for internal NASA customers in finance, human resources, facilities, space technology, and other domains. Later on, I worked on enterprise level processes and tooling for data warehousing, data analytics, data catalogs, and metadata standards. I’ve done machine-learning projects in NLP (natural language processing), automated speech recognition, image recognition, as well as with tabular data in different forms. Most of my code was Python or JavaScript, but I sometimes did a little PHP, C++, and Java as needed.
 
-(2.) I was also the technical program manager for Open-Innovation program, responsible for sharing NASA’s open data and open source code through the public facing websites data.nasa.gov, code.nasa.gov, api.nasa.gov, github.com/nasa as well as the programs and infrastructure to support internal-facing inner source activities.
+(2.) I was also the technical program manager for Open-Innovation program, responsible for sharing NASA’s open data and open source code through the public facing websites data.nasa.gov, code.nasa.gov, api.nasa.gov, github.com/nasa as well as the programs and infrastructure to support internal-facing inner source activities. This role leveraged a lot of front-end JavaScript skills, python data munging, and python data engineering skills for APIs and data transformation services.
 
 #### BP
 
-Before NASA, I worked as a geoscientist for BP and got to dig into data to answer questions that drove business questions across Canada, U.S., and Brazil. Towards the end of my time there I also got to use code to build solutions that domain specific software applications couldn't be twisted into answering via graphics user interfaces alone. I wrote data processing scripts in sed/awk when domain software didn't quite do what was needed. I also put together prototypes combining Python with ArcGIS and Excel based data inputs to identify risks to reservoir quality.  
+Before NASA, I worked as a geoscientist for BP and got to dig into data to answer questions that drove business questions across Canada, U.S., and Brazil. Towards the end of my time there I also got to use code to build solutions that domain specific software applications couldn't be twisted into answering via graphics user interfaces alone. I wrote data processing scripts in sed/awk when novel types of analytics were required. I also put together prototypes combining Python with ArcGIS and Excel based data inputs to identify risks to reservoir quality earlier than traditional methods.  
 
 
 ## Recent Talks

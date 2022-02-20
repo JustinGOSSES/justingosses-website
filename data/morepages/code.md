@@ -5,12 +5,12 @@ observable: https://observablehq.com/@justingosses
 ---
 
 ## About My Code Side-Projects
-Side projects are a major way I add to my skills, so I always have several in development or on the to-do list.
+Side projects are a major way I add to my skills. 
+
+In addition to the ones below that are mostly done, There's also <a href="https://github.com/JustinGOSSES/sideproject_planning"> this repository</a> with side projects that are partially done or just ideas. There's also visual examples of a few of the completed side projects in the <a href="/projects">gallery page</a>.
 
 Putting them in a list is a bit of a self-hack to limit the sprawl and push things to completion. 
 It serves as a good reminder what isn't completely done and helps to prioritize.
-
-There's also visual examples of a few projects in the gallery page.
 
 ### What types of code do I write?
 I write machine-learning, data visualization, and web development code. Mostly, I write in Python or JavaScript with smaller amounts of Ruby, R, PHP, sed/awk, C++, and Java. A lot of my side projects are in JavaScript as it is the easiest for me to jump into and quickly produce something with an easy to share visual.

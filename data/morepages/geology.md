@@ -6,7 +6,9 @@ name: Justin Gosses
 
 ## About Me
 
-I’ve always been interested in the ability of geology to narrate the past. Professionally, I’ve focused on reducing uncertainty and enabling decisions through data analysis and data visualization.
+I’ve always been interested in the ability of geology to narrate the past.
+
+Professionally, I’ve focused on reducing uncertainty and enabling decisions through data analysis and data visualization.
 
 
 ## Where I’ve Worked

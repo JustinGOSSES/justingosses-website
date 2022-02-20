@@ -14,7 +14,7 @@ export default function Projects() {
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {/* Showcase your projects with a hero image (16 x 9) */}
-            A few code projects and doodles. Almost all side projects. Find more of my side projects listed on the code page.
+            A few more visual code projects and doodles. More listed on the side projects page.
           </p>
         </div>
         <div className="container py-12">
