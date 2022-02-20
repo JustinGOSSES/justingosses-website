@@ -56,7 +56,7 @@ const projectsData = [
     type: 'Observable Notebook',
     tools: 'Tone.js, Observable, D3.js',
     description: `An experiment using tone.js to add sound to a data visualization built with d3.js that represents the GISS Surface Temperature Analysis dataset from NASA's Goddard Institute for Space Studies.`,
-    imgSrc: '/static/images/projects/viz_as_sound.png',
+    imgSrc: '/static/images/projects/viz_as_sound2.png',
     href: 'https://observablehq.com/@justingosses/can-sound-add-value-to-data-visualizations',
   },
   {
