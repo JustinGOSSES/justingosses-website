@@ -4,7 +4,7 @@ export default function FourZeroFour() {
   return (
     <div className=" md:mt-24 md:items-center md:justify-center md:space-x-6">
       <div className="px-4">
-        <h1>Sorry your page isn't here. We have 404ed</h1>
+        <h1>Sorry your page isn't here. We have 404ed. Darn.</h1>
       </div>
       <div className="px-4 py-5">
       <h2><Link href="/">CLICK HERE</Link> to go to the homepage.</h2>
