@@ -69,45 +69,49 @@ const projectsData = [
     href: 'https://github.com/JustinGOSSES/AR_BusinessCard',
   },
   {
-    title: 'The Time Machine',
-    type: 'Web App',
-    tools: 'React, Node.js, Express, MongoDB',
-    description: `Made an entirely browser-based (no apps required) augmented reality back for my
-     business card. The 3D model is a topographic model of Gale Crater derived from data from 
-     ESA's Mars Express mission. `,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    title: 'Mars Rover ChemCam Visualizations',
+    type: 'Interactive Jupyter Notebook Visualization',
+    tools: 'Python, Pandas, Plotly, Jupyter Notebook',
+    description: `A Houston Data Visualization Meetup data jam using major element data from MarsScienceLaboratory 
+    (Curiosity Rover) ChemCam rock sample data. This type of data has been visualized statically in the same way 
+    for decades. We challenged non-geologists to do new and interactive things with it.`,
+    imgSrc: '/static/images/projects/datajam_Mars_MajorElements/master/ScreenShot_HighCa_OnlyEarlyDay.png',
+    href: 'https://github.com/JustinGOSSES/datajam_Mars_MajorElements',
   },
   {
-    title: 'The Time Machine',
-    type: 'Web App',
-    tools: 'React, Node.js, Express, MongoDB',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    title: 'Dot Plot',
+    type: 'Web Data Visualization Tooling',
+    tools: 'D3.js',
+    description: `D3.js v3 code for creating a bubble matrix plot - can be used for visualizing status of items over time.`,
+    imgSrc: '/static/images/projects/dot_plot_1.png',
+    href: 'https://github.com/JustinGOSSES/datajam_Mars_MajorElements',
   },
   {
-    title: 'The Time Machine',
-    type: 'Web App',
-    tools: 'React, Node.js, Express, MongoDB',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    title: 'Car Lidar in Three.js',
+    type: '3D Data Visualization',
+    tools: 'Three.js',
+    description: `A quick side project to try visualizing car-based LIDAR data using three.js. Very different than the 
+    plane-acquired datasets I'm more familiar with in GIS. Easier tooling choice would be Potree.`,
+    imgSrc: '/static/images/projects/lidar_1.png',
+    href: 'https://justingosses.github.io/lidar_threejs_playground/', 
+            
   },
   {
-    title: 'The Time Machine',
-    type: 'Web App',
-    tools: 'React, Node.js, Express, MongoDB',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    title: 'Old School Asteroids Clone',
+    type: 'Game',
+    tools: 'Python',
+    description: `Clone of the old school Astroids game built for an online class. There's a way to cheat and enter your own score. You may need to allow pop-ups.`,
+    imgSrc: '/static/images/projects/Astroids_screen_shot_zoom.png',
+    href: 'http://www.codeskulptor.org/#user39_TX7MZeGm6m_10.py',
   },
+  {
+    title: 'Excessive Pong',
+    type: 'Game',
+    tools: 'Python, CodeSkulptor',
+    description: `Built for an online class project. This is classic pong with a variety of twists added on including curve ball paths, way too many balls, portals, and speed that increases until the frame rate is reached.`,
+    imgSrc: '/static/images/projects/ExcessivePong_zoom.png',
+    href: 'https://py2.codeskulptor.org/#user40_L9g9vymraq_10.py',
+  }
 ]
 
 export default projectsData
