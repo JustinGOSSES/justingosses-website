@@ -7,12 +7,12 @@ const UtterancesComponent = dynamic(
   },
   { ssr: false }
 )
-// const GiscusComponent = dynamic(
-//   () => {
-//     return import('@/components/comments/Giscus')
-//   },
-//   { ssr: false }
-// )
+const GiscusComponent = dynamic(
+  () => {
+    return import('@/components/comments/Giscus')
+  },
+  { ssr: false }
+)
 const DisqusComponent = dynamic(
   () => {
     return import('@/components/comments/Disqus')
