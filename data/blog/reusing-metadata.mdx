@@ -1,0 +1,69 @@
+---
+title: 'Using Machine-Learning to Reuse Metadata: poster at AGU 2019'
+date: 2019-12-11T15:32:14Z
+lastmod: '2019-12-11'
+tags: ['nasa', 'metadata', 'machine learning','NLP','open-data','open source','catalog','AGU','poster']
+draft: false
+summary: 'Creating New Metadata from Old Metadata Using Machine-Learning: A Poster Presentation at American Geophysical Union Conference 2019'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/finding-a-nasa-contractor-jobs/
+---
+
+## Overview
+
+
+
+In 2019, I was able to present at the American Geophysical Union’s annual conference. Not everything I work on is as easily made public, so this was a nice chance to share some of the team’s work and have good discussions with others working similar problems across multiple federal agencies, academia, and the public.
+
+The title of the poster presentation was <b>"Reusing Data and Metadata to Create New Metadata through Machine-learning & Other Programmatic Methods"</b>. 
+The abstract is <a href="https://ntrs.nasa.gov/api/citations/20190033900/downloads/20190033900.pdf">here</a>. 
+PDF of the poster is <a href="https://drive.google.com/file/d/1P6c4iuYqZzrg_QIFQMcytQUApsEroK7x/view?usp=sharing">here</a>.
+
+<iframe src="https://drive.google.com/file/d/1P6c4iuYqZzrg_QIFQMcytQUApsEroK7x/view?usp=sharing" width="100%" height="500"></iframe>
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Section Theme 
+
+The theme of the poster session I presented under was:
+
+- <i>Achieving the “R” of the FAIR Data Principles: Reusability Is the Biggest Challenge but the Most Rewarding! </i>
+
+F.A.I.R. principles refer to the following:
+
+To be Findable:
+
+- F1. (meta)data are assigned a globally unique and eternally persistent identifier.
+- F2. data are described with rich metadata.
+- F3. (meta)data are registered or indexed in a searchable resource.
+- F4. metadata specify the data identifier.
+
+TO BE ACCESSIBLE:
+- A1  (meta)data are retrievable by their identifier using a standardized communications protocol.
+- A1.1 the protocol is open, free, and universally implementable.
+- A1.2 the protocol allows for an authentication and authorization procedure, where necessary.
+- A2 metadata are accessible, even when the data are no longer available.
+
+TO BE INTEROPERABLE:
+- I1. (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
+- I2. (meta)data use vocabularies that follow FAIR principles.
+- I3. (meta)data include qualified references to other (meta)data.
+
+TO BE RE-USABLE:
+- R1. meta(data) have a plurality of accurate and relevant attributes.
+- R1.1. (meta)data are released with a clear and accessible data usage license.
+- R1.2. (meta)data are associated with their provenance.
+- R1.3. (meta)data meet domain-relevant community standards.
+
+## How Programmatic Reuse of Metadata Improves Findability
+Our poster discussed two different projects we did to improve the F of F.A.I.R, “to be findable” by reusing metadata to create new metadata.
+
+
+#### Data.nasa.gov
+As described in the poster above, one of these focused on data.nasa.gov and was a failure due to our inability to routinely get an accurate download link across all tens of thousands of the datasets on data.nasa.gov. Data.nasa.gov ingests metadata about datasets from over 80 different NASA data sites. Although the standard required metadata fields on data.nasa.gov include “download link” many of the URLs in that field are actually to a front-page or a page where one link out of 50 links on the page is the download link. These limitations are minor for humans, but insurmountable if you’re trying to automate web scraping across 80+ sites.
+
+If we had been able to programaticly get direct links to download each file, our plan would have been to download files, run a series of Python profiling script to generate descriptions of files in terms of file type, file size, number of instances, etc. From these metadata, we had the idea that we could create a model to identify which datasets would be better for the general public and which would have been better scientists and other high-end end-users. We wanted to have this ability, because many of the people that land on data.nasa.gov from google are general public users who are interested simple easy to use NASA data. Most of the datasets on data.nasa.gov are large or complicated datasets, so those results tend to swamp the small, easy datasets that would actually be useful for the majority of the people who land on data.nasa.gov.
+
+#### Code.nasa.gov
+The other was focused on creating new and better keyword tags for the open-source code projects listed on code.nasa.gov. This was a success! You can see the keywords created by the machine-learning model on code.nasa.gov right now. Links on the poster further describe the model. Anthony Buonomo did the heavy lifting on the STI tagger model.
