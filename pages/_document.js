@@ -15,7 +15,8 @@ class MyDocument extends Document {
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/static/favicons/favicon-16x16.png"
+            // href="/static/favicons/favicon-16x16.png"
+            href="/static/favicons/favicon-32x32.png"
           />
           <link rel="manifest" href="/static/favicons/site.webmanifest" />
           <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
@@ -40,7 +41,7 @@ class MyDocument extends Document {
         <div className="w-full h-screen bg-center bg-no-repeat background-image absolute z-[50]"> */}
           {/* <div className="w-full h-screen bg-opacity-10 bg-black flex justify-center items-center absolute z-10">
           </div> */}
-        {/* </div> */}
+          {/* </div> */}
           <Main />
           <NextScript />
         </body>

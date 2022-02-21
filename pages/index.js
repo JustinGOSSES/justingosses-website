@@ -26,7 +26,7 @@ export default function Home({ posts }) {
           <div className="mx-4 text-center text-white">
             <h1 className="mb-4 text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Justin Gosses</h1>
             <h3 className="mb-12 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
-              Code, Data, Rocks, Maps, Sharing at Scale, and Other Stuff
+              Code, Data, Rocks, Maps, Sharing at Scale, etc.
             </h3>
             {/* <div>
                 <a href="" class="bg-blue-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-2">
