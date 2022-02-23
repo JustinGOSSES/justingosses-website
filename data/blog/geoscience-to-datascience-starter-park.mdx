@@ -1,0 +1,176 @@
+---
+title: 'Geoscience to Data Science Starter Pack'
+date: 2019-01-24T15:32:14Z
+lastmod: '2019-01-24'
+tags: ['geology', 'career', 'information','developers','data science','machine learning','software engineering','programmer','code']
+draft: false
+summary: 'This post is directed at houston-based geoscience types starting off on a month to years long process of improving their skills in data science and maybe eventually getting a job in data science. It lays out the things I’ve found myself telling people in real life.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/geologist-to-data-science-starter-pack//
+---
+
+<blockquote>
+<em>This post is directed at houston-based geoscience types starting off on a month to years long process of improving their skills in data science and maybe eventually getting a job in data science. It lays out the things I've found myself telling people in real life.</em>  
+</blockquote>
+
+Table of Contents:
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+
+##  Why Write this and Who is it targeting? 
+I wrote a post, <a href="https://54.87.153.110/learning-to-code/">LEARNING TO CODE</a>, in early 2016, three years ago. The premise of that blog post was a summary of the different styles of learning you could pick from when trying to learn how to code. Not everyone prefers to learn the same way, and I hadn't at the time read any breakdowns of the different ways to learn how to code.  
+
+This blog post, like that one, was prompted by the realization that I had the same conversation with two different people within a single week. They were asking the same questions, so might as well write everything down.  
+
+
+ 
+## First, Figure Out if You're Interested in this Type of Thing?
+
+I've not seen a lot of writing on the best way to do this. The best path forward may be a personal decision to a large degree.  
+If you have kids and want to involve them in your first steps,<a href="https://code.org/"> code.org</a> and <a href="https://scratch.mit.edu/">Scratch</a> are two resources to try out if you haven't written any code. Both are designed for kids but still kinda cool. They'll let you see what kind of logic writing code uses but often doing so in a pictorial form that doesn't require memorizing any syntax.  
+You might also want to try some shorter lessons of 1-5 hour length on sites like <a href="https://www.codecademy.com/">code academy</a> or take your time going through any of the languages on <a href="https://www.w3schools.com/">w3schools</a>.  
+If you're more motivated by what you can eventually do, you might try watching a few videos of talks from any of the <a href="https://www.youtube.com/playlist?list=PLYx7XA2nY5GfdAFycPLBdUDOUtdQIVoMf">SciPy</a>  conferences or the machine-learning videos from <a href="https://www.youtube.com/channel/UCsX05-2sVSH7Nx3zuk3NYuQ">PyCon</a>. They'll be partially over your head, but they can still be very interesting. You can also take a look at the blog posts summarizing what projects were made during <a href="https://agilescientific.com/blog/2018/12/17/the-london-hackathon">geology hackathons by AgileScientific</a>.  
+  
+## What Language to Learn?
+
+<h4>Python</h4>
+The favorite. Different computer languages are better for different tasks. They also change in popularity over time. There used to be Python vs. R for data science debates, but those have faded recently as Python has more or less won over more people. Two libraries you'll use often that also have good documentation &amp; lots of video tutorials are <a href="https://scipy.org/scipylib/">SciPy</a> and <a href="https://scikit-learn.org/stable/">Scikit-learn</a>. If you want to try NLP (natural language processing) <a href="https://spacy.io/">SpaCy</a> has maybe the best documentation of major Python machine-learning libraries.  
+
+<h4>R</h4>
+While Python tends to dominate the hard sciences and to a decent extent machine-learning, R leads among the social sciences. There's interesting geoscience computing done in R, just most of it is done in Python.  
+
+<h4>Other languages that don't start with Pytho</h4>
+Python is a very intuitive computer language as far as these things go, so jumping to another language can be a relatively painful experience, at least initially. If you start in Python and are starting to grasp the language, I'd encourage you <em>not to stay with only Python</em>. One, it limits what you can do. Although capable of a lot, Python isn't good at everything. Two, you'll become better at programming once you can hope between languages. There will be people, sometimes people with an incentive, who might say things at a SciPy conference like, "I am only an astrophysics PhD, I can't be expected to understand something difficult like JavaScript" or "If you learn JavaScript then you'll be a web developer and not a scientist". Those people are wrong. Ignore them.  
+
+<h5>JavaScript (and HTML,CSS)</h5>
+Although you will probably start off with Python. Picking up JavaScript as language number two is worth your while. The web runs on HTML, CSS, JavaScript, browsers, and pictures of cats. If you want to build anything with a decent human interface, visualize data in a slightly unusual way, or reach people online, having some JavaScript knowledge is powerful.  
+An important point to make when you talk about JavaScript is that <a href="https://www.w3schools.com/js/default.asp">plain JavaScript</a>, or what is sometimes called <a href="https://snipcart.com/blog/learn-vanilla-javascript-before-using-js-frameworks">Vanilla JavaScript</a>, is perfectly fine most of the time. There are lots of JavaScript frameworks you could theoretically pick up, <a href="https://reactjs.org/">React</a>, <a href="https://vuejs.org/">Vue</a>, <a href="https://angularjs.org/">Angular</a>, etc., but I tend to have a <em>"use it only if you have well demonstrated need"</em> perspective on JavaScript frameworks. If you end up doing a large <a href="https://en.wikipedia.org/wiki/Front_and_back_ends">front-end project</a>, that's when you should consider a JavaScript framework.  
+
+<h5>C++</h5>
+C++ and Java are the languages most often learned by Computer Science majors in university. There are good reasons for this and not quite so good reasons for this. Certain things, like highly dependable applications, embedded applications, and low-level high performance computing is done in C++. If you are a geophysicist and did some in school, it might be a place to continue. If not, it probably isn't the place to start.  
+
+<h5>Java</h5>
+Some of the things that could be said about C++ could also be said about Java. There is a fair amount of machine-learning done using Java when it is done via <a href="https://en.wikipedia.org/wiki/Distributed_computing">distributed computing</a> on big data. <a href="https://towardsdatascience.com/deep-learning-with-apache-spark-part-1-6d397c16abd">Spark</a> is an important tool in that space to at least know about. If you're interested in Spark but want to stick to Python, there is also <a href="https://towardsdatascience.com/a-brief-introduction-to-pyspark-ff4284701873">PySpark</a>.  
+  
+## How to Learn?
+  ### In-person Bootcamps, Online Courses, Online Lessons, etc.  
+As mentioned above, I previously wrote a blog post in 2016 about the <a href="https://54.87.153.110/learning-to-code/">different types of ways to learn how to code</a>. Its worth taking a look at it. Much of what was written ties in closely with this post but from a more generic learning to code perspective and less data science centric view.  
+<h4>Useful Things that Didn't Exist (I think) in January 2016</h4>
+One thing of importance to note is that <a href="https://notebooks.azure.com/">Microsoft Azure notebook</a>s and <a href="https://colab.research.google.com/notebooks/welcome.ipynb#recent=true">Google Colab</a> didn't exist in January 2016. If they would have, and I knew about them, I would noted them in the previous blog post. These are similar to a <a href="https://jupyter.org/">Jupyter Notebook</a> but run in the cloud and are accessed via your browser. They will let you get started writing Python without having to deal (at least initially) with the often messy process of installing languages, editors, and code libraries locally on your computer. If you do install things on your local computer, the <a href="https://www.anaconda.com/">Anaconda</a> installation method is probably the easiest path forward.  
+  
+## Build Things People Can Find
+
+### Start a Github Profile  
+Why?
+
+<strong>Because if you're self-taught you need to show evidence you can create things and write actual code.</strong> The commonly acceptable way to do this is to give people a link to your github profile where you have a bunch of public code projects. These can be data visualizations, machine-learning baby-scale projects, whatever. Make sure not all of them are forks or class work where you followed instructions. 
+If you're not familiar with the terms, <a href="https://www.coredna.com/blogs/what-is-git-and-github-part-two">here</a> are some definitions of <a href="https://en.wikipedia.org/wiki/Git">Git</a> and <a href="https://en.wikipedia.org/wiki/GitHub">Github</a>. There are other services than github you can use, like gitlab or bitbucket, but GitHub is the most common. While on the topic of github, I will note that <a href="https://github.com/softwareunderground/awesome-open-geoscience">this repository of <em>"AWESOME OPEN GEOSCIENCE"</em></a> code projects is something to check out. It lives on github. It contains a wide variety of lesser known geoscience-domain-specific tools you can use. It started as a conversation I had with others in the <a href="https://softwareunderground.org/slack/">Software Undergound Slack channel</a>. It is one of the many "Awesome lists" out there for code in a specific domain or application area.  
+  ### Personal website  
+Why?
+
+Because it is good web programming practice and shows you can build something. Additionally, it can be a way to do personal branding. The two easiest ways to do this are a <a href="https://wordpress.com/">WordPress</a> website or a <a href="https://pages.github.com/">github pages</a> website. Wordpress is a content management system or CMS. You technically don't need to code at all if you use WordPress though you can do some small edits in HTML, CSS, and JavaScript if you'd like to. On the back-end side, WordPress runs PHP. Wordpress may cost you depending where it is hosted and whether you want a more professional web address. Github pages is free, but only front-end (<em>HTML,CSS,JS</em>), meaning no connection to a database or back-end scripts (<em>Python or PHP</em>). There are plenty of open-source, free static page templates you can use to get started with a <a href="https://pages.github.com/">github.io page</a>.  
+ 
+## Active In-person Learning
+
+### Tutorials at Tech Conferences  
+Why?
+
+Because they're really good at getting as much of the information coming out of the firehose to go directly in your brain. They can also serve as starter material for a project on your github. Often the tutorials will be based around a library or a type of task. You'll usually leave with a link to not just slides but also all the code the instructor ran, which sets you up to learn it even deeper later on. Conferences can be a good way to network too.  
+<ul>
+<li><a href="https://scipy2018.scipy.org/ehome/299527/648139/">https://scipy2018.scipy.org/ehome/299527/648139/</a></li>
+<li><a href="https://us.pycon.org/2018/schedule/tutorials/">https://us.pycon.org/2018/schedule/tutorials/</a></li>
+</ul>
+
+### Hackathons  
+
+Why?
+
+Because hackathons are the fastest way to build things that demonstrate your ability to combine concepts and techniques to solve a real world problem. They're also great for networking and learning new things through collaborative problem solving.  
+The factors that have differentiated good from less good hackathons in my limited experience were a length of at least 5 hours if not 2 days, interesting project ideas, project ideas scaled to the time and skillsets of participants, most participants knowing how to code at least a little, and enough coffee/food that you don't have to leave.  
+Good Hackathons likely to be in Houston in the future:  
+<ul>
+<li><a href="https://events.agilescientific.com/">https://events.agilescientific.com/</a> : Agile runs several a year, typically around conferences that I can attest are quite good.</li>
+<li><a href="http://houstonhackathon.com/">http://houstonhackathon.com/</a> : I've never been able to go myself as I've always been out of town, but I'm told its worth your time.</li>
+</ul>
+
+### Single-Speaker-Style Meet-ups  
+Why?
+
+There's a reason schools spend a lot of time filling peoples' heads via the single-speaker at front of room format. It is generally effective. There are a variety of Houston meet-ups in the machine-learning, data science, python space. They vary in quality. Sometimes when they're not good, it can be because they've turned into a vendor pitch or the content was different than what was listed. The two meet-ups I mention below have good content and are good for networking. The houston energy data science meet-up sometimes falls into the trap of speakers being just a bit too vendor-ish, but usually it is okay. SPE (Society of Petroleum Engineers) sometimes has oil and gas data science "meet-ups", but they aren't free so I never go.  
+<ul>
+<li><a href="https://www.meetup.com/Houston-Data-Science/">https://www.meetup.com/Houston-Data-Science/</a></li>
+<li><a href="https://www.meetup.com/Houston-Energy-Data-Science-Meetup/">https://www.meetup.com/Houston-Energy-Data-Science-Meetup/</a></li>
+</ul>
+
+### Non-Just-A-Speaker Meet-ups  
+Why?
+
+Because not all meet-ups are just a person talking and that's a good thing. Some of them are more about doing.  
+<a href="https://www.meetup.com/sketchcity/">Sketch city</a> regularly has people, local government agencies, and non-profits come in to share a bit about their open-data and what problems/solutions/visualizations/predictions a data-literate member of the public might make from their data. It is a good meet-up to attend for getting project ideas and networking within the local civic tech or civic-tech-interested crowd.  
+<a href="http://www.meetup.com/Houston-Data-Visualization-Meetup/">The Houston Data Visualization Meet-up</a> (<em>disclaimer I help co-lead this one</em>) has both single-speaker format and data-jam format meetings. Data-jams are often on Saturday morning and consist of 10-30 people working in small groups to visualize a dataset they were just given that morning. Often these datasets come from a local community group or the city of Houston, though we've also used non-local datasets like ChemCam data from the Mars rover Curiosity or a dataset of Russion-bots' posting on Twitter. In addition to being great starter projects for your portfolio and good networking, this type of meet-up exposes you to a wide variety of GUI and code library data visualization toolsets. You'll find out what tools are good for what use cases.  
+<ul>
+<li><a href="https://www.meetup.com/sketchcity/">https://www.meetup.com/sketchcity/</a></li>
+<li><a href="http://www.meetup.com/Houston-Data-Visualization-Meetup/">http://www.meetup.com/Houston-Data-Visualization-Meetup/</a></li>
+</ul>
+
+  
+## Filling Your Head Digitally
+Once you get a certain level of proficiency, learning will start to become more about keeping up and continuing to grow. The rate of "new" in data science greatly outstrips geology. It also occurs in different places. "New" in oil &amp; gas geology tends to mostly occur in yearly conferences, monthly or quarterly journal publications, new corporate best practice documents from on high, and major software updates. "New" in data science occurs in those places. It also occurs to a much larger extent on Slack, Twitter, Podcasts, and Medium articles. New techniques, new results, entirely new libraries are often announced via those methods before they are published in a journal or integrated into a GUI software application your organization might purchase. The flip side of using the methods below to ingest new data science content is the deluge can sometimes get overwhelming.  
+
+### Slack Communities  
+Why?
+
+Because your niche interest area may not perfectly overlap with the people you interact with on a daily basis. Even if it does, the number of people is going to be small. Slack is a way to expand that community discussion digitally. Slack is an asynchronous communication platform built around channels, which each have a different topic. The <a href="https://softwareunderground.org/slack/">softwareunderground</a> slack team is all about computing &amp; geoscience. Anyone can join. A few example channels are geospatial, houston, js, kaggle, open-geoscience, python, r-users, reading, and viz.  
+<ul>
+<li><a href="https://softwareunderground.org/slack/">https://softwareunderground.org/slack/</a> : You can join at this link. Cheers to the <a href="https://agilescientific.com/">Agile Scientific</a> group for setting it up.</li>
+</ul>
+
+### Twitter  
+Why?
+
+Because if Slack, PodCasts, Medium, Journals, etc. all have a frequency, Twitter is the fastest. New libraries, cool examples, interesting discussions of connected threads, will all appear here first before they appear elsewhere. The girl who builds the crazy visualizations that inspire your next project. She'll post drafts to Twitter. Someone recently discovered a rarely used but super useful function for your domain in a general purpose Python library. They'll post that to Twitter. Twitter isn't just data science, of course. You'll have to curate your feed by following people with good content, and that takes time, but it is an option for ingesting content at the cutting edge.  
+<ul>
+<li><a class="ProfileHeaderCard-screennameLink u-linkComplex js-nav" href="https://twitter.com/JustinGosses"><span class="username u-dir" dir="ltr">@<b class="u-linkComplex-target">JustinGosses</b></span></a></li>
+<li><a href="https://twitter.com/januaryadvisors">@januaryadvisors</a></li>
+<li><a href="https://twitter.com/landlabtoolkit">@landlabtoolkit</a></li>
+<li><a href="https://twitter.com/fatiandoaterra">@fatiandoaterra</a></li>
+<li><a href="https://twitter.com/PaulHCleverley">@PaulHCleverley</a></li>
+<li><a href="https://twitter.com/vaex_io">@vaex_io</a></li>
+<li><a href="https://twitter.com/ncasenmare">@ncasenmare</a></li>
+<li><a href="https://twitter.com/jordansread">@jordansread</a></li>
+</ul>
+
+### Podcasts  
+Why?
+
+Because data science isn't just in text form.  
+<ul>
+<li><a href="https://dataskeptic.com/">DataSkeptic</a> : Data Science Explanations &amp; Discussion</li>
+<li><a href="https://undersampledrad.io/">under sampled radio</a> : Geology + Computing</li>
+</ul>
+
+### Medium  
+Why?
+
+Because getting a few things into your head via 5-30 minutes of reading is sometimes the exact right size of learning.  
+<ul>
+<li><a href="https://hackernoon.com/@kozyrkov?source=user_profile---------0---------------------">https://hackernoon.com/@kozyrkov</a> : <a class="ds-link ds-link--styleSubtle link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken" dir="auto" href="https://hackernoon.com/@kozyrkov?source=user_profile---------0---------------------" data-action="show-user-card" data-action-source="user_profile---------0---------------------" data-action-value="2fccb851bb5e" data-action-type="hover" data-user-id="2fccb851bb5e" data-collection-slug="hacker-daily">Cassie Kozyrkov</a> Chief Data Intelligence Engineer at Google. She does a great job condensing down the subject matter into small useful bits of explanation you can use with other people without becoming fluffy like so many other pieces in Forbes or Business Insider that cover similar ground.</li>
+<li><a href="https://medium.com/multiple-views-visualization-research-explained">https://medium.com/multiple-views-visualization-research-explained</a> : Explains data visualization research just like the name says. Written by a collection of academic data visualization researchers.</li>
+<li><a href="https://medium.com/vis-gl">https://medium.com/vis-gl</a> : Uber's data visualization group does some great stuff and open-sources a lot of it. This is a place to learn about new tools that combine JavaScript, data visualization, and geospatial.</li>
+</ul>
+
+### LinkedIN  
+Why?
+
+Well to be honest, I'm not sure I get that much from LinkedIN, but can be good for finding out about small conferences or meetings with a data science focus that intersect with your specific industry.
+<ul>
+<li><a href="https://www.linkedin.com/company/spe-gulf-coast-section/">https://www.linkedin.com/company/spe-gulf-coast-section/</a> : Society of Petroleum Engineers has an active data analytics section in Houston</li>
+</ul>
+  
+
+## Happy Coding!
+
+ <iframe width="480" height="480" class="giphy-embed" src="https://giphy.com/embed/JIX9t2j0ZTN9S" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+Caption: In reality the cat should spend a third of this time googling things he forgot while looking frustrated.  
