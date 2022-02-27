@@ -1,0 +1,45 @@
+---
+title: 'Raspberry Shake – Personal Seismometer'
+date: 2017-01-01T15:32:14Z
+lastmod: '2017-01-01'
+tags: ['rasberry pi','rasberry shake','data','tools','code','data visualization','seismometer','earthquake','hardware','geology','geophysics','houston']
+draft: false
+summary: 'Blog post about setting up my first personal seismometer. Raspberry Shake is built on top a Raspberry Pi and records earth quakes and other seismic waves.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/raspberry-shake-personal-seismometer/
+---
+
+#### Update: Since writing this blog post, a lightning strike has fried my Raspberry Shake. However, it did record a few Texas earthquakes before its untimely demise.
+
+Sometimes I get to combine geology nerdiness with technology nerdiness. This post definitely falls into that category. 
+    
+Earlier this year, I contributed to <a href="https://www.kickstarter.com/projects/angelrodriguez/raspberry-shake-your-personal-seismograph">a kickstarter campaign</a> by Ángel Rodríguez that raised <span class="money">$99,258</span> to bring into existence an inexpensive <a href="https://qvsdata.wordpress.com/types-of-seismometer/">short period</a> seismometer produced by OSAP. It consists of programs running on the Raspberry Pi, a small board that sits on top of a raspberry pi or HAT (Hardware Attached on Top) and a geophone. This weekend I got to set mine up and start collecting data. This was my first kickstarter, and I am supper pleased with what was produced.
+
+!["Photo of Geophone and shake board. The box is still being assembled."](../static/images/blog/raspberry-shake/RaspberryShapeDiagram1-1024x768.png)
+<i>Geophone and Shake board are attached in this photo. The box is still being assembled.</i>
+
+
+!["Photo of assembled and live seismometer."](../static/images/blog/raspberry-shake/IMG_20170101_010649-e1483310777691-1024x768.jpg)
+<i>Assembled and live seismometer</i>
+
+
+<p>Setting up the Raspberry Shake was pretty straight forward. There was a bug in some of the units first sent out that would have made future updates difficult, but the folks at OSAP sent out very clear instructions for fixing it. The process took me less than 5 minutes. They supplied a <a href="http://raspberryshake.org/#section-about">website</a> with general information, a <a href="http://manual.raspberryshake.org/">user guide</a>, and a <a href="https://groups.google.com/forum/#!searchin/raspberryshake/download$20swarm%7Csort:relevance">google groups forum</a> for questions.</p>
+
+<p>If you go to <a href="http://raspberryshake.net/stationview/#?net=AM&amp;sta=REA98">this link</a>, you can see the last few minutes of data from my station live and a map of all the Raspberry Pi stations world-wide.</p>
+
+
+!["Map of all Raspberry Shakes in USA and station information for my seismometer. Spikes are due to the end of a washer cycle.."](../static/images/blog/raspberry-shake/map_station_washer-1024x571.png)
+<i>Map of all Raspberry Shakes in USA and station information for my seismometer. Spikes are due to the end of a washer cycle.</i>
+
+You can find the data for al public stations on this <a href="http://raspberryshake.net/stationview/#?net=AM&amp;sta=REA98">Raspberry Shake website</a>.
+
+<p>Right now, the device is under a desk near my router and several other digital devices. Eventually, I'll likely move to a more quiet location. For now, I'm curious how much information it can pick up of people coming and going. One of our interns is working on a room-use sensor array for Raspberry Pi's to help gather analytics on facility use. I'm curious if this type of information might be advantages over infrared motion sensor type approaches.</p>
+
+
+!["Helicorder view of raspberry shake data via Swarm software."](../static/images/blog/raspberry-shake/helicorder.png)
+<i>Helicorder view using the open-source <a href="http://www.avo.alaska.edu/Software/swarm/manual/tutorial.html">Swarm</a> software.</i>
+
+<p>At this point, some of you might be thinking, "wait a minute, are there even earthquakes in Houston for it to hear!?" The short answer is maybe, if I'm lucky. It is a <a href="https://qvsdata.wordpress.com/types-of-seismometer/">short period</a> seismometer. It is good for detecting relatively close and small earthquakes and not too good for listening for bigger earthquakes farther away. Before I ordered the Raspberry Shake, I did some research and figured I might be able to detect a few earthquakes a year. There were earthquakes in the last five years that might have been big enough to detect in Houston in north Texas (<a href="http://www.houstonpublicmedia.org/articles/news/2015/05/04/60069/geologists-look-at-past-earthquakes-in-houston-to-explain-present-tremors-in-north-texas-2/">possibly induced due to water disposal</a>), <a href="http://earthquaketrack.com/us-tx-austin/recent">south of San Antonio</a>, and in <a href="http://earthquaketrack.com/r/western-texas/recent">far West Texas</a>. There were also several earthquakes in the Houston area in the early part of the 20th century <a href="https://en.wikipedia.org/wiki/Goose_Creek_Oil_Field">due to extensive oil production</a> of the Goose Creek oil field.</p>
+
+<p>I've signed up for the USGS's <a href="https://sslearthquake.usgs.gov/ens/">earthquakes notification service</a> and will check the Raspberry Shake when there is an earthquake detected within 600 miles.</p>

@@ -1,0 +1,58 @@
+---
+title: 'International Nodebots Day'
+date: 2017-01-01T15:32:14Z
+lastmod: '2017-01-01'
+tags: ['rasberry pi','rasberry shake','data','tools','code','data visualization','seismometer','earthquake','hardware','geology','geophysics','houston']
+draft: false
+summary: 'Blog post about setting up my first personal seismometer. Raspberry Shake is built on top a Raspberry Pi and records earth quakes and other seismic waves.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/nodebots/
+---
+
+
+
+Today I got to play with hardware at an <a href="http://nodebots.io/#nodebots-day">International Nodebot Day</a> event put on by <a href="http://www.nodejshouston.com/">NodeJS Houston</a>. 
+
+It was a lot of fun, and I was surprised by how much got accomplished in less than a day. I used a <a href="https://tessel.io/">Tessel2</a> board from <a href="https://www.sparkfun.com/nodebots2016">Sparkfun</a>, which comes with linux and Node.js installed. The best thing about the Tessel2 is how quickly you can go from having just parts to having a working project. 
+
+Unlike the Raspberry Pi and other boards, there is no lengthy initial install process. The OS is pre-installed. The client installs via a single line of code using <a href="https://www.npmjs.com/">NPM</a>. Likewise, getting wifi connection up and running, so you can push code without a wired connection, is a single line of code.
+
+!["Screenshot of the installation process running."](../static/images/blog/nodebots/Screen-Shot-2016-07-30-at-10.55.45-AM.png)
+<i>Screenshot of the installation process running.</i>
+
+!["The Tessel board"](../static/images/blog/nodebots/image6-1024x768.jpg)<i>The Tessel board.</i>
+
+### Sumobots!
+<p>After several smaller projects to practice writing and deploying code for the Tessel2, we build our main project, a sumobot. At the end of the day, there was a bot vs. bot bracket competition.</p>
+
+
+!["A sumobot trying not to run off the table."](../static/images/blog/nodebots/image3-750x500.jpg)
+<i>My sumobot. It might have won ugliest sumobot had that been a category. </i>
+
+
+!["A sumobot trying not to run off the table."](../static/images/blog/nodebots/Nodebots_img_0283-1024x768.jpg)
+<i>A sumobot trying not to run off the table.</i>
+
+
+!["All the sumobots that took part in the bracket competition."](../static/images/blog/nodebots/image2-1024x1024.png)
+<i> All the sumobots that took part in the bracket competition.</i>
+
+
+
+
+### Instructions
+<p>The following instructions should be all the information you need to try out a few small projects and then build a sumobot.</p>
+<ul>
+<li>Sparkfun sells a <a href="https://www.sparkfun.com/nodebots2016">kit</a> that looks to be everything I got at nodebots day and a extra pieces.</li>
+<li><a href="http://- https://github.com/dtex/nbd2016">Slides</a> and code by Donovan Buck, who is also a contributor to Johnny-Five. These were presented by Don at the nodebot event and contain information on getting started with the Tessel2. Small code snippets for projects using LEDs and Temperature Sensors are included, as well as some of the information needed to make a sumobot.</li>
+<li>The <a href="http://johnny-five.io/">Johnny-Five JavaScript library</a> is used for a variety of boards, including the Tessel2, to control components and sensors using simple and short Node.js commands. The name, of course, comes from the main character of the awesome 1980s robot movie, <a href="https://video.search.yahoo.com/video/play?p=short+circuit&amp;vid=e4950ccf787392775fe636d5472ba792&amp;turl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOVP.V778995e347f8a355908ef04d2e3b9850%26pid%3D15.1%26h%3D227%26w%3D300%26c%3D7%26rs%3D1&amp;rurl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DRBtRVjAMbVo&amp;tit=Short+Circuit+%281986%29+Original+Trailer&amp;c=8&amp;h=227&amp;w=300&amp;l=111&amp;sigr=11bea74jt&amp;sigt=11554fk08&amp;sigi=132mnnsfe&amp;ct=p&amp;age=1259992459&amp;fr2=p%3As%2Cv%3Av&amp;fr=mcafee&amp;tt=b">Short Circuit</a>. The JavaScript files in the Don's presentation use <a href="http://johnny-five.io/">Johnny-Five</a>.</li>
+<li>'Getting started' <a href="http://tessel.github.io/t2-start/">instructions</a> from Tessel. These are an additional reference point to what is in Don's slides.</li>
+<li>For the Sumobot control, I ended up not using the code linked to at the end of Don's slides, but rather a <a href="https://github.com/ryanjgill/sumobot.git">repo</a> but together by Ryan Gill, who was at the event. I found Ryan's code was easy to get running.</li>
+<li>To install &amp; run Ryan's sumobot code, I followed these steps (<em>Note: Node.js latest stable version, Tessel2 client, wifi connection, and wifi access point have already been installed and are running based on Don's code in the first link</em>):</li>
+</ul>
+
+<p><span class="s1">1. Clone the directory: git clone https://github.com/ryanjgill/sumobot.git<br /></span><span class="s1">2. CD into that directory.<br /></span><span class="s1">3. In the terminal, type "npm install" while inside the directory to install dependencies.<br /></span><span class="s1">4. Type "t2 run index.js", which should start the program running.<br /></span><span class="s1">5. At some point in the terminal, you should see "Server running at http://172.###.###.###:3000", which is your bot's IP and the port the webpage will be running on. Keep that information, you'll need to put that in the browser later to control the bot.<br /></span><span class="s1">6. Now you should push the code, so that it runs when the Tessel is not connected to your computer by USB. Type, "t2 push index.js" into the terminal. After it finishes loading, unplug the USB, switch to onboard battery power, and wait for the board to reboot and wifi to connect.<br /></span><span class="s1">7. After the blue light on the left side of the tessel2 board is solid blue and the light in the ethernet plug area is solid green, change your computer or phone wifi to be the wifi access point of the bot. (Starting the wifi access point was a previous step described in Don's slides mentioned above.) Navigate to the IP address and port from step #5 in your browser of choice. You should see a website that your bot is serving to you through the wifi connection. There will be buttons for forward, reverse, right, and left. Clicking on these buttons will trigger the JS code running on your bot and your bot will move.</span></p>
+
+
+####  Thanks to the sponsors of this event: Novetta, BrandExtract, and ChaiOne as well as the organizer, <a href="https://github.com/nodejshouston">Node.js Houston</a>.
