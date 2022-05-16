@@ -28,17 +28,6 @@ export default function Home({ posts }) {
             <h3 className="mb-12 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
               Code, Data, Rocks, Maps, Sharing at Scale, etc.
             </h3>
-            {/* <div>
-                <a href="" class="bg-blue-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-2">
-                    Code Side Projects
-                </a>
-                <a href="" class="bg-red-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 ml-2">
-                    Blog
-                </a>
-                <a href="" class="bg-red-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 ml-2">
-                    Resume
-                </a>
-            </div> */}
           </div>
         </div>
       </div>
@@ -48,15 +37,11 @@ export default function Home({ posts }) {
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Hello
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          {/* <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
-          </p>
+          </p> */}
 
           <p>Welcome to my website!</p>
-          <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            IT IS STILL BEING BUILT!   -   Go to <a href="https://justingosses.com">https://justingosses.com</a> for the old version that is currently still live!
-
-          </h2>
           <p>
             I use this website as a place to share information about myself, write blog posts, and
             establish a record of side projects as a self-hack to prioritize side projects better.
@@ -72,73 +57,68 @@ export default function Home({ posts }) {
             page.
           </p>
         </div>
+      <div className="py-1" >
+      </div>
+        <div className="py-10" >
+          <div className="container mx-auto">
+            <h2 className="text-4xl font-bold mb-2">
+              Recent Blog Posts
+            </h2>
+          </div>
+       
 
-        {/* <div class="py-20" >
-        <div class="container mx-auto px-6">
-          <h2 class="text-4xl font-bold mb-2 text-white">
-            Smart Health Monitoring Wristwatch!
-          </h2>
-          <h3 class="text-2xl mb-8 text-gray-200">
-            Monitor your health vitals smartly anywhere you go.
-          </h3>
-
-          <button class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
-            Pre Order
-          </button>
-        </div>
-      </div> */}
-
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
-            return (
-              <li key={slug} className="py-12">
-                <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{formatDate(date)}</time>
-                      </dd>
-                    </dl>
-                    <div className="space-y-5 xl:col-span-3">
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            <Link
-                              href={`/blog/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
-                              <a>{title}</a>
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
+          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+            {!posts.length && 'No posts found.'}
+            {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
+              const { slug, date, title, summary, tags } = frontMatter
+              return (
+                <li key={slug} className="py-12">
+                  <article>
+                    <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
+                      <dl>
+                        <dt className="sr-only">Published on</dt>
+                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                          <time dateTime={date}>{formatDate(date)}</time>
+                        </dd>
+                      </dl>
+                      <div className="space-y-5 xl:col-span-3">
+                        <div className="space-y-6">
+                          <div>
+                            <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                              <Link
+                                href={`/blog/${slug}`}
+                                className="text-gray-900 dark:text-gray-100"
+                              >
+                                <a>{title}</a>
+                              </Link>
+                            </h2>
+                            <div className="flex flex-wrap">
+                              {tags.map((tag) => (
+                                <Tag key={tag} text={tag} />
+                              ))}
+                            </div>
+                          </div>
+                          <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                            {summary}
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
+                        <div className="text-base font-medium leading-6">
+                          <Link
+                            href={`/blog/${slug}`}
+                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                            aria-label={`Read "${title}"`}
+                          >
+                            Read more &rarr;
+                          </Link>
                         </div>
                       </div>
-                      <div className="text-base font-medium leading-6">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          aria-label={`Read "${title}"`}
-                        >
-                          Read more &rarr;
-                        </Link>
-                      </div>
                     </div>
-                  </div>
-                </article>
-              </li>
-            )
-          })}
-        </ul>
+                  </article>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       </div>
       {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6 ">
