@@ -19,8 +19,6 @@ export default function Home({ posts }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      {/* <div style="color:black">test</div> */}
-
       <div className="w-full+90 background-image z+1 h-screen bg-center bg-no-repeat">
         <div className="flex h-screen w-full items-center justify-center bg-black bg-opacity-0 dark:bg-opacity-20">
           <div className="mx-4 text-center text-white">
