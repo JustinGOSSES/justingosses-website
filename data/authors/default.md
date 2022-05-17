@@ -46,10 +46,10 @@ Here's a few highlights of my professional history with an emphasis on what type
 
 #### Microsoft
 
-Currently, I work at Microsoft as a Senior Program Manager focused on improving the <a href='https://innersourcecommons.org/'>inner source</a> experience, or use and reuse of code across organizational boundaries. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new and stil gaining understanding of the role, but suspect I'll be writing <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, C#, and Python to understand current rates & patterns of code collaboration as we attempt to reduce friction and better align tooling and incentives. 
+Currently, I work at Microsoft as a Senior Program Manager focused on improving the <a href='https://innersourcecommons.org/'>inner source</a> experience, or use and reuse of code across organizational boundaries. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new and still gaining understanding of the role, but suspect I'll be writing <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, C#, and Python to understand current rates & patterns of code collaboration as we attempt to reduce friction and better align tooling and incentives. 
 
 #### NASA Contractor
-I previously worked as a NASA contractor, supporting <a href="https://www.nasa.gov/offices/ocio/home/index.html">NASA’s Office of the Chief Information Officer’s</a> Technology and Innovation division, now re-orged into <a href="https://www.nasa.gov/offices/ocio/operations">IDAS</a> in two roles.
+I previously worked as a NASA contractor, supporting <a href="https://www.nasa.gov/offices/ocio/home/index.html">NASA’s Office of the Chief Information Officer’s</a> Technology and Innovation division, now re-organized into <a href="https://www.nasa.gov/offices/ocio/operations">IDAS</a> in two roles.
 
 (1.)  As Principal Data Scientist data analytics team, I worked on projects that leverage modern data science, data visualization, and machine-learning approaches to solve client problems and help speed adoption of the latest tools. In the earliest form of the role, I focused on providing advise, consulting, and prototypes for internal NASA customers in finance, human resources, facilities, space technology, and other domains. Later on, I worked on enterprise level processes and tooling for data warehousing, data analytics, data catalogs, and metadata standards. I’ve done machine-learning projects in NLP (natural language processing), automated speech recognition, image recognition, as well as with tabular data in different forms. Most of my code was Python or JavaScript, but I sometimes did a little PHP, C++, and Java as needed.
 
@@ -86,5 +86,5 @@ https://orcid.org/0000-0002-5351-7295
 
 <a href="http://www.gcssepm.org/">Gulf Coast Section of SEPM</a> (sedimentology geology) – former social media manager
 
-!["A photograph of a toy dinosurce holding Justin Gosses's business card."](static/images/Dino_BusinessCard_big_Best-773x1024.png)
+!["A photograph of a toy dinosaur holding Justin Gosses's business card."](static/images/Dino_BusinessCard_big_Best-773x1024.png)
 A helpful Parasaurolophus displays my business card.
