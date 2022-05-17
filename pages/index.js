@@ -43,10 +43,14 @@ export default function Home({ posts }) {
 
           <p>Welcome to my website!</p>
           <p>
-            I use this website as a place to share information about myself, write blog posts, and
-            establish a record of side projects as a self-hack to prioritize side projects better.
+            I use this website as a place to share information {' '} <Link href="/about"   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >  <a>about myself</a></Link>{' '} 
+            , write 
+            {' '}<Link href="/blog" className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"><a>blog posts</a></Link>{' '} 
+              , and establish a record of   
+              {' '}<Link href="/code"  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"> <a>side projects</a></Link>{' '}  
+              as a self-hack to prioritize side projects  better.
           </p>
-          <p>
+          {/* <p>
             You can find more information about me in the{' '}
             <Link
               href="/about"
@@ -55,7 +59,7 @@ export default function Home({ posts }) {
               <a>About</a>
             </Link>{' '}
             page.
-          </p>
+          </p> */}
         </div>
       <div className="py-1" >
       </div>
