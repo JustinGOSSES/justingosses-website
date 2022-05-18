@@ -1,7 +1,6 @@
 ---
 name: Justin Gosses
-# github: https://github.com/JustinGOSSES
-# observable: https://observablehq.com/@justingosses
+avatar: /static/images/JustinPhoto.jpg
 ---
 
 ## About Me
@@ -10,13 +9,11 @@ I’ve always been interested in the ability of geology to narrate the past.
 
 Professionally, I’ve focused on reducing uncertainty and enabling decisions through data analysis and data visualization.
 
-
 ## Where I’ve Worked
 
 There is a geologist saying that whoever sees the most rocks wins. I’ve not seen the most rocks, but I’ve done alright. Clicking on the map will take you to a live interactive version of all the rocks I’ve worked with. Clicking on each dot brings up more information.
 
-<a href="https://jgosses82.carto.com/viz/a74cf9ea-8f1f-11e5-a802-0ecd1babdde5/embed_map"><img src="static/images/rock_map.jpg" width="100%"></img></a>
-
+!["World map of all the places Justin has done geology in some form"](/static/images/rock_map.jpg)
 
 ## Previous Geologist Career
 
