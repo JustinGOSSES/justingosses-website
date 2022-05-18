@@ -17,6 +17,27 @@ There is a geologist saying that whoever sees the most rocks wins. I’ve not se
 
 <a href="https://jgosses82.carto.com/viz/a74cf9ea-8f1f-11e5-a802-0ecd1babdde5/embed_map"><img src="static/images/rock_map.png" width="100%"></img></a>
 
+
+## Previous Geologist Career
+
+I worked for BP exploration and production for nine years, including two years as an expat in the Calgary, Canada office.
+Although I often worked as an integrated geologist across a range of sub-fields, my deepest skill set is in sedimentology and stratigraphy. 
+I have held sed/strat positions within BP, including as an internal consultant loaned to various teams. 
+I presented regularly at sed/strat technical lunch talks, mentored junior geologists, gave core room talks, and assisted in field trips and courses.
+
+For additional details, please see the <a href="/about">About</a> page.
+
+## Academic Research
+
+At Franklin and Marshall College, I completed two research projects. 
+One was a pilot study to evaluate how well a magnetic-based dating method worked on an Etruscan age archaeology site in Italy. 
+Specifically, it measured the geomagnetic orientation of minerals in pottery kilns, set during the last time they were fired, 
+and matched it to a regional record of decadal scale variation in the orientation of the regional magnetic field.
+The other research project was a stratigraphic and geochemical description of Cretaceous-age outcrops containing rift lake sediments in Mongolia. 
+
+In graduate school at University of Wisconsin-Madison, my research used Argon-Argon dating and field work to decipher the depositional environment 
+history of a 52 million year-old caldera lake (inside a volcano) in Argentina that held important plant and animal fossils.
+
 ## Professional Societies (previous)
 
     - American Association of Petroleum Geologists (AAPG)
@@ -25,15 +46,12 @@ There is a geologist saying that whoever sees the most rocks wins. I’ve not se
         - social media chair
     - The American Association for the Advancement of Science (AAAS)
 
-## Previous Geologist Career
 
-I worked for BP exploration and production for nine years, including two years as an expat in the Calgary, Canada office. For additional details, please see the RESUME page.
-Academic Research
+## Current
 
-At Franklin and Marshall College, I completed two research projects. One was a test project for how well a magnetic-based dating method worked on an Etruscan age archaeology site in Italy. The other project was a description of Cretaceous-age outcrops containing rift lake sediments in Mongolia. In graduate school at University of Wisconsin-Madison, my research used Argon-Argon dating and field work to describe the stratigraphic history of the 52 million year-old caldera lake (inside a volcano) in Argentina.
-Sedimentology & Stratigraphy
+These days my day job doesn’t involve a lot of geology.
+However, I manage to stay involved via side projects that sit at the intersection of geology and code. 
+Examples include the open-source projects <a href="https://github.com/JustinGOSSES/predictatops">Predictatops</a> (Python-based machine-learning prediction of stratigraphic surfaces) 
+and <a href="https://github.com/JustinGOSSES/wellioviz">wellioviz</a> (JavaScript-based visualization library for well logs built on top of d3.js). 
+Both are things I’ve long thought should exist, so it has been fun to bring them into the world of the possible.
 
-Although I have often worked as an integrated geologist across a range of sub-fields, my deepest skill set is in sedimentology and stratigraphy. I have held sed/strat positions within BP, including as an internal consultant loaned to various teams. I presented regularly at sed/strat technical lunch talks, mentored junior geologists, gave core room talks, and assisted in field trips and courses.
-Geology & Code
-
-These days my day job doesn’t involve a lot of geology, augmented reality sandboxes excluded. However, I manage to stay involved via side projects that sit at the intersection of geology and code. Examples include the open-source projects Predictatops (Python-based machine-learning prediction of stratigraphic surfaces) and wellioviz (JavaScript-based visualization library for well logs built on top of d3.js). Both are things I’ve long thought should exist, so it has been fun to bring them into the world of the possible.
