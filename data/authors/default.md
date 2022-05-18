@@ -2,16 +2,16 @@
 name: Justin Gosses
 avatar: /static/images/JustinPhoto.jpg
 occupation: 
-# company: Stanford University
+# company: Company
 # email: address@yoursite.com
 # twitter: https://twitter.com/Twitter
 # linkedin: https://www.linkedin.com
 # github: https://github.com/JustinGOSSES
 ---
 
-Justin lives in Houston, Texas with my wife and dog Momo. 
+I live in Houston, Texas with my wife and dog Momo. 
 
-### Table of Contents
+## About Me
 - <a href="#interests">Interests</a>
 - <a href="#perspectives-on-building-solutions-with-code">Perspectives on Building Solutions With Code</a>
 - <a href="#professional-history">Professional History</a>
@@ -20,12 +20,12 @@ Justin lives in Houston, Texas with my wife and dog Momo.
 - <a href="#community-involvement">Community Involvement</a>
 
 
-## Interests:
-- Things that could exist but don't yet.
-- Open source geospatial tools
-- Things at the intersection of geology & code.
+### Interests:
+- Things that could exist but don't yet
 - Natural Language Processing
+- Open source geospatial tools
 - Water based things like kayaking and paddle boarding. Also small web-based services that help me decide when and where to go.
+- Things at the intersection of geology & code
 - Sharing at Scale:
     - This includes questions like open data interface design; code citation tooling as a way to change its perceived value; group membership and behaviors in open source that impact how science gets done; different incentives between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
 

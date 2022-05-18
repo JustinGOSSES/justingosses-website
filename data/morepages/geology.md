@@ -15,7 +15,7 @@ Professionally, I’ve focused on reducing uncertainty and enabling decisions th
 
 There is a geologist saying that whoever sees the most rocks wins. I’ve not seen the most rocks, but I’ve done alright. Clicking on the map will take you to a live interactive version of all the rocks I’ve worked with. Clicking on each dot brings up more information.
 
-<a href="https://jgosses82.carto.com/viz/a74cf9ea-8f1f-11e5-a802-0ecd1babdde5/embed_map"><img src="static/images/rock_map.png" width="100%"></img></a>
+<a href="https://jgosses82.carto.com/viz/a74cf9ea-8f1f-11e5-a802-0ecd1babdde5/embed_map"><img src="static/images/rock_map.jpg" width="100%"></img></a>
 
 
 ## Previous Geologist Career
