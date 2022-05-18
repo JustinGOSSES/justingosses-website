@@ -1,0 +1,106 @@
+---
+title: 'Website Migration from WordPress to Next.js & Tailwind CSS'
+date: 2022-05-17T15:32:14Z
+lastmod: '2022-05-17'
+tags: ['website', 'code', 'wordpress','next.js','tailwindcss','react',azure,aws,tradeoffs]
+draft: false
+summary: 'A blog post describing moving this website from WordPress to Next.js & TailwindCSS.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://justingosses/blog/website-migration-2022/
+---
+
+# THIS PAGE IS IN PROGRESS - TODO
+
+## Overview
+
+A post describing my experience moving this website from WordPress to Next.js & TailwindCSS.
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+
+## History
+I originally got the domain for justingosses.com and set up a website in early 2015. 
+At the time, I wanted a place to establish a bit of online identity specific to code and separate from my resume.
+
+I picked WordPress as my front-end web development skills were still developing and WordPress's ecosystem of plugins
+ meant I wouldn't be slowed at my skills at the time in case I wanted to do something complicated or non-static.
+ In retospect, I would have been able to use a static site generator, but I wasn't certain about it at the time.
+
+The site has never gotten super complicated. It's just a blog, side projects, contact page, etc. 
+I've added some custom JavaScript and hacked on an existing theme and server side PHP code a little. 
+Everythig can be replicated with a static website that is front-end only.
+
+## Reasons to Change
+The big drivers for me to finally move away from WordPress were:
+- Cost
+- Don't Really Need a Server
+- Easier to try new things if content is in markdown
+
+#### Cost
+I originally bought the domain and set up the website through a company that specializes in hosting WordPress pages. 
+Like many similar services, they're very cheap the first year and then raise the price going forward. 
+The cost raises were annoying, which eventually led to me to migrate the WordPress site to AWS and their EC2 service.
+Unfortunately, after several months on there, I figured out the cost savings on there weren't as much as I had hoped.
+It was still less, but not meeting expectations.
+
+#### Don't Really Need a Server
+Additionally, it had long been apparent that that time that the site didn't really need a backend. 
+It could be 100% front-end. Having a server was just an extra cost. The only backend service I was
+ really using was the email associated with the domain, which was nice but I could live without.
+
+#### Easier to Move if Content is Markdown
+Another reason to finally migrate away from WordPress is that once your blog content is in markdown, 
+its easier to jump static site generators as they almost all use markdown. This lets me use my site to try out next technology.
+
+
+
+## Why this Tech stack?
+
+Honestly, I picked Next.js and TailwindCSS as my tech stack because
+ they were both options I was seeing other people talk about and this was an opportunity to learn about them.
+
+I wouldn't be surprised if I switch to something else that can consume markdown or mdx files in a year to try that too. 
+
+## How Much of a Pain Was Moving It?
+Honestly, the most painful part was just copy and pasting all the content from WordPress to the markdown files.
+
+While the SimplyStatic WordPress extension does an AMAZING job at exporting WordPress sites into static HTML, it doesn't export to markdown.
+I probably could have found something to programmatically convert the content to markdown, 
+but I ended up just starting copy and pasting and got too far in.
+
+You can see exports of the previous WordPress site exported to HTML in [this repository](https://github.com/JustinGOSSES/JustinGOSSES.github.io) 
+with the live site as a GitHubPages page here: https://justingosses.github.io/ . 
+
+If you're every shutting down a WordPress site, 
+the plugin is a great option for creating an archive version that can be stood up at well. 
+There will still be 5-10% functionality that won't work, but its amazing how much it does get right.
+
+## First Impressions of Next.js, TailwindCSS, and Azure
+
+
+### Next.js
+
+
+### TailwindCSS
+
+
+### Azure Static Web Apps
+
+
+## Tactical Learnings
+
+#### Next.js File Organizatin
+
+#### How to Approach TailwindCSS
+
+#### Domain Registration Migration Limits
+
+#### DNS form Confusion
+
+
+## Where to File Bugs
+
+This website builds from the repository https://github.com/JustinGOSSES/justingosses-website .
+
+If you happen to find any typos or weird behavior, please don't be shy about submitting an issue.
