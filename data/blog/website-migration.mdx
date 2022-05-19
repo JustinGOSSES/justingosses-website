@@ -1,0 +1,132 @@
+---
+title: 'Website Migration from WordPress to Next.js & Tailwind CSS'
+date: 2022-05-17T15:32:14Z
+lastmod: '2022-05-17'
+tags: ['website', 'code', 'wordpress','next.js','tailwindcss','react',azure,aws,tradeoffs]
+draft: false
+summary: 'A blog post describing moving this website from WordPress to Next.js & TailwindCSS.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://justingosses/blog/website-migration-2022/
+---
+
+## Overview
+
+In this blog post, I describe my experience moving justingosses.com from WordPress to Next.js & TailwindCSS.
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+
+## History
+I originally got the domain for justingosses.com and set up a website in early 2015. 
+At the time, I wanted a place to establish a bit of online identity additional to my resume.
+
+I picked WordPress as my front-end web development skills were still developing, 
+and I was worried I'd hit a point where I'd be stuck with a static site generator or HTML, CSS, and JavaScript.
+ In retospect, I probably would have been fine with a static site generator and a little bit of JavaScript & CSS.
+
+Over the next several years, the site never evolved into something super complicated. 
+It's just a blog, side projects, contact page, etc. 
+I've added some custom JavaScript for interactive bits, hacked on an existing theme, 
+and changed small amounts of the server side PHP code, but nothing extensive.
+
+## Reasons to Change
+The big drivers for me to finally move away from WordPress were:
+- Cost Annoyances
+- Don't Really Need a Server
+- Easier to try new things if content is in markdown
+
+#### Cost Annoyances
+I originally bought the domain and set up the website through a company that specializes in hosting WordPress pages. 
+Like many similar services, they're very cheap the first year and then raise the price going forward. 
+The cost raises were annoying, which eventually led to me to migrate the WordPress site to AWS and their EC2 service.
+Unfortunately, after several months on there, I figured out the cost savings weren't as much as I had hoped.
+It was still less, but not meeting my expectations.
+
+#### Don't Really Need a Server
+Additionally, it had long been apparent that the site didn't really need a backend. 
+It could be 100% front-end. Having a server was just an extra cost. 
+
+
+The only backend services I was
+ really using were the email associated with the domain and the comments section below blog posts. 
+ Both were nice but I could live without.
+
+#### Easier to Move if Content is Markdown
+Another reason to finally migrate away from WordPress is that once your blog content is in markdown, 
+its easier to jump static site generators as they almost all use markdown. 
+This lets me use my website to try out next website technology.
+
+## Why this Tech stack?
+A static site generator approach only requires a front-end, so hosting is often either free or nearly free. 
+Both GitHub Pages and Azure Static Web App are free services that build your webpage directly from your source code in a GitHub repository.
+
+ I have experience deploying several websites with custom domains to [GitHub Pages](https://pages.github.com/), but I had just heard a great story about
+  [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/), 
+ so I wanted to try it out.
+ 
+ During Microsoft onboarding, I had been told about how Azure's 'static web app' service came 
+about because interns pushed Microsoft exectives to add a 'static web app' service that was separate to the existing and more complicated
+ 'Azure web app' service. Apparently, they were given permission to prototype something and now it's an actual service.
+
+[Next.js](https://nextjs.org/) was picked as I had see a bunch of people mention it on Twitter, 
+and I was curious about how it worked being a web development framework built on top of React.
+
+Likewise, [Tailwind CSS](https://tailwindcss.com/) was picked as the CSS framework as some people really liked it and some people strongly did not. 
+This was a good excuse as any to find out why by building something small.
+
+After looking at several other blogs and blog templates from [https://jamstackthemes.dev/](https://jamstackthemes.dev/) 
+that use that combination, I decied to start from [tailwind-nextjs-starter-blog
+](https://github.com/timlrx/tailwind-nextjs-starter-blog) by (Timothy Lin](https://github.com/timlrx) and change as needed.
+
+## How Much of a Pain Was Moving It?
+
+#### Moving the Content
+Honestly, the most painful part was just copy and pasting all the content from WordPress to the markdown files.
+
+While the [SimplyStatic](https://wordpress.org/plugins/simply-static/) WordPress extension does an
+ AMAZING job at exporting WordPress sites into static HTML, it doesn't export to markdown.
+I probably could have found something to programmatically convert the content to markdown, 
+but I ended up just starting copy and pasting and got too far in.
+
+You can see exports of the previous WordPress site exported to HTML in [this repository](https://github.com/JustinGOSSES/JustinGOSSES.github.io) 
+with the live site as a GitHubPages page here: https://justingosses.github.io/ . If you're every shutting down a WordPress site, 
+the plugin is a great option for creating an archive version that can be stood up at well. 
+There will still be 5-10% functionality that won't work, but its amazing how much it does get right.
+
+#### Next.js
+The learning curve on Next.js was pretty minimal as I was starting with a blog template that is already working. 
+I did change a little bit of the JavaScript from the original theme but most of the changes were duplications, small deletions, etc. 
+I didn't add any radical new functionality as I had no reason to do so.
+
+#### TailwindCSS
+Tailwind was a little bit of a pain to use at first as I initially tried to use it like traditional CSS. 
+Others can describe it better than me, 
+but tailwind CSS minimizes some of the cognitive load of establishing and changing a theme by leverarging intuitively named pre-made classes.
+
+This means that at least initially, you'll sometimes not know how to phrase what you want to do in Tailwind speak and looking it up will take a bit of time.
+It also means if you want to do really complicated things with CSS, its probably not the best tool. 
+However, if you only know a small to moderate amount of CSS, and find what you do know to have been incredibly frustrating to learn, it might be a tool for you.
+At least that was my impression after using it a tiny bit on a single project, so take that with a huge grain of salt.
+
+#### Azure Static Web Apps
+Azure Static Web Apps was a great experience. The initial form-based experience was intuitive.
+It then pre-populated the necessary GitHub Actions in my GitHub repository and everything deployment-wise and https certificate-wise wise just works.
+Easy.
+
+#### DNS form Confusion
+The only problem I had on the Azure side was a slight bit of confusion with Azure DNS. My domain name was registered with AWS and stayed there.
+After doing what I thought was following the directions to set up a custome domain on the Azure side, 
+I shifted the name servers under the domain from AWS to Azure name servers.
+
+My site went down immeidately.
+
+It took me a while to find the problem, but it turned out I had misunderstood on input cell. I had written justingosses.com instead of nothing and as a result the Azure name servers were trying to talk to justingosses.comjustingosses.com. 
+Obviously, didn't work as no one has that domain.
+
+
+## Where to File Bugs
+
+If you find any bugs on this site, please file an issue on [https://github.com/JustinGOSSES/justingosses-website](https://github.com/JustinGOSSES/justingosses-website) and I'll add it to the backlog.
+
+Thank you!
