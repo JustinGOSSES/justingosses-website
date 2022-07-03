@@ -25,7 +25,8 @@ const siteMetadata = {
     plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
     simpleAnalytics: false, // true or false
     umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    googleAnalyticsId: 'UA-107183780-1', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX or UA-107183780-1
+    appInsightsConfigurationString: 'InstrumentationKey=dc2ca3d0-2fbe-445e-8ed3-40dce7faa172;IngestionEndpoint=https://centralus-2.in.applicationinsights.azure.com/;LiveEndpoint=https://centralus.livediagnostics.monitor.azure.com/'
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo

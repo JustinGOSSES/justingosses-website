@@ -3,6 +3,7 @@ import Plausible from './Plausible'
 import SimpleAnalytics from './SimpleAnalytics'
 import Umami from './Umami'
 import siteMetadata from '@/data/siteMetadata'
+import appInsights from './applicationInsights'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -13,6 +14,7 @@ const Analytics = () => {
       {isProduction && siteMetadata.analytics.simpleAnalytics && <SimpleAnalytics />}
       {isProduction && siteMetadata.analytics.umamiWebsiteId && <Umami />}
       {isProduction && siteMetadata.analytics.googleAnalyticsId && <GA />}
+      {isProduction && siteMetadata.analytics.appInsightsConfigurationString && <appInsights />}
     </>
   )
 }
