@@ -11,11 +11,10 @@ canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/finding-fl
 ---
 
 
-
 <TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
 
 
-# Overview
+# Context
 
 Earlier this year I participated in the [Houston Hackathon](https://houstonhackathon.com/). I led a group working on an idea I created to have a front-end 
 only website that would tell you when you entered or exited a floodplain in Houston, Texas while you were driving or riding a bicycle. 
@@ -26,7 +25,7 @@ project on <a href="https://github.com/JustinGOSSES/spoken-floodplain">GitHub</a
  
  Despite having run open data and open code sites at NASA, I still stumbled a bit finding the right open data for this task 
   due to some incorrect assumptions. Those assumptions led to several hours of wasted time over a couple weekends before the hackathon. 
-   I am writing up these lessons learned in this blog post. Maybe they might help others.
+   I am writing up these lessons learned in this blog post in case they might help others.
 
 
 ## What Data Did I Ideally Want?
@@ -61,11 +60,12 @@ Specific Webpages that Were Useful for My Needs...
 
 ## What Open Data Sites were Tempting But Ultimately Did Not Have the Right Data
 After initially looking at the FEMA website and not finding floodplain files constrained to Houston city or Harris County outlines, 
-I decided to look at municipal and county sources of data. Doing the work to combine multiple FEMA files at the time 
-seemed like it would be more work.
+I decided to look at municipal and county sources of data. 
 
-This was a big mistake as I now suspect these organizations want to make decisions themselves based on this type of data and want to provide it in a purely informative manner, 
-but don't want to provide raw data files officially. As a reuslt, they provide web applications that show the data, and have related raw data, but don't provide up-to-date actual data files of floodplains in an easy to find and access manner.
+My assumption at the time was:
+1. The FEMA website did not have the data already limited to a city or county extent (this was wrong)
+2. and it would be faster to find this data
+on county and city open data sites than it would be to write the scripts to reorganize the FEMA data into a spatial extent I wanted. (this was also wrong)
 
 ### Houston Galveston Area Council Open Data
 [Houston Galveston Area Council](https://www.h-gac.com/Home) is a regional planning organization. I've previously found [land cover and river basin open data](https://www.h-gac.com/interactive-web-applications) there. I know they provide some information 
@@ -85,15 +85,12 @@ The file generation process required before allowing you to download the data in
 data types at the county level. Houston is wholely within Harris County.
 
 #### What I found:
-If you search for "floodplain" in their search interface, you [get zero results](https://geo-harriscounty.opendata.arcgis.com/search?collection=Dataset&q=floodplain). 
-
-However, if you look at [this broader open data page](https://www.harriscountytx.gov/Services-Portal/Dashboards-Datasets-Hub) not specific to GIS data, 
+- If you search for "floodplain" in their search interface, you [get zero results](https://geo-harriscounty.opendata.arcgis.com/search?collection=Dataset&q=floodplain). 
+- However, if you look at [this broader open data page](https://www.harriscountytx.gov/Services-Portal/Dashboards-Datasets-Hub) not specific to GIS data, 
 you get more things related to flooding. However, none of them are floodplain boundaries. 
-
-For user friendly options for seeing the floodplains, there is [this web map experience for floodplain boundaries](https://www.harriscountyfemt.org/), but you 
+- For user friendly options for seeing the floodplains, there is [this web map experience for floodplain boundaries](https://www.harriscountyfemt.org/), but you 
 can not get data files out of it.
-
-Digging a little further into the ArcGIS site, I found 
+- Digging a little further into the ArcGIS site, I found 
 [there is at some sort of 2019 era FEMA floodplain boundaries](https://www.gis.hctx.net/arcgis/rest/services/FEMA_Harris_May_2019/FEMA_Harris_May_2019/MapServer) 
 available even if they do not come back in search results. Unfortunately, every time I tried to download them it timed out. 
 It seems without authentication there is a rather short time out window to make an API call. I could never get the entire dataset to download. 
@@ -102,19 +99,16 @@ It seems without authentication there is a rather short time out window to make 
 Although the county websites definitely have floodplain polygons, they do not make it possible to download the raw files.
 
 ### City of Houston
-
-#### What I found:
 The city of Houston's open data portal has seen a noticable decrease in activity and quality in the last couple of years. Another person was selected to lead 
 it at once point, but then nothing really changed in terms of what is seen by users. 
 
 If you follow the top Google search results, you get directed to [https://data.houstontx.gov/](https://data.houstontx.gov/) which may not load for you without an 
 error message as their https certificate is out of date and has been for years. You'll have to click through to accept the risk to actually land on their page.
 
-If you click on the button for "[flood hazards](https://data.houstontx.gov/group/flood-hazards)", there is one dataset titled "Other County Flood Zones".
-
-If you instead use the search bar and put in "[flood](https://data.houstontx.gov/dataset/?q=flood)", you'll get back 4 datasets as of October 2022. This data 
+#### What I found:
+- If you click on the button for "[flood hazards](https://data.houstontx.gov/group/flood-hazards)", there is one dataset titled "Other County Flood Zones".
+- If you instead use the search bar and put in "[flood](https://data.houstontx.gov/dataset/?q=flood)", you'll get back 4 datasets as of October 2022. This data 
 was last updated in 2017 though, so it isn't the recent floodplain maps.
-
 
 #### Why it Didn't Work:
 The City of Houston open data portal has not gotten a lot of attention in recent years. There is some data, but much of it is up to date.
@@ -122,16 +116,16 @@ The City of Houston open data portal has not gotten a lot of attention in recent
 
 ## Lessons learned
 
-### Should Have Dug Around FEMA Open Data More
-Among the lessons learned, the first on is that I too easily assumed that the data I found on FEMA's website is the only version of that data. Whenever an 
+### FEMA Provides the Same Data In Many Different Ways at Different Webpages
+The first lesson learned is that I too easily assumed that the data I found on FEMA's website is the only version of that data. Whenever an 
 organization has the authoritative data and many different types of users and use cases, they tend to provide it in different ways to meet all those use cases. 
-I should have spend more time digging around the FEMA site, but I got frustrated and left assuming I could find it at the county or city level.
+I should have spend more time digging around the FEMA site, but I got frustrated and left assuming I had seen all the ways the data was supplied to different users.
 
 
 ### The Importance of Thinking About How Providers Think About The Data You Want
-Due to the fact that FEMA floodplain boundaries have insurance, legal, and political implications, that's a forcing factor that will push city and 
-county government to provide ways to access the data in informative means like web maps, but not necessarily the raw data. This was seen in the 
-Harris County open data.
+FEMA floodplain boundaries have insurance, legal, and political implications. That's likely a forcing factor that will push city and 
+county government to provide ways to access the data in informative means like web maps, but not necessarily the raw data, which they don't want to be responsible for. 
+This was seen in the Harris County open data.
 
 
 ### Open Data is Less of a Focus in Government 
@@ -142,8 +136,8 @@ More recently, there has been a trend for these efforts to get less attention in
 open data. I saw it in some parts of NASA, but not all! Part of this is due to trend-driven IT in government. Part of it is due to what Congress tells
  agencies to work on. There are lots of interesting forcing factors that others have written about better than I.
 
-As a result of this trend, there's a lot of older, not-update data that exists from 2009-2013 period that can tempt you to looking more, but that isn't 
-updated versions for the least 0-7 years. This is seen in the City of Houston, Harris County, and Galveston Houston Area Council's open data sites.
+As a result of this trend, there's a lot of older, not-update data that exists from 2009-2013 period that can tempt you to looking for more data that you suspect 
+must exist, but that hasn't been updated for the past 0-7 years. This is seen in the City of Houston, Harris County, and Galveston Houston Area Council's open data sites.
 
 ## Conclusion
 If you want floodplain data, go to the authoritative source, FEMA, and keep diging. State, regional, county, and city sources are likely to waste your time.
