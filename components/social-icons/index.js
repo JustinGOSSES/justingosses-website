@@ -33,7 +33,7 @@ const SocialIcon = ({ kind, href, size = 8 }) => {
       <a
         className="text-sm text-gray-500 transition hover:text-gray-600"
         target="_blank"
-        rel="me"
+        rel="me noopener noreferrer"
         href={href}
       >
         <span className="sr-only">{kind}</span>
