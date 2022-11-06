@@ -4,6 +4,10 @@ import Link from 'next/link'
 const CustomLink = ({ href, ...rest }) => {
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
+  const mastodonPersonalLink = href && href.includes("fosstodon.org/web/@JustinG")
+  if (mastodonPersonalLink){
+    return <a target="_blank" rel="me" href={href} {...rest} />
+  }
 
   if (isInternalLink) {
     return (
@@ -16,7 +20,7 @@ const CustomLink = ({ href, ...rest }) => {
   if (isAnchorLink) {
     return <a href={href} {...rest} />
   }
-
+  
   return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
 }
 
