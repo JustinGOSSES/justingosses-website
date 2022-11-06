@@ -6,7 +6,7 @@ const CustomLink = ({ href, ...rest }) => {
   const isAnchorLink = href && href.startsWith('#')
   const mastodonPersonalLink = href && href.includes("fosstodon.org/web/@JustinG")
   if (mastodonPersonalLink){
-    return <a target="_blank" rel="me" href={href} {...rest} />
+    return <a target="_blank" rel="me noopener noreferrer" href={href} {...rest} />
   }
 
   if (isInternalLink) {
