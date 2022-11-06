@@ -18,6 +18,7 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/justingosses/',
   observable: 'https://observablehq.com/@justingosses',
   rss:'https://justingosses.com/feed.xml',
+  mastodon: 'https://fosstodon.org/@JustinG',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the

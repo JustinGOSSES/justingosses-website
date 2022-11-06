@@ -6,6 +6,7 @@ import Linkedin from './linkedin.svg'
 import Twitter from './twitter.svg'
 import Observable from './observable.svg' //https://simpleicons.org/?q=Observable
 import RSS from './rss.svg'
+import Mastodon from './mastodon.svg'
 
 // Icons taken from: https://simpleicons.org/
 
@@ -17,7 +18,8 @@ const components = {
   linkedin: Linkedin,
   twitter: Twitter,
   observable: Observable,
-  rss: RSS
+  rss: RSS,
+  mastodon: Mastodon
 }
 
 const SocialIcon = ({ kind, href, size = 8 }) => {
