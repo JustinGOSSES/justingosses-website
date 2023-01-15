@@ -1,44 +1,235 @@
 ---
 title: 'Maps that Speak'
-date: 2022-09-10T15:32:14Z
-lastmod: '2022-09-10'
-tags: ['text-to-speech','browser-apis','geolocation','leaflet.js','nosleep.js','floodplain', 'open-data', 'gis','map','geospatial','geojson','javascript','python','houston','fema']
-draft: true
-summary: 'A hackathon project to get map data into a different form and experienced at a different place and time.'
+date: 2023-01-10T15:32:14Z
+lastmod: '2023-01-10'
+tags: ['usefulness','value','user','text-to-speech','browser-apis','geolocation','leaflet.js','nosleep.js','water','floodplain', 'open-data', 'gis','map','geospatial','geojson','javascript','houston','fema']
+draft: false
+summary: 'A hackathon project to get floodplain map data delivered as speech and experienced while on the move. Now wondering if another type of data would make more sense for this type of approach?'
 layout: PostSimple
 bibliography: references-data.bib
-canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/maps-that-speak/
+canonicalUrl: https://justingosses.com/blog/maps-that-speak/
 ---
-
-## Overview
-
-A Houston hackathon project to build a front-end only website that tells you when you enter and leave a floodplain in Harris county.
 
 <TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
 
+## Overview
 
-## Floodplains in Harris County, Texas
+A few months ago, I completed a Houston hackathon project to build a front-end only website that tells you when 
+you enter and leave a floodplain in Harris county with a few other people. I previously wrote about lessons 
+learned finding the data files of relevant floodplain polygons in the blog post
+ [Finding Floodplain GEOJSONs](/blog/finding-floodplain-geojsons). You can read about the rational for this project 
+ and see the code in the [spoken-floodplain](https://github.com/JustinGOSSES/spoken-floodplain) GitHub repository. 
+
+
+## Floodplains in Houston, Harris County, Texas
+Although there are a few areas where swamps were drainged, Houston is not entirely built a swamp like sometimes gets 
+said by people not from here on social media, and sometimes regular old media. It is, however, built entirely on a 
+very flat, low lying 
+coastal plain with limited drainage.
+
+A network of slow moving bayous cross the city and drain into Galveston Bay before reaching the Gulf of Mexico. They 
+are slow moving due to the small difference in height from headwaters to mouth. Once water leaves their banks, the 
+pancake flat nature of Houston means lots of ground gets covered with water quickly. 
+
+You can see how flat the natural topography is on the FEMA floodplain maps in that the floodplain outlines are not always 
+following typical topography shapes. The edge of the mapped floodplain is often the side of the road or railroad. 
+It's fairly often the man-made things that stops the water, not the natural ground surface due to the limited topography.
+
+!["Example map of Houston area floodplains. Floodplain is highlighted overlay in shades of blue."](../static/images/blog/maps-that-speak/Houston-floodplain-example1.png)
+
+Man-made drivers of flooding in Houston include the huge amount of 
+[new impervious surface coverage](https://reduceflooding.com/2021/08/05/usgs-says-one-third-of-harris-county-now-impervious-cover/)
+that speeds the rate at which water gets into the bayous leading to flooding,
+ [buildings built in floodplains](https://www.texastribune.org/2018/04/04/houston-city-council-approves-changes-floodplain-regulations-narrow-vo/), 
+and ground water usage that has caused 
+[subsidence of the ground surface](https://www.sciencedirect.com/science/article/pii/S0034425719301130) resulting in 
+an even more gradual slope to the sea. The
+ [extreme amount of rain](https://www.wunderground.com/cat6/harvey-houston-most-extreme-rains-ever-major-us-city) 
+that has fallen in large storm events is another contributor.
+
+!["Zoomed out map of Houston area floodplains."](../static/images/blog/maps-that-speak/harris-county-floodplain-map2.png)
+Floodplain limits on left and right side of the map are limits of Harris County, not limits of all floodplain. 
+The greater Houston area is approximately what is shown here. 
+
+Floodplains are exaggered a little in this view due to outline thickness, but it does a good job of showing 
+just how much of Houston is technically within a FEMA designated floodplain of some type. This view was created 
+with FEMA floodplain estimates at one point in time. Note that FEMA floodplain polygons change over time and 
+there has been flooding outside of them. 
+
 
 ## When and How You Get Information Matters
 
+As you can see, floodplains cover a lot of the city and the surrounding county, Harris county. If 
+you are trying to rent an apartment or buy a house in Houston, a good number of potential locations will be in a floodplain.
 
+Awareness and perceptions of risk can impact decision on where to live, whether to pay for flood insurance, and how one 
+responds to weather events, like incoming Hurricanes. Where and how people get information about these risks changes 
+their behavior as shown in a recent study "Homebuyers With Access to Flood-Risk Data Bid on Lower-Risk Homes"
+written up [here](https://www.redfin.com/news/redfin-users-interact-with-flood-risk-data/) 
+and [here](https://www.bloomberg.com/news/articles/2022-09-12/real-estate-listings-with-flood-scores-shift-home-shopper-habits?sref=fRZXrT1O).
+
+### Typical Floodplain Information Consumption During House Shopping
+Based on my own experience shopping for houses in Houston, floodplain information is consumed in one of two ways. 
+
+1. At some point after seeing a house digitally and before or after seeing it in person, you take the address and put it into 
+a website for floodplain information where you get back a text-based answer on whether the house is in a floodplain and usually
+a map visualization of the location relative to floodplains as well. An example of this for Harris county is on
+ [https://www.harriscountyfemt.org/#](https://www.harriscountyfemt.org/#) .
+2. Alternatively, you could also be presented with text-based information on whether a property is inside or outside a floodplain 
+during the house shopping experience from your real estate agent or a mortgage broker. I am not sure how often this happens.
+
+In both cases, this information is presented as an abstract map or true/false value and usually after impressions of a property 
+have already been made. 
+
+My experience with using https://www.harriscountyfemt.org/# while driving around looking at houses, was that it was 
+frustrating to use while driving around house shopping. I didn't always know the right address if I had stopped at 
+an open house while driving. Additionally, the website had a limit of how far it would let you zoom in and didn't 
+actually place any marker for the location on the map. If you were unfamliar with the area, it could be 
+difficult to figure out if you're close to the floodplain extent or half a mile away without more analysis, 
+which is hard to do on a phone while doing other things like looking at a house or driving around.
 
 ## The Premise 
+Knowing that how and where people consume information can change how the same information impacts their behavior, 
+I was curious if floodplain information could be presented while people are moving around in a neighborhood looking 
+at houses or apartments. 
 
+_The idea was to provide the floodplain information as spoken word information as they 
+are driving._ 
 
+One hypothesis might be that this would have more impact as the floodplain information might be presented 
+BEFORE they experiened a house in person for the first time. Another hypothesis is consuming floodplain 
+information while in a physical place might influence peoples' risk perceptions more than consuming infromation 
+in an abstract map form while sitting at home behind a computer or reading text.
 
-## The User Story
+## Theoretical Users
 
+### 1. The House or Apartment Shopper User
+This user is shopping for a house or apartment. 
+
+They might be looking to better understand the flood plain distribution in an area 
+that is probably new to them. They might want to know if they're in a floodplain before 
+they stop at a random open house showing after seeing the other house on their list.
+Either of these might motivate them to turn the website on as they drive.
+
+### 2. The Flood Nerd User
+Another user might be interested in this capability just to learn more about Houston floodplains. This describes me
+and how I used the website. 
+
+### The basics of Both User Experience: 
+- The user is the driver of the car or rider of bicycle.
+- The user opens the website
+- The user clicks to give permission to share their device's location and speaker permissions upon opening the page, probably when not driving.
+  - NOTE: The website is front-end only, so it doesn't actually send any user data anywhere. However, this permission must still be given. 
+- The website, after permissions are granted, checks the user's location and verbally says whether it is inside a floodplain boundary every X unit of time or only on entering or exiting a floodplain depending on user selected configuration. 
+- The user can keep driving and doesn't need to look at the website or interact with it. They just need to leave that page open on their device and keep listening.
+  - The user then experiences information about floodplain while being directly in a place instead of attaching that information to a previous memory via an abstract map. 
 
 
 ## Demo and How to Fake Moving Around
 
+You can try out the site yourself at
+ [https://justingosses.github.io/spoken-floodplain/](https://justingosses.github.io/spoken-floodplain/) .
 
 
-## What Got Done in Hackathon and What Got Done Afterwards
+!["Screenshot of the spoken-floodplain website"](../static/images/blog/maps-that-speak/spoken-floodplain-screenshot.png)
+Screenshot of the spoken-floodplain website with pop-up asking for location sharing permissions.
 
+If you're not in Houston, you can fake a location inside Harris county by using the command
+`spokenGeoJSON_Harris_global.triggerNavigatorGeoLocation(move="east",fakeLocation=true,moveAmountInDecimals=0.003)`
+in your browser's
+ [devTools console](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools) 
+ as described in the 
+ [spoken-floodplain documentation](https://justingosses.github.io/spoken-floodplain/docs/#spokengeojsontriggernavigatorgeolocation)
+ . When following the link to the documentation, be sure to click the arrow button to expand the description 
+ of the triggerNavigatorGeoLocation function to see how to use it.
 
-## Review... Is it Useful?
+## Review
+### Does it work? 
+Yes. We got a minimum viable product working just barely at the end of the hackathon. I spent some more time 
+on it post hackathon and it does all the things we wanted it to. 
 
+### Does it work well? 
+I would say the user experience is a little friction prone and the visualization okay but not great.
+For most people there are probably too many pop-ups you have to click to give the website permission to use 
+location data and permission to make sound. The marker visualization could be better. In summary, it works 
+well enough to try and use a bit, but there's enough friction to stop most people. It is definitely a quick prototype.
 
-### Better for Another Data Type Maybe?
+### Is it Useful? 
+#### Useful for Me?
+I think it helps the flood nerd user. That's mostly how I have used it personally. 
+
+While I find floodplain maps interesting, they are 
+also somewhat abstract. 
+It is another thing entirely to walk several blocks north and realize the line between inside and outside the nearest
+floodplain sits on what appears to be perfectly flat ground. 
+There is nothing obviously higher outside compared to inside the floodplain polygon. This hits home how little difference 
+in amount of water there has to be to push that floodplain extent up or down the street. Being just outside the 
+floodplain polygon doesn't mean a lot sometimes.
+
+The combination of map information & first-person observations about the physical environment hits different as the 
+combination of those two different sources of information can be more informative a map alone. 
+
+Additionally, when I experienced being told I have entered or exited a floodplain while driving in my car 
+on regular repeated trips, like to
+the grocery store or the vet, I eventually found the information becomes linked into the mental space of my life in a 
+way that doesn't happen with a map. 
+I can tell you what parts of my local neighborhood are inside or outside floodplains. I would not have been able 
+to do that before even though I had spent significant time looking at the floodplain maps. 
+
+_Hearing information about a place while in the place does appears to help me remember it compared to looking at a map._
+
+This is, of course, antidotal evidence, but it is what I have available. 
+
+#### Useful for Others?
+
+##### Awareness
+The number of people who have tried the site is quite small. The hackathon team, people from the hackathon, and a few 
+people who saw it on social media covers the total number of users. One component of whether something like this 
+ends up being useful is how do you get knowledge about it widespread in Houston. Awareness by itself does not do 
+anything, of course, but without it nothing else happens.
+
+##### User Friendliness 
+Another blocker to usefulness is how easy it is to use. Every time you use the website, you have to click two 
+permission pop-ups due to the site using your browser's API for 
+location and text-to-speech. When in use on the move, many people will want to have both your phone's map 
+directions speaking and this website 
+speaking. Both can in fact work at the same time, but it can get slightly complicated. 
+Each can delay the other's words. 
+If you interact with google maps app on an iphone while the spoken-floodplain website is up, it can stop the webpages 
+location tracking until the page is refreshed. 
+
+Some of these friction points are probably not things that can be engineered around, which limits any general audience 
+use even if website development was continued far past "prototype" stage.
+
+##### Speech as User Interface Too Awkward? 
+There's also the problem of speech as a user interface. 
+
+We typically only like non-human things to speak in response to when we speak at them. 
+We can also get easily annoyed when things talk at us again and again. 
+If you drive along a floodplain boundary instead of perpendicular across it, you can end up being told 
+you're inside, then outside, then inside, then outside, then inside, then outside 
+as you drive down a single road in a 1 minute time period. This feels less than ideal. 
+Figuring out exactly when to provide what information so as to match user's expectations and needs 
+is not an easy and straight forward thing to do but critical for information provided as speech.
+I added buttons to the website that change whether information is spoken every X time unit or whenever 
+a floodplain boundary is crossed. There probably needs to be more development effort in this direction 
+to be pleasant to use repeatedly. Even when limited to speaking at floodplain boundaries only, my 
+wife finds it annoying. Different people will have different thresholds for what is acceptable. 
+Some will have very low thresholds.
+
+## This Approach Better for A Different Category of Data Maybe?
+
+Driving directions is an extremely common exampe of information being supplied to us as speech tied to
+our location. Thinking of a second or a third example is much harder to do. 
+I am not convinced floodplain information is going to break out and be another example of where data 
+provided as speech makes sense and gets lots of use. It was a fun experiment though! It might still have 
+enough usefulness for serious flood nerds? I'm skeptical it could smoothly fit into the house shopping 
+experience of most people, but I am open to being wrong.
+
+That being said, I can not help but think there's another spatial dataset that makes sense for this 
+type of interface. I am just not sure what it is. While the website was made for floodplain informatin, 
+there's nothing stopping anyone from swapping in another geojson. Anything that's spatial polygons can 
+have a speech interface with this approach. If you know a type of data in geojson or shapefile form 
+that would be super useful to know when you 
+enter or exit its boundaries, please reach out! Alternatively, just fork
+ [the repository](https://github.com/JustinGOSSES/spoken-floodplain) and make something new.
