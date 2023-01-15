@@ -10,9 +10,22 @@ bibliography: references-data.bib
 canonicalUrl: https://justingosses.com/blog/maps-that-speak/
 ---
 
-<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
 
-## Overview
+
+## Introduction
+
+As a map nerd and someone who has done some work in text-to-speech and speech-to-text, the idea of 
+combining the two has appeal to me. Maps are abstract visual representations. Lots of benefits to that, 
+but it also means when your eyes are busy doing 
+something else, it can be hard to consume map information. If your hands are busy doing something else, 
+it can be hard to navigate maps as that usually requires your hands. Speech-to-text and text-to-speech opens up 
+possibilities for consuming map-based information in situations where it would otherwise be difficult to do so.
+
+This blog post describes an experiment in consuming floodplain spatial information as spoken words while on the move, 
+discusses why you might want to do that, whether it would actually be something someone would use, and asks if 
+maybe there is another data type that would make more sense for this type of interface.
+
+## Context
 
 A few months ago, I completed a Houston hackathon project to build a front-end only website that tells you when 
 you enter and leave a floodplain in Harris county with a few other people. I previously wrote about lessons 
@@ -21,8 +34,9 @@ learned finding the data files of relevant floodplain polygons in the blog post
  and see the code in the [spoken-floodplain](https://github.com/JustinGOSSES/spoken-floodplain) GitHub repository. 
 
 
-## Floodplains in Houston, Harris County, Texas
-Although there are a few areas where swamps were drainged, Houston is not entirely built a swamp like sometimes gets 
+## Floodplains in City of Houston and Harris County Texas
+Houston has a history of flooding. Although there are a few areas where swamps were drainged, 
+Houston is not entirely built a swamp like sometimes gets 
 said by people not from here on social media, and sometimes regular old media. It is, however, built entirely on a 
 very flat, low lying 
 coastal plain with limited drainage.
@@ -48,13 +62,17 @@ an even more gradual slope to the sea. The
 that has fallen in large storm events is another contributor.
 
 !["Zoomed out map of Houston area floodplains."](../static/images/blog/maps-that-speak/harris-county-floodplain-map2.png)
-Floodplain limits on left and right side of the map are limits of Harris County, not limits of all floodplain. 
+The floodplains shown on this map are limited to Harris County, the area with no blue on the left and rights side are 
+different counties, not areas with no floodplains or floodways. 
 The greater Houston area is approximately what is shown here. 
 
 Floodplains are exaggered a little in this view due to outline thickness, but it does a good job of showing 
-just how much of Houston is technically within a FEMA designated floodplain of some type. This view was created 
-with FEMA floodplain estimates at one point in time. Note that FEMA floodplain polygons change over time and 
-there has been flooding outside of them. 
+just how much of Houston is technically within a FEMA designated floodplain of some type. 
+This view was created 
+with FEMA floodplain estimates at one point in time. Details are in the GitHub repository mentioned above.
+Please note that FEMA floodplain polygons change over time. 
+The FEMA provided floodplain polygons shown here will be outdated in months or years. 
+They are also always just estimates. Flooding has been experienced outside of these floodplain limits.
 
 
 ## When and How You Get Information Matters
@@ -214,8 +232,8 @@ is not an easy and straight forward thing to do but critical for information pro
 I added buttons to the website that change whether information is spoken every X time unit or whenever 
 a floodplain boundary is crossed. There probably needs to be more development effort in this direction 
 to be pleasant to use repeatedly. Even when limited to speaking at floodplain boundaries only, my 
-wife finds it annoying. Different people will have different thresholds for what is acceptable. 
-Some will have very low thresholds.
+wife finds it annoying. Different people will have different thresholds for what is acceptable when 
+using a speech-based interface. Some will have very low thresholds.
 
 ## This Approach Better for A Different Category of Data Maybe?
 
@@ -224,7 +242,7 @@ our location. Thinking of a second or a third example is much harder to do.
 I am not convinced floodplain information is going to break out and be another example of where data 
 provided as speech makes sense and gets lots of use. It was a fun experiment though! It might still have 
 enough usefulness for serious flood nerds? I'm skeptical it could smoothly fit into the house shopping 
-experience of most people, but I am open to being wrong.
+experience of most people, but I would be happy to be wrong.
 
 That being said, I can not help but think there's another spatial dataset that makes sense for this 
 type of interface. I am just not sure what it is. While the website was made for floodplain informatin, 
