@@ -5,7 +5,7 @@ const siteMetadata = {
   description: 'Justin Gosses personal website & blog',
   language: 'en-us',
   theme: 'dark', // system, dark or light
-  siteUrl: 'https://justingosses.github.io/justingosses-website/',
+  siteUrl: 'https://justingosses.com',
   siteRepo: 'https://github.com/JustinGOSSES/justingosses-website',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',

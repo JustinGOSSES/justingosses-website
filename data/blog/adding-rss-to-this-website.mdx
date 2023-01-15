@@ -1,0 +1,69 @@
+---
+title: 'Adding RSS to this Website'
+date: 2022-11-26T15:32:14Z
+lastmod: '2022-11-26'
+tags: ['web-development', 'RSS', 'social-mediua', 'website', 'twitter', 'meta']
+draft: false
+summary: 'Learnings from adding RSS to this next.js website'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/adding-rss-to-this-website/
+---
+
+## Why
+
+There has been a bit of a conversation going recently about where and how to best participate on social media. An article from Bill Hunt comes to
+mind about <a href="https://billhunt.dev/blog/2022/09/19/social-semantic-web/">bringing back some retro social media methods</a>, but it is only one example.
+The storm around Elon Musks acquisition of Twitter kicked this conversation into overdrive. After a few people I follow on Twitter departed to
+their own websites, I decided it was time to get deeper into RSS so I could more easily follow their writings.
+
+Although it was a "back to" RSS event for some, it has been an introduction to RSS for me. The basic concept of RSS I knew, but I have never added a RSS feed to a
+blog or used an RSS feed reader to keep track of many different RSS feeds.
+
+## Addding an RSS feed to this website
+
+RSS was already built into the <a href="https://github.com/timlrx/tailwind-nextjs-starter-blog">tailwind-nextjs-starter-blog template</a> I use for this website, so
+adding it to the website was largely a matter of finding an RSS <a href="https://github.com/JustinGOSSES/justingosses-website/blob/main/components/social-icons/rss.svg">
+icon</a>, finding where the RSS feed XML file gets exported to [which is <a href="https://justingosses.com/feed.xml">https://justingosses.com/feed.xml</a> based on the
+code in <a href="https://github.com/JustinGOSSES/justingosses-website/blob/main/lib/generate-rss.js">generate-rss.js</a>], and adding the right links in the
+footer code. This was fairly straight forward. The content of xml.rss comes from the site metadata and each blog posts front-matter.
+
+### Debugging A Possible Problem
+
+One area I did devote some time to was figuring out why when I put my websites RSS feed, justingosses.com/feed.xml, into an RSS reader, I only saw title and
+description for each post instead of being able to read the entire post inside of RSS reader like I could for the other two RSS feeds I was trying out. As a reader,
+I felt i was a slightly better experience to not have to leave the RSS leader via a link click to get the full post. Having zero experience with RSS, I also wondered
+if there was something broken in how my RSS was constructed as the other two websites I was trying out, had full posts appear inside the RSS reader.
+
+After digging a bit deeper I decided only showing title and description, but not the full text, is actually the behavior that I wanted. Although I do not look at the
+website traffic analytics often, it is nice to have some data there when I do look at it. By making readers visit the actual page, I am ensuring I can
+detect what posts generate traffic and interest.
+
+### A Few Helpful RSS Resources
+
+A few resources helped me figure out what was going on and that the behavior I was seeing was okay. First, the w3 page on RSS describes the basic
+
+<a href="https://www.w3schools.com/XML/xml_rss.asp#rssref">schema</a>. Second, <a href="https://observablehq.com/@triptych/rss-reader">
+  this
+</a> Observable notebook by <a href="https://andreww.xyz/">Andrew Woolridge</a> for parsing RSS XML
+files was helpful for being able to compare my XML file at https://justingosses.com/feed.xml to Tom
+Macwright's at https://macwright.com/rss.xml.
+
+### Finding an RSS Reader that Works for me
+
+I am still starting to explore the product space for RSS readers.
+Currently, I am using <a href="https://www.inoreader.com/">Inoreader</a> via a bookmark to their website on my laptop and their iOS app, but I plan to try more before I settle on one.
+
+## The Value Case for Retro Social media
+
+The basic value proposition of RSS is you can go to one place, your RSS reader, and get notifications of new content across many different websites.
+
+In addition, if you're worried about platforms having to much control or being able to manipulate you by showing you content that maximizes engagement, RSS is a way
+lean against that a bit. There's no algorithms to maximize engagement and you're in charge of what RSS feeds you add to your reader.
+
+The tradeoff is that you have to do more work to source interesting content and probably read through some low value content that even your favorite writers produce.
+
+## How to Get Notifications of New Posts via RSS
+
+You can add my RSS feed to your RSS reader by clicking on the RSS icon that looks like a series of rays around a dot or one quarter slice of what was concentric circles in the footer at the
+bottom of this page. That link will take you to some ugly looking XML if followed directly, but it can be put into an RSS reader and be notified when there is new content.
