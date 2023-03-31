@@ -1,0 +1,402 @@
+---
+title: 'On Large Language Models and Roadside Bot Geologists'
+date: 2023-03-30T15:32:14Z
+lastmod: '2023-03-30'
+tags: ['AI', 'machine-learning', 'open-ai', 'geology', 'bot', 'nlp','experiments','side-projects']
+draft: true
+summary: 'Learnings from an experiment to see if a large language model could be used to generate geologic descriptions of arbitrary point locations any where around the world.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/adding-rss-to-this-website/
+---
+
+## Summary
+
+Although you do not have to spend a lot of time in the field to be a geologist, the experience of standing beside a cliff face 
+while someone expertly points out the details of the rock formations, contextualizing them within the broader regional 
+geology, and using those details as examples to illustrate fundamental geological concepts is a quintessential part of 
+geology education that forms a common shared experience. In fact, there exists an entire genre of books called ["roadside geology of [___]"](https://mountain-press.com/collections/roadside-geology) that 
+capitalize on the idea of using point locations along a route to build a larger understanding of geological 
+phenomena. The information in these books is presented in a manner that mirrors the traditional field 
+trip experience.
+
+![Image of group of students standing in SP crater on a geology field trip](../static/images/blog/llm-geology-roadside-bot/SP-crater-field-trip-image.png)
+Figure 1. Photo of a group of Franklin and Marshall College students standing in front of SP crater on a geology field trip across Arizonia.
+
+Usually, someone with deep knowledge of the area is needed to lead these excursions, 
+as they are familiar with the stops along the way and have spent countless hours researching and organizing 
+the information to be delivered at each stop. This includes accounting for the audience's level of knowledge 
+and the time available to deliver the content. However, there are times when such a knowledgeable guide 
+is not available. Perhaps a geologist, or simply someone with an interest in geology, is driving along a road 
+or looking at a map and wishes they had access to information about the local geology and its broader context. 
+
+> Is it possible to create a bot that can take on at least some of the role of a field trip leader, by 
+finding and presenting relevant geological information for an arbitrary point location?
+
+With the recent jump in natural language processing abilities associated with large language models (LLMs), 
+it is increasingly plausible we might be able to automate information delivery in a way that mirrors, 
+at least a little bit, the experience of a field trip.
+This document poses the question of whether we can create a bot that for any given point location expressed 
+as a latitude and longitude, provides an introductury statement like that might be delivered at the 
+beginning of a field trip stop. Such a task was previously impossible to do programmatically. This blog post 
+explores the ways in which large language models make it easier to accomplish this task while also 
+highlighting the challenges that remain.
+
+## The context of when was this written
+
+This was written in March of 2023. There has been a surge of interest and activity in large language models 
+driven by the capabilities of OpenAI's ChatGPT application and foundational models. The tect community on 
+Twitter talks about nothing else. My local paper in Houston, Texas is exploring using ChatGPT to help 
+write taco reviews.
+
+While I've previously done some work and side projects in more traditional natural language processing areas, 
+this is my first experiment using pre-built large language models in a side project. I have 
+no idea what I'm doing. There's a high chance I'll look back on this writing in 3-12 months and groan, but for now it is helping me collect my thoughts.
+
+![Image of a dog at a computer with the words "I have no ideal what I'm doing".](https://i.kym-cdn.com/photos/images/original/000/234/765/b7e.jpg) [RIP Bailey the "I have no idea what I'm doing" dog](https://www.reddit.com/r/pics/comments/7oym1s/reddit_you_made_our_dog_semifamous_years_ago_you/)
+
+## The user experiences I aim to build
+
+To user experience I am trying to build is: 
+1. The user inputs a latitude and longitude. 
+  - This could be via text input form, it could be through you giving your phone's browser permission to access your location, or it could be through inputting a city, state, and country name that is then geocoded to a point. 
+  - In all cases, it is a point location.
+2. The user is told a narrative about the geology at that point. 
+  - Initially, the idea is the information involved is: 
+    - Geology at the surface at that point.
+    - Regional context of that local geology. 
+
+This mirrors in many ways the "real-world" geology field trip experience. Someone tells you about the rocks in front of 
+you and then puts them into context. As this is a quick experiment, I am just writting it as a bunch of hacky python code that gets run from a terminal by calling `python main.py`.
+
+### Prior art with Macrostrat API and text-to-speech in a simple webpage
+
+I've previously experimented with this sort of idea in an Observable notebook called *["Stratigraphy Speech"](https://observablehq.com/@justingosses/stratigraphy-speech)* that was created shortly before a multi-state road trip. 
+I wanted to have something an automated "road-side geology of ___" book that I could turn on from my phone while driving.
+
+This approach uses no large language model or any other type of natural language processing. It calls a singular API 
+with a point location and parses the data it gets in response.
+
+An observable notebook is a website that holds the JavaScript code and executes it at the same time. The webpage asks for the user's 
+location via the location API built into every browswer & permission to play sound. 
+Once it has those, it uses the location to call the [Macrostrat API](https://macrostrat.org/), 
+which returns data in a JSON that is about the top two geologic units at that location. This JSON file is parsed by several different JavaScript functions 
+that you can see in the notebook and the resulting information is combined with pre-written text into a standard one-size 
+fits all narrative. That narrative is then spoken to the user via browser's text-to-speech capabilities, which all 
+browsers now have but are rarely used.
+
+The end effect is a webpage you can give permissions for in advance and then open later. Upon pushing one 
+button, it will tell you about the geologic unit at the surface at that location.
+
+#### Limitations of this approach
+
+Upon using this, there are a few limitations that quickly become obvious. First, due to the narrative being one-size fits 
+all and deterministically created from well structured data, it can get kind of boring to hear again and again as you 
+drive down the road. Even if the 
+units age and lithology vary, all of the glue words stay the same every single time you try to get information. Second, 
+there is not regional information of contextual information. All you get is what the API gives you, which is lithology, age, and maybe interpreted depositional environment, all data originally extracted from a geologic map.
+
+## The problem of trying to scale creating geological narratives from data APIs.
+Ideally, you'd be able to not just get an individual point location data read back to you in a single construction. 
+You would also get regional geology, historical narrative, information on what is unique, etc. The content you want as 
+narrative could reasonably vary, just like actual field trips. There are a variety of other variations in what information 
+is provided, how it is provided, and how the user interacts with it that quickly start to pile up if you want to make 
+something useful and pleasant to use.
+
+Types of variations in the information that might be desired:
+- Short summary vs long with details
+- Point-based information vs. regional-based information
+- General information vs. sub-field specific
+- For general audience vs. for expert audience
+- How this point location differs from the last location and what that tells us
+
+Types of different interactions with information that might be desired
+- one-way or chat
+- statement vs. question & answer
+- text or speech
+
+To do all this with deterministic traditional programming becomes both complex and tedious rather quickly. 
+Well structured standarized sources of information must be located, assuming they exist. Often times, they don't exist. 
+Where they do exist, many different functions must be written for each new piece of well-structured information and 
+each new way to present that information. 
+
+> Using traditional deterministical coding to programmatically create narratives from data APIs becomes too laborious quickly unless all the information needed is already very well structured in a finite number of known places and the 
+number of ways people want to interact and hear about that information is limited.
+
+## What Large Language Models Offer
+Large language models (LLM) offer is an improvement on this development experience with a lower labor to functionality slope. 
+Their outstanding ability to predict reasonable sounding 
+next words given a prompt enables them to do a variety of tasks directed by plain language instructions, 
+also known as "prompts", instead of abstract code.
+
+Because they are good at predicting the next words given a sequence, they can do the following tasks:
+
+### Skilled summarization
+LLM can summarize three pages of text into a single paragraph. They can also summarize text with a focus on specific 
+types of content or in a specific style of writing or speaking. Instead of writing many functions to summarize many 
+different types and sizes of text, you one prompt or maybe a few prompts and then be done.
+
+### Flexible extraction 
+LLM can extract keywords, concepts, and specific information from text. 
+When my previous team at NASA created a model to predict topic tags against abstracts and READMEs, 
+it required a pre-existing dataset of millions of labeled abstracts 
+and months of training and evaluating different models. Now you can get comparable performance from an OpenAI model without 
+having to do any of the data preparation or training yourself. It shrunk a 6-12 month project to a day. 
+Additionally, you can just provide a list of possible 
+tags in the prompt, or none at all, and it returns useful predictions. It is serious jump in capabilities compared to 
+what existing one or two years ago. 
+
+### General knowledge....to some extent
+Althogh LLMs are infamous for making up things that sound right, they can also return general knowledge accurately at 
+times. Figuring out when to trust such information evolves a lot of trial and error before you can be confident of 
+accuracy for a given request. 
+
+As an example, if you just ask ChatGPT to "Describe the geology of [insert a city]", the answer it gives varies in accuracy. 
+For Port Clinton, Ohio, it tends to be do well, perhaps becaues the only writing that involves both "Geology" and 
+"Port Clinton, Ohio" is about the geology of Port Clinton. In constrast, the same question for Houston, Texas gets 
+some information wrong. The formation ages given are common formations to be discussed where the world "Houston" is used 
+but not actually the top two formations. I suspect this is because Houston has a lot of geologists, so there is a lot of
+written about geology elsewhere that mentions Houston.
+
+As supurb prediction machines LLMs can give inaccurate information when the most common text that shares the words in the 
+prompt isn't exactly what the prompt is asking. Other times, it seems there likely isn't anything in its training that 
+relates to the question in prompt.
+
+> To get around these knowledge limitations, we can combine LLMs with geologic data APIs and easily searchable text 
+on the subjects requested in the prompt. We can also use cleaning and validation functions to figure out what information 
+might be more trustworthy or relate the most to the given question.
+
+## Large Language Model Techniques
+By combinging deterministitic APIs, LLMs API calls with different prompts, and various validation and data cleaning 
+functions we can create "chains" that get around some of the limitations of using just deterministic approaches or 
+just LLM approaches. 
+
+For more about "agents", "chains", and other concepts for building applications with LLMs, check out 
+the documentation for [Lanchain](https://python.langchain.com/en/latest/) or [Semantic-Kernal](https://devblogs.microsoft.com/semantic-kernel/), two libraries for calling OpenAI-type model APIs.
+
+## How does ChatGPT do with single questions:
+
+If asked to "Describe the geology of [insert point coordinate]", it 
+defers as the task is not something it is comfortable doing.
+
+![Screenshot of ChatGPT asking for help](../static/images/blog/llm-geology-roadside-bot/ChatGPT_sc_2.png)
+
+If I instead ask it to describe the geology of a well known location, 
+it complies but does so in a way that is not entirely correct. 
+Although there is precambrian bedrock in the area, a geologic map 
+of the area (which you can find [in this research paper](https://www.researchgate.net/profile/Mark-Smethurst/publication/301546802/figure/fig3/AS:359759359299591@1462784723827/Bedrock-geology-map-of-the-Oslo-area-featuring-the-NNE-SSW-Oslo-Rift-with-its-associated.png) or on [Macrostrat](https://macrostrat.org/map/loc/9.9939/59.9634#x=9.754&y=59.995&z=6.7) ) shows there is more recent glacial deposits on top in addition to much older metamorphized 
+sediments.
+
+![Screenshot of ChatGPT asking for help](../static/images/blog/llm-geology-roadside-bot/ChatGPT_sc_3.png)
+
+Interestingly, if you use the thumbs down button to let ChatGPT know 
+it is incorrect, it asks how it is incorrect. It then uses that information to suggest an improvement as shown below on the right side.
+
+![Screenshot of ChatGPT asking for help](../static/images/blog/llm-geology-roadside-bot/ChatGPT_screencapture_1.png)
+ 
+> Ideally, however, we can get a programmatic answer that is entirely correct. 
+
+One way to possibly do that is to source factual data and then have a LLM model reorganize that information into text that matches your needs.
+
+There's a variety of names for this that are starting to appear. One is "augmented retrieval". Some of these approaches use a combination of 
+keyword search, vector space search, and LLMs to find the most relevant information and then reorganize it into a form that is more useful 
+to a user, often while pointing back to the original sources for more information and double checking. 
+
+For our approach, we'll try to rely 
+on the LLM as little as possible for actual geologic information and instead use it to help us identify what is relevant information 
+and then reorganize the data & narrative information into a format and presentation style that serves our purposes best.
+
+## Where to get deterministic geology and geographpic data 
+
+Currently, I am working with two places to source geologic information and a geocoding service to get place names to go with the initial 
+point location that we start everything out with.
+
+### Bing Geocoding API:
+
+Given that the process I am developing starts with a point location but the information I want to 
+provide include regional context, I need the words to find the appropriate regional names. To get 
+them I use the [Bing Maps Geocoding API](https://learn.microsoft.com/en-us/bingmaps/rest-services/locations/). 
+Under a certain amount of calls, the geocoding service is free. 
+I provide a latitude and longitude, it returns a street address, including state and country.
+
+### MacroStrat: Well-structured information about a point location
+
+Macrostrat describes itself at "the world's largest homogenized geologic map database". You can find a longer description on their 
+[website](https://macrostrat.org/). We use their API to source 
+geologic data for a point location. 
+One endpoint of their API provides stratigraphic column information across most of United States of America and Canada. 
+Another endpoint grabs the bedrock geology from large regional and global maps. Where the stratigraphic 
+information exists, that is preferred due to higher resolution information. In addition, it lets you 
+ignore the boring "recent alluvial soil" that sometimes covers the most interesting bedrock geology 
+underneath. 
+
+Although Macrostrat is great as a single API that gets you point location information around the world, 
+it is limited in that it doesn't provide any regional information or geologic history. It just says 
+what types of rock exist at a given point. For that broader type of regional or 
+historical information, we need to look elsewhere.
+
+### Wikipedia: Semi-structured sources of regional information
+
+One place to get regional geologic information is wikipedia. There are variety of [python packages](https://github.com/goldsmith/Wikipedia) 
+built to call the Wikipedia API. We can use them to search for "Regional geology of [insert location]", 
+get back pages, evaluate the pages by some criteria to see if they are actually about the geology of where we care about, 
+and then have a LLM summarize the regional geology 
+into a paragraph instead of however long the Wikipedia page is. 
+
+This approach often works out great as there are many wikipedia pages written about the geology of 
+states, proviences, and countries. For example, [this is a wikipedia page about the Geology of Ohio](https://en.wikipedia.org/wiki/Geology_of_Ohio). It is the first Wikipedia search result for 'Geology of Ohio'.
+
+However, other times the page returned does not describe the geology of the location we're interested in. 
+As we try to get state or provience level information from the geocoding API, that geographic name is not always useful when used to search 
+for geology pages on wikipedia. For example, a point location in the city of Oslo, Norway returns a provence name of 'Oslo' as well.
+If we search for 
+[Geology of Oslo](https://en.wikipedia.org/wiki/Special:Search?go=Go&search=Geology+of+Oslo&ns0=1) on wikipedia, we get several pages, but 
+nothing that is exactly geology of Oslo Norway. Pages that return are "University of Oslo", "Geology", 
+"Natural History Museum at the University of Oslo", "Oslo Graben", and "Geology of Great Britain".
+
+What is needed to get around this behavior is (1) a method to evaluate the validatity of the wikipedia search results for the information we need (2) and a fallback strategy for what to do next. 
+
+### Other unstructured sources of geology information: bing search, literature, etc. 
+
+Other sources of information might be literature or search engine results. 
+I am not currently doing this, 
+but opportunities exist. For example, the Macrostrat map API often provides a way to grab references to
+literature associated with the map. There's also entire services devoted to semantic search of journal articles now with what 
+is possible there increasing very quickly.
+
+### When prompts give accurate results reliably
+
+One source of factual information I used from prompts was the square area of each country. 
+
+```
+promptDecideIfCountySmall = PromptTemplate(
+input_variables=["country"],
+    template='What is the area of {country} . Return only an integer and no other text.'
+)
+```
+
+After testing this across several countries, I convince myself the answers were reliable. It was faster to do this then 
+figure out how to possibly source this information from say wikipedia's data APIs or another API source.
+This information was used to make a decision whether to use the state name for regional context or the country name for regional
+context.
+
+## Chaining rule-based functions vs. prompt-based functions
+
+As mentioned above, I have two types of functions that I use to get information. One type is a rule-based function and the other 
+uses LLM prompts. 
+Combining multiple of these together is a [chain](https://learn.microsoft.com/en-us/semantic-kernel/howto/chainingfunctions).
+
+#### High-level description of the chain used in this experiment:
+1. Send latitude and longitude to Bing Maps geocoding API, get back a street address
+2. Send latitude and longitude to Macrostrat API, get back geologic information about surface layers in a JSON sourced from a geologic map.
+3. Use a prompt powered by OpenAI's GPT-3 to turn the JSON data on lithology, age, and depositional environment into a paragraph of text.
+4. Parse street address into city, state, country.
+5. Use a prompt powered by OpenAI's GPT-3 to get the square area of the country. Based on the result, decide to use the state or country name for the next step.
+6. Use the state country to search for a wikipedia page about the geology of that region.
+7. Use a prompt powered by OpenAI's GPT-3 to summarize the wikipedia page into a paragraph of text.
+8. Use a prompt powered by OpenAI's GPT-3 to determine if the summarized text is about both "geology" and the "region".
+9. If the text is not about both "geology" and the "region", use a prompt powered by OpenAI's GPT-3 to ask for the regional geology areas of the state or country, then use that as a fallback. I have found asking about the regional areas first is more likely to get a reasonable answer then directly asking for the regional geology.
+10. Use a prompt powered by OpenAI's GPT-3 to combine two local point summary and regional summary into a single several paragraph summary using the voice of a professor on a field trip.
+
+
+## Current experiments on part of a weekend
+
+Resuls for  "latitude": 41.512, "longitude": -82.9377 (Port Clinton, Ohio)
+
+```
+Good day, my students! Welcome to our geology field trip. We are in the Port Clinton area of Ohio, which is composed of two distinct geological layers. 
+
+The top layer is a glacial and lacustrine depositional environment, estimated to be 0.0117 million years old and composed of 48.81% gravel, 44.05% sand, and 7.14% clay. 
+The bottom layer is a marine and inferred marine depositional environment, estimated to be 358.9 million years old and composed of 37.5% shale, 12.5% sandstone, 31.25% limestone, and 18.75% dolomite. 
+These two layers are separated by approximately 40 million years.
+
+The region we are in is part of the Glacial Region of Ohio, which is located in the northern part of the state and is characterized by glacial deposits from the Pleistocene Epoch. 
+The soils in this region are generally deep and fertile, making it ideal for agriculture. 
+We are also close to the Dissected Plateau Region of Ohio, which is located in the central and eastern parts of the state and is characterized by rolling hills and valleys that were formed by the erosive forces of rivers and streams.
+
+```
+
+Resuls for latitude = 9.34 longitude = -82.25 (Bocas del Toro, Panama) 
+
+```
+Greeting the class on their geology 101 field trip, Professor John McPhee began by describing the geology of Avenida G Norte, Bocas del Toro, Bocas del Toro District, Bocas del Toro, Panama. 
+
+The area is composed of two stratigraphic layers. 
+The Upper Cretaceous unit, which is approximately 72-66 million years old, is composed of 50% sandstone and 50% shale, likely deposited in a shallow marine environment. 
+The Lower Cretaceous unit, which is approximately 145-100 million years old, is composed of 40% sandstone, 40% shale, and 20% limestone, likely deposited in a shallow marine environment. 
+
+The Valiente Formation, part of the Bocas del Toro Group, is located in the region and dates back to the Serravallian period, part of the Neogene period. 
+This formation is composed of sedimentary rocks and preserves fossils of bivalves, gastropods, and scaphopods, providing insight into the regional geologic history. 
+The Valiente Formation is important for understanding the geologic history of the region, as it provides evidence of the faunal composition of the Caribbean during the Neogene period, as well.
+```
+
+
+### Learnings from current experiments
+
+My experience building the previous experiment leveraging the MacroStrat API in a quick Observable Notebook was 
+that it worked, but the experience was lacking. The content was limited to only a point location and tended to become 
+boring after while. It also led to wanting more context beyond that point. Writing code to create more variable 
+narratives was obviously possible, but the time to do so not minor.
+
+> The OpenAI API's ability to reword the data into narratives helps the information be less boring. Additionally, 
+its ability to rephrase and summarize the content opens up the opportunity to use additional information that is not
+structured data from an API but unstructrued data from various sources.
+
+Technically speaking, this was also possible with other methods, but the amount of time it would take to build is 
+substantial for each tiny new feature add. In contrast, getting to the same experience by combinging data APIs, search 
+results, etc. with LLM prompts feels much easier. 
+
+> The slope of labor for functionality is much lower if LLMs are used.
+
+#### This is a Big Change in Productivity
+The thing it feels most similar to out my my own experiencesw is the appearance of NASA Worldwind / Google Earth.
+When I started graduate school in 2004, I needed aerial imagery of the area I was going to do field work at later 
+that year. The process at the time involved looking at squares on a map, sending an email to purchase images of that 
+square over several days, and then waiting two weeks for the images to arrive on a physical CD mailed via the postal service. 
+You would hope the days you purchased 
+did not have clouds. After I did that once, NASA Worldwind and shortly after Google Earth came out. Instead of 
+waiting two weeks, you could sit at your computer and scroll everywhere on the planet and instantly seeing 
+satellite images of the entire globe.
+It was a big enough change that the entire research group was behind a computer calling out new locations to scroll 
+to for the rest of the day and part of the next.
+It blew everyone's mind. It wasn't a tiny step change in productivity, 
+it was a being thrown across the room change in productivity.
+
+## What is still hard
+
+What now controls the productivity curve for programmatic descriptions of geology at point X are two related constraints. 
+
+First, can you figure out if the result is reliable enough to use. A prompt can 
+work fine two or ten times before giving an unexpected result on the eleventh. To some extent both prompts and deterministic 
+functions can be used to validate responses. The number of geology terms in a Wikipedia page can help provide a clue to 
+whether that page is a valid result to summarize for the regional geology. However, the wikipedia page for "geology" 
+has a lot of geology terms even though it is not at all what's wanted for the geology of the region around Oslo, Norway. 
+Prompts combined with traditional natural language processing is probably more effective, but creating effective methods 
+requires creativity, and at least initially, a well-informed human looking at the results.
+
+Second, are there enough data APIs and sources of unstructured factual information with the right information for 
+your task? Some states are too small to have a wikipedia page titled "Geology of [insert state]". Other times the 
+state or country boundaries are much less useful than other boundary terminology. What appears to have potential is 
+a combination of functional and prompt-based data requests, validation, rankings, cleaning, and resummarization.
+
+There's also the related but somewhat separate problem of is the deterministic data API accurate? Macrostrat is far and away the 
+easiest to use and most accurate geology data source I have found that works at some level pretty much everywhere. That being said, it 
+has told me information that I know to be wrong. I can remember driving through kentucky looking at sandstone 
+along the road cuts while Macrostrat told me the area it was 100% limestone. The problem of data accuracy limitations are even more 
+pronounced once you're outside a country that has both detailed geologic maps and advanced open data policies.
+
+If the deterministic data sources are flawed, the LLM filtered information will be wrong as well.
+
+#### Conclusion
+
+*Also as a reminder, I do not speak for my employer.*
+
+I still feel like I have no idea what I am doing. However, the experiment seems very promising. 
+This is just a little side project created after several hours of work on a weekend plus a few hours while watching TV.
+Yet, I got much farther towards the end goal than when I used just the Macrostrat APi and some string parsing code.
+I also felt much more productive. I am excited to see what happens next, and I'm writing this in hope that 
+others might [try to build on the work a little more](https://github.com/JustinGOSSES/LAGDAL).
+
+
+
+
