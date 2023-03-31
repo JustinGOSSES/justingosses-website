@@ -10,7 +10,7 @@ bibliography: references-data.bib
 canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/adding-rss-to-this-website/
 ---
 
-## Summary
+## Geology Field Trip Stop Introduction Statements
 
 Although you do not have to spend a lot of time in the field to be a geologist, the experience of standing beside a cliff face 
 while someone expertly points out the details of the rock formations, contextualizing them within the broader regional 
@@ -24,7 +24,7 @@ trip experience.
 Figure 1. Photo of a group of Franklin and Marshall College students standing in front of SP crater on a geology field trip across Arizonia.
 
 Usually, someone with deep knowledge of the area is needed to lead these excursions, 
-as they are familiar with the stops along the way and have spent countless hours researching and organizing 
+as they are familiar with the stops along the way and have spent many hours researching and organizing 
 the information to be delivered at each stop. This includes accounting for the audience's level of knowledge 
 and the time available to deliver the content. However, there are times when such a knowledgeable guide 
 is not available. Perhaps a geologist, or simply someone with an interest in geology, is driving along a road 
@@ -35,8 +35,8 @@ finding and presenting relevant geological information for an arbitrary point lo
 
 With the recent jump in natural language processing abilities associated with large language models (LLMs), 
 it is increasingly plausible we might be able to automate information delivery in a way that mirrors, 
-at least a little bit, the experience of a field trip.
-This document poses the question of whether we can create a bot that for any given point location expressed 
+at least a little bit, the experience of a field trip. This document poses the question of whether we 
+can create a bot that for any given point location expressed 
 as a latitude and longitude, provides an introductury statement like that might be delivered at the 
 beginning of a field trip stop. Such a task was previously impossible to do programmatically. This blog post 
 explores the ways in which large language models make it easier to accomplish this task while also 
@@ -120,7 +120,8 @@ Well structured standarized sources of information must be located, assuming the
 Where they do exist, many different functions must be written for each new piece of well-structured information and 
 each new way to present that information. 
 
-> Using traditional deterministical coding to programmatically create narratives from data APIs becomes too laborious quickly unless all the information needed is already very well structured in a finite number of known places and the 
+> Using traditional deterministic coding to programmatically create narratives from data APIs becomes too laborious quickly 
+unless all the information needed is already very well structured in a finite number of known places and the 
 number of ways people want to interact and hear about that information is limited.
 
 ## What Large Language Models Offer
@@ -148,33 +149,14 @@ what existing one or two years ago.
 
 ### General knowledge....to some extent
 Althogh LLMs are infamous for making up things that sound right, they can also return general knowledge accurately at 
-times. Figuring out when to trust such information evolves a lot of trial and error before you can be confident of 
+times. Figuring out when to trust such information evolves trial and error before you can be confident of 
 accuracy for a given request. 
 
-As an example, if you just ask ChatGPT to "Describe the geology of [insert a city]", the answer it gives varies in accuracy. 
-For Port Clinton, Ohio, it tends to be do well, perhaps becaues the only writing that involves both "Geology" and 
-"Port Clinton, Ohio" is about the geology of Port Clinton. In constrast, the same question for Houston, Texas gets 
-some information wrong. The formation ages given are common formations to be discussed where the world "Houston" is used 
-but not actually the top two formations. I suspect this is because Houston has a lot of geologists, so there is a lot of
-written about geology elsewhere that mentions Houston.
-
-As supurb prediction machines LLMs can give inaccurate information when the most common text that shares the words in the 
-prompt isn't exactly what the prompt is asking. Other times, it seems there likely isn't anything in its training that 
-relates to the question in prompt.
-
-> To get around these knowledge limitations, we can combine LLMs with geologic data APIs and easily searchable text 
-on the subjects requested in the prompt. We can also use cleaning and validation functions to figure out what information 
-might be more trustworthy or relate the most to the given question.
-
-## Large Language Model Techniques
-By combinging deterministitic APIs, LLMs API calls with different prompts, and various validation and data cleaning 
-functions we can create "chains" that get around some of the limitations of using just deterministic approaches or 
-just LLM approaches. 
-
-For more about "agents", "chains", and other concepts for building applications with LLMs, check out 
-the documentation for [Lanchain](https://python.langchain.com/en/latest/) or [Semantic-Kernal](https://devblogs.microsoft.com/semantic-kernel/), two libraries for calling OpenAI-type model APIs.
 
 ## How does ChatGPT do with single questions:
+
+ Before we talk about chains in detail though, let's establish how well another single prompt works. 
+ We can use the [ChatGPT](https://chatgpt.com/) API to test this.
 
 If asked to "Describe the geology of [insert point coordinate]", it 
 defers as the task is not something it is comfortable doing.
@@ -193,18 +175,31 @@ Interestingly, if you use the thumbs down button to let ChatGPT know
 it is incorrect, it asks how it is incorrect. It then uses that information to suggest an improvement as shown below on the right side.
 
 ![Screenshot of ChatGPT asking for help](../static/images/blog/llm-geology-roadside-bot/ChatGPT_screencapture_1.png)
- 
-> Ideally, however, we can get a programmatic answer that is entirely correct. 
 
-One way to possibly do that is to source factual data and then have a LLM model reorganize that information into text that matches your needs.
+As another example, if you just ask ChatGPT to "Describe the geology of Houston, Texas", it gets 
+some information wrong. The formation ages given are common formations to be discussed where the world "Houston" is used 
+but not actually the top two formations. I suspect this is because Houston has a lot of geologists, so there is a lot of
+written about geology elsewhere that mentions Houston.
 
-There's a variety of names for this that are starting to appear. One is "augmented retrieval". Some of these approaches use a combination of 
-keyword search, vector space search, and LLMs to find the most relevant information and then reorganize it into a form that is more useful 
-to a user, often while pointing back to the original sources for more information and double checking. 
+As supurb prediction machines LLMs can give inaccurate information when the most common text that shares the words in the 
+prompt isn't exactly what the prompt is asking. Other times, it seems there likely isn't anything in its training that 
+relates to the question in prompt.
 
-For our approach, we'll try to rely 
-on the LLM as little as possible for actual geologic information and instead use it to help us identify what is relevant information 
-and then reorganize the data & narrative information into a format and presentation style that serves our purposes best.
+## An approach with data first, LLM Second
+
+To get around these knowledge limitations, we can combine LLMs with geologic data APIs and easily searchable text 
+on the subjects requested in the prompt. We can also use cleaning and validation functions to figure out what information 
+might be more trustworthy or relate the most to the given question.
+
+The act of combinging deterministitic APIs, LLMs API calls with different prompts, and various validation and data cleaning 
+functions is often called "chaining".
+
+For more about "agents", "chains", and other concepts for building applications with LLMs, check out 
+the documentation for [Lanchain](https://python.langchain.com/en/latest/) or [Semantic-Kernal](https://devblogs.microsoft.com/semantic-kernel/), two libraries for calling OpenAI-type model APIs.
+
+For our approach, we'll try to a simple chain that relies on APIs with factual information first, 
+then use LLMs to reorganize that information into a form that is more useful. 
+We'll also use LLMs when our factual API data sources strike out.
 
 ## Where to get deterministic geology and geographpic data 
 
@@ -275,7 +270,7 @@ input_variables=["country"],
 )
 ```
 
-After testing this across several countries, I convince myself the answers were reliable. It was faster to do this then 
+After testing this with several countries, I convinced myself the answers were reliable. It was faster to do this then 
 figure out how to possibly source this information from say wikipedia's data APIs or another API source.
 This information was used to make a decision whether to use the state name for regional context or the country name for regional
 context.
@@ -298,8 +293,7 @@ Combining multiple of these together is a [chain](https://learn.microsoft.com/en
 9. If the text is not about both "geology" and the "region", use a prompt powered by OpenAI's GPT-3 to ask for the regional geology areas of the state or country, then use that as a fallback. I have found asking about the regional areas first is more likely to get a reasonable answer then directly asking for the regional geology.
 10. Use a prompt powered by OpenAI's GPT-3 to combine two local point summary and regional summary into a single several paragraph summary using the voice of a professor on a field trip.
 
-
-## Current experiments on part of a weekend
+## Results
 
 Resuls for  "latitude": 41.512, "longitude": -82.9377 (Port Clinton, Ohio)
 
@@ -364,7 +358,7 @@ it was a being thrown across the room change in productivity.
 
 ## What is still hard
 
-What now controls the productivity curve for programmatic descriptions of geology at point X are two related constraints. 
+What now controls the productivity curve for programmatic descriptions of geology at point X are several related constraints. 
 
 First, can you figure out if the result is reliable enough to use. A prompt can 
 work fine two or ten times before giving an unexpected result on the eleventh. To some extent both prompts and deterministic 
@@ -376,16 +370,27 @@ requires creativity, and at least initially, a well-informed human looking at th
 
 Second, are there enough data APIs and sources of unstructured factual information with the right information for 
 your task? Some states are too small to have a wikipedia page titled "Geology of [insert state]". Other times the 
-state or country boundaries are much less useful than other boundary terminology. What appears to have potential is 
-a combination of functional and prompt-based data requests, validation, rankings, cleaning, and resummarization.
+state or country boundaries are much less useful than other boundary terminology. Related to this data limit, is the question 
+of having validation and fallback methods. The impact of a "wrong" or "missing" piece of information is going to affect 
+how much time is spent on the problem.
 
-There's also the related but somewhat separate problem of is the deterministic data API accurate? Macrostrat is far and away the 
+Third, the factual data APIs are not always accurate. Macrostrat is far and away the 
 easiest to use and most accurate geology data source I have found that works at some level pretty much everywhere. That being said, it 
 has told me information that I know to be wrong. I can remember driving through kentucky looking at sandstone 
 along the road cuts while Macrostrat told me the area it was 100% limestone. The problem of data accuracy limitations are even more 
 pronounced once you're outside a country that has both detailed geologic maps and advanced open data policies.
 
-If the deterministic data sources are flawed, the LLM filtered information will be wrong as well.
+Fourth, what is accurate is also sometimes subjective. I often would like to skip the very recent unlithified "dirt" at the 
+surface and just be told about the bedrock geology it hides even if I can't see it. However, someone specializing in 
+geomorphology might want to know about that "dirt". At the other end of the spectrum, I can remember walking on a beach in 
+Panama where a small bit of pillow basalt was exposed on the beach about the size of a large car. Everything else on the island 
+I could see was much younger sandstone. The Macrostrat API would have likely told me that the entire island was sandstone and 
+skipped the tiny bit of basalt peaking through even though to me that was far and away the most interesting part from a 
+geologic story perspective as it spoke to oceanic crust being pulled apart at a mid-oceanic ridge. 
+You could build in options to allow the user to choose what they want to hear about using traditional programming, 
+but the number of options and the complexity of the user interface needed to make that work is a problem. To some extent, 
+large language models make this problem easier to solve as the user can influence what information is provided themselves 
+with a prompt, but it is still a hard to solve problem when the user & developer are different people.
 
 #### Conclusion
 
@@ -394,8 +399,8 @@ If the deterministic data sources are flawed, the LLM filtered information will 
 I still feel like I have no idea what I am doing. However, the experiment seems very promising. 
 This is just a little side project created after several hours of work on a weekend plus a few hours while watching TV.
 Yet, I got much farther towards the end goal than when I used just the Macrostrat APi and some string parsing code.
-I also felt much more productive. I am excited to see what happens next, and I'm writing this in hope that 
-others might [try to build on the work a little more](https://github.com/JustinGOSSES/LAGDAL).
+I also felt way more productive. I am excited to see what happens next, and I'm writing this in hope that 
+others might [try to build on this method a little more](https://github.com/JustinGOSSES/LAGDAL).
 
 
 
