@@ -92,7 +92,7 @@ Here's an example of a post's frontmatter:
 
 ```
 ---
-title: 'Introducing Tailwind Nexjs Starter Blog'
+title: 'Introducing Tailwind Nextjs Starter Blog'
 date: '2021-01-12'
 lastmod: '2021-01-18'
 tags: ['next-js', 'tailwind', 'guide']
