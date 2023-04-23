@@ -1,0 +1,184 @@
+---
+title: 'Finding repositories to make contributions to within large organizations on GitHub'
+date: 2023-04-22T15:32:14Z
+lastmod: '2023-04-22'
+tags: ['side-projects','open-source','github','search','contributions','advice','job']
+draft: false
+summary: 'How to find repositories ideal for first-time contributions without having to read 2000 READMEs'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/adding-rss-to-this-website/
+---
+
+## The request 
+I recently got an email from a person I do not know who asked what open source NASA repositories
+would be good ones to try to contribute to. They were looking for projects to expand their coding
+skills in order to help their job prospects. 
+
+Instead of writing an email, I decided to write a blog post for two reasons. 
+First,  this is a question I would get when I helped run NASA's GitHub. 
+It is not obvious how to quickly filter large groups of repositories to ones that are good for first-time contributions.
+Second, my advice is slightly different than the typical answer I've seen others give to this question.
+
+## The problem with the typical advice that get's given
+The typical advice that gets given is to: 
+
+> Find an open source project that is related to your interests.
+
+That is good advice. However, in practice, it does not get you very far. 
+The number of open source repositories is huge. Even if you are interested in a specific topic or repositories under a particular organization,
+there can still be hundreds or thousands of repositories, far too many to read through them all.
+Additionally, the percentage that are likely to be a 
+good use of anyone's time to dive into and try to contribute is fairly small.
+
+#### Most repositories are not actively being developed or not well suited to new contributors
+
+Many repositories are released as open source....and then nothing happens. 
+They are more "published" than "maintained".
+Some open source repositories are personal projects with no intention of taking outside contributions.
+Even some that have a `CONTRIBUTING.md` file, do so more out of custom than anything else.
+Still others have a `CONTRIBUTING.md` file, and would take outside contributions, but do not expect 
+anyone to contribute, so their documentation does not 
+make for a good experience for the beginner.
+
+There are also repositories that are developed as needed when things break or change.
+They might not have a lot of activity, and what activity they do have is very much 
+driven by internal events and needs. Between spikes of activity, a new issue might not be 
+noticed or responded to for weeks or months.
+
+There are also repositories that try to accept outside contributors but run up against the limits of
+their capacity. Taking on new contributors can be a lot of work. The benefit of 
+outside contributions does not always outweigh the cost of managing them under circumstances 
+when there may be more immediate draws on their time and attention unrelated to that open source project.
+
+## Ideal project for first-time contributions
+The ideal project for a beginner is active. It has a lot of activity, and a lot of people who will 
+respond to your pull request fairly quickly. It also has contributions not just from a core 
+team that does lots of contributions but also a lot of people who only make 1 or 2 contributions. 
+These ideal projects also have good documentation and 
+a good `CONTRIBUTING.md` file that explains in detail what they want in issues and pull requests.
+
+These criteria rule out the bulk of open source repositories in most large organizations.
+
+*NOTE:* I am not saying that these are the only repositories that are good for first-time contributions, 
+but they are reasonable criteria to use to filter the list of possible repositories down to a 
+number a person could actually read through and consider.
+
+## Do not go to the organization's main page to find beginner-friendly repositories within that organization
+If you are like the person who emailed me, you might want to see if there are NASA projects you can 
+contribute to. 
+You might therefore navigate to the [NASA organization on GitHub](https://github.com/nasa). 
+
+There are 
+470 NASA repositories on GitHub under the main `NASA` org as of 2023-04-22. Most people do not 
+want to read through 470 repositories. 
+If you're instead interested in finding a project under `google` or `microsoft` to contribute to, 
+then you have thousands of repositories to read through. 
+
+Unfortunately, there is nothing on this page to let you filter the repositories to ones 
+that are more likely to be beginner friendly. 
+
+
+
+## Repository search as better place to find beginner-friendly repositories within an organization
+GitHub has a search bar placed very obviously on many pages, but more useful is the
+["Advanced search" page](https://github.com/search/advanced) interface. It shows 
+many of the parameters that can be used to search for repositories. 
+More detailed instructions on syntax for query parameters can be found on the
+ ["search on GitHub" docs page](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax).
+
+Good search parameters to find repositories well suited for contributions are: 
+- stars
+- pushed
+- created
+- org
+- forks
+- followers
+- has:CONTRIBUTING.md
+- has:LICENSE
+- language
+
+`Forks` are higher when a repository has activity from pull requests outside the maintaining team.
+
+`Following` and `stars` are sometimes used by people who are interested in a project, 
+so it is another signal of a repository 
+potentially having a community.
+
+`pushed` is used with an `>` to filter out repositories that have not been updated in a while.
+
+`created` can be used with a `<` to filter out repositories that are active but just started.
+
+The `has` conditionals are used to filter out repositories that do not have a `CONTRIBUTING.md` file or a `LICENSE` file.
+Technically, CONTRIBUTING content is sometimes in a README and not a separate CONTRIBUTING file, but it probably will not filter
+out too many true positives by accident.
+
+The values used for the `stars`, `forks`, and `followers` parameters are going to vary based on the popularity of the organization's code. 
+
+
+#### For Microsoft, you might use:
+Parameters: 
+` stars:>500 pushed:>2023-04-01 org:microsoft forks:>40 followers:>10 created:<2022 has:CONTRIBUTING.md has:LICENSE`
+
+[Link to query](https://github.com/search?q=stars%3A%3E2000+pushed%3A%3E2023-04-15+org%3Amicrosoft+forks%3A%3E50+followers%3A%3E50+created%3A%3C2021+has%3ACONTRIBUTING.md&type=repositories)
+
+#### For NASA, you might dial down the engagement parameters to:
+
+Parameters: 
+- `stars:>50 pushed:>2023-04-01 org:nasa forks:>10 followers:>5 created:<2022 has:CONTRIBUTING.md has:LICENSE`
+
+[Link to query](https://github.com/search?q=stars%3A%3E100+pushed%3A%3E2023-04-01+org%3Anasa+forks%3A%3E10+followers%3A%3E5+created%3A%3C2022+has%3ACONTRIBUTING.md+&type=repositories&query=nasa+stars%3A%3E1+created%3A%3E2010-01-01+org%3Anasa)
+
+
+Now instead of having to read through [470](https://github.com/nasa) 
+NASA repositories, you can read through [52](https://github.com/search?q=stars%3A%3E100+pushed%3A%3E2023-04-01+org%3Anasa+forks%3A%3E10+followers%3A%3E5+created%3A%3C2022+has%3ACONTRIBUTING.md+has%3ALICENSE&type=repositories) 
+if we use the query above or 
+just [8](https://github.com/search?q=stars%3A%3E100+pushed%3A%3E2023-04-01+org%3Anasa+forks%3A%3E10+followers%3A%3E5+created%3A%3C2022+has%3ACONTRIBUTING.md+has%3ALICENSE+language%3Apython&type=repositories) 
+if we further filter repositories to just those that use Python. These are numbers that we could possibly read through.  
+
+#### Search for content and not just repository parameters
+
+We might also add a search term to match strings in the repository name, description, or README.
+This can be done by putting the term at the front of the search box that has all the parameters.
+
+For example, if you wanted to find repositories under Microsoft organization that met all the parameters above, 
+plus they had to do with "React" the JavaScript framework, you would use in your query:
+`react stars:>100 pushed:>2023-04-15 org:microsoft forks:>50 followers:>50 created:<2021 has:CONTRIBUTING.md has:LICENSE`
+[That query](https://github.com/search?q=react+stars%3A%3E100+pushed%3A%3E2023-04-15+org%3Amicrosoft+forks%3A%3E50+followers%3A%3E50+created%3A%3C2021+has%3ACONTRIBUTING.md+has%3ALICENSE&type=Repositories)
+ finds 13 repositories under the Microsoft organization that have to do with React and meet the other parameters 
+indicating they might be good for contributions.
+
+### What to look for in repositories once you have a filtered list
+
+Now that you have identified a handful of repositories that have files, activity, and engagement metrics that 
+suggest they are active and have interest from the community, 
+you can look at the repositories to see if they are a good fit for you.
+Here are a few indicators of a welcoming project. 
+
+First, are there any issues labeled "[good first issue](https://github.com/nasa/earthdata-search/issues?q=is%3Aissue+is%3Aopen+label%3A%22Good+First+Issue%22)"
+ or "help wanted" or 
+"[hacktoberfest](https://github.com/nasa/earthdata-search/issues?q=is%3Aissue+is%3Aopen+label%3AHacktoberfest)"?
+You can read more about how to the "good first issue" tag and how to search for it on GitHub's 
+[Browse good first issues to start contributing to open source](https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/) blog post.
+There's also a [board of "good first issues"](https://goodfirstissue.dev/) for popular open source projects.
+
+Second, does the project have documentation? Is it easy to find? Is it easy to understand?
+
+Third, if you look at the repository's "Insights" tab, does it have a distribution of contributors with 
+people making 1 or 2 contributions and not just a core team making all the contributions? If you see this, 
+it is more likely that the maintainers have experience working with 
+newbies. This is not to say you will not be welcomed if only a few core contributors have made pull requests. 
+In fact, they might be very excited and give you a red carpet welcome as their first open source contributor!
+Alternatively, you might get ignored. It is hard to predict.
+
+Fourth, again looking at the insights tab, 
+how consistent is development activity? If there are a lot of commits in the last month but none in the 
+three months beforehand, you might submit a pull request just as the core developer focuses elsewhere and 
+there is another several month long lull in activity.
+
+Lastly, remember the original advice that everyone gives and find an open source project that is 
+related to your interests!
+
+
+
+
+
