@@ -4,10 +4,10 @@ date: 2023-04-22T15:32:14Z
 lastmod: '2023-04-22'
 tags: ['side-projects','open-source','github','search','contributions','advice','job']
 draft: false
-summary: 'How to find repositories ideal for first-time contributions without having to read 2000 READMEs'
+summary: 'How to find repositories ideal for first-time contributions without having to read 2000 READMEs.'
 layout: PostSimple
 bibliography: references-data.bib
-canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/adding-rss-to-this-website/
+canonicalUrl: https://justingosses.com/blog/finding-repositories-within-large-organizations-ideal-for-contributions
 ---
 
 ## The request 
@@ -75,11 +75,6 @@ want to read through 470 repositories.
 If you're instead interested in finding a project under `google` or `microsoft` to contribute to, 
 then you have thousands of repositories to read through. 
 
-Unfortunately, there is nothing on this page to let you filter the repositories to ones 
-that are more likely to be beginner friendly. 
-
-
-
 ## Repository search as better place to find beginner-friendly repositories within an organization
 GitHub has a search bar placed very obviously on many pages, but more useful is the
 ["Advanced search" page](https://github.com/search/advanced) interface. It shows 
@@ -87,7 +82,11 @@ many of the parameters that can be used to search for repositories.
 More detailed instructions on syntax for query parameters can be found on the
  ["search on GitHub" docs page](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax).
 
-Good search parameters to find repositories well suited for contributions are: 
+*NOTE*: Once you figure out the search parameters you want, you can put them into the search bar on any
+[organization's repositories page](https://github.com/nasa?q=stars%3A%3E50+pushed%3A%3E2023-04-01+org%3Anasa+forks%3A%3E10+followers%3A%3E5+created%3A%3C2022+has%3ACONTRIBUTING.md+has%3ALICENSE&type=all&language=&sort=).
+This is not obvious, but the parameter search works in multiple search bar on GitHub, not just the advanced search page or the main search page. 
+
+#### Search parameters to use to find repositories well suited for contributions
 - stars
 - pushed
 - created
@@ -135,7 +134,7 @@ if we use the query above or
 just [8](https://github.com/search?q=stars%3A%3E100+pushed%3A%3E2023-04-01+org%3Anasa+forks%3A%3E10+followers%3A%3E5+created%3A%3C2022+has%3ACONTRIBUTING.md+has%3ALICENSE+language%3Apython&type=repositories) 
 if we further filter repositories to just those that use Python. These are numbers that we could possibly read through.  
 
-#### Search for content and not just repository parameters
+### Search for content and not just repository parameters
 
 We might also add a search term to match strings in the repository name, description, or README.
 This can be done by putting the term at the front of the search box that has all the parameters.
@@ -147,7 +146,25 @@ plus they had to do with "React" the JavaScript framework, you would use in your
  finds 13 repositories under the Microsoft organization that have to do with React and meet the other parameters 
 indicating they might be good for contributions.
 
-### What to look for in repositories once you have a filtered list
+### This does not have to be specific to an organization
+
+This approach also works outside the organization context. 
+For example, let us say you are interested in contributing to a project that has to do with geology in some fashion and 
+do not care what organization or username the repository is under.
+
+You could modify the [search query to not be specific to any org and include the topic `geology`](https://github.com/search?q=topic%3Ageology+stars%3A%3E30+pushed%3A%3E2023-03-01+forks%3A%3E5+followers%3A%3E5+created%3A%3C2023+has%3ACONTRIBUTING.md+has%3ALICENSE&type=repositories). 
+`topic:geology stars:>30 pushed:>2023-03-01 forks:>5 followers:>5 created:<2023 has:CONTRIBUTING.md has:LICENSE`
+
+You could also not used `topic` and instead [search for the string `geology` in the repository name, description, or README](https://github.com/search?q=geology+stars%3A%3E30+pushed%3A%3E2023-03-01+forks%3A%3E5+followers%3A%3E5+created%3A%3C2023+has%3ACONTRIBUTING.md+has%3ALICENSE&type=repositories) along with the other search parameters.
+`geology stars:>30 pushed:>2023-03-01 forks:>5 followers:>5 created:<2023 has:CONTRIBUTING.md has:LICENSE`
+
+The results of these searches has quite a bit of overlap with 
+[awesome-open-geoscience](https://github.com/softwareunderground/awesome-open-geoscience)
+which lists out a lot of well regarded open source geoscience projects that people think are "Awesome" 
+and others should know about. However, in these results, you're ignoring some of the projects
+in the Awesome list that are not as actively developed.
+
+## What to look for in repositories once you have a filtered list
 
 Now that you have identified a handful of repositories that have files, activity, and engagement metrics that 
 suggest they are active and have interest from the community, 
@@ -178,7 +195,10 @@ there is another several month long lull in activity.
 Lastly, remember the original advice that everyone gives and find an open source project that is 
 related to your interests!
 
+## Conclusion
+There's a lot more to be said about finding open source projects to contribute to and why you might find 
+that worth your time. Definitely worth searching for that information, but I am skipping it entirely here.
 
-
+Hope these tips on how to find projects are helpful and save you time.
 
 
