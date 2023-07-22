@@ -22,7 +22,7 @@ If you find a mistake on this website, please check out the [CONTRIBUTING](https
 - <a href="#community-involvement">Community Involvement</a>
 
 
-### Interests:
+### <a id="interests"></a>Interests
 - Things that could exist but don't yet
 - Natural Language Processing
 - Open source geospatial tools
@@ -31,7 +31,7 @@ If you find a mistake on this website, please check out the [CONTRIBUTING](https
 - Sharing at Scale:
     - This includes questions like open data interface design; code citation tooling as a way to change its perceived value; group membership and behaviors in open source that impact how science gets done; different incentives between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
 
-### Perspectives on Building Solutions With Code
+### <a id="perspectives-on-building-solutions-with-code"></a>Perspectives on Building Solutions With Code
 A few personal opinions that define how I approach data science include:
 
 - I have a soft spot for things at the intersection of metadata, natural language processing, semantic tooling, and user interfaces as technology improvements have opened up a lot of possibilities there that have yet to be built.
@@ -40,7 +40,7 @@ A few personal opinions that define how I approach data science include:
 - I think we focus too much on applying machine-learning to things humans already do fairly often and not enough thinking about tasks machine-learning would be great at that we never do, because they would be too boring or time consuming.
 - Understanding how people interact with the analysis, tools, and products we create and how things get built or not built within the larger organizational context is more often the controlling variable on a successful product than the technical details or prediction accuracy.
 
-## Professional History
+### <a id="professional-history"></a>Professional History
 
 <b>I have been a Program Manager, Data Scientist, Software Developer, and Geoscientist.</b>
 
@@ -62,7 +62,7 @@ I previously worked as a NASA contractor, supporting <a href="https://www.nasa.g
 Before NASA, I worked as a geoscientist for BP and got to dig into data to answer questions that drove business questions across Canada, U.S., and Brazil. Towards the end of my time there I also got to use code to build solutions that domain specific software applications couldn't be twisted into answering via graphics user interfaces alone. I wrote data processing scripts in sed/awk when novel types of analytics were required. I also put together prototypes combining Python with ArcGIS and Excel based data inputs to identify risks to reservoir quality earlier than traditional methods.  
 
 
-## Recent Talks
+### <a id="recent-talks"></a>Recent Talks
 
 AGU 2019, <a href="https://t.co/ylV3EGSbLg?amp=1">Poster Presentation</a> – <a href="https://agu.confex.com/agu/fm19/meetingapp.cgi/Paper/617308">“Reusing Data and Metadata to Create New Metadata through Machine-learning & Other Programmatic Methods“</a>
 
@@ -76,14 +76,14 @@ Rice Data Science Conference 2017 – <a href="https://www.slideshare.net/Justin
 
 Johnson Space Center Data Science Day 2017 – <a href="https://54.87.153.110/presenting-at-johnson-space-center-data-science-day/">“The Changing Landscape of Data Visualization Tools Over the Last 40 Years“</a>
 
-## Publications
+### <a id="publications"></a>Publications
 
 !["Image of the Orcid logo that says orcid"](/static/images/ORCIDstandsforlarge.png)
 
 https://orcid.org/0000-0002-5351-7295
 
 
-## Community Involvement
+### <a id="community-involvement"></a>Community Involvement
 <a href="https://houstondatavis.github.io/">Houston Data Visualization Meetup</a> – co-lead
 
 <a href="http://www.gcssepm.org/">Gulf Coast Section of SEPM</a> (sedimentology geology) – former social media manager
