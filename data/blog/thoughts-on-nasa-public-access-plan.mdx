@@ -265,17 +265,104 @@ and accessed by groups of people not in the same physical place in 2023.
 <b>If NASA wants to ensure public access to its code, it needs to find a way to talk about 
 public facing code repository mechanisms in use by most of the world. <b>
 
-## Discovery 
 
+Compliance vs. incentives...
+
+### Need to ensure Software Management Plans do not become waterfall development mandates
+
+_Words from Public Access Plan: ???????
 ```
-SMPs must provide a plan for making scientific software that underlie the results and
-findings in peer-reviewed publications digitally accessible at the time of publication.
-This does not include software developed only for preliminary analysis, plans for future
-research, or communication with colleagues. This requirement could be met by
-including the software as supplementary information to the published article, through
-NASA-recognized archives (such as NTRS or Zenodo), or other means. The published
-article should indicate how the software can be accessed. 
+Appropriate mechanisms and metrics will be developed to ensure that funding
+recipients are made aware of their obligations and to monitor whether awardees have
+complied with their SMPs. Compliance will be verified by the program officer by
+evaluation of required project reports and, if necessary, continuing funds may be
+withheld in cases of noncompliance. 
 ```
+
+This requirement is generally okay. However, I am a little worried that is interpreted 
+strictly such that all software products mentioned in the SMP are expected to be 
+delivered as end products. This might unintentional promote waterfall style 
+code development where there is a strong push to predict the end product at the begging 
+of th product. Software is often better developed in a more flexible and iterative manner 
+in which early views of what will be delivered are thrown out as learning occurs during
+development.
+
+A possible shift in wording to more directly tie "compliance" to the program requirements 
+instead of the the software management plan might lessen potential to push scientists into more of a 
+waterfall style of development.
+```
+Appropriate mechanisms and metrics will be developed to ensure that funding
+recipients are made aware of their obligations. Compliance will be verified 
+by the program officer by evaluation of required project reports and, if necessary, 
+continuing funds may be withheld in cases of noncompliance with program requirements. 
+```
+
+### DOIs, Metadata, and Discovery
+
+{/* - Love the call out for more education needing on using DOIs for software
+- Need for education around software citation and enabling community contribution
+- How I recommend using Zenodo & GitHub combined
+- citation in code (push for a standard)
+- discovery using code search?
+- how to connect
+- Dependency vs. citation? <= What are metrics NASA can track there like papers?
+
+- Needs
+  - Discovery...where it happens...how it happens...
+    - Why it is valuable (science tree falls in forest and no one hears it)
+    - Archived state is not ideal for this. No run searches for something they don't know exists in one fo the many NASA archives.
+  - Be able for both people and machines to jump across code, data, and papers
+  - citations is an engine like it or not. 
+     - Code needs citations. 
+     - Can NASA encourage scientific code review papers?
+- current status
+- future opportunities:
+  - education
+  - better discovery  */}
+
+## Education needed to grow cultural understanding and open source skills
+
+{/* Major areas:
+- DOI
+- Code citation
+- Archive & pubic repository that can change
+- 
+
+``` page 20
+Software released independently from the peer-reviewed manuscript must be assigned
+a Unique Digital Object Identifier (DOI) to enable preservation, discovery, and citation of
+the software. 
+```
+NO!!!!!! all code needs DOI! */}
+
+### Measuring NASA related code
+##### Identifying impact, communities, contributions, and demands on time
+To do a good job at funding software and ensuring its access but the public, NASA needs a better 
+understanding of what software gets built, what it depends on, why that software exists, 
+why it contains to exist, and how it can be helpful and not hurtful. Gathering and analyzing 
+this data is not a small task.
+
+{/* - measuring type of code and how it is used
+- Measuring impact of NASA funded code
+- Contributions by NASA to non-NASA code */}
+
+## conclusions
+
+{/* words.......... */}
+
+1. Explicitly talk about a fixed archival of code vs. live public repository
+  1.A. Mention how GitHub/GitLab/etc. as that's how people actually work with software in 2023. Use a general term for them if you must.
+  1.B. Mandate archival. Recommend maintain, issues, community, etc. 
+  1.C. If not maintaining code and accepting community contributions... SAY SO!
+2. Educate on DOIs and citation to enable better connections, tracking, and discovery, and creation of value.
+  2.A. DOI for all archival of code.
+  2.B. Code citation file.
+  2.C. Scientific code journals.
+  2.B. Encourage citation of code in journals.
+
+
+
+
 
 
 
@@ -364,7 +451,7 @@ Any teeth? Could there be an expectation for it to be in software management pla
 - MORE: Reusable embedded HTML widgets that work on any website
 - MORE: Educational resources on all the different places to find NASA content of different types and who would likely find each useful.
  */}
-
+{/* 
 ## Suggestions on sharing and archiving software
 
 
@@ -572,4 +659,4 @@ Need to ensure compliance doesn't require waterfall style development and all th
 
 
 
-
+ */}
