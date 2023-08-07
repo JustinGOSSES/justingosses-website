@@ -3,7 +3,7 @@ title: "Thoughts on NASA's Public Access Plan"
 date: 2023-07-28T15:32:14Z
 lastmod: '2023-07-28'
 tags: ['open-data','open-source','code','nasa','RFI','open-science']
-draft: true
+draft: false
 summary: "Thoughts on request request for information on NASA's proposed public access plan"
 layout: PostSimple
 bibliography: references-data.bib
@@ -12,16 +12,15 @@ canonicalUrl: https://justingosses.com/blog/thoughts-on-nasa-public-access-plan
 
 ## Introduction to NASA's proposed Public Access Plan
 
-NASA recently released an request for information on their proposed 2023 
+NASA recently released an [request for information](https://www.federalregister.gov/documents/2023/05/18/2023-10643/request-for-information-nasa-public-access-plan-for-increasing-access-to-the-results-of) 
+on their proposed 2023 
 [Public Access Plan](https://www.nasa.gov/sites/default/files/atoms/files/nasa_ocs_public_access_plan_may_2023.pdf).
 This effort is part of NASA's ["Transform to Open Science (TOPS)"]("https://science.nasa.gov/open-science/transform-to-open-science") 
-part of a year long push for open science across several US government agencies and the White House. 
-As part of releasing the plan, they also requested a ["Request for Information"](https://www.federalregister.gov/documents/2023/05/18/2023-10643/request-for-information-nasa-public-access-plan-for-increasing-access-to-the-results-of), 
-which is a standard way government agencies ask for feedback from the public. The comment period ends on 08/17/2023. 
-The [request for information](https://www.federalregister.gov/documents/2023/05/18/2023-10643/request-for-information-nasa-public-access-plan-for-increasing-access-to-the-results-of)
-document outlines several areas that they are particularly interested in feedback from the public.
-
-<b>This blog post was written as an exercise in considering what feedback might be given in a request for information response.</b>
+, a push for open science across several US government agencies and the White House. 
+A ["Request for Information"](https://www.federalregister.gov/documents/2023/05/18/2023-10643/request-for-information-nasa-public-access-plan-for-increasing-access-to-the-results-of), 
+is a standard way government agencies ask for feedback from the public. The comment period ends on 08/17/2023. 
+<b>This blog post was written as an exercise in considering what feedback might be given in response.</b> 
+As someone with experience working on open source code release and development, I had thoughts.
 
 ![Logo for Transform to Open Science. It is a badge with TOPS and NASA at the bottom and space ship taking off.](../static/images/blog/thoughts-on-nasa-public-access-plan/Tops_badge_OG_NASA_Final.png)
 
@@ -35,9 +34,8 @@ However, that task is never as easy as it sounds. To give a few examples:
 
 The [Public Access Plan](https://www.nasa.gov/sites/default/files/atoms/files/nasa_ocs_public_access_plan_may_2023.pdf)
 is an attempt to improve from the current situation to something a little better. 
-
-I advise you to go and read it as it won't be summarized here. However, it is worth pointing out that 
-at the top of the document, it highlights give revisions from the 2014 plan. 
+I advise you to go and read it as it won't be summarized here. However, I will 
+include a few bullet points that the 2023 plan highlights as key revisions compared to the 2014 plan. 
 
 - There shall be no publication embargo period for peer-reviewed publications (a 12 month embargo had been allowed)
 - Data that support peer-reviewed publications shall be made available in a public archive at the time of publication
@@ -45,8 +43,8 @@ at the top of the document, it highlights give revisions from the 2014 plan.
 - Software used to generate research findings/results should be made available in a public archive at the time of publication
 - Other data products beyond peer-reviewed publications and software should be considered as part of Open Access
 
-These headlines changes represent a step forward and are in direct response to real frustrations 
-with data and code in NASA-funded studies not always being available... or available without significant 
+These shifts represent a step forward and are in direct response to real frustrations 
+with data and code in NASA-funded studies not always being available or available without significant 
 friction that limited their reuse and impact. 
 
 ## Personal experiences with public access at NASA
@@ -58,19 +56,11 @@ and the [NASA GitHub organization]("https://github.com/nasa"). These experiences
 challenges of releasing data, releasing code, and working in the open in the NASA context that inform my 
 thoughts shared here.
 
-{/* #### Why care about making NASA data and code public
-The public access plan document directly addresses this question, but here are a few highlights in my own words.
-
-1. If you're a US citizen, you already paid for it. You shouldn't have to pay again.
-2. Studies that are not reproducible have much less value. Without easy access to all the code and data, it is often impossible to reproduce studies. Unfortunately, science is filled with stories of flashy studies that an entire field followed only to later released they couldn't be reproduced.
-3. For others to build upon existing work and make new discovering, code and data needs to be open. */}
-
 #### NASA is made of many sub-organizations with different missions, this effort is driven by one subset of the larger NASA
 
 It is worth pointing out that NASA is an agency made up of several sub-organizations. 
 Each of these sub-organizations has different cultures, missions, and things they are better or worse at. 
 These differences are more pronounced at NASA than I have experienced with BP or Microsoft.
-
 This public access plan is driven by the Science Mission Directorate. Compared to other parts of NASA, 
 they fund academic research a lot more, work with outside partners a lot more, and much less often 
 work with sensitive data or code that needs to be tightly controlled.
@@ -106,401 +96,83 @@ The question in full is:
 </i>
 -----------------
 
-{/* Table of contents: 
-- The plan could benefit from talking more about different types code projects with different purposes.
-- The plan needs lots of improvement for how to think about software over time!
-- Open Source software is in many cases, ideally not a one time publication
-- Code as supplementary information to a publication is not ideal by itself
-- Archiving and maintaining software are opposite things
-- Measuring impact of NASA funded code
-- What is meant by "Make publicly available appropriate metadata describing the software"
--  Love the call out for more education needing on using DOIs for software
--  Need for education around software citation and enabling community contribution
-- Challenges for NASA open source discovery
-- Measuring impact of NASA funded code
-- Contributions by NASA to non-NASA code
-- Need for education around software citation and enabling community contribution
-- Explicit direction to NASA program managers to be more specific in their announcements of resource opportunities 
-- Software plans change */}
+++++++
+<i>What follows is a draft of my response to the request for information due on August 18th, 2023</i>
+++++++
 
 
-### The importance to talk about different types of software with different goals and characteristics
+# Response to Request for Information Regarding NASA Proposed Public Access Plan
 
-A mistake that I see a lot, which also I think exists in this document, is it talks about code as a general thing
-but clearly they have particular type of repository in mind made by specific types of people for specific reasons. 
-There are a few potential types of harms is this "median" repository approach. First, you'll probably making policies
-that apply to repositories that are pretty far from that median. Second, each person's assumption of that median is 
-influenced by their own experience and the type of code they work with the most. You quickly get to a point of talking 
-past one another. Third, your assumptions regarding what's hard to force on developers or useful to support tend to 
-rapidly focus on that median type of repository leading to blind spots. 
+This document has been written in response to the [request for information](https://www.federalregister.gov/documents/2023/05/18/2023-10643/request-for-information-nasa-public-access-plan-for-increasing-access-to-the-results-of) 
+regarding the [proposed May 2023 NASA Public Access Plan](https://www.nasa.gov/sites/default/files/atoms/files/nasa_ocs_public_access_plan_may_2023.pdf). 
+My comments are in response to question 5  “Suggestions on sharing and archiving of software. Sites like GitHub and Zenodo offer ways to distribute and manage software. NASA is seeking suggestions on improving the archiving, sharing, and maintenance of software for reuse.”
 
-In this document, there are hints that their implied median repository is code whose production was funded by a grant,
-tied to a scientific publication, released to the pubic at the same time their publication was published, and 
-immediately archived as a static asset, probably only useful to people who read the coupled publication.
+## Language should more explicitly talk about software archival versus software maintenance
 
-<b> That median repository is not a great description for all NASA science related code</b>
-
-The most impactful scientific code often has whole communities that build up around it. Scientific code might be 
-developed in the open far in advance of a paper being published. Useful code might not even be specific to a 
-single publication but weakly related to many publications or no publications at all. The code that ends up 
-being reused is ideally not archival or what existed at time of publication but a repository that is alive and 
-continually maintained and expanded by the community of people who find value in it. 
-
-<b> These variations in code characteristics need to be better reflected in the Public Access Plan!</b>
-
-### The Public Access Plan needs a broader description of scientific code
-
-Instead of: 
-
-_Words from Public Access Plan: page 19_
-```
-SMPs must provide a plan for making scientific software that underlie the results and
-findings in peer-reviewed publications digitally accessible at the time of publication. 
-```
-Include the possibility that the code is developed in the open before publication:
-```_Words from Public Access Plan: page 19_
-SMPs must provide a plan for making scientific software that underlie the results and
-findings in peer-reviewed publications digitally accessible at the time of publication or before. 
-```
-
-Instead of: 
-
-_Words from Public Access Plan: page 20_
-```
-This [code release] requirement could be met by
-including the software as supplementary information to the published article, or
-through other means. The published article should indicate how the software
-can be accessed.
-```
-
-Explicitly close the "upon request" loop hole that has been shown to be worth very
-little in practical terms as few people respond to requests for code. Encourage 
-use of public facing repositories where people can read the code before downloading it.
-People do not like downloading large files they can not say for certain is in them, so 
-putting it on a public facing GitHub or GitLab repository increases chance of evaluation, 
-critique, and reuse. Also, this opens up the possibility that people can discover related
-publications through the code, not always publication then code. Opening up better 
-discovery pathways in both directions increases chances of discovery, reuse, and replication.
-```
-This [code release] requirement could be met by
-including the software as supplementary information to the published article, or
-through other means. The published article should indicate how the software
-can be accessed. An "upon request" statement is not acceptable unless the code can not be released publicly.
-Ideally, the code will accessible via a public repository.
-``` 
-
-### Archiving and maintaining software are different things
-
-Under the "Changes to the NASA software policy" section, it talks about adding 
-requirements for all research proposers to submit Software Management Plans (SMPs) 
-that describe how the proposed research plan confirms to NASA policy on dissemination and 
-sharing of results.
-
-_One of the policies for Software Management Plans states on page 19_
+In several places the Public Access Plan would benefit from more explicitly describing the differences between archival of a fixed version of the software versus maintaining an active and changing public code repository over time. For example, in the line below from page 20 discussing requirements that Software Management Plans must address, ”maintained” and “preserved” could be mistakenly read as the same thing. 
 ```
 Plans for archiving and preserving of the software, as appropriate (use of
 existing databases or public repositories will be strongly encouraged),
 including how long the software will be preserved or maintained
 ```
+Archived code is an unchanging and fixed version of the code. As stated in the plan, this is important for reproducibility. As such, it is reasonable to have code archival as a requirement However, archived code should be expressed as a minimum bar and not implied to be the only or best way to share software. 
 
-This is awkward language as preserving and maintaining are very different things.
-Archiving or preserving software is creating a fixed
-version of it that does not change. If your paper was creating with code that 
-has a bug in it. That bug should absolutely stay in the archived version.
-In contrast, maintaining code implies the code is changing. You are fixing 
-bugs, patching security holes, adding documentation to onboard new users, etc. 
+NASA should also encourage, although likely not require, use of free, public facing version control systems (GitHub, GitLab, etc.) 
+that allow others besides the original authors to easily access software in a manner such that the software can evolve over time. 
+Placing the software of these system also increases chances of discovery and reuse as that is where developers spend their time and 
+are more likely to be exposed to the software compare to NASA run systems that fewer know about such as [NASA Technical Report Server](https://ntrs.nasa.gov/) or [code.nasa.gov](https://code.nasa.gov). 
+I should also call out here that I work for Microsoft, which owns GitHub.
 
-While archiving code only requires that the code exist somewhere likely to persist. 
-Maintaining the code, especially if some of the bugs are to be identified 
-by users who are not the originators, requires the existence of the code on a version 
-control platform, ideally one that is publicly accessible and enables people to 
-read the code without needing permissions from the authors. While, I am not sure 
-NASA should mandate code be placed in a public facing GitHub or GitLab repository.
-It certainly would be beneficial to everyone if it encouraged it.
+As NASA civil servants likely do not want to mention any particular product or company in policy, I will suggest the term <b>“free, public-facing software version control systems”</b> be used in place of saying "GitHub or GitLab."
 
-These differences between archiving and maintaining are not expressed well in 
-the document, which is a weakness that should be addressed. 
+Making the code available to the public in these systems enables several behaviors that increase the value and impact of the software not possible with an archived version of the software alone. 
+It enables the public to read the code quickly without having to download and open large files, discover it from other public code that use it as a dependency or share a topic tag, add an issue when a bug or security vulnerability is found, make pull requests to improve it, etc. 
+Code that only exists in archived form or as supplemental information to a publication is much less likely to be a part of these behaviors. 
+It is by definition static. 
 
-The line above could be modified slightly to say: 
+NASA may want to only encourage rather than mandate code to be placed on a free, public-facing software control system as placing code where it can be easily reached, forked, bugs submitted, etc. opens up at least the possibility of a community growing around the software. A community demands time from the original authors, which they may not have. 
+There are two options NASA could introduce in training materials to alleviate these concerns.
+One is to use built-in features of free, public-facing software version control systems and “archive” the repository. 
+An archived software repository is still visible and [forkable](https://docs.github.com/en/get-started/quickstart/fork-a-repo) by others who wish to continue its development but [issues](https://docs.github.com/en/issues) and [pull requests](https://docs.github.com/en/pull-requests) can not be added meaning bug reports and feature improvements stop.
+On archived software repositories, there is a banner stating it is “archived” and therefore it is obvious that the software is no longer being developed by its original authors. 
+The second option is to add text to a README that explains the software repository is no longer being actively maintained. People may leave a bug report in an issue, but there is no expectation of a response. 
+Based on these differences, suggest changing the previously mentioned text on page 20 to:
+
 ```
-Plans for archiving and preserving of the software, as appropriate (use of
-existing databases or public repositories will be strongly encouraged),
-including how long the software authors are committed to maintaining the software.
-```
-However, whether or not software will be maintained into the future is hard to 
-predict. Often whether or not it gets maintained is dependent on use or other 
-factors that are not known far in advance. Therefore, it might be reasonable, 
-at least for new software to take out the maintenance statement entirely
-and just say: 
-```
-Plans for archiving and preserving of the software, as appropriate (use of
-existing databases or public repositories will be strongly encouraged).
-```
-However, fixed archives where code is zipped up into a single file
- are not at all suited for maintaining code, so an alternative statement to 
- ensure archival but also enable maintenance, discovery, community building, etc.: 
-```
-- Plans for archiving and preserving of the software, as appropriate (use of
-existing databases or public repositories will be strongly encouraged).
-- State whether the code will be placed on a publicly visible repository where it can be 
-seen without download, issues can be left by users, and development if warranted can continue post initial publication.
+- Plans for preserving a fixed, archival version of the software that was used to produced the results 
+in the publication, as appropriate (use of
+existing databases or archival systems will be strongly encouraged).
+- Optionally state where the software will also exist on a free, public-facing software version control platform 
+where others can add issues, report bugs, new feature contributions, etc. If it will be, 
+declare how the project will communicate to the public their availability to respond to contributions. 
+No availability to respond may be a suitable answer.
+- For software that has a community of users beyond the context of the study being funded, discuss 
+plans for community health and governance.
 ```
 
-It is perfectly acceptable that some code will never be touched again after a connected
-article is published, either by the authors or anyone else. However, to make sure NASA 
-gets the best value for its funding, it should set up expectations that allow for code 
-to exist in places that maximize the potential for pseudo-random discovery by others, 
-bug fixes, and potentially whole communities to form around it. 
-There is potential for that to happen if the code is in a public GitHub or GitLab repository. 
-It is almost certainly not going to happen if the code is zipped up into a single file on a 
-data system for government code. They simply lack the features. 
+These additions to the software management plans requirements will encourage but not mandate that software be placed in free, public-facing software version control systems where the software can more easily evolve over time, be discovered, be modified via forks, reused by others, etc. Also note that the term “repository” has been removed from the original text. The term “code repository” is commonly used in modern software development to mean a single project collection of code files. However, in the Public Access Plan it is referred to in a way that means a data system to hold static versions of many thousands of software projects, datasets, etc. To avoid confusion, suggest the term “repository” either be not used or be defined within the plan. The modern software development definition of the word is used in this document.
 
-#### Absolutely need to talk about public facing code repositories, not just archives
-The current plan does not mention public repositories GitHub or GitLab once. 
-This may be because they are products and the government generally does not like to 
-mention specific products or companies in plans, regulations, etc. 
-This is fine to a point, but those products are where code is written, stored, 
-and accessed by groups of people not in the same physical place in 2023. 
-
-<b>If NASA wants to ensure public access to its code, it needs to find a way to talk about 
-public facing code repository mechanisms in use by most of the world. <b>
-
-
-Compliance vs. incentives...
-
-### Need to ensure Software Management Plans do not become waterfall development mandates
-
-_Words from Public Access Plan: ???????
+To clarify this further in the plan, the following bullet point under requirements be modified from 
 ```
-Appropriate mechanisms and metrics will be developed to ensure that funding
-recipients are made aware of their obligations and to monitor whether awardees have
-complied with their SMPs. Compliance will be verified by the program officer by
-evaluation of required project reports and, if necessary, continuing funds may be
-withheld in cases of noncompliance. 
+All proposals or project plans submitted to NASA for scientific research funding will be required to include a 
+Software Management Plan (SMP) that describes whether and how software generated through the course of the 
+proposed research will be shared and preserved (including timeframe), or explains why software sharing and/or 
+preservation are not possible or scientifically appropriate. At a minimum, SMPs must describe how software 
+sharing and preservation will enable validation of published results, or how such results could be validated 
+if software are not shared or preserved.
+```
+Into a version that clearly separates archived software from non-archived software that can change over time. 
+```
+All proposals or project plans submitted to NASA for scientific research funding will be required to include 
+a Software Management Plan (SMP) that describes whether and how software generated through the course of the 
+proposed research will be shared and preserved (including timeframe), or explains why software sharing and/or 
+preservation are not possible or scientifically appropriate. At a minimum, SMPs must describe how software 
+preservation will enable validation of published results, or how such results could be validated if software 
+are not shared or preserved. SMPs may optionally describe where a version of the software that will change 
+and evolve post publication will be publicly accessed in addition to the fixed software archive used in the publication.
 ```
 
-This requirement is generally okay. However, I am a little worried that is interpreted 
-strictly such that all software products mentioned in the SMP are expected to be 
-delivered as end products. This might unintentional promote waterfall style 
-code development where there is a strong push to predict the end product at the begging 
-of th product. Software is often better developed in a more flexible and iterative manner 
-in which early views of what will be delivered are thrown out as learning occurs during
-development.
-
-A possible shift in wording to more directly tie "compliance" to the program requirements 
-instead of the the software management plan might lessen potential to push scientists into more of a 
-waterfall style of development.
-```
-Appropriate mechanisms and metrics will be developed to ensure that funding
-recipients are made aware of their obligations. Compliance will be verified 
-by the program officer by evaluation of required project reports and, if necessary, 
-continuing funds may be withheld in cases of noncompliance with program requirements. 
-```
-
-### DOIs, Metadata, and Discovery
-
-{/* - Love the call out for more education needing on using DOIs for software
-- Need for education around software citation and enabling community contribution
-- How I recommend using Zenodo & GitHub combined
-- citation in code (push for a standard)
-- discovery using code search?
-- how to connect
-- Dependency vs. citation? <= What are metrics NASA can track there like papers?
-
-- Needs
-  - Discovery...where it happens...how it happens...
-    - Why it is valuable (science tree falls in forest and no one hears it)
-    - Archived state is not ideal for this. No run searches for something they don't know exists in one fo the many NASA archives.
-  - Be able for both people and machines to jump across code, data, and papers
-  - citations is an engine like it or not. 
-     - Code needs citations. 
-     - Can NASA encourage scientific code review papers?
-- current status
-- future opportunities:
-  - education
-  - better discovery  */}
-
-## Education needed to grow cultural understanding and open source skills
-
-{/* Major areas:
-- DOI
-- Code citation
-- Archive & pubic repository that can change
-- 
-
-``` page 20
-Software released independently from the peer-reviewed manuscript must be assigned
-a Unique Digital Object Identifier (DOI) to enable preservation, discovery, and citation of
-the software. 
-```
-NO!!!!!! all code needs DOI! */}
-
-### Measuring NASA related code
-##### Identifying impact, communities, contributions, and demands on time
-To do a good job at funding software and ensuring its access but the public, NASA needs a better 
-understanding of what software gets built, what it depends on, why that software exists, 
-why it contains to exist, and how it can be helpful and not hurtful. Gathering and analyzing 
-this data is not a small task.
-
-{/* - measuring type of code and how it is used
-- Measuring impact of NASA funded code
-- Contributions by NASA to non-NASA code */}
-
-## conclusions
-
-{/* words.......... */}
-
-1. Explicitly talk about a fixed archival of code vs. live public repository
-  1.A. Mention how GitHub/GitLab/etc. as that's how people actually work with software in 2023. Use a general term for them if you must.
-  1.B. Mandate archival. Recommend maintain, issues, community, etc. 
-  1.C. If not maintaining code and accepting community contributions... SAY SO!
-2. Educate on DOIs and citation to enable better connections, tracking, and discovery, and creation of value.
-  2.A. DOI for all archival of code.
-  2.B. Code citation file.
-  2.C. Scientific code journals.
-  2.B. Encourage citation of code in journals.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* ## Points to highlight
-
-In this blog post, I will make respond to snippets of the public access plan with one of the four following manners.
-
-1. This is great. 
-2. Needs expanded.
-3. Needs changed. 
-4. New thing needs to be added. 
-
-### Ignored needs of engineering data
-||||_New thing that needs to be added_||||
- */}
-
-{/* ### NASA software policies don't have a scientific software escape hatch so existing NPRs need addressed
-
-[Thoughts: Words from Public Access Plan: page 18 ]
-```
-Technical software with no
-inherent scientific utility is not included in the scope of this policy, but this software can be
-released openly to ensure the widest distribution of NASA information to the extent allowed by
-applicable law and existing NASA policies.
-```
-
-_Words from Public Access Plan: page 21_
-```
- Current Documents/Policies/Websites
-The revised research software policy will be added to NASA Procedural Requirement,
-1080.1 A, Requirements for the Conduct of NASA Research and Technology (R&T). NASA
-will also amend its NASA Grants Handbook, NASA Headquarters Science Mission
-Directorate Management Handbook, and any other relevant documents or policies to
-reflect the revised research software policy. 
-```
-[Thoughts: _New thing that needs to be added_ ] */}
-
-{/* ##### Context
-Left off this list are NPRs that everyone inside NASA has to follow!
-Scientific software policy is to a large extent additive to existing software NPR policies, not an escape hatch.
-Ignoring that has limits.
-
-##### Proposed change
-Words go here. Words go here. Words go here. Words go here.
-
-##### reasoning
-Words go here. Words go here. Words go here. Words go here. */}
-
-
-
-{/* ### Call out to using community standards is excellent
-_Words from Public Access Plan: page ??????????
-```
-Encourage the abundant use of community-based standards to ensure widest
-possible application. NASA policy encourages all supported researchers to make
-use of existing data and metadata standards (format and content standards), to
-the extent feasible.
-```
-[Thoughts: _this is great_]
-
-Give example of STAC....
-
-Any teeth? Could there be an expectation for it to be in software management plan? */}
-{/* 
-## Compliance */}
-
-++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++
-
-
-{/* ## Increasing equity by reducing needing to know NASA's structure to find data
-
-- NOT: single website 
-- NOT: Single string-matching search page
-- MORE: Reusable embedded HTML widgets that work on any website
-- MORE: Educational resources on all the different places to find NASA content of different types and who would likely find each useful.
- */}
-{/* 
-## Suggestions on sharing and archiving software
-
-
-
-
-### The need to address NASA's pseudo open source license problem
-[Thoughts: _New thing needs to be added_ ]
-
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-
-
-### The plan needs lots of improvement for how to think about software over time!
-
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-
-#### Open Source software is ideally not a one time publication
-
-_Words from Public Access Plan: ???????
-```_Words from Public Access Plan: page 19_
-SMPs must provide a plan for making scientific software that underlie the results and
-findings in peer-reviewed publications digitally accessible at the time of publication. 
-```
-[Thoughts: _Needs changed_ ]
-
-
-Explain value of scientific software community....
-
-Ideally, the whole development is in the open....
-
-Ideally, development continues... but not necessarily.
-
-
-
-
-
-#### Code as supplementary information to a publication is not ideal by itself
-
-
-_Words from Public Access Plan: page 20_
+Additionally, on page 20 under “implementation” sub-heading there is the following statement: 
 ```
 Require all researchers to share their scientific software developed to support a
 scholarly publication at the time of publication. This includes the scientific
@@ -510,153 +182,65 @@ including the software as supplementary information to the published article, or
 through other means. The published article should indicate how the software
 can be accessed.
 ```
-[Thoughts: _Needs expanded_ ]
 
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
+This statement is very similar to the fifth bullet point on page 19 under the “requirements” sub-heading. The statement puts too much emphasis on releasing code as supplementary information files where it is least likely to be discovered, accessed, reused, bug fixes submitted, etc. To maximize value of funded software creation for NASA and the larger community, suggest changing both bullet points on to:
 
-
-
-
-#### Archiving and maintaining software are opposite things
-
-_Words from Public Access Plan: page 19_
 ```
-Plans for archiving and preserving of the software, as appropriate (use of
-existing databases or public repositories will be strongly encouraged),
-including how long the software will be preserved or maintained
+Require all researchers to share their scientific software developed to support a
+scholarly publication at the time of publication or prior. This includes the scientific software that are displayed in charts and figures or needed to validate the
+scientific conclusions of the publication. This requirement could be met by
+including the software as supplementary information to the published article, linking to archived versions of the software on a NASA-recognized archive service (such as NTRS or Zenodo), or through other means. The publication should indicate how the software can be accessed. Stating “upon request” is not a valid means of public release. If the software is available not just as an archive but also as a publicly accessible software repository that changes over time, both humans and machines should be able to discover it from the publication. 
 ```
-[Thoughts: _Needs changed_ ]
 
+It is important that going from a publication to both the fixed, archived version of the software and the live, updating, or changing version of the software repository is as frictionless for users as possible to maximize the value of NASA’s funded software creation.
 
-These are archiving and maintaining are incredible different things!
+## Educational Needs: Archival and Live Software Repository
+The plan discusses educational needs. There is a strong need to educate scientific software developers on the benefits and methods of both archives and having a live software repository on a public-facing version control system that can reflect changes over time. When asked for methods several times in the past, I have recommended using both Zenodo and GitHub. Zenodo is foremost an archive service, but it has integrations with Github that makes it easy to package a fixed version of a software repository into a GitHub Release and then turning that release artifact into an archived version on Zenodo with a unique DOI. 
+The process is relatively simple but the instructions to do so on [Zenodo](https://help.zenodo.org/faq/#github) 
+and [GitHub](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content) 
+are easy to miss and at times confusing. 
+NASA has a role to play in making more scientific software developers aware of these 
+[processes](https://emilio-berti.github.io/idiv-git-introduction/21-github_zenodo/index.html) 
+and establishing them as at least best practice if not required.
+ 
+## Educational Needs: DOIs
+In terms of the Public Access Plan, there are a few minor changes that could be made to clarify when creating a software archive with a DOI has value.
 
-Definition of archiving software: ..................
-
-Definition of maintaining software: ................
-
-
-
-
-## Metadata, impact, and discovery
-
-Words go here. Words go here. Words go here. Words go here.
-
-### What is meant by "Make publicly available appropriate metadata describing the software"
-_Words from Public Access Plan: page 20_
+On page 20, it could be interpreted that only software not related to a paper needs a DOI. 
 ```
-Make publicly available appropriate metadata describing the software
-``` 
-||||_Needs expanded_||||
-
-
-
-
-### Love the call out for more education needing on using DOIs for software
-||||_Needs expanded_||||
-
-
-- Internal NASA experience
-- Fewer people know how to do this even if they are experienced with publications or software
-
-
-
-### Need for education around software citation and enabling community contribution
-
-_Words from Public Access Plan: ???????
-```
-• Software released independently from the peer-reviewed manuscript must be assigned
+Software released independently from the peer-reviewed manuscript must be assigned
 a Unique Digital Object Identifier (DOI) to enable preservation, discovery, and citation of
-the software.
-• Software should be released with documentation that enables reuse and supports
-reproducibility. This includes the version of the software and how the software was run.
+the software. 
 ```
-[Thoughts: _Needs expanded_ ]
+I believe this is as wrong as (1) people may hesitate to cite a paper DOI if the software is only a small part of the paper.
+ (2) people may need to cite a different version of the software than was released with the publication. 
+ The plan should instead add the following additional text as shown below: 
 
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-
-
-### Challenges for NASA open source discovery
-_Words from Public Access Plan: page 21
 ```
-NASA will list scientific software in appropriate NASA designated repositories. This can
-include the NASA catalog of software, the Science Discovery Engine, and the
-Astrophysics Data System. NASA will identify software to be curated as part of these
-catalogs. The catalog of scientific software will begin at the time of implementation of
-the policy. The public will have access to the catalog and associated data free of charge.
-NASA will continue to identify additional approaches, involving public and private sector
-entities, and will continue efforts to improve public access to research data.
+Software released independently from the peer-reviewed manuscript must be assigned a Unique Digital Object 
+Identifier (DOI) to enable preservation, discovery, and citation of the software. Software released at the 
+same time as a publication with a DOI can optionally have its own DOI. DOIs may optionally be created for 
+any additional versions of the software, commonly referred to in software development as a release.
 ```
-||||_Needs expanded_||||
 
-- most people don't go to these
-- why both software.nasa.gov & code.nasa.gov exist
-- The need for connections between publications, code, and data.
-- Need to offers standardized citation of code in publications so findable at scale!
+GitHub or GitLab releases are fixed versions of software, so they meet some of the needs for archival, 
+but the fact that they do not automatically get a DOI limits their use as archives without linking them to Zenodo, 
+which gives them a DOI.
 
+## Educational Needs: Code Citation
+Within academia, software is to some degree treated as less valuable than publications. 
+Part of the reason for this is papers get cited, code often does not. 
+In addition to DOIs, NASA should encourage the use of [citation files](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files) 
+in code repositories such as [CITATION.cff](http://CITATION.cff) 
+and push for community standards around code citation to enable more effective programmatic tracking of 
+code, data, and publications across different types of systems. 
+As an example, [Zenodo consumes CITATION.cff files found in linked GitHub repositories](https://help.zenodo.org/faq/). 
+Suggest adding the following bullet point to the list of requirements on page 18 and 19
 
-### Contributions by NASA to non-NASA code
-
-_Words from Public Access Plan: page ????????_
 ```
-NASA employees, contractors, and grantees are encouraged to contribute and
-participate in open-source software projects that would further advance the scientific
-goals of NASA. 
+- NASA employees, contractors, and grantees are encouraged to use community standard citation files in 
+their software projects.
+- No matter where their code, data, and publications are stored NASA employees, contractors, and grantees are 
+encouraged to fill out system metadata to ensure maximum linkages between them.
 ```
-[Thoughts: _Needs expanded_]
 
-...so what does this mean....in practice? Will there be a green light in a NPR or a process?
-
-How does this translate into what managers ask their staff to spend their time on?
-
-
-
-
-### Measuring impact of NASA funded code
-[Thoughts:_New thing that needs to be added_]
-
-What code creation and maintenance does NASA fund? There is a need to establish baselines to create strategy.
-
-Words go here. Words go here. Words go here. Words go here.
-Words go here. Words go here. Words go here. Words go here.
-
-
-
-### Explicit direction to NASA program managers to be more specific in their announcements of resource opportunities 
-_Words from Public Access Plan: ???????
-```
-Require that NASA program managers include in announcements of research
-opportunities (1) specific software requirements and expectations; (2) an
-example SMP or outline for the specific type of software likely to result from the
-funded projects; or (3) a statement that SMP is not required because of the
-nature of the activity (e.g., no software is expected, or proprietary software are
-expected). 
-```
-[Thoughts: _Needs expanded_]
-
-Great...but what can NASA do about increasing funding and job changes related to creating software over papers?
-
-
-Compliance vs. incentives...
-
-### Software plans change
-_Words from Public Access Plan: ???????
-```
-Appropriate mechanisms and metrics will be developed to ensure that funding
-recipients are made aware of their obligations and to monitor whether awardees have
-complied with their SMPs. Compliance will be verified by the program officer by
-evaluation of required project reports and, if necessary, continuing funds may be
-withheld in cases of noncompliance. 
-```
-||||_Needs expanded_||||
-
-
-Need to ensure compliance doesn't require waterfall style development and all the problems associated with that!
-
-
-
-
- */}
