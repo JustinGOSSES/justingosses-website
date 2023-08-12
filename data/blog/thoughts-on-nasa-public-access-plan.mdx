@@ -18,23 +18,26 @@ on their proposed 2023
 This effort is part of NASA's ["Transform to Open Science (TOPS)"]("https://science.nasa.gov/open-science/transform-to-open-science") 
 , a push for open science across several US government agencies and the White House. 
 A ["Request for Information"](https://www.federalregister.gov/documents/2023/05/18/2023-10643/request-for-information-nasa-public-access-plan-for-increasing-access-to-the-results-of), 
-is a standard way government agencies ask for feedback from the public. The comment period ends on 08/17/2023. 
-<b>This blog post was written as an exercise in considering what feedback might be given in response.</b> 
+is a standard way government agencies ask for feedback from the public. 
 As someone with experience working on open source code release and development, I had thoughts.
+The comment period ends on 08/17/2023. 
+
+<b>This blog post was written as an exercise in considering what feedback might be given in response.</b> 
+
 
 ![Logo for Transform to Open Science. It is a badge with TOPS and NASA at the bottom and space ship taking off.](../static/images/blog/thoughts-on-nasa-public-access-plan/Tops_badge_OG_NASA_Final.png)
 
 ## Background on NASA on public access to publications, code, data, etc.
 
 NASA has a long history of making its publications, data, and code available to the public. 
-However, that task is never as easy as it sounds. To give a few examples: 
+However, that task is never as easy as it sounds. To give a few examples of complications: 
 1. Scientists have an incentive to publish in high impact journals. Those journals often want to charge people to read them, which can reduce access to publicly funded research results, code, etc.
-2. Certain types of data released can get quite large making it necessary to operate and in some cases invent systems to enable the public to access the data and work with it in ways that do not create unfortunate process burdens or costs that stiffle use.
-3. NASA and its contractors both write code is extremely sensitive, for example code that is ued to control rockets, and less sensitive code that can be widely distributed. It is difficult to create processes that worth extremely well at both ends of the spectrum.  
+2. Certain types of data that NASA wants to release to the public can get quite large making it necessary to operate, and in some cases invent, systems to enable the public to access the data and work with it in ways that aren't so terrible that no one bothers.
+3. NASA and its contractors both write code that is extremely sensitive, for example code that is ued to control rockets, and less sensitive code that can be widely distributed. It is difficult to create processes that worth extremely well at both ends of the spectrum.  
 
 The [Public Access Plan](https://www.nasa.gov/sites/default/files/atoms/files/nasa_ocs_public_access_plan_may_2023.pdf)
 is an attempt to improve from the current situation to something a little better. 
-I advise you to go and read it as it won't be summarized here. However, I will 
+You should go and read it at the link above as it won't be summarized here. However, I will 
 include a few bullet points that the 2023 plan highlights as key revisions compared to the 2014 plan. 
 
 - There shall be no publication embargo period for peer-reviewed publications (a 12 month embargo had been allowed)
@@ -62,18 +65,19 @@ It is worth pointing out that NASA is an agency made up of several sub-organizat
 Each of these sub-organizations has different cultures, missions, and things they are better or worse at. 
 These differences are more pronounced at NASA than I have experienced with BP or Microsoft.
 This public access plan is driven by the Science Mission Directorate. Compared to other parts of NASA, 
-they fund academic research a lot more, work with outside partners a lot more, and much less often 
-work with sensitive data or code that needs to be tightly controlled.
+they fund academic research a lot more, work with outside partners a lot more, and less often 
+work with sensitive code that needs to be tightly controlled.
 
+#### NASA has a pile of policy documentation. Boundaries between these policies are complex.
 NASA policy and regulations are written into NASA Procedural Requirements (NPRs) 
 or NASA Policy Directives (NPDs). You can read them all online at the 
-[NODIS Library](https://nodis3.gsfc.nasa.gov/main_lib.cfm), which you can think of of a 
+[NODIS Library](https://nodis3.gsfc.nasa.gov/main_lib.cfm). You can think of NODIS as a 
 gigantic file cabinet filled with rules written a little bit at a time over decades and decades.
 If you read the Public Access Plan closely, you'll see NPRs and NPDs mentioned in the sense that 
 it acknowledges their existence and says they still apply but positions the Public Access Plan as 
-additional and specific to research software. This fuzzily phrased statement is necessary 
-as they are trying to create public access policies that do not require changing large amounts 
-of existing NPRs and NPDs or require buy-in from every sub-organization within NASA. 
+additional and specific to research software. I interpret this fuzzily phrased statement as 
+trying to create public access policies that do not require changing large amounts 
+of existing NPRs and NPDs or require buy-in from every single sub-organization within NASA. 
 Other sub-organizations have more sensitive code or data more often, 
 so they might want other policies as they have different needs.
 Other sub-organizations are less motivated by public release.
@@ -81,8 +85,7 @@ Additionally, NPRs and NPDs are typically changed in small bits every several ye
 so anything that requires large rewrites to many existing NPRs or NPDs 
 becomes a very heavy boulder to roll up the hill.
 
-
-## Software Sharing and Archiving
+## Focus of my feedback on the Public Access Plan: Software Sharing and Archiving
 
 This blog post will focus on the fifth question in NASA's 
 [Request for Information](https://www.federalregister.gov/documents/2023/05/18/2023-10643/request-for-information-nasa-public-access-plan-for-increasing-access-to-the-results-of) 
@@ -108,7 +111,7 @@ This document has been written in response to the [request for information](http
 regarding the [proposed May 2023 NASA Public Access Plan](https://www.nasa.gov/sites/default/files/atoms/files/nasa_ocs_public_access_plan_may_2023.pdf). 
 My comments are in response to question 5  “Suggestions on sharing and archiving of software. Sites like GitHub and Zenodo offer ways to distribute and manage software. NASA is seeking suggestions on improving the archiving, sharing, and maintenance of software for reuse.”
 
-## Language should more explicitly talk about software archival versus software maintenance
+## Plan should more explicitly define & explain differences between software archival and maintenance
 
 In several places the Public Access Plan would benefit from more explicitly describing the differences between archival of a fixed version of the software versus maintaining an active and changing public code repository over time. For example, in the line below from page 20 discussing requirements that Software Management Plans must address, ”maintained” and “preserved” could be mistakenly read as the same thing. 
 ```
@@ -116,21 +119,26 @@ Plans for archiving and preserving of the software, as appropriate (use of
 existing databases or public repositories will be strongly encouraged),
 including how long the software will be preserved or maintained
 ```
-Archived software is an unchanging and fixed version of the code. As stated in the plan, this is important for reproducibility as without it someone else can attempt to reproduce the pages results and get different results for unknown reasons. 
+Archived software is an unchanging and fixed version of the code. 
+As stated in the plan, an archived version of the software is important for reproducibility as without it someone else can not attempt to reproduce a study and hope to get the same results. 
+They might get slightly or greatly different results and not know why.
 As such, it is reasonable to have code archival as a requirement However, archived code should be expressed as a minimum bar and not implied to be the only or best way to share software. 
 
 NASA should also encourage, although likely not require, use of free, public facing version control systems (GitHub, GitLab, etc.) 
 that allow others besides the original authors to easily access software in a manner such that the software can evolve over time. 
-Placing the software of these system also increases chances of discovery and reuse as that is where developers spend their time and 
-are more likely to be exposed to the software compare to NASA run systems that fewer know about such as [NASA Technical Report Server](https://ntrs.nasa.gov/) or [code.nasa.gov](https://code.nasa.gov). 
-I should also call out here that I work for Microsoft, which owns GitHub.
 
 As NASA civil servants likely do not want to mention any particular product or company in policy, I will suggest the term <b>“free, public-facing software version control systems”</b> be used in place of saying "GitHub or GitLab."
 
 Making the code available to the public in these systems enables several behaviors that increase the value and impact of the software not possible with an archived version of the software alone. 
-It enables the public to read the code quickly without having to download and open large files, discover it from other public code that use it as a dependency or share a topic tag, add an issue when a bug or security vulnerability is found, make pull requests to improve it, etc. 
-Code that only exists in archived form or as supplemental information to a publication is much less likely to be a part of these behaviors. 
-It is by definition static. 
+Placing it on these types of systems enables users to discover it from other public code that use it as a dependency or share a topic tag. 
+More people are likely to discover it there as “free, public-facing software version control systems” are where developers spend a lot of their time, not NASA run systems that fewer know about such as [NASA Technical Report Server](https://ntrs.nasa.gov/) or [code.nasa.gov](https://code.nasa.gov). 
+I should also call out here that I work for Microsoft, which owns GitHub, and I also used to help run code.nasa.gov as I mentioned them both. These are my personal opinions.
+The public can also read the code quickly without having to download and open large files, reducing friction for evaluation increases rates of reuse.
+Code that exists on a “free, public-facing software version control systems” is also more likely to improve over time.
+Users who are not the original authors can add an issue when a bug or security vulnerability is found or make pull requests to add new features.
+Code for one study can be generalized with the insights of the community and turned into a tool that is reusable.  
+In contrast, software that only exists in archived form or as supplemental information to a publication is much less likely to be a part of these behaviors
+as it is by definition a static artifact. 
 
 NASA may want to only encourage rather than mandate code to be placed on a free, public-facing software control system as placing code where it can be easily reached, forked, bugs submitted, etc. opens up at least the possibility of a community growing around the software. A community demands time from the original authors, which they may not have. 
 There are two options NASA could introduce in training materials to alleviate these concerns.
