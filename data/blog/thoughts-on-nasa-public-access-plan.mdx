@@ -108,11 +108,16 @@ for feedback on the NASA Public Access Plan. The question in full is:
 
 This document has been written in response to the [request for information](https://www.federalregister.gov/documents/2023/05/18/2023-10643/request-for-information-nasa-public-access-plan-for-increasing-access-to-the-results-of) 
 regarding the [proposed May 2023 NASA Public Access Plan](https://www.nasa.gov/sites/default/files/atoms/files/nasa_ocs_public_access_plan_may_2023.pdf). 
+These are only my personal opinions, but I should note that I previously worked as a NASA contractor supporting code.nasa.gov and currently work for Microsoft, which owns GitHub, as I mention both.
 My comments are in response to question 5  “Suggestions on sharing and archiving of software. Sites like GitHub and Zenodo offer ways to distribute and manage software. NASA is seeking suggestions on improving the archiving, sharing, and maintenance of software for reuse.”
+
+
 
 ## Plan should more explicitly define & explain differences between software archival and maintenance
 
-In several places the Public Access Plan would benefit from more explicitly describing the differences between archival of a fixed version of the software versus maintaining an active and changing public code repository over time. For example, in the line below from page 20 discussing requirements that Software Management Plans must address, ”maintained” and “preserved” could be mistakenly read as the same thing. 
+In several places the proposed NASA Public Access Plan would benefit from more explicitly describing the differences between 
+archival of a fixed version of the software versus maintaining an active and changing public code repository over time. 
+For example, in the line below from page 20 discussing requirements that Software Management Plans must address, ”maintained” and “preserved” could be mistakenly read as the same thing. 
 ```
 Plans for archiving and preserving of the software, as appropriate (use of
 existing databases or public repositories will be strongly encouraged),
@@ -125,27 +130,29 @@ As such, it is reasonable to have code archival as a requirement However, archiv
 
 NASA should also encourage, although likely not require, use of free, public facing version control systems (GitHub, GitLab, etc.) 
 that allow others besides the original authors to easily access software in a manner such that the software can evolve over time. 
-
-As NASA civil servants likely do not want to mention any particular product or company in policy, I will suggest the term <b>“free, public-facing software version control systems”</b> be used in place of saying "GitHub or GitLab."
+As NASA likely do not want to mention any particular product in policy, the term <b>“free, public-facing software version control systems”</b> could be used instead.
 
 Making the code available to the public in these systems enables several behaviors that increase the value and impact of the software not possible with an archived version of the software alone. 
 Placing it on these types of systems enables users to discover it from other public code that use it as a dependency or share a topic tag. 
 More people are likely to discover it there as “free, public-facing software version control systems” are where developers spend a lot of their time, not NASA run systems that fewer know about such as [NASA Technical Report Server](https://ntrs.nasa.gov/) or [code.nasa.gov](https://code.nasa.gov). 
-I should also call out here that I work for Microsoft, which owns GitHub, and I also used to help run code.nasa.gov as I mentioned them both. These are my personal opinions.
-The public can also read the code quickly without having to download and open large files, reducing friction for evaluation increases rates of reuse.
+As these systems also allow the public to read software without downloading it, the software can be more quickly evaluated without having to download and open large files. 
+This reduces friction and increases rates of reuse.
 Code that exists on a “free, public-facing software version control systems” is also more likely to improve over time.
 Users who are not the original authors can add an issue when a bug or security vulnerability is found or make pull requests to add new features.
 Code for one study can be generalized with the insights of the community and turned into a tool that is reusable.  
+To summarize, software on “free, public-facing software version control systems” is more discoverable, reusable, secure, generalizable, and extendable.
 In contrast, software that only exists in archived form or as supplemental information to a publication is much less likely to be a part of these behaviors
 as it is by definition a static artifact. 
 
 NASA may want to only encourage rather than mandate code to be placed on a free, public-facing software control system as placing code where it can be easily reached, forked, bugs submitted, etc. opens up at least the possibility of a community growing around the software. A community demands time from the original authors, which they may not have. 
 There are two options NASA could introduce in training materials to alleviate these concerns.
 One is to use built-in features of free, public-facing software version control systems and “archive” the repository. 
-An archived software repository is still visible and [forkable](https://docs.github.com/en/get-started/quickstart/fork-a-repo) by others who wish to continue its development but [issues](https://docs.github.com/en/issues) and [pull requests](https://docs.github.com/en/pull-requests) can not be added meaning bug reports and feature improvements stop.
+"Archived" is used here in the GitHub or GitLab [meaning of archiving a software repository in place](https://docs.github.com/en/repositories/archiving-a-github-repository).
+An archived software repository is still visible and [forkable](https://docs.github.com/en/get-started/quickstart/fork-a-repo) by others who wish to continue its development but [issues](https://docs.github.com/en/issues) and [pull requests](https://docs.github.com/en/pull-requests) can not be added meaning bug reports and feature improvements stop, at least on the repository owned by the original owner.
 On archived software repositories, there is a banner stating it is “archived” and therefore it is obvious that the software is no longer being developed by its original authors. 
 The second option is to add text to a README that explains the software repository is no longer being actively maintained. People may leave a bug report in an issue, but there is no expectation of a response. 
-Based on these differences, suggest changing the previously mentioned text on page 20 to:
+
+Suggest changing the previously mentioned text on page 20 to:
 
 ```
 - Plans for preserving a fixed, archival version of the software that was used to produced the results 
@@ -198,21 +205,27 @@ This statement is very similar to the fifth bullet point on page 19 under the �
 Require all researchers to share their scientific software developed to support a
 scholarly publication at the time of publication or prior. This includes the scientific software that are displayed in charts and figures or needed to validate the
 scientific conclusions of the publication. This requirement could be met by
-including the software as supplementary information to the published article, linking to archived versions of the software on a NASA-recognized archive service (such as NTRS or Zenodo), or through other means. The publication should indicate how the software can be accessed. Stating “upon request” is not a valid means of public release. If the software is available not just as an archive but also as a publicly accessible software repository that changes over time, both humans and machines should be able to discover it from the publication. 
+including the software as supplementary information to the published article, linking to archived versions 
+of the software on a NASA-recognized archive service (such as NTRS or Zenodo), or through other means. 
+The publication should indicate how the software can be accessed. Stating “upon request” is not a valid 
+means of public release. If the software is available not just as an archive but also as a publicly 
+accessible software repository that changes over time, both humans and machines should be able to 
+discover it from the publication. 
 ```
 
 It is important that going from a publication to both the fixed, archived version of the software and the live, updating, or changing version of the software repository is as frictionless for users as possible to maximize the value of NASA’s funded software creation.
 
-## Educational Needs: Archival and Live Software Repository
-The plan discusses educational needs. There is a strong need to educate scientific software developers on the benefits and methods of both archives and having a live software repository on a public-facing version control system that can reflect changes over time. When asked for methods several times in the past, I have recommended using both Zenodo and GitHub. Zenodo is foremost an archive service, but it has integrations with Github that makes it easy to package a fixed version of a software repository into a GitHub Release and then turning that release artifact into an archived version on Zenodo with a unique DOI. 
+## Educational Needs: Evolving Software, Archival Software, and DOIs
+The plan discusses educational needs. There is a strong need to educate scientific software developers on the benefits and methods of both archives and having a live software repository on a public-facing version control system that can reflect changes over time. 
+When asked for methods several times in the past, I have recommended using both Zenodo and GitHub. However, any options that enable the same behaviors, software evolution other time and DOIs tagged to fixed releases of said software, would be sufficient. 
+Zenodo is foremost an archive service, but it has integrations with Github that makes it easy to package a fixed version of a software repository into a GitHub Release and then turning that release artifact into an archived version on Zenodo with a unique DOI. 
 The process is relatively simple but the instructions to do so on [Zenodo](https://help.zenodo.org/faq/#github) 
 and [GitHub](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content) 
 are easy to miss and at times confusing. 
 NASA has a role to play in making more scientific software developers aware of these 
 [processes](https://emilio-berti.github.io/idiv-git-introduction/21-github_zenodo/index.html) 
 and establishing them as at least best practice if not required.
- 
-## Educational Needs: DOIs
+
 In terms of the Public Access Plan, there are a few minor changes that could be made to clarify when creating a software archive with a DOI has value.
 
 On page 20, it could be interpreted that only software not related to a paper needs a DOI. 
