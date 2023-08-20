@@ -8,9 +8,7 @@ export default function Footer() {
     <footer>
       
       <div className="mt-16 flex flex-col items-center">
-        <div className="mb-3 flex space-x-4">
-        <script src="https://pitwebring.billhunt.dev/webring.js"></script>
-        <script>showWebring(true);</script>
+        <div className="mb-3 flex space-x-4">       
           <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />
           <SocialIcon kind="github" href={siteMetadata.github} size="6" />
           {/* <SocialIcon kind="facebook" href={siteMetadata.facebook} size="6" />
@@ -21,6 +19,14 @@ export default function Footer() {
           <SocialIcon kind="observable" href={siteMetadata.observable} size="6" />
           <SocialIcon kind="rss" href={siteMetadata.rss} size="6" />
         </div>
+        <div className="text-sm text-gray-500 dark:text-gray-400">
+          <p>
+          This blog is part of the <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="https://pitwebring.billhunt.dev/">Public Interest Tech Webring </a>:
+          <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="https://pitwebring.billhunt.dev/redirect?dir=prev&from=https%3A%2F%2Fjustingosses.com"> Previous Site</a>
+           |
+           <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="https://pitwebring.billhunt.dev/redirect?from=https%3A%2F%2Fjustingosses.com">Next Site</a>
+          </p>
+        </div>          
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{siteMetadata.author}</div>
           <div>{` • `}</div>

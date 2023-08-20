@@ -1,10 +1,9 @@
 const projectsData = [
-  /Users/justingosses/Code/justingosses-website/public/static/images/blog/llm-geology-roadside-bot/LAGDAL_screenshot_sedona.png
   {
     title: 'LAGDAL',
     type: 'Website', 
     tools: 'leaflet.js, openAI, LLM, python, wikipedia, langchain, jupyter, requests, click, Flask',
-    description: `LLM Assisted Geology Descriptions of Arbitrary Locations = LAGDAL. Front-end and back-end of website that uses geologic map API data from Macrostrat and series of prompts sent to openAI to generate geologic field trip descriptions globally.`,
+    description: `LLM Assisted Geology Descriptions of Arbitrary Locations = LAGDAL. Front-end and back-end website deployed on Azure that uses geologic map API data from Macrostrat and series of prompts sent to openAI to generate geologic field trip descriptions globally.`,
     imgSrc: '/static/images/blog/llm-geology-roadside-bot/LAGDAL_screenshot_sedona.png',
     href: 'https://github.com/JustinGOSSES/LAGDAL'
   },

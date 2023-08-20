@@ -1,0 +1,86 @@
+---
+title: 'Joining the Public Interest Tech Webring'
+date: 2023-08-19T15:32:14Z
+lastmod: '2023-09-19'
+tags: ['NASA','gov','govtech','blog','next.js','tailwindcss','webring']
+draft: false
+summary: "Why I joined the Public Interest Tech Webring. Plus, a little on the code necessary to add it to my website's footer"
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://witty-hill-0659b8610.1.azurestaticapps.net/blog/joining-public-interest-tech-webring/
+---
+
+## What is the Public Interest Tech Webring
+
+To quote the [Public Interest Tech Webring About Section](https://pitwebring.billhunt.dev/#about), 
+_The Public Interest Tech Webring is a collection of blogs dedicated to civic tech, public interest tech, government tech policy, and similar topics._
+
+## Why
+
+I've been following [Bill Hunt](https://billhunt.dev/), who created the webring, 
+and several of the others who have websites within it on social media for 
+a while. I started several years ago when I worked as a NASA contractor writing code inside the government. 
+With the migration away from Twitter, some of the people I follow and learn from have migrated to Mastodon and 
+a small portion are increasing writing on personal blogs as opposed to social media. Reasons why are varied. Two 
+blog posts that talk to some of the drivers are Bill Hunt's
+ ["Bringing Webrings Back"](https://billhunt.dev/blog/2022/12/30/bringing-webrings-back/)
+and Scott Hanselman's [Your words are wasted](https://www.hanselman.com/blog/your-words-are-wasted). 
+
+Joining the webring provides a little bigger audience for my gov tech related writing and is a 
+self-engineered nudge to write more.
+
+Although not everything I write about on the blog is focused on public interest tech, gov tech, tech policy, etc., it 
+does make up a portion of what I write about and care about. Additionally, as I no longer work in government, there 
+are some slightly above luke warm takes I can write that I probably would have avoided entirely previously in order to not appear to be
+speaking officially. 
+
+Examples blog posts that fall under gov tech related include: 
+- [Thoughts on NASA Public Access Plan](/blog/thoughts-on-nasa-public-access-plan)
+- [What eats what for breakfast in an enterprise setting](blog/what-eats-what-for-breakfast-in-an-enterprise-setting)
+- [Finding a NASA contractor job](blog/finding-a-nasa-contractor-job)
+- [Reusing Metadata](blog/reusing-metadata)
+- [Presenting at Johnson Space Center Data Science Day](blog/presenting-at-johnson-space-center-data-science-day)
+
+Others are less obviously related to gov tech but have to do with using or discovery government open data and open source code. 
+- [Visualizing Well Logs on the Web with Wellio and Wellioviz](/blog/wellio-wellioviz) is about two JavaScript libraries I developed because I was annoyed I had to download individual data files from state and federal geological surveys to find out what was in them. As the majority of the time they did not have type of information I needed, this was a annoyingly time intensive process. These libraries enable anyone to create visualizations of the files on the web, so you don't have to download files to see what is in them.
+- [Finding floodplain GEOJSONs](blog/finding-floodplain-geojsons) is about the difficulties of navigating local, state, and FEMA websites looking for the right data.
+
+
+## How
+Joining the webring was pretty simple as described on its [join page](https://pitwebring.billhunt.dev/join/). 
+
+1. Fill out a GitHub issue to join.
+2. Add snippet to your header or footer that displays "NEXT" and "PREVIOUS" buttons to other websites in the webring.
+
+I will point out here that I too quicky grabbed the snippet provided on the [About](https://pitwebring.billhunt.dev/#about) 
+page without clicking on the "More Info" button below. 
+
+![Screenshot of Public Interest Tech Webring about page](../static/images/blog/joining-public-interest-tech-webring/about.png)
+
+
+```
+<script src="https://pitwebring.billhunt.dev/webring.js"></script>
+<script>showWebring(true);</script>
+```
+
+Pasting that into my blog's Footer.js file initially
+did not work. 
+
+I spent a few minutes refashioning some code for it to work with next.js and tailwindCSS site, but 
+what I really should have done is saved myself 15 minutes by being curious enough to click the "MORE INFO" button.
+As the version of the generated code snippet for "hosted blogs" works well in my next.js & tailwindCSS site. All 
+I had to do was add in my tailwind CSS classes for links to get the proper color and size to match the rest of my blog. 
+
+![Screenshot of Public Interest Tech Webring snippet generation page](../static/images/blog/joining-public-interest-tech-webring/code-snippet.png)
+
+This is what I added to my Footer.js file, which you can see in [the GitHub repository for this website](https://github.com/JustinGOSSES/justingosses-website).
+```
+ <div className="text-sm text-gray-500 dark:text-gray-400">
+          <p>
+          This blog is part of the <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="https://pitwebring.billhunt.dev/">Public Interest Tech Webring </a>:
+          <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="https://pitwebring.billhunt.dev/redirect?dir=prev&from=https%3A%2F%2Fjustingosses.com"> Previous Site</a>
+           |
+           <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="https://pitwebring.billhunt.dev/redirect?from=https%3A%2F%2Fjustingosses.com">Next Site</a>
+          </p>
+</div>  
+```
