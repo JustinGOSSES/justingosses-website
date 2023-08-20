@@ -1,5 +1,15 @@
 const projectsData = [
   {
+    title: 'Maps that speak',
+    type: 'Website with speech', 
+    tools: 'leaflet.js, Nosleep.js, turf.js',
+    description: `Built website that can stay open while driving or biking and tells you when you have entered or exited a flood plain in Harris County, Texas as January 2023 Houston Hackathon. Playing around with different ways to experience map data to make it more real and tied to a place. `,
+    imgSrc: '/static/images/blog/maps-that-speak/Houston-floodplain-example1.png',
+    href: 'https://justingosses.com/blog/maps-that-speak'
+
+
+  },
+  {
     title: 'Stratigraphy vs. Sea Level Interactive Model',
     type: 'Explorable Explanation', 
     tools: 'Observable, Vega.js, Wellioviz.js',
@@ -44,7 +54,7 @@ const projectsData = [
     href: 'https://public.tableau.com/app/profile/justin.gosses/viz/Harvey_FEMA-HCADmerge_vD_20170907/Story1#streetView',
   },
   {
-    title: 'Game of Trones Parallel Sets',
+    title: 'Game of Thrones Parallel Sets',
     type: 'Interative Data Visualization',
     tools: 'D3.js',
     description: `Built my own implimentation of parallel sets with some interactive draggable features using a dataset of game of thrones battles.`,
@@ -90,8 +100,8 @@ const projectsData = [
     title: 'Car Lidar in Three.js',
     type: '3D Data Visualization',
     tools: 'Three.js',
-    description: `A quick side project to try visualizing car-based LIDAR data using three.js. Very different than the 
-    plane-acquired datasets I'm more familiar with in GIS. Easier tooling choice would be Potree.`,
+    description: `Quick side project to visualize car-based LIDAR data using three.js. Very different than the 
+    plane-acquired LIDAR datasets I'm more familiar with from GIS (geographic information systems) world. Easier tooling choice would be Potree as its purpose built for LIDAR but wanted to get it into three.js.`,
     imgSrc: '/static/images/projects/lidar_1.png',
     href: 'https://justingosses.github.io/lidar_threejs_playground/', 
             

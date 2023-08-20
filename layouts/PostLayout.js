@@ -143,6 +143,8 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   &larr; Back to the blog
                 </Link>
               </div>
+              <script src="https://pitwebring.billhunt.dev/webring.js"></script>
+              <script>showWebring(true);</script>
             </footer>
           </div>
         </div>
