@@ -24,7 +24,7 @@
     "gray-matter": "^4.0.2",
     "image-size": "1.0.2",
     "mdx-bundler": "9.0.1",
-    "next": "12.1.0",
+    "next": "13.5.0",
     "next-themes": "^0.0.14",
     "postcss": "^8.4.31",
     "preact": "^10.6.2",
