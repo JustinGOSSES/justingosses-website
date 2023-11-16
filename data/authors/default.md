@@ -2,11 +2,6 @@
 name: Justin Gosses
 avatar: /static/images/JustinPhoto.jpg
 occupation: 
-# company: Company
-# email: address@yoursite.com
-# twitter: https://twitter.com/Twitter
-# linkedin: https://www.linkedin.com
-# github: https://github.com/JustinGOSSES
 ---
 
 I live in Houston, Texas with my wife and dog Momo. 
@@ -63,6 +58,8 @@ Before NASA, I worked as a geoscientist for BP and got to dig into data to answe
 
 
 ### <a id="recent-talks"></a>Recent Talks
+
+November 2023, <a href="https://www.youtube.com/c/innersourcecommons">“How the InnerSource Programs Office working group can help you as someone responsible for InnerSource enterprise-wide“: InnerSource Summit</a>
 
 AGU 2019, <a href="https://t.co/ylV3EGSbLg?amp=1">Poster Presentation</a> – <a href="https://agu.confex.com/agu/fm19/meetingapp.cgi/Paper/617308">“Reusing Data and Metadata to Create New Metadata through Machine-learning & Other Programmatic Methods“</a>
 
