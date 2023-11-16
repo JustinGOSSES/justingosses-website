@@ -118,7 +118,7 @@ Follow the interactive prompt to generate a post with pre-filled front matter.
 - run `git push origin main` <= This will kick off a github actions script that should deploy the page to Azure Static Web Apps
 
 ## URL of Deployed Website
-- https://witty-hill-0659b8610.1.azurestaticapps.net/
+- https://justingosses.com/
 - https://justingosses.com
 
 -------------------------
