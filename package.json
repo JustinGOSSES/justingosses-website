@@ -18,7 +18,7 @@
     "@microsoft/applicationinsights-web": "^2.8.10",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^10.4.16",
     "esbuild": "^0.13.15",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.2",
