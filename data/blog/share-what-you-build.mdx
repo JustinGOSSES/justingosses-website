@@ -1,0 +1,87 @@
+---
+title: 'Share back what you built with open source and open data maintainers'
+date: 2023-11-20T15:32:14Z
+lastmod: '2023-11-20'
+tags: [ 'open-data', 'NASA','map','geospatial','data', 'open-source', 'open-data','APIs']
+draft: false
+summary: 'Sharing what you build with those that you built upon puts energy back into the open source and open data systems. Free does not have to mean invisible.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://justingosses.com/blog/share-what-you-build/
+---
+
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## API.nasa.gov: NASA's beginner friendly API with a single front-door
+
+Going through my non-work GitHub notifications this evening and saw that 
+[this issue](https://github.com/nasa/api-docs/issues/125#issuecomment-1815611856) 
+on [https://github.com/nasa/api-docs](https://github.com/nasa/api-docs) got a new post. 
+
+This was a project I worked circa 2018-2020 when I was a contractor for NASA. 
+https://api.nasa.gov/ is a front-door for easy to use NASA APIs. Unlike https://data.nasa.gov which 
+attempts to capture everything, [https://api.nasa.gov/](https://api.nasa.gov/) is curated set of APIs for 
+developer community, especially new developers who need practice data to work with.
+
+[The issue](https://github.com/nasa/api-docs/issues/125#issuecomment-1815611856) asked for people
+to share what they built with the API. These APIs get a lot of use, but we only knew the tiniest 
+sliver of what people did with them, which was problematic when decisions needed to be made about 
+resourcing and examples need of how the public was benefiting from maintaining the site.
+
+The creation of this issue was a quick, near zero time away to source a few examples of what people 
+did with api.nasa.gov. As it was an issue on the repository that builds the front-end site, only a fraction 
+of users every saw it.  
+We did some other things as well, but
+I love this (despite very few of the users ever seeing or responding to this issue) 
+as I still watch that issue years later and 
+occassionally get delighted by surprise updates like this one.
+
+## Landsat.Earth
+
+As shared in that issue, @shaheertarar created a little single page application 
+called [Landsat.Earth](https://landsat.earth/). 
+It is described as _"a portrait of the earth (and Landsat's collection pattern) using all the 
+images captured by Landsat 9 over 24 hours. Updates once a day."_ As you hover over each color 
+image, the image expands into a a bigger view and you get to see exactly when it was shot. 
+The curved lines represents the path of the satellite as it orbits the earth in the last 24 hours.
+
+![screencapture of Landsat.Earth](/static/images/blog/share-what-you-build/landsatEarthScreenShot.png)
+
+Many different people have created similar projects, but this one's user interface and visuals 
+capture a bit of the awe involved with space-based imagery that I really like.
+Also, it was a nice surprise to see someone using the API in a new way even if I haven't worked 
+the related infrastructure in a few years.
+
+## Wish for code and data sharing infrastructure to do a better job at bidirectional sharing
+
+Code repositories and open data catalogs are often one-way streets. Content is free with no mechanism 
+to gate access, so there's no one "watching the door" or asking you your plans. 
+Unfortunately, this means there's no way to know what people do with that open data or codes. 
+At most they have a few examples of what people do with the data that they know about through some other connection. 
+Maybe they have page traffic or download data. **These are nice, but the story potential is less powerful than 
+looking at the actual things people build with the data.** Those stories can sometimes to be more compelling than
+page stats alone. 
+
+This is a common missed opportunity to better understand users and collect information on real-world impact. 
+It also can be a pathway to give users many examples of how to use the data or code with little effort.
+
+## Free doesn't mean usage has to be invisible!
+
+#### For users
+So if you use open data, open source code, or open APIs, share what you build with those that you built upon.
+It can help the "powers that be" understand the value of the open ecosystem and help you get more resources.
+It can also just inspire little moments of joy.
+
+##### For maintainers
+And if you operate one of those things, consider making it easy for people to share what they build with you.
+Even if it doesn't get used much, it can inspire other users or help give them a path to get started. 
+
+## Post Script 
+
+A GitHub issue is not the best way to do this as very few of your users will ever see it, but it is very low effort 
+to capture at least a few examples.
+
+If your API, data, or code has strings that are specific to how developers use it, like "api.nasa.gov", 
+the new GitHub code search is an awesome way to find public code repositories that leverage your 
+open resource. [https://github.com/search?q=api.nasa.gov&type=code&ref=advsearch](https://github.com/search?q=api.nasa.gov&type=code&ref=advsearch)
