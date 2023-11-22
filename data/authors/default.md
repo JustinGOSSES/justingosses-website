@@ -1,7 +1,7 @@
 ---
 name: Justin Gosses
 avatar: /static/images/JustinPhoto.jpg
-occupation: 
+occupation:
 # company: Company
 # email: address@yoursite.com
 # twitter: https://twitter.com/Twitter
@@ -9,11 +9,12 @@ occupation:
 # github: https://github.com/JustinGOSSES
 ---
 
-I live in Houston, Texas with my wife and dog Momo. 
+I live in Houston, Texas with my wife and dog Momo.
 
 If you find a mistake on this website, please check out the [CONTRIBUTING](https://github.com/JustinGOSSES/justingosses-website/blob/main/CONTRIBUTING.md) instructions and submit an issue or pull request to the [code repository](https://github.com/JustinGOSSES/justingosses-website) that builds it.
 
 ## About Me
+
 - <a href="#interests">Interests</a>
 - <a href="#perspectives-on-building-solutions-with-code">Perspectives on Building Solutions With Code</a>
 - <a href="#professional-history">Professional History</a>
@@ -21,17 +22,18 @@ If you find a mistake on this website, please check out the [CONTRIBUTING](https
 - <a href="#publications">Publications</a>
 - <a href="#community-involvement">Community Involvement</a>
 
-
 ### <a id="interests"></a>Interests
+
 - Things that could exist but don't yet
-- Natural Language Processing
+- Natural Language Processing (treating words as data with a computer program )
 - Open source geospatial tools
 - Water based things like kayaking and paddle boarding. Also small web-based services that help me decide when and where to go.
 - Things at the intersection of geology & code
 - Sharing at Scale:
-    - This includes questions like open data interface design; code citation tooling as a way to change its perceived value; group membership and behaviors in open source that impact how science gets done; different incentives between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
+  - This includes questions like open data interface design; code citation tooling as a way to change its perceived value; group membership and behaviors in open source that impact how science gets done; different incentives between inner source and open source; platform and tooling effects on code sharing; and code dependencies as reusable metadata and a metaphor for developer skills.
 
 ### <a id="perspectives-on-building-solutions-with-code"></a>Perspectives on Building Solutions With Code
+
 A few personal opinions that define how I approach data science include:
 
 - I have a soft spot for things at the intersection of metadata, natural language processing, semantic tooling, and user interfaces as technology improvements have opened up a lot of possibilities there that have yet to be built.
@@ -48,19 +50,19 @@ Here's a few highlights of my professional history with an emphasis on what type
 
 #### Microsoft
 
-Currently, I work at Microsoft as a Senior Program Manager focused on improving the <a href='https://innersourcecommons.org/'>inner source</a> experience, or use and reuse of code across organizational boundaries. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new and still gaining understanding of the role, but suspect I'll be writing <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, C#, and Python to understand current rates & patterns of code collaboration as we attempt to reduce friction and better align tooling and incentives. 
+Currently, I work at Microsoft as a Senior Program Manager focused on improving the <a href='https://innersourcecommons.org/'>inner source</a> experience, or use and reuse of code across organizational boundaries. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new and still gaining understanding of the role, but suspect I'll be writing <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, C#, and Python to understand current rates & patterns of code collaboration as we attempt to reduce friction and better align tooling and incentives.
 
 #### NASA Contractor
+
 I previously worked as a NASA contractor, supporting <a href="https://www.nasa.gov/offices/ocio/home/index.html">NASA’s Office of the Chief Information Officer’s</a> Technology and Innovation division, now re-organized into <a href="https://www.nasa.gov/offices/ocio/operations">IDAS</a> in two roles.
 
-(1.)  As Principal Data Scientist data analytics team, I worked on projects that leverage modern data science, data visualization, and machine-learning approaches to solve client problems and help speed adoption of the latest tools. In the earliest form of the role, I focused on providing advise, consulting, and prototypes for internal NASA customers in finance, human resources, facilities, space technology, and other domains. Later on, I worked on enterprise level processes and tooling for data warehousing, data analytics, data catalogs, and metadata standards. I’ve done machine-learning projects in NLP (natural language processing), automated speech recognition, image recognition, as well as with tabular data in different forms. Most of my code was Python or JavaScript, but I sometimes did a little PHP, C++, and Java as needed.
+(1.) As Principal Data Scientist data analytics team, I worked on projects that leverage modern data science, data visualization, and machine-learning approaches to solve client problems and help speed adoption of the latest tools. In the earliest form of the role, I focused on providing advise, consulting, and prototypes for internal NASA customers in finance, human resources, facilities, space technology, and other domains. Later on, I worked on enterprise level processes and tooling for data warehousing, data analytics, data catalogs, and metadata standards. I’ve done machine-learning projects in NLP (natural language processing), automated speech recognition, image recognition, as well as with tabular data in different forms. Most of my code was Python or JavaScript, but I sometimes did a little PHP, C++, and Java as needed.
 
 (2.) I was also the technical program manager for Open-Innovation program, responsible for sharing NASA’s open data and open source code through the public facing websites data.nasa.gov, code.nasa.gov, api.nasa.gov, github.com/nasa as well as the programs and infrastructure to support internal-facing inner source activities. This role leveraged a lot of front-end JavaScript skills, python data munging, and python data engineering skills for APIs and data transformation services.
 
 #### BP
 
-Before NASA, I worked as a geoscientist for BP and got to dig into data to answer questions that drove business questions across Canada, U.S., and Brazil. Towards the end of my time there I also got to use code to build solutions that domain specific software applications couldn't be twisted into answering via graphics user interfaces alone. I wrote data processing scripts in sed/awk when novel types of analytics were required. I also put together prototypes combining Python with ArcGIS and Excel based data inputs to identify risks to reservoir quality earlier than traditional methods.  
-
+Before NASA, I worked as a geoscientist for BP and got to dig into data to answer questions that drove business questions across Canada, U.S., and Brazil. Towards the end of my time there I also got to use code to build solutions that domain specific software applications couldn't be twisted into answering via graphics user interfaces alone. I wrote data processing scripts in sed/awk when novel types of analytics were required. I also put together prototypes combining Python with ArcGIS and Excel based data inputs to identify risks to reservoir quality earlier than traditional methods.
 
 ### <a id="recent-talks"></a>Recent Talks
 
@@ -82,8 +84,8 @@ Johnson Space Center Data Science Day 2017 – <a href="https://54.87.153.110/pr
 
 https://orcid.org/0000-0002-5351-7295
 
-
 ### <a id="community-involvement"></a>Community Involvement
+
 <a href="https://houstondatavis.github.io/">Houston Data Visualization Meetup</a> – co-lead
 
 <a href="http://www.gcssepm.org/">Gulf Coast Section of SEPM</a> (sedimentology geology) – former social media manager
