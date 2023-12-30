@@ -11,27 +11,100 @@ canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
 ---
 
 
+# Wrong but useful, comparing geologic maps and large language models as two different types of models
+
+When discussing errors of Large Language Models (LLMs) the term 'hallucination' is used 
+a lot to discuss factual errors. However, this always struck me as a bit of an awkward
+framing as LLMs aren't built to be magic either balls that 
+pull exclusively from repositories of facts. They're built to be probabilistic
+models of human language that extend text given in prompts. 
+The saying that kept popping into my head is instead 
+one often used to describe scientific models, `"all models are wrong but some are useful".`
+I like this saying as it affirms that we LLMs are going to be wrong and we should be 
+thinking about how we should expect them to be wrong and how to expect them to be 
+useful.
+
+I also like the saying `"all models are wrong but some are useful"` as it invites 
+a comparison between geologic maps, which are one type of model, with LLM generated
+geology field trip point descriptions, which are a different type of model.
+This blog post will in part discuss how geologic maps and LLMs generated geologic 
+field trip descriptions at specific points in space are wrong in similar and different 
+ways.
 
 
 ## What was built
 
 
-## What new capabilities were used?
-
-
 ### Outline of the web application
+
+
+### What new capabilities were used?
+
+#### Syncing of topographic, street, and geologic map as well as street view imagery.
+
+#### Large language model generation of field trip descriptions of arbitrary locations
 
 
 
 ### Examples
 
+#### Port Clinton, Ohio, USA
 
+![Port Clinton Screenshot](../static/images/blog/LAGDALimages/Screenshot_PortClinton.png)
+
+```
+Geology Response: Good morning, everyone! Welcome to our geology field trip. Today, we find ourselves at a fascinating location with a rich geological history. At this point location, the uppermost surface geology is composed of Paleozoic sedimentary rocks and Middle Devonian sedimentary rocks. The Paleozoic sedimentary rocks are from the Paleozoic era, which is 251.902 to 538.8 million years old. The Middle Devonian sedimentary rocks are from the Middle Devonian era, which is 382.7 to 393.3 million years old. Both layers are composed of sedimentary rocks, which were likely deposited in a variety of environments.To understand the geologic story of this area, we need to zoom out and look at the regional geology. Our location lies within the broader context of the Appalachian Basin, which stretches across several states. The Appalachian Basin is a sedimentary basin that formed during the Paleozoic era, and it is known for its extensive deposits of sedimentary rocks.During the Paleozoic era, this region was covered by a shallow sea, known as the Appalachian Basin Sea. The deposition of sediments in this sea resulted in the formation of the Paleozoic sedimentary rocks we see here. These rocks were likely deposited in a variety of environments, including shallow marine, deltaic, and fluvial settings. Over millions of years, layers upon layers of sediment accumulated, compacted, and lithified to form the rock formations we observe today.Moving forward in time, we come to the Middle Devonian era. During this period, the sea that once covered this region began to recede, and the environment transitioned from marine to terrestrial. The Middle Devonian sedimentary rocks we see here were likely deposited in a variety of environments, including river systems, floodplains, and deltas. These rocks provide valuable insights into the ancient landscapes and ecosystems that existed during this time.As we examine the outcrop in front of us, we can observe the distinct layering and sedimentary structures within the rocks. These features tell us about the processes that shaped this area millions of years ago. We may also find fossils within these sedimentary rocks, which can provide clues about the ancient organisms that once inhabited this region.In conclusion, the geologic story of this location is one of ancient seas, changing environments, and the deposition of sedimentary rocks over millions of years. The Paleozoic and Middle Devonian sedimentary rocks we see here are a testament to the dynamic geological history of the Appalachian Basin. So, let's take a closer look at the rocks, examine their characteristics, and see what else we can uncover about the fascinating geology of this area.
+```
+
+#### Houston, Texas, USA
+
+![Houston Screenshot](../static/images/blog/LAGDALimages/Screenshot_Houston.png)
+
+
+```
+Location: latitude = 29.760082, longitude = -95.432943
+
+Geology Response: Good morning, everyone! Welcome to our geology field trip. Today, we find ourselves at latitude 29.760082 and longitude -95.432943, where we have a fantastic opportunity to explore the fascinating geologic history of this region.At this point location, the uppermost surface geology is composed of Pleistocene sedimentary rocks, which date back to approximately 0.0117 million years ago. These sedimentary rocks were formed during the Pleistocene Epoch, a time characterized by repeated glaciations and interglacial periods. The Pleistocene sediments here consist of various types of sedimentary rocks, such as sand, silt, and clay, which were deposited by rivers, wind, and other natural processes.Beneath the Pleistocene sediments, we have the Beaumont Formation, which is composed primarily of clay and silt. This formation dates back to around 0.6558 million years ago and provides us with valuable insights into the geological processes that shaped this region. The Beaumont Formation was deposited in flood basins, coastal lakes, and former stream channels on a deltaic plain.Now, let's zoom out and take a look at the broader regional geology. Our current location lies within the Gulf Coastal Plain, a vast region that stretches from the Gulf of Mexico to the interior of the continent. This plain is characterized by a relatively flat topography and is primarily composed of sedimentary rocks.The Gulf Coastal Plain was formed over millions of years through the deposition of sediments eroded from the surrounding highlands and carried by rivers and streams. These sediments were then deposited in various environments, including river floodplains, deltas, and coastal areas, resulting in the diverse sedimentary rock formations we see today.Throughout its geologic history, this region has experienced significant changes in sea level, climate, and tectonic activity, all of which have influenced the deposition and erosion of sediments. The repeated cycles of sea-level rise and fall during the Pleistocene Epoch, for example, played a crucial role in shaping the landscape we see today.In addition to the Pleistocene and Beaumont Formation, other notable rock units in this region include the Lissie Formation, the Frio Formation, and the Yegua Formation, each representing different periods of deposition and environmental conditions.As we continue our field trip, I encourage you all to observe the various rock outcrops and formations we encounter along the way. By studying the geology of this region, we can gain a deeper understanding of the Earth's dynamic processes and the intricate history that has shaped our surroundings.Let's move on and explore more of the fascinating geology this region has to offer.
+```
+
+#### Bocas del Toro, Panama
+
+![Bocas del Toro Screenshot](../static/images/blog/LAGDALimages/ScreenshotBocasDelToro.png)
+
+```
+
+```
 
 ## Post Mortem
 
 ### How I used the web application: Tourist trip in France
 
 
+## Non-model related areas of poor user experience
+
+### Too slow
+The text generation involved multiple OpenAI and other API models, which meant
+the time between clicking the "generate" button and getting a description of 
+the field trip location could be several minutes in total. This is too slow 
+for many users, who are used to immediate feedback on websites. One way to 
+minimize this might be to have the intermediate results printed to the 
+website window as well. This the experience when running via command line
+and it results in less waiting but not zero waiting.
+
+### Poor experience on a mobile device
+
+This prototype was developed quickly on a laptop, and it has not been 
+optimized for a mobile experience. There are two elements that could be 
+improved. First, the four map elements appear in the same locations 
+on small mobile screens, which makes it hard to see fine details. 
+Ideally, on mobile each map window would be full screen width and 
+positioned in a vertical column of elements. This would make them 
+easier to see. Second, the small size makes it annoying to navigte the map. 
+Having each map element be full screen width would help with navigation 
+of the map, but ideally there would also be a button to push to 
+navigate the map to your actual location and an input form where you 
+could type in an address for the maps to navigate to. Both of these
+would improve the map navigation experience on mobile.
 
 ### Comparing geologic maps as models and large language models. Wrong and useful in different ways
 
@@ -79,6 +152,8 @@ canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
 ## Is there value?
 
 
+
+
 ### Accessibility?
 
 
@@ -89,10 +164,7 @@ canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
 ## Uncertainty on how much work to get something useful for non-niche-nerds
 
 
-Speed
-
-User interface improvements.... better for mobile... other purposes than former geologist tourists with limited time...?
-
 Not sure about how far down you have to go the tail of this type of problem to get something useful?
 
 How to get users to think about their problems and the different types of uncertainty than they are used to?
+
