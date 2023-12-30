@@ -1,8 +1,8 @@
 ---
-title: 'Post Mortem on a web application experiment: Comparing geologic maps and large language models'
+title: 'All models are wrong, some are useful: Comparing geologic maps and large language models'
 date: 2023-11-15T15:32:14Z
 lastmod: '2023-11-15'
-tags: ['AI', 'machine-learning', 'open-ai', 'geology', 'bot', 'nlp','experiments','side-projects']
+tags: ['AI', 'machine-learning', 'open-ai', 'geology', 'bot', 'nlp', 'experiments', 'side-projects']
 draft: true
 summary: 'Wrong but useful, comparing geologic maps and large language models as two different types of models.'
 layout: PostSimple
@@ -10,41 +10,35 @@ bibliography: references-data.bib
 canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
 ---
 
+# A post mortem on an experimental web application that combined geologic maps with LLMs
 
-# Wrong but useful, comparing geologic maps and large language models as two different types of models
-
-When discussing errors of Large Language Models (LLMs) the term 'hallucination' is used 
+When discussing errors of Large Language Models (LLMs) the term 'hallucination' is used
 a lot to discuss factual errors. However, this always struck me as a bit of an awkward
-framing as LLMs aren't built to be magic either balls that 
+framing as LLMs aren't built to be magic either balls that
 pull exclusively from repositories of facts. They're built to be probabilistic
-models of human language that extend text given in prompts. 
-The saying that kept popping into my head is instead 
+models of human language that extend text given in prompts.
+The saying that kept popping into my head is instead
 one often used to describe scientific models, `"all models are wrong but some are useful".`
-I like this saying as it affirms that we LLMs are going to be wrong and we should be 
-thinking about how we should expect them to be wrong and how to expect them to be 
+I like this saying as it affirms that we LLMs are going to be wrong and we should be
+thinking about how we should expect them to be wrong and how to expect them to be
 useful.
 
-I also like the saying `"all models are wrong but some are useful"` as it invites 
+I also like the saying `"all models are wrong but some are useful"` as it invites
 a comparison between geologic maps, which are one type of model, with LLM generated
 geology field trip point descriptions, which are a different type of model.
-This blog post will in part discuss how geologic maps and LLMs generated geologic 
-field trip descriptions at specific points in space are wrong in similar and different 
+This blog post will in part discuss how geologic maps and LLMs generated geologic
+field trip descriptions at specific points in space are wrong in similar and different
 ways.
-
 
 ## What was built
 
-
 ### Outline of the web application
-
 
 ### What new capabilities were used?
 
-#### Syncing of topographic, street, and geologic map as well as street view imagery.
+- Syncing of topographic, street, and geologic map as well as street view imagery.
 
-#### Large language model generation of field trip descriptions of arbitrary locations
-
-
+- Large language model generation of field trip descriptions of arbitrary locations
 
 ### Examples
 
@@ -60,7 +54,6 @@ Geology Response: Good morning, everyone! Welcome to our geology field trip. Tod
 
 ![Houston Screenshot](../static/images/blog/LAGDALimages/Screenshot_Houston.png)
 
-
 ```
 Location: latitude = 29.760082, longitude = -95.432943
 
@@ -72,37 +65,39 @@ Geology Response: Good morning, everyone! Welcome to our geology field trip. Tod
 ![Bocas del Toro Screenshot](../static/images/blog/LAGDALimages/ScreenshotBocasDelToro.png)
 
 ```
+Location: latitude = 9.344765, longitude = -82.170057
 
+Geology Response: Good morning, students! Welcome to our geology field trip. Today, we find ourselves at a fascinating location with coordinates latitude = 9.344765 and longitude = -82.170057. As we observe the rock outcrop in front of us, we can see that the uppermost surface geology is Neogene sedimentary.This layer of sedimentary rocks tells us a story about the geologic history of this region. The Neogene period, which began approximately 2.58 million years ago and ended around 23.03 million years ago, was a time of significant geological activity. During this period, the Earth experienced major climatic changes and the emergence of diverse life forms.The presence of sedimentary rocks suggests that this area was once a sedimentary environment, such as a river delta or a shallow marine environment. Sedimentary rocks are formed through the accumulation and compaction of sediments, which can include materials like sand, silt, and clay. Over time, these sediments become lithified, forming solid rock layers.Now, let's zoom out and consider the regional geology. Our current location lies within the broader context of Central America, a region known for its complex tectonic history. Central America is situated at the boundary between the Caribbean Plate and the Cocos Plate, which are both part of the larger tectonic puzzle in this area.The collision and subduction of these plates have played a significant role in shaping the geology of Central America. The ongoing subduction of the Cocos Plate beneath the Caribbean Plate has led to the formation of volcanic arcs, such as the Central American Volcanic Arc, which stretches from Guatemala to Panama.In addition to volcanic activity, the tectonic forces at play have also resulted in the formation of mountain ranges and the uplifting of sedimentary basins. These processes have contributed to the deposition of sedimentary rocks, like the ones we see here, as well as the creation of diverse landscapes and ecosystems.Furthermore, Central America has a rich history of seismic activity due to the tectonic forces in the region. Earthquakes and volcanic eruptions are common occurrences, reminding us of the dynamic nature of our planet.In conclusion, the Neogene sedimentary rocks we observe at this location provide a glimpse into the geological history of Central America. They tell a story of ancient sedimentation in a sedimentary environment, shaped by the tectonic forces and volcanic activity that have shaped this region over millions of years. As we continue our field trip, let's keep our eyes open for more clues and evidence of the fascinating geologic processes that have shaped this part of the world.
 ```
 
 ## Post Mortem
 
 ### How I used the web application: Tourist trip in France
 
-
 ## Non-model related areas of poor user experience
 
 ### Too slow
+
 The text generation involved multiple OpenAI and other API models, which meant
-the time between clicking the "generate" button and getting a description of 
-the field trip location could be several minutes in total. This is too slow 
-for many users, who are used to immediate feedback on websites. One way to 
-minimize this might be to have the intermediate results printed to the 
+the time between clicking the "generate" button and getting a description of
+the field trip location could be several minutes in total. This is too slow
+for many users, who are used to immediate feedback on websites. One way to
+minimize this might be to have the intermediate results printed to the
 website window as well. This the experience when running via command line
 and it results in less waiting but not zero waiting.
 
 ### Poor experience on a mobile device
 
-This prototype was developed quickly on a laptop, and it has not been 
-optimized for a mobile experience. There are two elements that could be 
-improved. First, the four map elements appear in the same locations 
-on small mobile screens, which makes it hard to see fine details. 
-Ideally, on mobile each map window would be full screen width and 
-positioned in a vertical column of elements. This would make them 
-easier to see. Second, the small size makes it annoying to navigte the map. 
-Having each map element be full screen width would help with navigation 
-of the map, but ideally there would also be a button to push to 
-navigate the map to your actual location and an input form where you 
+This prototype was developed quickly on a laptop, and it has not been
+optimized for a mobile experience. There are two elements that could be
+improved. First, the four map elements appear in the same locations
+on small mobile screens, which makes it hard to see fine details.
+Ideally, on mobile each map window would be full screen width and
+positioned in a vertical column of elements. This would make them
+easier to see. Second, the small size makes it annoying to navigte the map.
+Having each map element be full screen width would help with navigation
+of the map, but ideally there would also be a button to push to
+navigate the map to your actual location and an input form where you
 could type in an address for the maps to navigate to. Both of these
 would improve the map navigation experience on mobile.
 
@@ -112,50 +107,33 @@ would improve the map navigation experience on mobile.
 
 #### How map resolution ties to being wrong
 
-
 #### How purpose of the geologic map ties to it being wrong
-
 
 #### What type of geology is represented in a map?
 
-
 #### Don't use Large language models as crystal balls
-
 
 #### Changing large language models version of resolution
 
-
 #### Large language models problems with point geology vs reginal geologic content
-
 
 #### Changing large language models version of purpose
 
-
 #### Common geographic pitfalls with large language models
-
 
 ## Most common types of errors experienced in France when combining geologic maps and large language models
 
-
 - Spatial resolution (mostly a geologic map problem)
-
 
 - Type/Purpose of the map (mostly a geologic map problem... somewhat solvable with LLMs and better programming?)
 
-
 - What's important to talk about? (mostly a LLM problem)
-
 
 - Speed (LLM problem... for now)
 
-
 ## Is there value?
 
-
-
-
 ### Accessibility?
-
 
 ### Education?
 
@@ -163,8 +141,6 @@ would improve the map navigation experience on mobile.
 
 ## Uncertainty on how much work to get something useful for non-niche-nerds
 
-
 Not sure about how far down you have to go the tail of this type of problem to get something useful?
 
 How to get users to think about their problems and the different types of uncertainty than they are used to?
-
