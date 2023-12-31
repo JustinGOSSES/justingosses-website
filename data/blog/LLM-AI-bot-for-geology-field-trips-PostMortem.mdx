@@ -1,7 +1,7 @@
 ---
 title: 'All models are wrong, some are useful: Comparing geologic maps and large language models'
-date: 2023-11-15T15:32:14Z
-lastmod: '2023-11-15'
+date: 2023-12-30T15:32:14Z
+lastmod: '2023-12-30'
 tags: ['AI', 'machine-learning', 'open-ai', 'geology', 'bot', 'nlp', 'experiments', 'side-projects']
 draft: true
 summary: 'Wrong but useful, comparing geologic maps and large language models as two different types of models.'
@@ -10,20 +10,21 @@ bibliography: references-data.bib
 canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
 ---
 
-# A post mortem on an experimental web application that combined geologic maps with LLMs
+## A post mortem on an experimental web application that combined geologic maps with LLMs
 
 When discussing errors of Large Language Models (LLMs) the term 'hallucination' is used
 a lot to discuss factual errors. However, this always struck me as a bit of an awkward
-framing as LLMs aren't built to be magic either balls that
+framing as LLMs aren't built in a way that it would be reasonable to expect them 
+to be magic eight balls that
 pull exclusively from repositories of facts. They're built to be probabilistic
 models of human language that extend text given in prompts.
 The saying that kept popping into my head is instead
 one often used to describe scientific models, `"all models are wrong but some are useful".`
-I like this saying as it affirms that we LLMs are going to be wrong and we should be
+I like this saying as it affirms that LLMs are going to be wrong and we should be
 thinking about how we should expect them to be wrong and how to expect them to be
 useful.
 
-I also like the saying `"all models are wrong but some are useful"` as it invites
+Another reason to like the saying is it invites
 a comparison between geologic maps, which are one type of model, with LLM generated
 geology field trip point descriptions, which are a different type of model.
 This blog post will in part discuss how geologic maps and LLMs generated geologic
@@ -33,12 +34,151 @@ ways.
 ## What was built
 
 ### Outline of the web application
+A [previous blog post](https://justingosses.com/blog/LLM-AI-bot-for-geology-field-trips) 
+summarized what was being attempted very early on in the process.
+
+The basic idea is a user can navigate an area using a street, topographic, or geologic map. 
+When they click on any of the maps, a red point is added on all maps at that location. 
+Additionally, if there is a Google streetview near the point clicked, it will appear as well. 
+There is another green button below, that the user can click to generate text that
+attempts to mirror what would be said at a geology field trip stop at that exact location.
+
+#### Where to try it out
+The live website, which may or may not be still live when you read this, is at 
+[https://app-lagdal.azurewebsites.net/](https://app-lagdal.azurewebsites.net/) 
+You can also clone 
+the [https://github.com/JustinGOSSES/LAGDAL](https://github.com/JustinGOSSES/LAGDAL) 
+repository locally and then follow the instructions to set up API keys for OpenAI, 
+google streetview, and Bing maps such that the application runs on your local computer.
+
+#### Who was it built for?
+The application had a user in mind who was someone with geologic knowledge looking to 
+explore a new area, maybe searching for good field trip stop locations. It was also 
+built with the quesion in mind of how much closer LLMs could take us to 
+a completely automated field trip guide, at some basic level. 
+
+### How I used it: on vacation
+
+Most of my use of it was in testing, but I also used it for vacations. 
+Normally, geologic field trips require significant research and one or more persons
+leading who know a lot about an area.  As someone trained as a geologist 
+now working in other professions, I often like to learn a bit about the geology of 
+the place I'm visiting, so I can understand the context of any outcrops I happen to see. 
+LAGDAL is useful for this task as it lets me look in advance at where I might see 
+outcrops and understand the different geologic units. It's better than just a basic
+geologic map as the topographic map combined with the streetview imagery 
+lets me easily see real outcrop pictures of each geologic unit. The LLM field trip 
+descriptions also provide some regional context that a geologic map descripion by itself 
+doesn't not give. 
 
 ### What new capabilities were used?
 
 - Syncing of topographic, street, and geologic map as well as street view imagery.
 
-- Large language model generation of field trip descriptions of arbitrary locations
+- Large language model generation of field trip descriptions
+
+- Combination of geologic map text as primer for LLM text generation
+
+#### Basic flow of LLM text generation
+
+The basic flow of text generation involved several API calls. 
+- Find geologic unit data at a given latitude and longitude based on Macrostrat API.
+- Use bing map API to find geographic name  from latitude and longitude.
+- Use OpenAI API to summarize geologic unit data from Macrostrat API into paragraph form from JSON format.
+- Use OpenAI API to get local and regional geology combined description using local geology paragraph in prompt. 
+
+These skills and a few others are available to an agent that picked which to use, but 
+it must picked them in the order shown above.
+
+## Post Mortem: Non-model related
+
+### Too slow
+
+The text generation involved multiple OpenAI and other API models, which meant
+the time between clicking the "generate" button and getting a description of
+the field trip location could be several minutes in total. This is too slow
+for many users, who are used to immediate feedback on websites. One way to
+minimize this might be to have the intermediate results printed to the
+website window as well. This the experience when running via command line
+and it results in less waiting but not zero waiting.
+
+### Poor experience on a mobile device
+
+This prototype was developed quickly on a laptop, and it has not been
+optimized for a mobile experience. There are two elements that could be
+improved. First, the four map elements appear in the same locations
+on small mobile screens, which makes it hard to see fine details.
+Ideally, on mobile each map window would be full screen width and
+positioned in a vertical column of elements. This would make them
+easier to see. Second, the small size makes it annoying to navigte the map.
+Having each map element be full screen width would help with navigation
+of the map, but ideally there would also be a button to push to
+navigate the map to your actual location and an input form where you
+could type in an address for the maps to navigate to. Both of these
+would improve the map navigation experience on mobile.
+
+## Post Mortem: Model related 
+## Comparing geologic maps as models and large language models. Wrong and useful in different ways
+
+### Geologic maps as imperfect models
+Geologic maps are an interesting model to consider in light of the statement 
+`"all models are wrong but some are useful".` as they are in some ways extremely wrong 
+a lot. 
+
+##### Dirt and other non-interesting things in the way
+To start with, there's often other stuff on top, be it dirt, vegetation, or 
+buildings. Geologic maps try to indicate what's underneath all of that even if it is 
+quite far down. 
+
+##### Geologists different in what content they would like to see represented on geologic maps
+While geologic maps generally describe rocks, there is also geologists known as 
+geomorphologists that study erosion and more recent unlithified sediments. 
+These more recent sediments will be included on geologic maps sometimes but rarely 
+to a large degree.
+
+Geologic maps often focus on the lithology of bedrock, but they can also describe 
+recent geomorphology, structural features like strike and dip orientation of strata, 
+age, and presence of fossils.
+
+##### Resolution and guesses
+It is not unusal for geologic maps to cover hundreds of square kilometers. As such, 
+the geologic units represent large generalizations of the geology, rather than 
+point conditions. It is no strange for a local outcrop to contain shale where as the
+geologic map says sandstone if the unit mostly sandstone. 
+The spatial boundaries beween units is often more complicated that what is 
+represented on a map and what is represented on a map is often guessed at on the basis 
+of outcrops that peak through all the dirt, vegetation, roads, buildings, etc.
+
+##### Resolution variations across Macrostrat geologic map
+The geologic map used on the LAGDAL application is from Macrostrat that integrates a large
+number of digital geologic maps from different parts of the world. As such, there is quite 
+a bit of variation in the resolution of the mapping. Taiwan has only a handfull of geologic 
+units mapped and there is a lot of differences between what's on the map and 
+what's exposed in outcrops. In contrast, the geologic maps in Texas or southern France are 
+mapped in higher resolution.
+
+##### Reasonable to expect geologic maps to be wrong at times
+
+For all these reasons, it should not be all that surprising that when you're faced 
+wih an outcrop that doesn't agree with the what the geologic map suggests should be there.
+The geologic map is useful even if its wrong at times because most advanced users 
+have expectations on where and how it might be wrong.
+
+### Large language models as imperfect models
+
+LLMs in the context of the LAGDAL application are a combination of the errors of geologic 
+maps and their own style of errors. 
+
+#### Errors inherited from geologic maps
+
+#### LLM specific errors
+
+
+
+
+
+
+-----------------------------------------
 
 ### Examples
 
@@ -47,7 +187,40 @@ ways.
 ![Port Clinton Screenshot](../static/images/blog/LAGDALimages/Screenshot_PortClinton.png)
 
 ```
-Geology Response: Good morning, everyone! Welcome to our geology field trip. Today, we find ourselves at a fascinating location with a rich geological history. At this point location, the uppermost surface geology is composed of Paleozoic sedimentary rocks and Middle Devonian sedimentary rocks. The Paleozoic sedimentary rocks are from the Paleozoic era, which is 251.902 to 538.8 million years old. The Middle Devonian sedimentary rocks are from the Middle Devonian era, which is 382.7 to 393.3 million years old. Both layers are composed of sedimentary rocks, which were likely deposited in a variety of environments.To understand the geologic story of this area, we need to zoom out and look at the regional geology. Our location lies within the broader context of the Appalachian Basin, which stretches across several states. The Appalachian Basin is a sedimentary basin that formed during the Paleozoic era, and it is known for its extensive deposits of sedimentary rocks.During the Paleozoic era, this region was covered by a shallow sea, known as the Appalachian Basin Sea. The deposition of sediments in this sea resulted in the formation of the Paleozoic sedimentary rocks we see here. These rocks were likely deposited in a variety of environments, including shallow marine, deltaic, and fluvial settings. Over millions of years, layers upon layers of sediment accumulated, compacted, and lithified to form the rock formations we observe today.Moving forward in time, we come to the Middle Devonian era. During this period, the sea that once covered this region began to recede, and the environment transitioned from marine to terrestrial. The Middle Devonian sedimentary rocks we see here were likely deposited in a variety of environments, including river systems, floodplains, and deltas. These rocks provide valuable insights into the ancient landscapes and ecosystems that existed during this time.As we examine the outcrop in front of us, we can observe the distinct layering and sedimentary structures within the rocks. These features tell us about the processes that shaped this area millions of years ago. We may also find fossils within these sedimentary rocks, which can provide clues about the ancient organisms that once inhabited this region.In conclusion, the geologic story of this location is one of ancient seas, changing environments, and the deposition of sedimentary rocks over millions of years. The Paleozoic and Middle Devonian sedimentary rocks we see here are a testament to the dynamic geological history of the Appalachian Basin. So, let's take a closer look at the rocks, examine their characteristics, and see what else we can uncover about the fascinating geology of this area.
+Geology Response: Good morning, everyone! Welcome to our geology field trip. Today,
+ we find ourselves at a fascinating location with a rich geological history. 
+ At this point location, the uppermost  surface geology is composed of Paleozoic 
+ sedimentary rocks and Middle Devonian sedimentary rocks.  The Paleozoic sedimentary
+  rocks are from the Paleozoic era, which is 251.902 to 538.8 million 
+ years old. The Middle Devonian sedimentary rocks are from the Middle Devonian 
+ era, which is  382.7 to 393.3 million years old. Both layers are composed of 
+ sedimentary rocks, which were likely deposited in a variety of environments.
+ To understand the geologic story of this area, we need to zoom out and look at 
+ the regional geology. Our location lies within the  broader context  of the 
+ Appalachian Basin, which stretches across several states. The Appalachian Basin is a 
+ sedimentary basin that formed during the Paleozoic era, and it is known for its 
+ extensive deposits of sedimentary rocks.During the Paleozoic era, this region was 
+ covered by a shallow sea, known as the Appalachian Basin Sea. The deposition of 
+ sediments in this sea resulted in the formation of the Paleozoic sedimentary rocks 
+ we see here. These rocks were likely deposited in a variety of environments, including 
+ shallow marine, deltaic, and fluvial settings. Over millions of years, layers upon 
+ layers of sediment accumulated, compacted, and lithified to form the rock formations 
+  we observe today.Moving forward in time, we come to the Middle Devonian era. 
+  During this period, the sea that once covered this region began to recede, and the 
+  environment transitioned from marine to terrestrial. The Middle Devonian sedimentary 
+  rocks we see here were likely deposited in a variety of environments, including 
+  river systems, floodplains, and deltas. These rocks provide valuable insights 
+  into the ancient landscapes and ecosystems that existed during this time. As we 
+  examine the outcrop in front of us, we can observe the distinct layering and 
+  sedimentary structures within the rocks. These features tell us about the processes 
+  that shaped this area millions of years ago. We may also find fossils within these 
+  sedimentary rocks, which can provide clues about the ancient organisms that once 
+  inhabited this region.In conclusion, the geologic story of this location is one of 
+  ancient seas, changing environments, and the deposition of sedimentary rocks over 
+  millions of years. The Paleozoic and Middle Devonian sedimentary rocks we see here 
+  are a testament to the dynamic geological history of the Appalachian Basin. So, 
+  let's take a closer look at the rocks, examine their characteristics, and see what else we
+  can uncover about the fascinating geology of this area.
 ```
 
 #### Houston, Texas, USA
@@ -77,36 +250,20 @@ Geology Response: Good morning, students! Welcome to our geology field trip. Tod
 Geology Response: Welcome, students, to this exciting geology field trip! Today, we find ourselves at a fascinating location with coordinates latitude = 25.178327 and longitude = -238.437555. Direct your attention to the rock outcrop in front of us, which provides a glimpse into the geologic history of this region.At this point location, the uppermost surface geology is composed of intermediate volcanic rocks from the Pliocene epoch, approximately 5.333 million years ago. Although the thickness of this layer is unknown, it is a significant clue to understanding the regional geology.To fully comprehend the geologic story of this area, we must consider the broader context. The Pliocene epoch was a time of intense volcanic activity in this region. The volcanic rocks we observe here were formed through the eruption of magma from the Earth's mantle. These eruptions were likely associated with the movement of tectonic plates and the creation of new crust.As we delve deeper into the regional geology, we discover that this area is part of a larger volcanic arc. Volcanic arcs are formed when one tectonic plate subducts beneath another, leading to the melting of the subducting plate and the subsequent eruption of magma. This process is known as subduction, and it results in the formation of volcanic mountains and the release of volcanic gases.The presence of intermediate volcanic rocks suggests that this region experienced a subduction event involving the convergence of two tectonic plates. The magma that formed these rocks likely originated from the partial melting of the subducting plate, which was rich in silica and other minerals. As the magma rose to the surface, it cooled and solidified, forming the volcanic rocks we see today.Furthermore, the age of these volcanic rocks provides valuable information about the tectonic history of this region. The Pliocene epoch corresponds to a time when the tectonic plates in this area were actively converging. This convergence resulted in the formation of a volcanic arc, which extended along the western margin of the continent.In conclusion, the intermediate volcanic rocks we observe at this point location offer a glimpse into the dynamic geologic history of this region. They indicate a period of intense volcanic activity during the Pliocene epoch, likely associated with the subduction of tectonic plates and the formation of a volcanic arc. By studying these rocks and their context within the regional geology, we can gain valuable insights into the processes that have shaped our planet over millions of years.
 ```
 
-## Post Mortem
+#### France, Cassis area
 
-### How I used the web application: Tourist trip in France
+![France by sea Screenshot](../static/images/blog/LAGDALimages/ScreenshotFranceSea.png)
 
-## Non-model related areas of poor user experience
 
-### Too slow
+```
+Location: latitude = 43.202428, longitude = 5.498101
 
-The text generation involved multiple OpenAI and other API models, which meant
-the time between clicking the "generate" button and getting a description of
-the field trip location could be several minutes in total. This is too slow
-for many users, who are used to immediate feedback on websites. One way to
-minimize this might be to have the intermediate results printed to the
-website window as well. This the experience when running via command line
-and it results in less waiting but not zero waiting.
+Geology Response: Good morning, students! Welcome to our geology field trip. Today, we find ourselves at a fascinating location with coordinates latitude = 43.202428 and longitude = 5.498101. As we stand here, we can observe an intriguing rock outcrop that provides us with valuable insights into the geologic history of this region.At this point location, the uppermost surface geology is composed of carbonate sedimentary rock and limestone of Early Cretaceous age. This layer was likely deposited in a continental shelf setting. This tells us that during the Early Cretaceous period, this area was covered by a shallow sea, where the accumulation of carbonate sediments and the growth of marine organisms led to the formation of limestone.Now, let's zoom out and explore the broader regional geology. The region surrounding our current location is part of the Provence-Alpes-Côte d'Azur region in southeastern France. This area is known for its complex geologic history, shaped by tectonic forces and the interplay of various sedimentary environments.During the Early Cretaceous period, the region was situated on the northern margin of the Tethys Ocean, a vast body of water that separated the supercontinents of Gondwana and Laurasia. As sea levels rose and fell, the area alternated between marine and terrestrial environments, resulting in the deposition of different sedimentary layers.Over time, tectonic forces caused the closure of the Tethys Ocean, leading to the collision of the African and Eurasian plates. This collision resulted in the formation of the Alps, a majestic mountain range that stretches across several European countries, including France. The intense pressure and folding associated with this collision caused the rocks in our current location to be uplifted and exposed.As we examine the limestone outcrop, we can see evidence of the tectonic forces that shaped this region. The rock layers may exhibit folding, faulting, or even metamorphism, indicating the immense pressures and temperatures they experienced during the mountain-building process.In addition to the tectonic forces, the region's geologic history has also been influenced by erosion and weathering. The action of wind, water, and ice has sculpted the landscape, exposing the underlying rock layers and creating the diverse topography we see today.In conclusion, the carbonate sedimentary rock and limestone we observe at this point location provide us with a glimpse into the Early Cretaceous period when this area was submerged beneath a shallow sea. Zooming out, we see that the regional geology has been shaped by tectonic forces, resulting in the formation of the Alps and the exposure of these rocks. Erosion and weathering have further contributed to the unique landscape of this region. I hope this overview of the geologic story around our current coordinates has piqued your interest and sparked your curiosity for further exploration. Let's continue our field trip and discover more fascinating geologic features!
+```
 
-### Poor experience on a mobile device
 
-This prototype was developed quickly on a laptop, and it has not been
-optimized for a mobile experience. There are two elements that could be
-improved. First, the four map elements appear in the same locations
-on small mobile screens, which makes it hard to see fine details.
-Ideally, on mobile each map window would be full screen width and
-positioned in a vertical column of elements. This would make them
-easier to see. Second, the small size makes it annoying to navigte the map.
-Having each map element be full screen width would help with navigation
-of the map, but ideally there would also be a button to push to
-navigate the map to your actual location and an input form where you
-could type in an address for the maps to navigate to. Both of these
-would improve the map navigation experience on mobile.
+--------------------------------
+
 
 ### Comparing geologic maps as models and large language models. Wrong and useful in different ways
 
@@ -117,6 +274,10 @@ would improve the map navigation experience on mobile.
 #### How purpose of the geologic map ties to it being wrong
 
 #### What type of geology is represented in a map?
+
+
+
+
 
 #### Don't use Large language models as crystal balls
 
