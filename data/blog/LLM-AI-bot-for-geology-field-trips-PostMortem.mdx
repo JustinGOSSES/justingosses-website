@@ -14,22 +14,35 @@ canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
 
 When discussing errors of Large Language Models (LLMs) the term 'hallucination' is used
 a lot to discuss factual errors. However, this always struck me as a bit of an awkward
-framing as LLMs aren't built in a way that it would be reasonable to expect them 
+framing as LLMs. 
+To some extent I understand why that term is used, as 'hallucination' was previously used to describe
+early generative imagery, which did indeed look dreamy. LLMs also first got huge public attention 
+in the form of ChatGPT's search box interface, which reminds everyone of the google search box, 
+which does pull from an index of real websites. Hence, it makes sense that people would expect 
+it to be pulling from an index of real facts.
+
+Despite the similarities, LLMs aren't built in a way that it would be reasonable to expect them 
 to be magic eight balls that
 pull exclusively from repositories of facts. They're built to be probabilistic
 models of human language that extend text given in prompts.
-The saying that kept popping into my head is instead
-one often used to describe scientific models, `"all models are wrong but some are useful".`
-I like this saying as it affirms that LLMs are going to be wrong and we should be
-thinking about how we should expect them to be wrong and how to expect them to be
-useful.
+The saying that pops into my head for LLMs is `"all models are wrong but some are useful".`, 
+which is typically something head when discussing scientific models.
+I like this saying for LLMs as it affirms that LLMs are going to be wrong, we should be
+thinking about how we should expect them to be wrong, and we should be thinking about how to 
+reasonably expect them to be useful.
 
 Another reason to like the saying is it invites
 a comparison between geologic maps, which are one type of model, with LLM generated
 geology field trip point descriptions, which are a different type of model.
-This blog post will in part discuss how geologic maps and LLMs generated geologic
-field trip descriptions at specific points in space are wrong in similar and different
-ways.
+The ways in which these two different types of models are wrong but still useful have overlap 
+as well as differences. 
+
+This blog post will attempt to do two things at once. 
+First, it will serve as a post mortem for an experimental web application I built that
+applies GPT3 and GPT4 large language models to the problem of generating plausible language that you might 
+hear said by the leader of a geology field trip at any random point location on Earth. 
+Second, this blog post will attempt to describe the similar and different ways in which two 
+types of models, geologic maps and LLMs, can be both wrong and still useful.
 
 ## What was built
 
@@ -54,7 +67,7 @@ google streetview, and Bing maps such that the application runs on your local co
 #### Who was it built for?
 The application had a user in mind who was someone with geologic knowledge looking to 
 explore a new area, maybe searching for good field trip stop locations. It was also 
-built with the quesion in mind of how much closer LLMs could take us to 
+built with the question in mind of how much closer LLMs could take us to 
 a completely automated field trip guide, at some basic level. 
 
 ### How I used it: on vacation
@@ -67,9 +80,14 @@ the place I'm visiting, so I can understand the context of any outcrops I happen
 LAGDAL is useful for this task as it lets me look in advance at where I might see 
 outcrops and understand the different geologic units. It's better than just a basic
 geologic map as the topographic map combined with the streetview imagery 
-lets me easily see real outcrop pictures of each geologic unit. The LLM field trip 
-descriptions also provide some regional context that a geologic map descripion by itself 
+lets me easily see real outcrop pictures of each geologic unit before I'm there in person. 
+The LLM field trip 
+descriptions also provide some regional context that a geologic map description by itself 
 doesn't not give. 
+
+I've used it on travel to Cleveland, Ohio, Seattle, WA, Provence France, and Taipei, Taiwan.
+I've found it more useful then the online Macrostrat geologic map alone or combined 
+with Google/Bing search results.
 
 ### What new capabilities were used?
 
@@ -85,10 +103,11 @@ The basic flow of text generation involved several API calls.
 - Find geologic unit data at a given latitude and longitude based on Macrostrat API.
 - Use bing map API to find geographic name  from latitude and longitude.
 - Use OpenAI API to summarize geologic unit data from Macrostrat API into paragraph form from JSON format.
-- Use OpenAI API to get local and regional geology combined description using local geology paragraph in prompt. 
+- Use OpenAI API to get description of local geology using paragraph from previous step as prompt.
+- Use OpenAI API to get combined local and regional geology description using paragraph from last step in prompt. 
 
 These skills and a few others are available to an agent that picked which to use, but 
-it must picked them in the order shown above.
+it mostly picked them in the order shown above.
 
 ## Post Mortem: Non-model related
 
@@ -110,7 +129,7 @@ improved. First, the four map elements appear in the same locations
 on small mobile screens, which makes it hard to see fine details.
 Ideally, on mobile each map window would be full screen width and
 positioned in a vertical column of elements. This would make them
-easier to see. Second, the small size makes it annoying to navigte the map.
+easier to see. Second, the small size makes it annoying to navigate the map.
 Having each map element be full screen width would help with navigation
 of the map, but ideally there would also be a button to push to
 navigate the map to your actual location and an input form where you
@@ -121,29 +140,34 @@ would improve the map navigation experience on mobile.
 ## Comparing geologic maps as models and large language models. Wrong and useful in different ways
 
 ### Geologic maps as imperfect models
-Geologic maps are an interesting model to consider in light of the statement 
-`"all models are wrong but some are useful".` as they are in some ways extremely wrong 
-a lot. 
+As alluded to in the first section, geologic maps are imperfect models.
+However, the statement `all models are wrong but some are useful` applies 
+as they are still extremely useful despite certain common errors. 
 
-##### Dirt and other non-interesting things in the way
+##### Error type 1: Dirt and other non-interesting things in the way
 To start with, there's often other stuff on top, be it dirt, vegetation, or 
 buildings. Geologic maps try to indicate what's underneath all of that even if it is 
-quite far down. 
+quite far down. What's shown on the map therefor can often be an imperfect guess at 
+what's underneath. In landscapes with a lot of vegetation, the error rate can be higher.
 
-##### Geologists different in what content they would like to see represented on geologic maps
+##### Error type 2: Geologists different in what content they would like to see represented on geologic maps
+Another class of error is when there's a difference between what the map maker tried to represent 
+and what the person using the map wants to know.
+
 While geologic maps generally describe rocks, there is also geologists known as 
 geomorphologists that study erosion and more recent unlithified sediments. 
-These more recent sediments will be included on geologic maps sometimes but rarely 
-to a large degree.
+The extent to which these more recent or unlithified sediments are included on 
+geologic maps varies and can impact the maps usefulness for some users.
+Additionally, while geologic maps often focus on the lithology of bedrock, 
+they can also describe recent geomorphology, structural features like strike and dip orientation 
+of strata, age, or presence of fossils.
+Sometimes maps can be right but not in a way that is useful to you.
 
-Geologic maps often focus on the lithology of bedrock, but they can also describe 
-recent geomorphology, structural features like strike and dip orientation of strata, 
-age, and presence of fossils.
-
-##### Resolution and guesses
-It is not unusal for geologic maps to cover hundreds of square kilometers. As such, 
-the geologic units represent large generalizations of the geology, rather than 
-point conditions. It is no strange for a local outcrop to contain shale where as the
+##### Error type 3: Resolution 
+It is not unusual for geologic maps to cover hundreds of square kilometers. As such, 
+the geologic units represent large generalizations of the geology, rather than exact
+conditions at every point on the map. 
+It is not strange for a local outcrop to contain shale where as the
 geologic map says sandstone if the unit mostly sandstone. 
 The spatial boundaries beween units is often more complicated that what is 
 represented on a map and what is represented on a map is often guessed at on the basis 
@@ -165,7 +189,7 @@ wih an outcrop that doesn't agree with the what the geologic map suggests should
 The geologic map is useful even if its wrong at times because most advanced users 
 have expectations on where and how it might be wrong. 
 
-As the saying goes, the model is 
+gAs the saying goes, the model is 
 wrong but still useful. It gives us lots of useful information about the world, how 
 to think about it, and what to expect even if it is sometimes wrong where we happen to 
 being standing at the moment. 
@@ -176,6 +200,69 @@ LLMs in the context of the LAGDAL application are a combination of the errors of
 maps and their own style of errors. 
 
 #### Errors inherited from geologic maps
+
+Effecting prompting construction is often necessary to get LLMs to generate useful text as 
+prompts effectively act to constrain the probabilities of what the LLM will generate.
+As the agent is chaining several prompts together with an initial prompt that leverages
+a JSON data structure filled with data from a given latitude and longitude point on the map, 
+the errors in that initial data will, to a large extent, be inherited by the LLMs.
+
+However, LLMs are way more flexible than geologic maps in an important way, they can 
+take input from user. We didn't implement this in the prototype, but I will discuss some 
+possibilities there are some traditional sources of errors or negative impacts on usefulness 
+in geologic maps that could be overcome with LLMs.
+
+##### Error type 1: Dirt and other non-interesting things in the way
+
+To a large extent these errors simply get inherited from the geologic map. 
+LLMs have no other way of knowing what's underneath the dirt, vegetation, or buildings. 
+
+However, there may be some potential here for LLMs to be more useful than geologic maps 
+simply because they aren't static products. As such, there could be ways to structure the 
+prompts such that some of the uncertainty around cover gets included in the generated text. 
+For example, it would be possible to start the prompt chain with both the geologic map data
+at that single point and several other points a short distance away. If there's differences 
+in the description, then maybe that could be integrated into the generated text to warn the 
+user. Additionally, information on the thickness of the units is often part of the data that 
+builds the map, but not visually represented on the map due to the 2D spatial nature of the map.
+However, there's nothing stopping an LLM from stating the first unit is X but it may only be 
+less than 2 meters thick so you might instead be seeing the second unit of blank.
+
+##### Error type 2: Geologists different in what content they would like to see represented on geologic maps
+
+In the current prototype, the limitations of geologic maps are inherited by the LLMs. The 
+focus of what the authors of the geologic maps that were integrated into Macrostrat is what 
+is represented in the generated text. 
+
+However, this is an area where LLMs could really shine compared to geologic maps.
+While maps are static 2D representations of the geology by one group of people that is used 
+by a different group of people, LLMs are dynamic and with prompts that can be altered by the user.
+It would be easy to stick a knob on the web application prototype that says 
+"geologist, geomorphologist, structural geologist, or paleontologist" and then the field 
+trip description be generated specifically for that type of geologist. You could also 
+imagine options for experience level, where the generated text is more or less technical
+for audiences of elementary school students, high school students, undergraduates, or 
+graduate students. Again this, was not build into the prototype but a few experiments with 
+manually altering the prompts suggest that this would be a relatively easy thing to do.
+
+##### Error type 3: Resolution
+
+The resolution problem from geologic maps is largely inherited by the LLMs. 
+
+However, there are circumstances where LLMs can bring in higher resolution information. 
+For example, when exploring 
+Taipei, Taiwan, the geologic map is very low resolution. However, the prompt given to LLMs
+includes both the city name and the formation name enabling the LLM to reference additional 
+information about volcanic history 
+of [Yangmingshan national park](https://en.wikipedia.org/wiki/Yangmingshan).
+This is information that likely existed in many texts in the LLMs training set and represents 
+more information that was included in the geologic map.
+
+Similarly, the prompt that asks for regional geology to be included in the generated text 
+extends informational content beyond what is included from the geologic map.
+
+These extensions into information not in the geologic map data tend to useful and not errors 
+as they are being constrained by the geologic map data. 
 
 #### LLM specific errors
 
