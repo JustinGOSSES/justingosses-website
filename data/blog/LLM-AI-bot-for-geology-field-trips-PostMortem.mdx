@@ -58,15 +58,17 @@ types of models, geologic maps and LLMs, can be both wrong and still useful.
 
 ## What was built
 
-### Outline of the web application
+### Outline of the web application: LAGDAL
+LAGDAL is an acronym for Large Language Model Assisted Geology Descriptions of Arbitrary Locations.
 A [previous blog post](https://justingosses.com/blog/LLM-AI-bot-for-geology-field-trips) 
-summarized what was being attempted very early on in the process.
+summarized what was being attempted very early on in the process. You can also 
+read the [README.md of the GitHub repository for LAGDAL](https://github.com/JustinGOSSES/lagdal).
 
-The basic idea is a user can navigate an area using a street, topographic, or geologic map. 
-When they click on any of the maps, a red point is added on all maps at that location. 
-Additionally, if there is a Google streetview near the point clicked, it will appear as well. 
-There is another green button below, that the user can click to generate text that
-attempts to mirror what would be said at a geology field trip stop at that exact location.
+The basic idea is a user can navigate an area using synchronized google street view image, 
+topographic map, and geologic map windows.
+When they found a point location that looks interesting, they can press a button to generate
+the text for a  
+geology field trip description for that exact location.
 
 #### Where to try it out
 The live website, which may or may not be still live when you read this, is at 
@@ -76,7 +78,7 @@ the [https://github.com/JustinGOSSES/LAGDAL](https://github.com/JustinGOSSES/LAG
 repository locally and then follow the instructions to set up API keys for OpenAI, 
 google streetview, and Bing maps such that the application runs on your local computer.
 
-#### Screenshots of web application: LAGDAL
+#### _Screenshots of web application (LAGDAL) at a point in New York City's Central Park_ 
 ![New York City, screenshot A](../static/images/blog/LAGDALimages/NewYork_a.png)
 ![New York City, screenshot B](../static/images/blog/LAGDALimages/NewYork_b.png)
 ![New York City, screenshot C](../static/images/blog/LAGDALimages/NewYork_c.png)
@@ -292,10 +294,31 @@ extends informational content beyond what is included from the geologic map.
 These extensions into information not in the geologic map data tend to useful and not errors 
 as they are being constrained by the geologic map data. 
 
-#### LLM specific errors
+### LLM specific errors
+
+TODO: Add more here
+
+#### Math
+
+TODO: Add more here
+
+#### Ordering of units
+
+TODO: Add more here
+
+#### Ordering of events
+
+TODO: Add more here
 
 
+#### Confusion prompted by words being used in different ways
 
+TODO: Add more here
+
+
+#### Replicating bad habits of field trip leaders
+
+TODO: Add more here
 
 
 
@@ -442,55 +465,3 @@ region. I hope this overview of the geologic story around our current coordinate
 interest and sparked your curiosity for further exploration. Let's continue our field trip and 
 discover more fascinating geologic features!
 ```
-
-
---------------------------------
-
-
-### Comparing geologic maps as models and large language models. Wrong and useful in different ways
-
-#### Geologic maps as models
-
-#### How map resolution ties to being wrong
-
-#### How purpose of the geologic map ties to it being wrong
-
-#### What type of geology is represented in a map?
-
-
-
-
-
-#### Don't use Large language models as crystal balls
-
-#### Changing large language models version of resolution
-
-#### Large language models problems with point geology vs reginal geologic content
-
-#### Changing large language models version of purpose
-
-#### Common geographic pitfalls with large language models
-
-## Most common types of errors experienced in France when combining geologic maps and large language models
-
-- Spatial resolution (mostly a geologic map problem)
-
-- Type/Purpose of the map (mostly a geologic map problem... somewhat solvable with LLMs and better programming?)
-
-- What's important to talk about? (mostly a LLM problem)
-
-- Speed (LLM problem... for now)
-
-## Is there value?
-
-### Accessibility?
-
-### Education?
-
-...Scams I see on Twitter
-
-## Uncertainty on how much work to get something useful for non-niche-nerds
-
-Not sure about how far down you have to go the tail of this type of problem to get something useful?
-
-How to get users to think about their problems and the different types of uncertainty than they are used to?
