@@ -13,20 +13,32 @@ canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
 ## A post mortem on an experimental web application that combined geologic maps with LLMs
 
 When discussing errors of Large Language Models (LLMs) the term 'hallucination' is used
-a lot to discuss factual errors. However, this always struck me as a bit of an awkward
-framing as LLMs. 
+a lot to discuss factual errors. 
 To some extent I understand why that term is used, as 'hallucination' was previously used to describe
-early generative imagery, which did indeed look dreamy. LLMs also first got huge public attention 
+early generative imagery 
+from [Google's Deep Dream model around 2015, which did indeed look 
+dreamy](https://thenewstack.io/deep-learning-neural-networks-google-deep-dream/). 
+
+![Mountain scene using Googles Deep Dream Model from 2015](../static/images/blog/LAGDALimages/google-deep-dream-artificial-neural-networks-12.jpeg)
+Image generated with Google's Deep Dream model circa 2015.
+
+LLMs also first got huge public attention 
 in the form of ChatGPT's search box interface, which reminds everyone of the google search box, 
 which does pull from an index of real websites. Hence, it makes sense that people would expect 
-it to be pulling from an index of real facts.
+it to be pulling from an index of real facts and blame the model for making up things that do not exist.
 
-Despite the similarities, LLMs aren't built in a way that it would be reasonable to expect them 
-to be magic eight balls that
-pull exclusively from repositories of facts. They're built to be probabilistic
-models of human language that extend text given in prompts.
-The saying that pops into my head for LLMs is `"all models are wrong but some are useful".`, 
-which is typically something head when discussing scientific models.
+However, the framing of errors as 'hallucination' always struck me as a bit of an awkward
+framing or maybe just not a very useful framing. 
+Despite the similarities to traditional text search interfaces, LLMs aren't built in a way that 
+it would be reasonable to expect them to be magic eight balls that
+pull exclusively from repositories of facts. Although they can operate that way to some extent when 
+combined with a document store using the 
+[RAG (Retrieval-Augmented Generation) approach](https://aws.amazon.com/what-is/retrieval-augmented-generation/),
+a LLM by itself is built to be probabilistic
+model of human language that extend text given in prompts. It doesn't know facts, it knows 
+probabilistic relationships between words and phrases.
+The saying does that pops into my head for LLMs is `"all models are wrong but some are useful"`.
+This phrase is often heard when discussing scientific models.
 I like this saying for LLMs as it affirms that LLMs are going to be wrong, we should be
 thinking about how we should expect them to be wrong, and we should be thinking about how to 
 reasonably expect them to be useful.
@@ -34,8 +46,8 @@ reasonably expect them to be useful.
 Another reason to like the saying is it invites
 a comparison between geologic maps, which are one type of model, with LLM generated
 geology field trip point descriptions, which are a different type of model.
-The ways in which these two different types of models are wrong but still useful have overlap 
-as well as differences. 
+The ways in which these two different types of models are wrong but still useful have interesting 
+similarities and differences. 
 
 This blog post will attempt to do two things at once. 
 First, it will serve as a post mortem for an experimental web application I built that
@@ -63,6 +75,12 @@ You can also clone
 the [https://github.com/JustinGOSSES/LAGDAL](https://github.com/JustinGOSSES/LAGDAL) 
 repository locally and then follow the instructions to set up API keys for OpenAI, 
 google streetview, and Bing maps such that the application runs on your local computer.
+
+#### Screenshots of web application: LAGDAL
+![New York City, screenshot A](../static/images/blog/LAGDALimages/NewYork_a.png)
+![New York City, screenshot B](../static/images/blog/LAGDALimages/NewYork_b.png)
+![New York City, screenshot C](../static/images/blog/LAGDALimages/NewYork_c.png)
+![New York City, screenshot D](../static/images/blog/LAGDALimages/NewYork_d.png)
 
 #### Who was it built for?
 The application had a user in mind who was someone with geologic knowledge looking to 
@@ -144,34 +162,44 @@ As alluded to in the first section, geologic maps are imperfect models.
 However, the statement `all models are wrong but some are useful` applies 
 as they are still extremely useful despite certain common errors. 
 
-##### Error type 1: Dirt and other non-interesting things in the way
+##### Error type 1: Non-interesting things like dirt, trees, and your house are in the way
 To start with, there's often other stuff on top, be it dirt, vegetation, or 
 buildings. Geologic maps try to indicate what's underneath all of that even if it is 
-quite far down. What's shown on the map therefor can often be an imperfect guess at 
+quite far down. What's shown on the map therefore can often be an imperfect guess at 
 what's underneath. In landscapes with a lot of vegetation, the error rate can be higher.
+The geologic story of the local bedrock is a lot easier to figure out in Arizona than Maryland.
 
-##### Error type 2: Geologists different in what content they would like to see represented on geologic maps
+##### Error type 2: Not everyone wants to know the same things
 Another class of error is when there's a difference between what the map maker tried to represent 
 and what the person using the map wants to know.
-
 While geologic maps generally describe rocks, there is also geologists known as 
 geomorphologists that study erosion and more recent unlithified sediments. 
 The extent to which these more recent or unlithified sediments are included on 
 geologic maps varies and can impact the maps usefulness for some users.
 Additionally, while geologic maps often focus on the lithology of bedrock, 
-they can also describe recent geomorphology, structural features like strike and dip orientation 
+they can also describe structural features like strike and dip orientation 
 of strata, age, or presence of fossils.
-Sometimes maps can be right but not in a way that is useful to you.
+Sometimes maps can be correct but not in a way that is useful to you.
+
+An extension of this idea is that if the map maker is not focused on what you 
+care out, that type of information might be overly generated in ways that 
+result in errors from one perspective but maybe not all perspectives.
 
 ##### Error type 3: Resolution 
 It is not unusual for geologic maps to cover hundreds of square kilometers. As such, 
 the geologic units represent large generalizations of the geology, rather than exact
 conditions at every point on the map. 
-It is not strange for a local outcrop to contain shale where as the
-geologic map says sandstone if the unit mostly sandstone. 
-The spatial boundaries beween units is often more complicated that what is 
-represented on a map and what is represented on a map is often guessed at on the basis 
-of outcrops that peak through all the dirt, vegetation, roads, buildings, etc.
+For example, it is not strange for a local outcrop to be 100% shale where as the 
+geologic map might say the unit is mostly sandstone with isolate shale. 
+Generalization is occurring within a map polygon that might hundreds of square kilometers.
+
+Additionally, the spatial boundaries between units is often more complicated 
+than what is represented on the map. The boundary between two units will be
+drawn on the map as a sharp line due to that being how maps are made, but 
+there uncertainty of the exact position of the boundary could be 
+hundreds of meters or even kilometers if there is 
+ dirt, vegetation, roads, buildings, etc. on top or the definition of 
+ one unit is not tightly constrained.
 
 ##### Resolution variations across Macrostrat geologic map
 The geologic map used on the LAGDAL application is from Macrostrat that integrates a large
@@ -189,7 +217,7 @@ wih an outcrop that doesn't agree with the what the geologic map suggests should
 The geologic map is useful even if its wrong at times because most advanced users 
 have expectations on where and how it might be wrong. 
 
-gAs the saying goes, the model is 
+As the saying goes, the model is 
 wrong but still useful. It gives us lots of useful information about the world, how 
 to think about it, and what to expect even if it is sometimes wrong where we happen to 
 being standing at the moment. 
@@ -202,7 +230,7 @@ maps and their own style of errors.
 #### Errors inherited from geologic maps
 
 Effecting prompting construction is often necessary to get LLMs to generate useful text as 
-prompts effectively act to constrain the probabilities of what the LLM will generate.
+prompts effectively act to narrow the probabilities of what the LLM will generate.
 As the agent is chaining several prompts together with an initial prompt that leverages
 a JSON data structure filled with data from a given latitude and longitude point on the map, 
 the errors in that initial data will, to a large extent, be inherited by the LLMs.
@@ -322,8 +350,39 @@ Geology Response: Good morning, everyone! Welcome to our geology field trip. Tod
 
 ```
 Location: latitude = 29.760082, longitude = -95.432943
-
-Geology Response: Good morning, everyone! Welcome to our geology field trip. Today, we find ourselves at latitude 29.760082 and longitude -95.432943, where we have a fantastic opportunity to explore the fascinating geologic history of this region.At this point location, the uppermost surface geology is composed of Pleistocene sedimentary rocks, which date back to approximately 0.0117 million years ago. These sedimentary rocks were formed during the Pleistocene Epoch, a time characterized by repeated glaciations and interglacial periods. The Pleistocene sediments here consist of various types of sedimentary rocks, such as sand, silt, and clay, which were deposited by rivers, wind, and other natural processes.Beneath the Pleistocene sediments, we have the Beaumont Formation, which is composed primarily of clay and silt. This formation dates back to around 0.6558 million years ago and provides us with valuable insights into the geological processes that shaped this region. The Beaumont Formation was deposited in flood basins, coastal lakes, and former stream channels on a deltaic plain.Now, let's zoom out and take a look at the broader regional geology. Our current location lies within the Gulf Coastal Plain, a vast region that stretches from the Gulf of Mexico to the interior of the continent. This plain is characterized by a relatively flat topography and is primarily composed of sedimentary rocks.The Gulf Coastal Plain was formed over millions of years through the deposition of sediments eroded from the surrounding highlands and carried by rivers and streams. These sediments were then deposited in various environments, including river floodplains, deltas, and coastal areas, resulting in the diverse sedimentary rock formations we see today.Throughout its geologic history, this region has experienced significant changes in sea level, climate, and tectonic activity, all of which have influenced the deposition and erosion of sediments. The repeated cycles of sea-level rise and fall during the Pleistocene Epoch, for example, played a crucial role in shaping the landscape we see today.In addition to the Pleistocene and Beaumont Formation, other notable rock units in this region include the Lissie Formation, the Frio Formation, and the Yegua Formation, each representing different periods of deposition and environmental conditions.As we continue our field trip, I encourage you all to observe the various rock outcrops and formations we encounter along the way. By studying the geology of this region, we can gain a deeper understanding of the Earth's dynamic processes and the intricate history that has shaped our surroundings.Let's move on and explore more of the fascinating geology this region has to offer.
+```
+```
+Geology Response: Good morning, everyone! Welcome to our geology field trip. Today, 
+we find ourselves at latitude 29.760082 and longitude -95.432943, where we have a fantastic 
+opportunity to explore the fascinating geologic history of this region.At this point 
+location, the uppermost surface geology is composed of Pleistocene sedimentary rocks, 
+which date back to approximately 0.0117 million years ago. These sedimentary rocks 
+were formed during the Pleistocene Epoch, a time characterized by repeated 
+glaciations and interglacial periods. The Pleistocene sediments here consist of various 
+types of sedimentary rocks, such as sand, silt, and clay, which were deposited by rivers, wind,
+ and other natural processes.Beneath the Pleistocene sediments, we have the Beaumont Formation, 
+ which is composed primarily of clay and silt. This formation dates back to around 0.6558 million 
+ years ago and provides us with valuable insights into the geological processes that shaped 
+ this region. The Beaumont Formation was deposited in flood basins, coastal lakes, and former
+stream channels on a deltaic plain.Now, let's zoom out and take a look at the broader regional
+geology. Our current location lies within the Gulf Coastal Plain, a vast region that stretches 
+from the Gulf of Mexico to the interior of the continent. This plain is characterized by a 
+relatively flat topography and is primarily composed of sedimentary rocks.The Gulf Coastal 
+Plain was formed over millions of years through the deposition of sediments eroded from the 
+surrounding highlands and carried by rivers and streams. These sediments were then deposited 
+in various environments, including river floodplains, deltas, and coastal areas, resulting 
+in the diverse sedimentary rock formations we see today.Throughout its geologic history, 
+this region has experienced significant changes in sea level, climate, and tectonic activity,
+all of which have influenced the deposition and erosion of sediments. The repeated cycles 
+of sea-level rise and fall during the Pleistocene Epoch, for example, played a crucial role
+in shaping the landscape we see today.In addition to the Pleistocene and Beaumont Formation,
+other notable rock units in this region include the Lissie Formation, the Frio Formation,
+and the Yegua Formation, each representing different periods of deposition and 
+environmental conditions.As we continue our field trip, I encourage you all to observe 
+the various rock outcrops and formations we encounter along the way. By studying the 
+geology of this region, we can gain a deeper understanding of the Earth's dynamic processes
+and the intricate history that has shaped our surroundings.Let's move on and explore
+ more of the fascinating geology this region has to offer.
 ```
 
 #### Bocas del Toro, Panama
@@ -351,7 +410,37 @@ Geology Response: Welcome, students, to this exciting geology field trip! Today,
 ```
 Location: latitude = 43.202428, longitude = 5.498101
 
-Geology Response: Good morning, students! Welcome to our geology field trip. Today, we find ourselves at a fascinating location with coordinates latitude = 43.202428 and longitude = 5.498101. As we stand here, we can observe an intriguing rock outcrop that provides us with valuable insights into the geologic history of this region.At this point location, the uppermost surface geology is composed of carbonate sedimentary rock and limestone of Early Cretaceous age. This layer was likely deposited in a continental shelf setting. This tells us that during the Early Cretaceous period, this area was covered by a shallow sea, where the accumulation of carbonate sediments and the growth of marine organisms led to the formation of limestone.Now, let's zoom out and explore the broader regional geology. The region surrounding our current location is part of the Provence-Alpes-Côte d'Azur region in southeastern France. This area is known for its complex geologic history, shaped by tectonic forces and the interplay of various sedimentary environments.During the Early Cretaceous period, the region was situated on the northern margin of the Tethys Ocean, a vast body of water that separated the supercontinents of Gondwana and Laurasia. As sea levels rose and fell, the area alternated between marine and terrestrial environments, resulting in the deposition of different sedimentary layers.Over time, tectonic forces caused the closure of the Tethys Ocean, leading to the collision of the African and Eurasian plates. This collision resulted in the formation of the Alps, a majestic mountain range that stretches across several European countries, including France. The intense pressure and folding associated with this collision caused the rocks in our current location to be uplifted and exposed.As we examine the limestone outcrop, we can see evidence of the tectonic forces that shaped this region. The rock layers may exhibit folding, faulting, or even metamorphism, indicating the immense pressures and temperatures they experienced during the mountain-building process.In addition to the tectonic forces, the region's geologic history has also been influenced by erosion and weathering. The action of wind, water, and ice has sculpted the landscape, exposing the underlying rock layers and creating the diverse topography we see today.In conclusion, the carbonate sedimentary rock and limestone we observe at this point location provide us with a glimpse into the Early Cretaceous period when this area was submerged beneath a shallow sea. Zooming out, we see that the regional geology has been shaped by tectonic forces, resulting in the formation of the Alps and the exposure of these rocks. Erosion and weathering have further contributed to the unique landscape of this region. I hope this overview of the geologic story around our current coordinates has piqued your interest and sparked your curiosity for further exploration. Let's continue our field trip and discover more fascinating geologic features!
+Geology Response: Good morning, students! Welcome to our geology field trip. Today, we find 
+ourselves at a fascinating location with coordinates latitude = 43.202428 and longitude = 5.498101. 
+As we stand here, we can observe an intriguing rock outcrop that provides us with valuable 
+insights into the geologic history of this region.At this point location, the uppermost surface geology 
+is composed of carbonate sedimentary rock and limestone of Early Cretaceous age. This layer was likely 
+deposited in a continental shelf setting. This tells us that during the Early Cretaceous period, this area 
+was covered by a shallow sea, where the accumulation of carbonate sediments and the growth of marine 
+organisms led to the formation of limestone.Now, let's zoom out and explore the broader regional geology.
+ The region surrounding our current location is part of the Provence-Alpes-Côte d'Azur region in southeastern 
+ France. This area is known for its complex geologic history, shaped by tectonic forces and the 
+ interplay of various sedimentary environments.During the Early Cretaceous period, the region was situated 
+ on the northern margin of the Tethys Ocean, a vast body of water that separated the supercontinents 
+ of Gondwana and Laurasia. As sea levels rose and fell, the area alternated between marine and 
+ terrestrial environments, resulting in the deposition of different sedimentary layers.Over time, 
+ tectonic forces caused the closure of the Tethys Ocean, leading to the collision of the African 
+ and Eurasian plates. This collision resulted in the formation of the Alps, a majestic mountain range 
+ that stretches across several European countries, including France. The intense pressure and folding 
+ associated with this collision caused the rocks in our current location to be uplifted and exposed. 
+ As we examine the limestone outcrop, we can see evidence of the tectonic forces that shaped this region.
+The rock layers may exhibit folding, faulting, or even metamorphism, indicating the immense pressures 
+and temperatures they experienced during the mountain-building process.In addition to the tectonic forces,
+the region's geologic history has also been influenced by erosion and weathering. The action of wind,
+water, and ice has sculpted the landscape, exposing the underlying rock layers and creating the 
+diverse topography we see today.In conclusion, the carbonate sedimentary rock and limestone we 
+observe at this point location provide us with a glimpse into the Early Cretaceous period when 
+this area was submerged beneath a shallow sea. Zooming out, we see that the regional geology 
+has been shaped by tectonic forces, resulting in the formation of the Alps and the exposure of 
+these rocks. Erosion and weathering have further contributed to the unique landscape of this 
+region. I hope this overview of the geologic story around our current coordinates has piqued your 
+interest and sparked your curiosity for further exploration. Let's continue our field trip and 
+discover more fascinating geologic features!
 ```
 
 
