@@ -1,9 +1,9 @@
 ---
-title: 'All models are wrong, some are useful: Comparing geologic maps and large language models'
-date: 2023-12-30T15:32:14Z
+title: 'Comparing geologic maps and large language models: All models are wrong, some are useful'
+date: 2024-01-28T15:32:14Z
 lastmod: '2023-12-30'
 tags: ['AI', 'machine-learning', 'open-ai', 'geology', 'bot', 'nlp', 'experiments', 'side-projects']
-draft: true
+draft: false
 summary: 'Wrong but useful, comparing geologic maps and large language models as two different types of models.'
 layout: PostSimple
 bibliography: references-data.bib
@@ -296,35 +296,121 @@ as they are being constrained by the geologic map data.
 
 ### LLM specific errors
 
-TODO: Add more here
+Large language models (LLM) are effectively probabilistic models of language. 
+This gives them a lot of power to generate realistic text with little 
+human generated deterministic programming required. However, that strength also shows up 
+as a weakness.
+It makes them prone to certain errors where their probabilistic approach leads to occasional failures
+when a simply deterministic program would not. LLMs do not follow pre-written rules, they 
+follow patterns in the training data identified during model training.
 
 #### Math
 
-TODO: Add more here
+The class example of this is that LLMs are worse at math then you might expect.
+There are lots of explanations out there on why that is that I suggest you do a web search for to 
+learn more.
+
+Where it often comes up in context of the LAGDAL prototype is when there are multiple formations
+being described in the description or when the description attempts to describe the time length of 
+a units deposition. 
+
+In LAGDAL, this limitation was attempted to be overcome by giving the agent that can pick what tool 
+to use a math tool. Langchain is the framework used in LAGDAL and it has 
+a [`llm_math_chain` capability]((https://github.com/JustinGOSSES/LAGDAL/blob/main/src/agent_website_explore.py)).
+```
+ Tool(
+        name="Calculator",
+        func=llm_math_chain.run,
+        description="Useful for when you need to answer questions about math. Do not add percentages together without using this!",
+        # args_schema=CalculatorInput
+    ),
+```
+Incorporation of this skill helped reduce math related errors in the generated text, but it did not 
+completely eliminate them as they agent still had to make the decision to use the skill. 
+At a simply level, the agent use the math skill whenever there is a high text similarity between the 
+description of when the math skill is useful and the generated text. However, this is not a perfect
+and math related problems persisted at some level.
+
+It should be noted that even though math related errors persists but models seem to be improving in regards to this
+type of error. I initially started this work with the `text-davinci-003` model which has been depreciated. 
+Over moving from `text-davinci-003` to `gpt-3.5` to `gpt-4` I have noticed a decreasing rate of these types of errors.
+
+#### Confusion prompted by words being used in different contexts
+
+One of the first problems I noticed when I started to experiment with LLMs and geology is that word distribution 
+in training data can lead to confusion as the models capture of important context is not perfect. 
+I live in Houston, which is a great example of this. Houston is a city with a lot of oil and gas 
+geologists who publish a lot of papers. As such, the bulk of the documents that mention the word "Houston" 
+have nothing to do with the geology of Houston. If you used GPT-3 models and asked about Houston geology, 
+you would sometimes get information about Gulf of Mexico geology as that is the context most often addressed 
+by documents that include the word Houston and never the geology of the bedrock of Houston, which is what you 
+were trying to ask about. 
+
+To get around this problem, I first grabbed data on the surface bedrock from the Macrostrat API, used a GPT API model
+to parse the JSON data into a naturally worded paragraph and then used that as part of a prompt to another GPT API call. 
+By adding information from a deterministic source to the prompt, it constrains the LLM generated text to a more narrow 
+probability distribution that is more likely to include the information you want. As a result, the Houston results 
+are closer to what I would expect. 
 
 #### Ordering of units
 
-TODO: Add more here
+LLMs can not reason in the human sense, they can only replicate the results of reasoning through probabilistic means.
+Where this shows up in the LAGDAL prototype is in the ordering of units. Sometimes you would see inaccurate 
+description of the order of units, either in terms of what unit is on top or the age relationships. 
 
 #### Ordering of events
 
-TODO: Add more here
-
-
-#### Confusion prompted by words being used in different ways
-
-TODO: Add more here
-
+Similarly, the descriptions would sometimes write errors related to the ordering of events. They might 
+not understand that a rock unit was initially deposited as sedimentary and then later deformed into metamorphic 
+leading to a description that says on rock unit is sedimentary and then another rock unit is metamorphic when 
+both are metamorphic but the first unit merely has less description that goes into the metamorphic history. 
+Again, this goes into the LLMs inability to reason and it's reliance on probabilistic patterns in the training data.
 
 #### Replicating bad habits of field trip leaders
 
-TODO: Add more here
+One of the more funny problems I have seen with the LAGDAL prototype is that it 
+has a tendency to replicate the bad habits of field trip leaders concerning over usage of 
+trite phrases and filler phrases. 
 
+Examples of trite phrases include:
+- "fascinating location with a rich geological history" or "fascinating geology of the area"
+- "this is a very interesting location."
+- "These rocks were likely deposited in a variety of environments" or "rocks we see here were likely deposited in a variety of environments"
+- "layers upon layers of sediment accumulated"
+- "These rocks provide valuable insights"
+
+**These phrases are not wrong, but they often add little of informational value to the description.** 
+You can always say a location is interesting or fascinating, but it's better to say why it's interesting.
+Yes, sedimentary rocks are always layered that can be observed, but unless you're talking about a 
+specific pattern or type of layering, there's no need to say it.
+
+I will hypothesize that there are three reasons these phrases are so common. 
+First, they are often found in some form in field trip guides that probably were used in training of the LLM.
+Second, the form that is more widespread is the form that isn't specific, so that ends of being higher probability. 
+Third, the text from the geologic map API that is used to construct the initial prompt will nearly always have 
+the end interpretation described, not the field observations. As a result, there is little information 
+in the prompt that will ever talk to specific field observation that would be required to make some 
+of these phrase information rich instead of generic. 
+Finally, in 
+[one of the chain of prompts used in the web application](https://github.com/JustinGOSSES/LAGDAL/blob/main/src/agent_website_explore.py)
+, there is the instruction 
+`"Describe the geologic history in narrative fashion over 6-10 sentences as a professor leading a geology field trip.".`
+This language in the prompt heavily biases the final text to include phrases specific to field trip guides, but 
+the data used as input only includes interpretations not field observations. As a such, the final predicted 
+text includes an overabundance of generic field trip guide phrases that lack observational field detail.
 
 
 -----------------------------------------
 
-### Examples
+### Evaluation of example generative field trip stop descriptions
+
+These examples were produced in December, 2023 using a combination of `text-davinci-003` and `gpt-4` models. 
+The LAGDAL applciation is a flask app that primary uses the `agent_website_explore.py` file seen in 
+[the LAGDAL repository](https://github.com/JustinGOSSES/LAGDAL/blob/main/src/agent_website_explore.py).
+This "agent" approach solves for a single prompt by probabilistically picking from different skills 
+where each skill is either a deterministic function that calls an API or makes a calculation 
+or a LLM API call that uses a specific model and prompt to generate text. The "agent" chains together 
+different skills to produce a final generative text result.
 
 #### Port Clinton, Ohio, USA
 
@@ -366,6 +452,10 @@ Geology Response: Good morning, everyone! Welcome to our geology field trip. Tod
   let's take a closer look at the rocks, examine their characteristics, and see what else we
   can uncover about the fascinating geology of this area.
 ```
+#### Evaluation of Port Clinton text
+
+TO DO: Add evaluation of text
+
 
 #### Houston, Texas, USA
 
@@ -408,6 +498,11 @@ and the intricate history that has shaped our surroundings.Let's move on and exp
  more of the fascinating geology this region has to offer.
 ```
 
+#### Evaluation of Houston text
+
+TO DO: Add evaluation of text
+
+
 #### Bocas del Toro, Panama
 
 ![Bocas del Toro Screenshot](../static/images/blog/LAGDALimages/ScreenshotBocasDelToro.png)
@@ -415,17 +510,69 @@ and the intricate history that has shaped our surroundings.Let's move on and exp
 ```
 Location: latitude = 9.344765, longitude = -82.170057
 
-Geology Response: Good morning, students! Welcome to our geology field trip. Today, we find ourselves at a fascinating location with coordinates latitude = 9.344765 and longitude = -82.170057. As we observe the rock outcrop in front of us, we can see that the uppermost surface geology is Neogene sedimentary.This layer of sedimentary rocks tells us a story about the geologic history of this region. The Neogene period, which began approximately 2.58 million years ago and ended around 23.03 million years ago, was a time of significant geological activity. During this period, the Earth experienced major climatic changes and the emergence of diverse life forms.The presence of sedimentary rocks suggests that this area was once a sedimentary environment, such as a river delta or a shallow marine environment. Sedimentary rocks are formed through the accumulation and compaction of sediments, which can include materials like sand, silt, and clay. Over time, these sediments become lithified, forming solid rock layers.Now, let's zoom out and consider the regional geology. Our current location lies within the broader context of Central America, a region known for its complex tectonic history. Central America is situated at the boundary between the Caribbean Plate and the Cocos Plate, which are both part of the larger tectonic puzzle in this area.The collision and subduction of these plates have played a significant role in shaping the geology of Central America. The ongoing subduction of the Cocos Plate beneath the Caribbean Plate has led to the formation of volcanic arcs, such as the Central American Volcanic Arc, which stretches from Guatemala to Panama.In addition to volcanic activity, the tectonic forces at play have also resulted in the formation of mountain ranges and the uplifting of sedimentary basins. These processes have contributed to the deposition of sedimentary rocks, like the ones we see here, as well as the creation of diverse landscapes and ecosystems.Furthermore, Central America has a rich history of seismic activity due to the tectonic forces in the region. Earthquakes and volcanic eruptions are common occurrences, reminding us of the dynamic nature of our planet.In conclusion, the Neogene sedimentary rocks we observe at this location provide a glimpse into the geological history of Central America. They tell a story of ancient sedimentation in a sedimentary environment, shaped by the tectonic forces and volcanic activity that have shaped this region over millions of years. As we continue our field trip, let's keep our eyes open for more clues and evidence of the fascinating geologic processes that have shaped this part of the world.
+Geology Response: Good morning, students! Welcome to our geology field trip. Today, we find ourselves at a fascinating 
+location with coordinates latitude = 9.344765 and longitude = -82.170057. As we observe the rock outcrop in front of us,
+we can see that the uppermost surface geology is Neogene sedimentary.This layer of sedimentary rocks tells us a story 
+about the geologic history of this region. The Neogene period, which began approximately 2.58 million  years ago and 
+ended around 23.03 million years ago, was a time of significant geological activity. During this period, the Earth 
+experienced major climatic changes and the emergence of diverse life forms.The presence of sedimentary rocks suggests that this area was once a sedimentary 
+environment, such as a river delta or a shallow marine environment. Sedimentary rocks are formed through the 
+accumulation and compaction of sediments, which can include materials like sand, silt, and clay. Over time, these 
+sediments become lithified, forming solid rock layers.Now, let's zoom out and consider the regional geology. Our current
+location lies within the broader context of Central America, a region known for its complex tectonic history. 
+Central America is situated at the boundary between the Caribbean Plate and the Cocos Plate, which are both part 
+of the larger tectonic puzzle in this area.The collision and subduction of these plates have played a significant 
+role in shaping the geology of Central America. The ongoing subduction of the Cocos Plate beneath the Caribbean Plate 
+has led to the formation of volcanic arcs, such as the Central American Volcanic Arc, which stretches from Guatemala to 
+Panama.In addition to volcanic activity, the tectonic forces at play have also resulted in the formation of mountain 
+ranges and the uplifting of sedimentary basins. These processes have contributed to the deposition of sedimentary rocks, 
+like the ones we see here, as well as the creation of diverse landscapes and ecosystems.Furthermore, Central America has 
+a rich history of seismic activity due to the tectonic forces in the region. Earthquakes and volcanic eruptions are common 
+occurrences, reminding us of the dynamic nature of our planet.In conclusion, the Neogene sedimentary rocks we observe at 
+this location provide a glimpse into the geological history of Central America. They tell a story of ancient sedimentation 
+in a sedimentary environment, shaped by the tectonic forces and volcanic activity that have shaped this region over 
+millions of years. As we continue our field trip, let's keep our eyes open for more clues and evidence of the fascinating 
+geologic processes that have shaped this part of the world.
 ```
+
+#### Evaluation of Bocas del Toro text
+
+TO DO: Add evaluation of text
+
+
 #### Taiwan
 
 ![Taiwan Screenshot](../static/images/blog/LAGDALimages/Screenshot_taiwanYugi.png)
 
 ```
-Geology Response: Welcome, students, to this exciting geology field trip! Today, we find ourselves at a fascinating location with coordinates latitude = 25.178327 and longitude = -238.437555. Direct your attention to the rock outcrop in front of us, which provides a glimpse into the geologic history of this region.At this point location, the uppermost surface geology is composed of intermediate volcanic rocks from the Pliocene epoch, approximately 5.333 million years ago. Although the thickness of this layer is unknown, it is a significant clue to understanding the regional geology.To fully comprehend the geologic story of this area, we must consider the broader context. The Pliocene epoch was a time of intense volcanic activity in this region. The volcanic rocks we observe here were formed through the eruption of magma from the Earth's mantle. These eruptions were likely associated with the movement of tectonic plates and the creation of new crust.As we delve deeper into the regional geology, we discover that this area is part of a larger volcanic arc. Volcanic arcs are formed when one tectonic plate subducts beneath another, leading to the melting of the subducting plate and the subsequent eruption of magma. This process is known as subduction, and it results in the formation of volcanic mountains and the release of volcanic gases.The presence of intermediate volcanic rocks suggests that this region experienced a subduction event involving the convergence of two tectonic plates. The magma that formed these rocks likely originated from the partial melting of the subducting plate, which was rich in silica and other minerals. As the magma rose to the surface, it cooled and solidified, forming the volcanic rocks we see today.Furthermore, the age of these volcanic rocks provides valuable information about the tectonic history of this region. The Pliocene epoch corresponds to a time when the tectonic plates in this area were actively converging. This convergence resulted in the formation of a volcanic arc, which extended along the western margin of the continent.In conclusion, the intermediate volcanic rocks we observe at this point location offer a glimpse into the dynamic geologic history of this region. They indicate a period of intense volcanic activity during the Pliocene epoch, likely associated with the subduction of tectonic plates and the formation of a volcanic arc. By studying these rocks and their context within the regional geology, we can gain valuable insights into the processes that have shaped our planet over millions of years.
+Geology Response: Welcome, students, to this exciting geology field trip! Today, we find ourselves at a fascinating location 
+with coordinates latitude = 25.178327 and longitude = -238.437555. Direct your attention to the rock outcrop in front of us, 
+which provides a glimpse into the geologic history of this region.At this point location, the uppermost surface geology is 
+composed of intermediate volcanic rocks from the Pliocene epoch, approximately 5.333 million years ago. Although the thickness 
+of this layer is unknown, it is a significant clue to understanding the regional geology.To fully comprehend the geologic 
+story of this area, we must consider the broader context. The Pliocene epoch was a time of intense volcanic activity in this region. 
+The volcanic rocks we observe here were formed through the eruption of magma from the Earth's mantle. These eruptions were likely 
+associated with the movement of tectonic plates and the creation of new crust.As we delve deeper into the regional geology, we discover 
+that this area is part of a larger volcanic arc. Volcanic arcs are formed when one tectonic plate subducts beneath another, leading 
+to the melting of the subducting plate and the subsequent eruption of magma. This process is known as subduction, and it results in the 
+formation of volcanic mountains and the release of volcanic gases.The presence of intermediate volcanic rocks suggests that this region 
+experienced a subduction event involving the convergence of two tectonic plates. The magma that formed these rocks likely originated 
+from the partial melting of the subducting plate, which was rich in silica and other minerals. As the magma rose to the surface, it 
+cooled and solidified, forming the volcanic rocks we see today.Furthermore, the age of these volcanic rocks provides valuable information 
+about the tectonic history of this region. The Pliocene epoch corresponds to a time when the tectonic plates in this area were actively 
+converging. This convergence resulted in the formation of a volcanic arc, which extended along the western margin of the continent. 
+In conclusion, the intermediate volcanic rocks we observe at this point location offer a glimpse into the dynamic geologic history of this 
+region. They indicate a period of intense volcanic activity during the Pliocene epoch, likely associated with the subduction of tectonic 
+plates and the formation of a volcanic arc. By studying these rocks and their context within the regional geology, we can gain valuable 
+insights into the processes that have shaped our planet over millions of years.
 ```
 
-#### France, Cassis area
+#### Evaluation of Taipei text
+
+TO DO: Add evaluation of text
+
+
+#### France, Cassis
 
 ![France by sea Screenshot](../static/images/blog/LAGDALimages/ScreenshotFranceSea.png)
 
@@ -465,3 +612,23 @@ region. I hope this overview of the geologic story around our current coordinate
 interest and sparked your curiosity for further exploration. Let's continue our field trip and 
 discover more fascinating geologic features!
 ```
+
+#### Evaluation of France, Cassis text
+
+TO DO: Add evaluation of text
+
+--------------------------------------------------------------
+
+## Conclusions
+
+### LLMs make certain tasks easy that were previously too effort intensive to attempt
+
+### A few areas that are necessary to improve upon before this type of thing is functionally useful for others
+
+### Large future opportunity to improve geologic maps with LLMs
+
+#### Accessibility
+
+#### Improved handling of uncertainty
+
+#### Make one map for multiple audiences
