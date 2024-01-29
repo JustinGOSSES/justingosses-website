@@ -417,45 +417,62 @@ different skills to produce a final generative text result.
 ![Port Clinton Screenshot](../static/images/blog/LAGDALimages/Screenshot_PortClinton.png)
 
 ```
-Geology Response: Good morning, everyone! Welcome to our geology field trip. Today,
- we find ourselves at a fascinating location with a rich geological history. 
- At this point location, the uppermost  surface geology is composed of Paleozoic 
- sedimentary rocks and Middle Devonian sedimentary rocks.  The Paleozoic sedimentary
+Geology Response: Good morning, everyone! Welcome to our geology field trip. Today, we find ourselves at a 
+fascinating location with a rich geologic history. Directly in front of us, we have an outcrop that provides 
+a glimpse into the geologic story of this region.The uppermost surface geology at our location is primarily 
+composed of Paleozoic sedimentary rocks, which have an age range of 251.902 million years to 538.8 million years. 
+These rocks indicate a sedimentary environment for their deposition, suggesting that this area was once 
+covered by ancient seas or lakes. As we examine these rocks, we may come across fossils, providing evidence of 
+the diverse marine life that once thrived here.Beneath the Paleozoic sedimentary rocks, we have a layer of 
+Middle Devonian sedimentary rocks, with an age range of 382.7 million years to 393.3 million years. These rocks 
+also suggest a sedimentary environment, further supporting the idea of a marine or lacustrine setting. The Middle 
+Devonian period was characterized by the diversification of fish and the emergence of early tetrapods, so keep 
+an eye out for any fossilized remains that may be present.Now, let's zoom out and consider the regional geology. 
+Our location lies within the broader context of the Appalachian Basin, which stretches across several states in 
+the eastern United States. The Appalachian Basin is known for its extensive sedimentary rock formations, which 
+were deposited during various geologic periods.In this region, the Paleozoic sedimentary rocks we see at the 
+surface are part of a larger sequence known as the Appalachian Plateau. These rocks were formed as layers of 
+sediment accumulated over millions of years, eventually becoming compacted and lithified into solid rock. The 
+Appalachian Plateau is characterized by its gently rolling hills and scenic landscapes, shaped by erosion and 
+tectonic forces over time.The Middle Devonian sedimentary rocks we observe here are part of the broader Devonian 
+system, which is well-represented throughout the Appalachian Basin. During the Middle Devonian period, this 
+region experienced a significant marine transgression, with seas advancing and retreating multiple times. This 
+dynamic environment led to the deposition of various sedimentary rocks, including the ones we see today. 
+In conclusion, the geologic story at our location reveals a history of sedimentation in a marine or lacustrine 
+environment during the Paleozoic and Middle Devonian periods. These sedimentary rocks are part of the larger 
+Appalachian Plateau and Devonian system, which are characteristic of the regional geology in this area. 
+As we explore further, let's keep our eyes open for any clues that may shed light on the ancient environments 
+and life forms that once thrived here. Enjoy the rest of our field trip!
+```
+#### Critique of Port Clinton text
+
+- You get a trite filler phrase to start out `Today, we find ourselves at a 
+fascinating location with a rich geologic history`. Love the enthusiasm, but 
+ it is not specific to the location and the repetition of "fascinating" in these descriptions quickly gets old. 
+- One of the problems with the macrostrat API that I had solved but came back after I fixed another problem is 
+  that the API it will return two layers that are basically both surface layer but one from a higher 
+  resolution map and the other from a lower resolution map instead of two layers that are on top of one another. 
+  There is no obvious way to tell which result is the higher resolution version. As a result, you'll 
+  sometimes get errors like this where it says `the Paleozoic sedimentary
   rocks are from the Paleozoic era, which is 251.902 to 538.8 million 
  years old. The Middle Devonian sedimentary rocks are from the Middle Devonian 
- era, which is  382.7 to 393.3 million years old. Both layers are composed of 
- sedimentary rocks, which were likely deposited in a variety of environments.
- To understand the geologic story of this area, we need to zoom out and look at 
- the regional geology. Our location lies within the  broader context  of the 
- Appalachian Basin, which stretches across several states. The Appalachian Basin is a 
- sedimentary basin that formed during the Paleozoic era, and it is known for its 
- extensive deposits of sedimentary rocks.During the Paleozoic era, this region was 
- covered by a shallow sea, known as the Appalachian Basin Sea. The deposition of 
- sediments in this sea resulted in the formation of the Paleozoic sedimentary rocks 
- we see here. These rocks were likely deposited in a variety of environments, including 
- shallow marine, deltaic, and fluvial settings. Over millions of years, layers upon 
- layers of sediment accumulated, compacted, and lithified to form the rock formations 
-  we observe today.Moving forward in time, we come to the Middle Devonian era. 
-  During this period, the sea that once covered this region began to recede, and the 
-  environment transitioned from marine to terrestrial. The Middle Devonian sedimentary 
-  rocks we see here were likely deposited in a variety of environments, including 
-  river systems, floodplains, and deltas. These rocks provide valuable insights 
-  into the ancient landscapes and ecosystems that existed during this time. As we 
-  examine the outcrop in front of us, we can observe the distinct layering and 
-  sedimentary structures within the rocks. These features tell us about the processes 
-  that shaped this area millions of years ago. We may also find fossils within these 
-  sedimentary rocks, which can provide clues about the ancient organisms that once 
-  inhabited this region.In conclusion, the geologic story of this location is one of 
-  ancient seas, changing environments, and the deposition of sedimentary rocks over 
-  millions of years. The Paleozoic and Middle Devonian sedimentary rocks we see here 
-  are a testament to the dynamic geological history of the Appalachian Basin. So, 
-  let's take a closer look at the rocks, examine their characteristics, and see what else we
-  can uncover about the fascinating geology of this area.
-```
-#### Evaluation of Port Clinton text
-
-TO DO: Add evaluation of text
-
+ era, which is  382.7 to 393.3 million years old.` but its talking about the same bedrock just different 
+ geologic maps have different levels of specificity in there information. The Middle Devonian is 
+ a subset Paleozoic, not a separate unit. I suspect this is a problem I could handle with more 
+ investigation of the [Macrostrat API](https://macrostrat.org/#api), but I never got around to it.
+- The phrase `the geologic story at our location reveals a history of sedimentation in a marine or lacustrine 
+environment ` is incorrect. The rocks at this location are all marine. Further east there are some lacustrine
+rocks but nothing anyone would call at this location or really even probably ever mention at this stop. Although
+we are constraining the local point geology with the geologic map, the LLM is being asked to also discuss regional 
+geology with the only thing constraining it being the already generated summary of local geology at that location.
+That sometimes leads to problems and as shown here. One possible solution would be to supply information on regional geology
+from calling different point locations on the geologic map, leveraging wikipedia articles about the regional geology of the 
+state or country, or some other approach that constrains the LLM in some way. 
+A [wikipedia + LLM approach](https://github.com/JustinGOSSES/LAGDAL/blob/main/src/native_skills/wikipedia/wikipedia.py) was trialed early on 
+and seemed successful inside the United States of America using wikipedia's API and a "state of ___ geology" search to 
+find pages with regional geology information. However, this approach was less successful outside the United States of America
+as the wikipedia pages were not as consistent in their structure and content. Sometimes the first X number of wikipedia 
+results to the country in question would all be about something other than geology.
 
 #### Houston, Texas, USA
 
@@ -498,9 +515,17 @@ and the intricate history that has shaped our surroundings.Let's move on and exp
  more of the fascinating geology this region has to offer.
 ```
 
-#### Evaluation of Houston text
+#### Critique of Houston text
 
-TO DO: Add evaluation of text
+- A minor critique is that the phrase `Pleistocene Epoch, a time characterized by repeated 
+glaciations and interglacial periods` might be read to imply that glaciation reached this location, 
+which it did not. That being said, every field trip I have been on in the Houston area mentioned 
+glaciation in terms of global sea level rise and changes in sedimentation, so not unexpected 
+to see it mentioned here from a probability standpoint just the complete context was not explained 
+as well as it might have been.
+- Other than that, this is a pretty good description of the geology of the Houston area and much 
+  improved upon the initial testing with ChatGPT in spring of 2023 when some of the content would 
+  be reflecting geologic writing by people in Houston, not the surface bedrock of Houston.
 
 
 #### Bocas del Toro, Panama
@@ -535,9 +560,18 @@ millions of years. As we continue our field trip, let's keep our eyes open for m
 geologic processes that have shaped this part of the world.
 ```
 
-#### Evaluation of Bocas del Toro text
+#### Critique of Bocas del Toro text
 
-TO DO: Add evaluation of text
+- Having been to this area, I can say it is more complicated than the geologic map available presents. This is limitation 
+follows through to the description. It says `The presence of sedimentary rocks suggests that this area was once a sedimentary 
+environment, such as a river delta or a shallow marine environment` which is true but what makes this area interesting is 
+the fact that both in modern day and in the bedrock there's a mix of siliciclastic, carbonate, and a very small amount of 
+volcanic rocks. In fact just down the beach from this view, there's pillow basalt peaking above the beach sand reflecting lava
+coming out underwater. 
+However, all the Macrostrat geologic map API says is "AGE: Neogene to Neogene, AGE: 2.588 to 23.03 millions 
+years, Lith: sedimentary". So, the LLM is doing the best it can with the information it has. The resolution of the geologic 
+map doesn't allow for the more complicated and interesting geology to be reflected in the description.
+- I find the regional description is pretty good for a 101 level introduction.
 
 
 #### Taiwan
@@ -567,12 +601,20 @@ plates and the formation of a volcanic arc. By studying these rocks and their co
 insights into the processes that have shaped our planet over millions of years.
 ```
 
-#### Evaluation of Taipei text
+#### Critique of Taipei text
 
-TO DO: Add evaluation of text
+- The prompt asks for a 101 level description of the geology, so just saying part of larger volcanic arc` is maybe okay, but it does 
+generalize the geology a bit as can be quickly seen in 
+[this wikipedia article on the geology of Taiwan](https://en.wikipedia.org/wiki/Geology_of_Taiwan). 
+- This exact location is in Yangmingshan National Park, which is
+[the location of a volcano that was recently determined to be more active than previously thought](https://www.bbc.com/future/article/20220427-how-taiwan-discovered-an-active-volcano-on-its-doorstep). 
+The LLM description doesn't mention this at all, probably as the geologic map for this location is quite coarse and most write ups 
+are relatively recently. However, if you were on an actual field trip there, it would be the primary thing you would want to talk about.
+Again, the generative text is limited by the underlying geologic map data to a certain extent though I would not be entirely surprised 
+if future LLMs knew more about the geology of this area.
 
 
-#### France, Cassis
+#### Cassis, France
 
 ![France by sea Screenshot](../static/images/blog/LAGDALimages/ScreenshotFranceSea.png)
 
@@ -613,9 +655,13 @@ interest and sparked your curiosity for further exploration. Let's continue our 
 discover more fascinating geologic features!
 ```
 
-#### Evaluation of France, Cassis text
+#### Critique of Cassis, France text
 
-TO DO: Add evaluation of text
+- Nothing is obviously wrong here that I can tell. Consider if impressive given the Macrostrat API data provided on local geology is pretty bare.
+- While using the LAGDAL application in different areas nearby while on vacation, I can say that sometimes the 
+  boundaries between the different geologic units are not perfectly captured by the map. There were a few times 
+  when the geologic map and LLM would say I was in one geologic unit, but it would be 0.25 kilometer down the road. 
+  This is a limitation of the underlying geologic map API inherited by the LLM generated text.
 
 --------------------------------------------------------------
 
@@ -623,12 +669,90 @@ TO DO: Add evaluation of text
 
 ### LLMs make certain tasks easy that were previously too effort intensive to attempt
 
+Prior to the explosion of text generative AI, I made an JavaScript Observable Notebook called 
+["Stratigraphic Speech" that you can try out here](https://observablehq.com/@justingosses/stratigraphy-speech). 
+It automatically takes your location via a browser API, call the macrostrat API, 
+and generates speech that tells you about the geology at your current point location through hard coded extraction 
+of Macrostrat API JSON data into a single speech template. I used it on a drive between Texas and Ohio, so my 
+wife wouldn't have to constantly find the right page in the the "Roadside Geology" books I had. It worked 
+but was limited in what it could do and quickly got boring as it said the same template again and again. 
+Additionally, it had no regional context and was limited to repeating lithology and age, nothing else. 
+
+Turning somewhat arbitrary data in JSON format into natural language is easy to accomplish with LLMs but super 
+painful to code deterministically by hand as there are so many possible variations, which makes for a very long tail 
+of edge cases, exceptions, and toil. One of the main advantages of LLMs is they take away the need to solve for that 
+long tail. They know how to say things in a way that is natural to humans, and they can do it for a wide variety of
+data inputs. This makes creation of something people want to listen to possible where it wasn't before.
+
+Secondly, the LLMs when constrained by location and local geology, can do a decent enough job of regional geology, 
+at least at the 101 level of detail as shown in the examples above. This is a huge advantage over the previous efforts.
+
 ### A few areas that are necessary to improve upon before this type of thing is functionally useful for others
+
+- **Speed:** As describe above, the current text generation experience is way too slow to be useful due to needing to chain 
+  together multiple API calls. To some extent, this can be solved through better software engineering as this was
+  a quick prototype. Reductions in model size and inference speed that will certainly occur in future will also help.
+- **Multiple inputs:** Currently, the only way users interact is to move around a map and click. Ideally, you could also 
+  write a location or latitude and longitude into a text box.
+- **Visualization of available streetview imagery**: Currently, the only way to know if there is streetview imagery 
+  available is to click and see if the streetview image appears. It would be nice to have a visual indicator of 
+  where streetview imagery is available. This is possible to integrate, just didn't have time.
 
 ### Large future opportunity to improve geologic maps with LLMs
 
+Geologic maps are a critical tool for geologists and geoscientists as well as general public. 
+They are used to understand the geologic history and structure of an area, to identify natural resources, etc. 
+LLMs integrated with geologic maps could improve traditional limitation of 2D static geologic maps.
+
 #### Accessibility
+
+Geologic maps are traditionally a visual medium with a lot of information packed into a small space requiring looking back and forth 
+between locations on the map, map symbols, legends, and accompanying texts. This can be difficult for people with visual impairments.
+LLMs could be used to generate audio descriptions of the geology at a point location on the map.
+It also could open up ways to leverage maps when eyes are busy, for instance when driving. Adding speech-to-text and text-to-speech 
+interface on top of LLMs + geologic maps could also for questions and answers about the geology of an area.
 
 #### Improved handling of uncertainty
 
+Geologic maps are inherently uncertain as described previously. However, their nature as static visual 2D representations does not 
+allow for much nuance in how uncertainty is represented. LLMs could be used to generate text that describes the uncertainty.
+As LLMs are digital, they are not constrained to a static 2D representation. Functions could be created to include in the 
+description when your location is near the boundary with another unit and uncertainty is higher. Additionally, uncertainty can be 
+higher if the surface in unit is question is thin, meaning the next unit down might actually be what is exposed in outcrop. 
+Additionally, if unlithified sediment is very thick at that location, you might want to know that in addition to the first 
+lithified bedrock. All that information is already determinable from the Macrostrat API, so it could be included in a future 
+version of the generative field trip description.
+
+Additionally, the current LAGDAL interface is a rather inflexible type of input (clicking on a map), but that is not the only possible 
+interface. That style of interface was chosen for this prototype to avoid entirely the problem of 
+[prompt injection](https://developer.nvidia.com/blog/securing-llm-systems-against-prompt-injection/) that comes from user 
+provided text inputs into LLM applications.  However, if you did allow the user to input their own prompt, they could potentially ask 
+uncertainty related questions like "give what we know about the local geology, how likely is it that I am looking at limestone vs. dolomite?" or 
+"I am at the bottom of a very small canyon that might not be reflected on the geologic map, what is the next unit down"?
+
 #### Make one map for multiple audiences
+
+Another feature of geologic maps is that they are interpretations based on many observations. That underlying observational data 
+is not included in the map, which limits the ability of the LLM to describe what observations might be possible at a given 
+point location. If LLMs had access via APIs to some of the underlying observational data several things become possible. 
+
+First, they could describe what observations are possible in more detail. For example, they might be able to describe the 
+exact type of fossils found in a given unit, or the exact type of sedimentary structures, instead of saying generalities and 
+final interpretations. 
+
+Second, if the underlying data is available, it will sometimes be able to match the description to the needs of the user. 
+For example, a someone might want to know about the fossils, but another person might want to know about the sedimentary structures 
+or structural features like faults or joints. You can imagine a drop-down interface where the user selects the type of 
+geology they are interested in hearing about.
+
+--------------------------------------------------------------
+
+## Take aways for building future geologic map & LLM experiences
+
+These are just a few ideas for future geologic maps. I am sure there are many more. 
+Fundamental to them is **(1)** the ability to summarize even highly variable data into natural language at much lower cost than was possible without 
+LLMs and **(2)** the effectiveness of constraining the probabilistic output of 
+LLMs with deterministic data from APIs, like [Macrostrat](https://macrostrat.org/), that provide geologic information from across the globe.
+Additionally, there's room to new types of geology map capabilities driven by both **(3)** access to underlying data instead of only the highly generalize interpretations that 
+can be represented on a static 2D map and **(4)** potential for new interfaces that allow for repeated generation of text for different purposes based 
+on the same underlying geologic datasets.
