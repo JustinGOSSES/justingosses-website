@@ -37,7 +37,7 @@ combined with a document store using the
 a LLM by itself is built to be probabilistic
 model of human language that extend text given in prompts. It doesn't know facts, it knows 
 probabilistic relationships between words and phrases.
-The saying does that pops into my head for LLMs is `"all models are wrong but some are useful"`.
+The saying that pops into my head for LLMs is `"all models are wrong but some are useful"`.
 This phrase is often heard when discussing scientific models.
 I like this saying for LLMs as it affirms that LLMs are going to be wrong, we should be
 thinking about how we should expect them to be wrong, and we should be thinking about how to 
@@ -46,8 +46,8 @@ reasonably expect them to be useful.
 Another reason to like the saying is it invites
 a comparison between geologic maps, which are one type of model, with LLM generated
 geology field trip point descriptions, which are a different type of model.
-The ways in which these two different types of models are wrong but still useful have interesting 
-similarities and differences. 
+The ways in which these two different types of models are wrong but still useful is interesting
+to analyze. 
 
 This blog post will attempt to do two things at once. 
 First, it will serve as a post mortem for an experimental web application I built that
@@ -59,16 +59,17 @@ types of models, geologic maps and LLMs, can be both wrong and still useful.
 ## What was built
 
 ### Outline of the web application: LAGDAL
-LAGDAL is an acronym for Large Language Model Assisted Geology Descriptions of Arbitrary Locations.
+LAGDAL is an acronym for Large language model Assisted Geology Descriptions of Arbitrary Locations.
 A [previous blog post](https://justingosses.com/blog/LLM-AI-bot-for-geology-field-trips) 
 summarized what was being attempted very early on in the process. You can also 
-read the [README.md of the GitHub repository for LAGDAL](https://github.com/JustinGOSSES/lagdal).
+read the [README.md of the GitHub repository for LAGDAL](https://github.com/JustinGOSSES/lagdal) to learn more.
 
 The basic idea is a user can navigate an area using synchronized google street view image, 
 topographic map, and geologic map windows.
 When they found a point location that looks interesting, they can press a button to generate
-the text for a  
-geology field trip description for that exact location.
+the text for an geology field trip description for that exact point location. The goal is to return a 
+realistic sounding, accurate description of both the local and regional 
+geology at a college 101 class level.
 
 #### Where to try it out
 The live website, which may or may not be still live when you read this, is at 
@@ -77,6 +78,10 @@ You can also clone
 the [https://github.com/JustinGOSSES/LAGDAL](https://github.com/JustinGOSSES/LAGDAL) 
 repository locally and then follow the instructions to set up API keys for OpenAI, 
 google streetview, and Bing maps such that the application runs on your local computer.
+There is also a version of the application without the LLM part that is entirely 
+front-end with no sever side code. This means you can run it entirely as a 
+static website, as seen 
+on [this GitHub pages page](https://justingosses.github.io/LAGDAL/frontend/).
 
 #### _Screenshots of web application (LAGDAL) at a point in New York City's Central Park_ 
 ![New York City, screenshot A](../static/images/blog/LAGDALimages/NewYork_a.png)
@@ -88,22 +93,22 @@ google streetview, and Bing maps such that the application runs on your local co
 The application had a user in mind who was someone with geologic knowledge looking to 
 explore a new area, maybe searching for good field trip stop locations. It was also 
 built with the question in mind of how much closer LLMs could take us to 
-a completely automated field trip guide, at some basic level. 
+a completely automated field trip guide, at least at some basic level. 
+Normally, creating geologic field trips require significant research by one or 
+more experts who compiles for information in numerous published maps, reports, 
+and papers. This is a high initial barrier if you only want the most basic description.
 
 ### How I used it: on vacation
 
-Most of my use of it was in testing, but I also used it for vacations. 
-Normally, geologic field trips require significant research and one or more persons
-leading who know a lot about an area.  As someone trained as a geologist 
-now working in other professions, I often like to learn a bit about the geology of 
-the place I'm visiting, so I can understand the context of any outcrops I happen to see. 
-LAGDAL is useful for this task as it lets me look in advance at where I might see 
-outcrops and understand the different geologic units. It's better than just a basic
-geologic map as the topographic map combined with the streetview imagery 
-lets me easily see real outcrop pictures of each geologic unit before I'm there in person. 
-The LLM field trip 
-descriptions also provide some regional context that a geologic map description by itself 
-doesn't not give. 
+Most of my use of it was in testing the code, but I also used it for vacations. 
+As someone trained as a geologist now working in a different field, I often like to 
+learn a bit about the geology of the place I'm visiting, so I can understand the context 
+of any outcrops I happen to see. LAGDAL is useful for this task as it lets me look in 
+advance at where I might see outcrops and understand the different geologic units. 
+It's better than just a basic geologic map as the topographic map combined with the 
+Streetview imagery lets me easily see real outcrop pictures of each geologic unit before I'm 
+there in person. The LLM field trip descriptions also provide some regional context that 
+a geologic map description by itself doesn't not give. 
 
 I've used it on travel to Cleveland, Ohio, Seattle, WA, Provence France, and Taipei, Taiwan.
 I've found it more useful then the online Macrostrat geologic map alone or combined 
@@ -138,8 +143,8 @@ the time between clicking the "generate" button and getting a description of
 the field trip location could be several minutes in total. This is too slow
 for many users, who are used to immediate feedback on websites. One way to
 minimize this might be to have the intermediate results printed to the
-website window as well. This the experience when running via command line
-and it results in less waiting but not zero waiting.
+website window as well. This is the experience when running via command line
+or in the standard ChatGPT interface and it results in less waiting but not zero waiting.
 
 ### Poor experience on a mobile device
 
@@ -157,19 +162,20 @@ could type in an address for the maps to navigate to. Both of these
 would improve the map navigation experience on mobile.
 
 ## Post Mortem: Model related 
-## Comparing geologic maps as models and large language models. Wrong and useful in different ways
+{/* ## Comparing geologic maps as models and large language models. Wrong and useful in different ways */}
+`All models are wrong but some are useful`
 
 ### Geologic maps as imperfect models
 As alluded to in the first section, geologic maps are imperfect models.
-However, the statement `all models are wrong but some are useful` applies 
-as they are still extremely useful despite certain common errors. 
+However, they are still extremely useful despite having a variety of common errors. 
 
 ##### Error type 1: Non-interesting things like dirt, trees, and your house are in the way
-To start with, there's often other stuff on top, be it dirt, vegetation, or 
+To start with, there's often other stuff on top of bedrock, be it dirt, vegetation, or 
 buildings. Geologic maps try to indicate what's underneath all of that even if it is 
 quite far down. What's shown on the map therefore can often be an imperfect guess at 
 what's underneath. In landscapes with a lot of vegetation, the error rate can be higher.
-The geologic story of the local bedrock is a lot easier to figure out in Arizona than Maryland.
+For instance, the geologic story of the local bedrock is a lot easier to figure out in 
+New Mexico than Maryland due to all the exposed bedrock in New Mexico.
 
 ##### Error type 2: Not everyone wants to know the same things
 Another class of error is when there's a difference between what the map maker tried to represent 
@@ -183,9 +189,9 @@ they can also describe structural features like strike and dip orientation
 of strata, age, or presence of fossils.
 Sometimes maps can be correct but not in a way that is useful to you.
 
-An extension of this idea is that if the map maker is not focused on what you 
+An extension of this idea is that if the map makers are not focused on what you 
 care out, that type of information might be overly generated in ways that 
-result in errors from one perspective but maybe not all perspectives.
+result in errors at the scale that matters to you but not the map makers.
 
 ##### Error type 3: Resolution 
 It is not unusual for geologic maps to cover hundreds of square kilometers. As such, 
@@ -202,61 +208,83 @@ there uncertainty of the exact position of the boundary could be
 hundreds of meters or even kilometers if there is 
  dirt, vegetation, roads, buildings, etc. on top or the definition of 
  one unit is not tightly constrained.
+Uncertainty in the boundary of two units even if exposed 
+ well can also be due to the lack of a sharp change in lithology or other characteristics 
+in the two units. Where one formation ends and another begins can be fuzzy or 
+hard to interpret without data like age dating that is extremely sparsely distributed
+or open to interpretation.
 
-##### Resolution variations across Macrostrat geologic map
-The geologic map used on the LAGDAL application is from Macrostrat that integrates a large
-number of digital geologic maps from different parts of the world. As such, there is quite 
-a bit of variation in the resolution of the mapping. Taiwan has only a handfull of geologic 
-units mapped and there is a lot of differences between what's on the map and 
-what's exposed in outcrops. In contrast, the geologic maps in Texas or southern France are 
-mapped in higher resolution with comparably less differences likely between what's on the map and
-what's exposed in outcrops.
+Despite all these potential sources of uncertainty, the boundary between two formations
+will always be drawn as a sharp line on the final map with basically none of that uncertainty 
+conveyed on the 2D map. It's a data informed best guess model. The model is still 
+extremely useful even if it is not perfect and certain parts are wrong or 
+highly generalized.
 
-##### Reasonable to expect geologic maps to be wrong at times
+You can see an example of 
+this resolution uncertainty in the 
+[Macrostrat geologic map](https://macrostrat.org/map/#x=-102.987&y=41.999&z=5.1) 
+by navigating to the state of Colorado in the United States and zooming from far out to close in.
+The Macrostrat map website shows different geologic maps at different zoom levels. 
+Although many of the boundaries of the geologic formations agree as you zoom out and in, some do not.
+Different geologic map authors use different levels of generalization and in some cases different 
+interpretations. 
+
+##### Lower resolution areas of Macrostrat geologic map used as underlying data
+The geologic map used on the LAGDAL application is from [Macrostrat](https://macrostrat.org/). 
+It integrates a large number of digital geologic maps from different parts of the world. 
+As such, there is quite a bit of variation in the resolution of the mapping. 
+Taiwan has only a handful of geologic units mapped. As a result, there is a lot of differences between 
+what's on the map and what's exposed in outcrops there. In contrast, the geologic maps in Texas 
+or southern France are mapped in higher resolution with comparably less differences likely 
+between what's on the map and what's exposed in outcrops.
+
+##### Models can be wrong but useful if users have expectations for how they might be wrong
+
 
 For all these reasons, it should not be all that surprising that when you're faced 
-wih an outcrop that doesn't agree with the what the geologic map suggests should be there.
-The geologic map is useful even if its wrong at times because most advanced users 
-have expectations on where and how it might be wrong. 
-
-As the saying goes, the model is 
-wrong but still useful. It gives us lots of useful information about the world, how 
-to think about it, and what to expect even if it is sometimes wrong where we happen to 
-being standing at the moment. 
+wih an outcrop that doesn't agree with the what the large scale geologic map suggests should 
+be there. A key reason geologic maps are still useful even if its wrong at times is because 
+most geologists have expectations on where and how it might be wrong. With LLMs being very 
+new, people are still developing an intuition for when they might be right or wrong and why.
 
 ### Large language models as imperfect models
 
-LLMs in the context of the LAGDAL application are a combination of the errors of geologic 
-maps and their own style of errors. 
+LLMs errors in the context of the LAGDAL application are a combination of the errors inherited 
+from underlying geologic map data used in initial prompts and LLM-specific errors. 
 
 #### Errors inherited from geologic maps
 
-Effecting prompting construction is often necessary to get LLMs to generate useful text as 
-prompts effectively act to narrow the probabilities of what the LLM will generate.
-As the agent is chaining several prompts together with an initial prompt that leverages
-a JSON data structure filled with data from a given latitude and longitude point on the map, 
-the errors in that initial data will, to a large extent, be inherited by the LLMs.
-
-However, LLMs are way more flexible than geologic maps in an important way, they can 
-take input from user. We didn't implement this in the prototype, but I will discuss some 
-possibilities there are some traditional sources of errors or negative impacts on usefulness 
-in geologic maps that could be overcome with LLMs.
+As noted above, the LAGDAL application chains together several prompts and resulting text output.
+The first use of the openAI API is to generate a natural sounding short paragraph from the 
+data in a JSON object returned from the [Macrostrat Map API](https://macrostrat.org/#api) 
+for the given latitude and longitude of the selected point location.
+As the geologic map data is used in this first prompt and then recycled in each later 
+part of the chain, errors within the geologic map will flow through to the final text output 
+of the LLM application. 
+In the section below, I will discuss the types of errors that are inherited from the geologic map
+and how they might be mitigated in the future with the advantages that digital maps and LLMs provide.
 
 ##### Error type 1: Dirt and other non-interesting things in the way
 
 To a large extent these errors simply get inherited from the geologic map. 
 LLMs have no other way of knowing what's underneath the dirt, vegetation, or buildings. 
 
-However, there may be some potential here for LLMs to be more useful than geologic maps 
+However, there may be future potential here for LLMs to be more useful than geologic maps 
 simply because they aren't static products. As such, there could be ways to structure the 
 prompts such that some of the uncertainty around cover gets included in the generated text. 
 For example, it would be possible to start the prompt chain with both the geologic map data
 at that single point and several other points a short distance away. If there's differences 
 in the description, then maybe that could be integrated into the generated text to warn the 
-user. Additionally, information on the thickness of the units is often part of the data that 
-builds the map, but not visually represented on the map due to the 2D spatial nature of the map.
-However, there's nothing stopping an LLM from stating the first unit is X but it may only be 
-less than 2 meters thick so you might instead be seeing the second unit of blank.
+user that there are different units nearby. Additionally, information on the thickness of the 
+units is often part of the data that builds the map, but not visually represented on the map 
+due to the 2D spatial nature of the map. However, there's nothing stopping an LLM from 
+stating the first unit is X but it may only be less than 2 meters thick so you might instead 
+be seeing the second unit of blank.
+
+Digital maps also have the potential to have multiple layers. Land use, land cover, and slope
+are all widely generated across the world and could be used as data supplied to LLMs to 
+describe probability of outcrop locations in an area or probability of an outcrop being 
+bedrock vs. recent sediment.
 
 ##### Error type 2: Geologists different in what content they would like to see represented on geologic maps
 
@@ -281,18 +309,15 @@ The resolution problem from geologic maps is largely inherited by the LLMs.
 
 However, there are circumstances where LLMs can bring in higher resolution information. 
 For example, when exploring 
-Taipei, Taiwan, the geologic map is very low resolution. However, the prompt given to LLMs
-includes both the city name and the formation name enabling the LLM to reference additional 
-information about volcanic history 
-of [Yangmingshan national park](https://en.wikipedia.org/wiki/Yangmingshan).
+Taipei, Taiwan, the geologic map is very low resolution. However, the agent in this case 
+used the Bing Maps API to find a geographic location name and the LLM was apparently 
+able to use that to pull in the geologic formation name and reference additional 
+information about the volcanic history of 
+[Yangmingshan national park](https://en.wikipedia.org/wiki/Yangmingshan).
 This is information that likely existed in many texts in the LLMs training set and represents 
 more information that was included in the geologic map.
-
-Similarly, the prompt that asks for regional geology to be included in the generated text 
-extends informational content beyond what is included from the geologic map.
-
-These extensions into information not in the geologic map data tend to useful and not errors 
-as they are being constrained by the geologic map data. 
+The LLM providing more local information than the macrostrat API was fairly unusual in testing. 
+Usually, the LLM only provided regional context.
 
 ### LLM specific errors
 
@@ -301,19 +326,17 @@ This gives them a lot of power to generate realistic text with little
 human generated deterministic programming required. However, that strength also shows up 
 as a weakness.
 It makes them prone to certain errors where their probabilistic approach leads to occasional failures
-when a simply deterministic program would not. LLMs do not follow pre-written rules, they 
-follow patterns in the training data identified during model training.
+when a simply deterministic program would not. 
 
 #### Math
 
-The class example of this is that LLMs are worse at math then you might expect.
+The classic example of this is that LLMs are worse at math then you might expect.
 There are lots of explanations out there on why that is that I suggest you do a web search for to 
 learn more.
 
 Where it often comes up in context of the LAGDAL prototype is when there are multiple formations
-being described in the description or when the description attempts to describe the time length of 
-a units deposition. 
-
+being described in the description or when the description attempts to describe the time length over 
+which a formation has been deposited.
 In LAGDAL, this limitation was attempted to be overcome by giving the agent that can pick what tool 
 to use a math tool. Langchain is the framework used in LAGDAL and it has 
 a [`llm_math_chain` capability]((https://github.com/JustinGOSSES/LAGDAL/blob/main/src/agent_website_explore.py)).
@@ -328,12 +351,13 @@ a [`llm_math_chain` capability]((https://github.com/JustinGOSSES/LAGDAL/blob/mai
 Incorporation of this skill helped reduce math related errors in the generated text, but it did not 
 completely eliminate them as they agent still had to make the decision to use the skill. 
 At a simply level, the agent use the math skill whenever there is a high text similarity between the 
-description of when the math skill is useful and the generated text. However, this is not a perfect
-and math related problems persisted at some level.
+description of when the math skill is useful, the prompt it is trying to solve for at that moment, 
+and any other input text. However, this strategy is not a perfect, largely as it is not always 
+obvious that the math skill should be used next instead of one of the other skills to pick from. 
 
-It should be noted that even though math related errors persists but models seem to be improving in regards to this
+It should be noted that even though math related errors persists, models seem to be improving in regards to this
 type of error. I initially started this work with the `text-davinci-003` model which has been depreciated. 
-Over moving from `text-davinci-003` to `gpt-3.5` to `gpt-4` I have noticed a decreasing rate of these types of errors.
+After moving from `text-davinci-003` to `gpt-3.5` to `gpt-4` I have noticed a decreasing rate of these types of errors.
 
 #### Confusion prompted by words being used in different contexts
 
@@ -354,13 +378,15 @@ are closer to what I would expect.
 
 #### Ordering of units
 
-LLMs can not reason in the human sense, they can only replicate the results of reasoning through probabilistic means.
+LLMs can not reason in the human sense, they can only replicate the results of reasoning through probabilistic means
+when there is a strong correlation between reasoning and language used to describe the reasoning.
 Where this shows up in the LAGDAL prototype is in the ordering of units. Sometimes you would see inaccurate 
 description of the order of units, either in terms of what unit is on top or the age relationships. 
 
 #### Ordering of events
 
-Similarly, the descriptions would sometimes write errors related to the ordering of events. They might 
+Similarly, the descriptions would sometimes write errors related to the ordering of events in the geologic history 
+of a single formation. They might 
 not understand that a rock unit was initially deposited as sedimentary and then later deformed into metamorphic 
 leading to a description that says on rock unit is sedimentary and then another rock unit is metamorphic when 
 both are metamorphic but the first unit merely has less description that goes into the metamorphic history. 
@@ -370,7 +396,8 @@ Again, this goes into the LLMs inability to reason and it's reliance on probabil
 
 One of the more funny problems I have seen with the LAGDAL prototype is that it 
 has a tendency to replicate the bad habits of field trip leaders concerning over usage of 
-trite phrases and filler phrases. 
+trite phrases and filler phrases. I suspect I could probably reduce these if I really wanted to by adding a phrase to the 
+last prompt that says "please avoid using trite phrases".
 
 Examples of trite phrases include:
 - "fascinating location with a rich geological history" or "fascinating geology of the area"
@@ -410,7 +437,8 @@ The LAGDAL applciation is a flask app that primary uses the `agent_website_explo
 This "agent" approach solves for a single prompt by probabilistically picking from different skills 
 where each skill is either a deterministic function that calls an API or makes a calculation 
 or a LLM API call that uses a specific model and prompt to generate text. The "agent" chains together 
-different skills to produce a final generative text result.
+different skills to produce a final generative text result. As such, if you would generate geology field trip
+descriptions at the exact same locations with the exact same code, you would not get the same output text.
 
 #### Port Clinton, Ohio, USA
 
