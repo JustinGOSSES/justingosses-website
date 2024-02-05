@@ -4,7 +4,7 @@ date: 2024-01-28T15:32:14Z
 lastmod: '2023-12-30'
 tags: ['AI', 'machine-learning', 'open-ai', 'geology', 'bot', 'nlp', 'experiments', 'side-projects']
 draft: false
-summary: 'Wrong but useful, comparing geologic maps and large language models as two different types of models.'
+summary: 'A post mortem on a prototype web application that generates geology field trip statements for point locations and thoughts on how LLMs can improve geologic maps.'
 layout: PostSimple
 bibliography: references-data.bib
 canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
@@ -753,7 +753,7 @@ LLMs could be used to generate audio descriptions of the geology at a point loca
 It also could open up ways to leverage maps when eyes are busy, for instance when driving. Adding speech-to-text and text-to-speech 
 interface on top of LLMs + geologic maps could also for questions and answers about the geology of an area.
 
-#### Adding Spatial analysis skills to LLM driven geologic map applications
+#### Geospatial analysis functions combined with LLM-driven natural language interface as a new way to interact with map data
 The LAGDAL application had a single task, produce a plausible geology field trip description for a single point location. 
 There are many other tasks that could be done with LLMs and geologic maps, especially if a few more non-LLM skills were added 
 to the mix of what is available for an agent and the initially prompt is either picked from a list or user supplied. 
@@ -768,7 +768,8 @@ If skills like these were available, different tasks could be accomplished.
 Geology field trip descriptions could be generated that call out the important local features at each stop in a multiple stop 
 field trip and put them in the regional context. LLM-driven applications could tell the user about the geology generalized over 
 an entire trip. How much longer will you be driving through Cretaceous limestone? What is the next geologic unit you will be driving 
-through? Did we just cross into a different bedrock lithology or is this recent sediment cover?
+through? Did we just cross into a different bedrock lithology or is this recent sediment cover? These are all questions that become 
+answerable in text or speech format without needing to examine or interpret the geologic map directly.
 
 #### Improved handling of uncertainty
 
@@ -805,6 +806,8 @@ geology they are interested in hearing about.
 
 Macrostrat has some information for fossils available in their existing API already, so it is possible to already build a subset of 
 what is imagined here.
+
+
 
 {/* --------------------------------------------------------------
 
