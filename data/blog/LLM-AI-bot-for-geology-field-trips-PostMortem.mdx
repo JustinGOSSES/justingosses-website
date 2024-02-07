@@ -1,10 +1,10 @@
 ---
 title: 'Comparing geologic maps and large language models: All models are wrong, some are useful'
-date: 2024-01-28T15:32:14Z
-lastmod: '2023-12-30'
-tags: ['AI', 'machine-learning', 'open-ai', 'geology', 'bot', 'nlp', 'experiments', 'side-projects']
+date: 2024-02-06T15:32:14Z
+lastmod: '2024-02-06'
+tags: ['AI', 'machine-learning', 'open-ai', 'geology', 'bot', 'nlp', 'experiments', 'side-projects', 'llm', 'web', 'application', 'post-mortem', 'map', 'field-trips', 'lagdal']
 draft: false
-summary: 'A post mortem on a prototype web application that generates geology field trip statements for point locations and thoughts on how LLMs can improve geologic maps.'
+summary: 'A post mortem on a prototype web application that generates geology field trip statements for point locations. Plus, thoughts on how LLMs can improve geologic maps.'
 layout: PostSimple
 bibliography: references-data.bib
 canonicalUrl: https://justingosses.com/blog/adding-rss-to-this-website/
@@ -49,12 +49,14 @@ geology field trip point descriptions, which are a different type of model.
 The ways in which these two different types of models are wrong but still useful is interesting
 to analyze. 
 
-This blog post will attempt to do two things at once. 
-First, it will serve as a post mortem for an experimental web application I built that
+This blog post will attempt to do a few things at once. 
+First, it will serve as a post mortem for an experimental web application I built as a side project in 2023 that
 applies GPT3 and GPT4 large language models to the problem of generating plausible language that you might 
 hear said by the leader of a geology field trip at any random point location on Earth. 
 Second, this blog post will attempt to describe the similar and different ways in which two 
 types of models, geologic maps and LLMs, can be both wrong and still useful.
+Finally, it will try to point out opportunities for using LLMs to address some of the traditional 
+limitations of geologic maps and consider how LLMs might power new interfaces for digital geologic maps.
 
 ## What was built
 
@@ -693,7 +695,7 @@ discover more fascinating geologic features!
 
 --------------------------------------------------------------
 
-## Conclusions
+## Discussion
 
 ### LLMs make tasks easy that were previously too effort intensive to attempt with deterministic code
 
@@ -706,20 +708,20 @@ wife wouldn't have to constantly find the right page in the the "Roadside Geolog
 but quickly got boring as it said the same template again and again. 
 Additionally, it had no regional context and was limited to repeating lithology and age, nothing else. 
 
-Turning somewhat arbitrary data in JSON format into natural language is super 
-painful to code deterministically by hand as there are so many possible variations, which makes for a very long tail 
-of edge cases, exceptions, and toil. One of the main advantages of LLMs is they take away the need to solve for that 
-long tail. They know how to say things in a way that is natural to humans, and they can do it for a wide variety of
-data inputs. This makes creation of something people want to listen to possible where it wasn't before.
+Turning JSON formatted data of sometimes irregular content into natural language is super 
+painful to code deterministically by hand as there are so many possible slight variations to consider. It makes for a 
+very long tail of edge cases, exceptions, and toil. One of the main advantages of LLMs is they take away the need to 
+solve for that long tail. They know how to say things in a way that is natural to humans, and they can do it for a wide 
+variety of inputs. This makes creation of something people want to listen to possible at low cost when simply wasn't before.
 
-Secondly, the LLMs when constrained by location and local geology, can do a decent enough job of regional geology, 
+Another learning was that when constrained by location and local geology, LLMs can do a decent enough job of regional geology, 
 at least at the 101 level of detail as shown in the examples above. Results are superior to previous efforts 
 that either worked via traditional deterministic code manipulating Macrostrat API data or only used API calls to 
-OpenAI models alone.
+OpenAI models without any constraining details.
 
 ### Necessary improvements before a LAGDAL-type application is functionally useful for most users
 
-#### Non-model related improvements
+#### Non-model related improvements specific to LAGDALåå
 - **Speed:** As describe above, the current text generation experience is way too slow to be useful due to needing to chain 
   together multiple API calls. To some extent, this can be solved through better software engineering as this was
   a quick prototype. Reductions in model size and inference speed that will certainly occur in future will also help.
@@ -730,7 +732,7 @@ OpenAI models alone.
   available is to click and see if the streetview image appears. It would be nice to have a visual indicator of 
   where streetview imagery is available. This is possible to integrate, just didn't have time.
 
-#### Model related improvements
+#### Model related improvements specific to LAGDAL
 - **Better handling of when to use math skill:** Given these errors tend to show up in repeated ways, there is likely 
   a path to reducing their usage by either chaining additional prompts that look for these types of errors in the 
   final text or by duplicating the math skill and modifying the description of the math skill in each version to 
@@ -743,7 +745,7 @@ OpenAI models alone.
 
 Geologic maps are a critical tool for geologists and geoscientists as well as general public. 
 They are used to understand the geologic history and structure of an area, to identify natural resources, and set expectations of 
-what to see in outcrop. LLMs integrated with geologic maps could improve a few of the traditional limitations of 2D static geologic maps.
+what to see in outcrop. LLMs integrated with geologic maps could improve a few of the normal limitations of 2D static geologic maps.
 
 #### Accessibility
 
@@ -751,25 +753,27 @@ Geologic maps are traditionally a visual medium with a lot of information packed
 between locations on the map, map symbols, legends, and accompanying texts. This can be difficult for people with visual impairments.
 LLMs could be used to generate audio descriptions of the geology at a point location on the map.
 It also could open up ways to leverage maps when eyes are busy, for instance when driving. Adding speech-to-text and text-to-speech 
-interface on top of LLMs + geologic maps could also for questions and answers about the geology of an area.
+interface on top of LLMs + geologic maps could enable interactive question and answering about the geology of an area.
 
 #### Geospatial analysis functions combined with LLM-driven natural language interface as a new way to interact with map data
 The LAGDAL application had a single task, produce a plausible geology field trip description for a single point location. 
 There are many other tasks that could be done with LLMs and geologic maps, especially if a few more non-LLM skills were added 
-to the mix of what is available for an agent and the initially prompt is either picked from a list or user supplied. 
-Native spatial analysis skills could include things like: 
+to the mix of what is available for an agent.
+Native spatial analysis skills could include: 
 
-- Find the nearest point within a specific formation to your current location.
 - Analyze the raw geologic map data of two formations to find lithology type or characteristic possibly only present in one of them. 
 - Finding the intersection of a driving route and the geojson of the geologic map to identify all the formations that will be intersected.
 - Of all the formation boundaries across over a route plan, which has the longest time gap represented by the boundary?
+- Find the nearest point within a specific formation from your current location.
 
-If skills like these were available, different tasks could be accomplished.
+There are all fairly typical geospatial analysis tasks that could be done with a few existing JavaScript or Python geospatial packages 
+working on the geologic map data in geojson format from the existing Macrostrat API.
+If skills like these were available, different tasks could be accomplished by the LLM enabled application.
 Geology field trip descriptions could be generated that call out the important local features at each stop in a multiple stop 
 field trip and put them in the regional context. LLM-driven applications could tell the user about the geology generalized over 
 an entire trip. How much longer will you be driving through Cretaceous limestone? What is the next geologic unit you will be driving 
 through? Did we just cross into a different bedrock lithology or is this recent sediment cover? These are all questions that become 
-answerable in text or speech format without needing to examine or interpret the geologic map directly.
+answerable in text or speech format without needing to visually examine or interpret the geologic map or accompanying reports directly.
 
 #### Improved handling of uncertainty
 
@@ -779,8 +783,8 @@ As LLMs are digital, they are not constrained to a static 2D representation. Fun
 description when your location is near the boundary with another unit and uncertainty is higher. Additionally, uncertainty can be 
 higher if the surface in unit is question is thin, meaning the next unit down might actually be what is exposed in outcrop. 
 Additionally, if unlithified sediment is very thick at that location, you might want to know that in addition to the first 
-lithified bedrock. Most of that information is already determinable from the Macrostrat API, so it could be included in a future 
-version of the generative field trip description.
+bedrock. A large portion of the information necessary for these types of interactions is already determinable from the Macrostrat API, 
+so it could be included in a future version of the generative field trip description.
 
 Additionally, the current LAGDAL interface is a rather inflexible type of input (clicking on a map), but that is not the only possible 
 interface. That style of interface was chosen for this prototype to avoid entirely the problem of 
@@ -791,7 +795,7 @@ uncertainty related questions like "give what we know about the local geology, h
 
 #### Make one map for multiple audiences
 
-Another feature of geologic maps is that they are highly generalized interpretations based on many observations. 
+Another feature of geologic maps that was just alluded to is that they are highly generalized interpretations based on many observations. 
 That underlying observational data is not included in the map, which limits the ability of the LLM to describe what observations might 
 be possible at a given point location. If LLMs had access via APIs to some of the underlying observational data several things become possible. 
 
@@ -807,16 +811,9 @@ geology they are interested in hearing about.
 Macrostrat has some information for fossils available in their existing API already, so it is possible to already build a subset of 
 what is imagined here.
 
-
-
-{/* --------------------------------------------------------------
-
-## Take aways for building future geologic map & LLM experiences
-
-These are just a few ideas for future geologic maps. I am sure there are many more. 
-Fundamental to them is **(1)** the ability to summarize even highly variable data into natural language at much lower cost than was possible without 
-LLMs and **(2)** the effectiveness of constraining the probabilistic output of 
-LLMs with deterministic data from APIs, like [Macrostrat](https://macrostrat.org/), that provide geologic information from across the globe.
-Additionally, there's room to new types of geology map capabilities driven by both **(3)** access to underlying data instead of only the highly generalize interpretations that 
-can be represented on a static 2D map and **(4)** potential for new interfaces that allow for repeated generation of text for different purposes based 
-on the same underlying geologic datasets. */}
+## Take away messages for building future geologic map & LLM experiences
+1. Large language models have the ability to summarize data into natural language at much lower cost than was possible with traditional programming.
+2. Local geologic map data was effective at reducing error rates when asked to generate description of regional geology, presumably by narrowing the probability of the LLM output.
+3. Opportunity exists for new interfaces that expand how geologic map data is used, including: speech-to-text and text-to-speech interfaces, question and answering, and natural language directed geospatial analysis.
+4. Large language models allow for repeated, and potentially on the fly, generation of text for different purposes based on the same underlying geologic datasets
+   overcoming the static limitations of traditional geologic two dimensional visual maps where only a single final representation of reality is possible.
