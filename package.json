@@ -1,8 +1,11 @@
 {
   "name": "tailwind-nextjs-starter-blog",
-  "version": "1.5.0",
+  "version": "1.5.5",
   "private": true,
-  "scripts": {
+  "engines": {
+    "node": ">=20.0.0"
+},  
+"scripts": {
     "start": "cross-env SOCKET=true node ./scripts/next-remote-watch.js ./data",
     "dev": "next dev",
     "buildOriginal": "next build && node ./scripts/generate-sitemap && next export",
