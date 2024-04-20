@@ -9,8 +9,6 @@ occupation:
 # github: https://github.com/JustinGOSSES
 ---
 
-I live in Houston, Texas with my wife and dog Momo.
-
 If you find a mistake on this website, please check out the [CONTRIBUTING](https://github.com/JustinGOSSES/justingosses-website/blob/main/CONTRIBUTING.md) instructions and submit an issue or pull request to the [code repository](https://github.com/JustinGOSSES/justingosses-website) that builds it.
 
 ## About Me
