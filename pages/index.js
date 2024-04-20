@@ -43,9 +43,9 @@ export default function Home({ posts }) {
           <p>
             I use this website as a place to share information {' '} <Link href="/about"   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >  <a>about myself</a></Link>{' '} 
             , write 
-            {' '}<Link href="/blog" className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"><a>blog posts</a></Link>{' '} 
+            {' '}<Link legacyBehavior href="/blog" className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"><a>blog posts</a></Link>{' '} 
               , and establish a record of   
-              {' '}<Link href="/code"  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"> <a>side projects</a></Link>{' '}  
+              {' '}<Link legacyBehavior href="/code"  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"> <a>side projects</a></Link>{' '}  
               as a self-hack to prioritize side projects  better.
           </p>
           {/* <p>
@@ -88,6 +88,7 @@ export default function Home({ posts }) {
                           <div>
                             <h2 className="text-2xl font-bold leading-8 tracking-tight">
                               <Link
+                                legacyBehavior
                                 href={`/blog/${slug}`}
                                 className="text-gray-900 dark:text-gray-100"
                               >
