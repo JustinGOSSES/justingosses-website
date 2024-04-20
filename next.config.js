@@ -54,6 +54,7 @@ const securityHeaders = [
 ]
 
 module.exports = withBundleAnalyzer({
+  output: "export",
   images: {
     loader: "imgix",
     path: "https://raw.githubusercontent.com/JustinGOSSES/justingosses-website/main/public/",
