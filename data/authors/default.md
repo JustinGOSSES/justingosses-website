@@ -48,7 +48,14 @@ Here's a few highlights of my professional history with an emphasis on what type
 
 #### Microsoft
 
-Currently, I work at Microsoft as a Senior Program Manager focused on improving the <a href='https://innersourcecommons.org/'>inner source</a> experience, or use and reuse of code across organizational boundaries. I sit within Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>. I'm relatively new and still gaining understanding of the role, but suspect I'll be writing <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/">Kusto</a> (dialect of SQL), JavaScript, C#, and Python to understand current rates & patterns of code collaboration as we attempt to reduce friction and better align tooling and incentives.
+Currently, I work as part of Microsoft's <a href="https://opensource.microsoft.com/">Open Source Program Office</a>
+ as a Senior Program Manager focused on improving the open source and <a href='https://innersourcecommons.org/'>inner source</a> experience for Microsoft's tens of thousands of developers. Inner source refers to 
+ the use and reuse of code across organizational boundaries inside a company. 
+ My role involves traditional program management activities such as figuring out appropriate policies and working with users to make processes 
+ less friction prone. I also do a lot of work on the data side of things building experiences and tooling that save people 
+ time by leveraging code repository and package metadata as mentioned in the blog post 
+ ["Opportunities to leverage code repository and package metadata for new open source experiences"](https://justingosses.com/blog/Metadata-and-open-source). My efforts helps Microsoft's developers more safely, efficiently, and effectively collaborate with 
+ the world on the [11,000+ open source repositories that Microsoft has released and that are currently active](https://opensource.microsoft.com/).
 
 #### NASA Contractor
 
