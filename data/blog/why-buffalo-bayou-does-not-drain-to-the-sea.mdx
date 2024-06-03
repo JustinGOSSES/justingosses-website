@@ -1,0 +1,205 @@
+---
+title: 'Why Buffalo Bayou does not drain to the sea'
+date: 2024-06-01T15:32:14Z
+lastmod: '2024-06-01'
+tags: ['floodplain', 'open-data', 'gis','map','geospatial','tiff','shapefile','python','houston','geojson','river','hazards','data','relative elevation map','DEM']
+draft: true
+summary: 'What a relative elevation map referenced against large rivers and coastline can tell us about why Buffalo Bayou flows east instead of south south east like many rivers in the area.'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://justingosses.com/blog/why-buffalo-bayou-does-not-drain-to-the-sea/
+---
+
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+
+# Context
+
+First, the title is a bit of misnomer to make it sound more interesting. Buffalo Bayou does, of course,
+drain to the sea, but it does so by flowing east to the Galveston Bay first, then it flows to the Gulf of Mexico. 
+Flowing west to east is a bit different than many other rivers in the area, which tend to flow south south east. 
+This post is about what a relative elevation map referenced against large rivers and coastline can 
+tell us about why Buffalo Bayou flows east instead of south south east like many rivers in the area.
+
+This blog post will entirely consist of making observations regarding a relative elevation map (REM)
+created from a digital elevation map (DEM) of the greater Houston area. 
+The REM was created as part of looking at data for a Houston Geologic Society working group looking
+at better understanding the geology of the Buffalo Bayou. This post is not about that larger geological
+story but simply what you can see in the DEM and REM.
+
+## What is a Digital Elevation Map (DEM) and Relative Elevation Map (REM)
+
+### Digital Elevation Map (DEM)
+A digital elevation map (DEM) is a 3D representation of a terrain's surface.
+It is a raster file that contains elevation values for specific points on the terrain.
+DEMs are like contoured topography maps, but they have a higher resolution and are more detailed with each 
+pixel representing a specific elevation value.
+
+#### Data for the DEM 
+
+The digital elevation model or DEM used in this repository
+came from [Open Topography's](https://opentopography.org/) topographic data locator and download tools. 
+
+The dataset itself is sourced from USGS (United Stats Geologic Survey), specifically the 
+USGS 1/3 arc-second Digital Elevation Model(USGS10m). 
+
+```data citation
+United States Geological Survey (2021). United States Geological Survey 3D Elevation Program 1/3 arc-second Digital Elevation Model. Distributed by OpenTopography. https://doi.org/10.5069/G98K778D. Accessed: 2024-05-25
+```
+
+This material was based on data, processing services provided by the OpenTopography Facility with support from 
+the National Science Foundation under NSF Award Numbers 1833703, 1833643, and 1833632.
+
+The full metadata details of the downloaded data can be found in the metadata file 
+at [https://portal.opentopography.org/rasterOutput?jobId=rt1716147037733&metadata=1](https://portal.opentopography.org/rasterOutput?jobId=rt1716147037733&metadata=1)
+
+Due to size constraints, most of the images in this blog post will be screenshots and not at full resolution.
+
+### Relative Elevation Map (REM)
+
+DEMs are great by themselves for many applications, but there are times when fine details in topography
+are very hard to see in them due to the total range of elevation values captured in the map.
+One way to show those fine details at the expense of accurate showing the total range of elevation is a
+REM. In a relative elevation map, the elevation of a point is shown as the difference between the elevation 
+of that point and some other often calculated average or nearest point.
+One way to think of a REM is as a map that shows the difference in elevation between two points.
+The second point can be the average elevation of the area with a half miles circle, or it can be
+the elevation of the nearest river centerline. Making REMs referenced to river center lines can be useful
+for understanding small variations in topography in relation to the river's path and that was used in
+the images in this blog post.
+
+#### RiverREM
+Specifically, I used the RiverREM Python package by
+Larrieu, K. (2022). RiverREM (Version 1.0.4) [Computer software]. https://github.com/OpenTopography/RiverREM
+A great description of how and why to use it can be found in 
+[an Open Topography blog post](https://opentopography.org/blog/new-package-automates-river-relative-elevation-model-rem-generation)
+
+I used the default configuration for the most part. The only change I made was to not let the program find the
+largest river in the area of the DEM. While the RiverREM package assumes you're looking at the floodplain
+for a single river, I was looking taking a regional view with many rivers in the area of interest as well
+as bays and coastlines. Therefore, I parsed river center lines, coastline, and lakes while ignoring smaller
+water bodies like marshes, ponds, and drainage ditches from 
+[a collection of shape files](https://www.epa.gov/waterdata/nhdplus-texas-data-vector-processing-unit-12) 
+put out by the USGS & EPA are region 12 of the 
+[National Hydrology Dataset or NHD](https://www.usgs.gov/national-hydrography/national-hydrography-dataset). 
+The code will eventually put out on a public GitHub repository once I clean the git history of the 
+large TIF files. 
+
+## Where are we
+
+![texas state map with data extent](../static/images/blog/bayou/Texas_vs_rem.png)
+
+The bluish square on this map of Texas is the extent of the Houston region REM data. 
+The hard to see scale bar in the lower left corner represents the scale of 255 miles.
+
+![Relative elevation map of Houston region](../static/images/blog/bayou/Houston_REM.png)
+Greater Houston area relative elevation map. 
+The colors represent approximately the difference in elevation between the point and the nearest river centerline.
+Hence, there's no point in adding a scale bar as the colors are relative not absolute.
+
+
+## Coastal plain with actual topography vs. pancake coastal plain
+
+![Relative Elevation Model image with pancake edge in white line](../static/images/blog/bayou/pancake_edge.png)
+White line marks approximate edge of pancake coastal plain vs. coastal plain with slight topography.
+
+One of the things apparent in the REM is that there is a change in topgraphic patterns that runs diagonally
+across the map southwest to northeast. This line is marked by the white line in the image above.
+Above that line you have slight rolling hills and valley formed by regular erosional dendretic river drainage.
+Below that line, there's more of pattern of a flag pancake with rivers either plowing a valley through it 
+or eroding sharp channels into it as will be discussed later. 
+Although I've drawn it as a straight line, I am not sure it is necessarily always a sharp line in reality. 
+
+I suspect that change in topography represents the max extent to which sea level's fairly direct influence 
+on deposition and erosion patterns has reached. When rivers are close to sea level, there isn't gravitational
+energy to erode much of a valley or transport sediment and materials either immediately or progressively over
+time spread out and form a very even topography.
+
+### local erosional rivers vs. pass through rivers: Watershed extent
+
+Another observations that's easy to make looking at the REM is that there are two 
+obvious classes of rivers. One is larger with active channels moving through larger valleys to either 
+a sea or bay. These have large drainage areas out of view of the REM. 
+Brazos River, San Jacinto, and Trinity are all examples.
+
+The other class of rivers are smaller with morphology that seems much more erosional without as much visible 
+evidence of storing reworked sediment in their much smaller values. They other have more branching behaviors 
+as well. These rivers are more local to the area of the REM and have much smaller drainage areas.
+Buffalo Bayou, Sims Bayou, Brays Bayou, and Clear Creek are examples.
+
+#### Pass through rivers: Valley morphology
+
+![Relative Elevation Model image of Trinity River](../static/images/blog/bayou/Trinity.png)
+Trinity river relative elevation map north east of Houston. Shows large valley morphology 
+with history of meanders eroding and depositing into each other over time and small erosional
+cuts draining into the valley form its side.
+
+![Relative Elevation Model image of Trinity with elevation profile](../static/images/blog/bayou/Trinity_EP.png)
+An elevation profile of the same area, shows the valley contains a large amount of abandoned channels 
+and bars with a smaller active channel and comparatively steep valley sides.
+
+#### Local erosional rivers: Valley morphology
+
+![Relative Elevation Model image of Buffalo Bayou](../static/images/blog/bayou/BuffaloBayou_dendretic.png)
+Buffalo bayou's channel has much less of an oversized valley relative to size of current flow. 
+It comparitively less preserved meanders and many more dendretic channels flowing into it, given
+the impression of a more erosional river with less sediment transport compared to the Trinity, 
+at least based on morphology expressed in the REM alone.
+
+![Relative Elevation Model image of Buffalo Bayou with elevation profile](../static/images/blog/bayou/BuffaloBayou_EP.png)
+Elevation profile of Buffalo Bayou.
+
+The elevation profile cuts through the main Buffalo Bayou channel and several small tributaries that drain into it. 
+Channels are relatively sharp and narrow with active river channel being a single order fraction of the width.
+
+### Differences in drainage area
+
+--------
+_TODO: show polygons & stats for buffalo bayou, sims bayou, etc. watershed acreage vs. Brazos._
+
+TODO: Suggest local rivers are smaller time scale responses to where is lower topgraphy
+
+TODO: Suggest regional rivers are longer lasting river that reach the sea somewhere
+--------
+
+### Brazos vs. other pass through rivers: sediment supply
+
+TODO: Show how Brazos currently reaches the sea vs. other rivers that reach bay. It fills up its valley with sediment.
+
+
+TODO: Introduce concept of brazos river delta lobes and levees 
+
+
+#### Local erosional rivers: Drainage direction
+
+TODO: Suggest buffalo bayou west-east direction only seems odd as its one of the larger coastal plain constrained rivers
+whose direction is controlled by whatever is locally lowest topography. Smaller bayous actually have less tendendcy to 
+flow to sea.
+
+TODO: Make case that Trinity & San Jacinto rivers not reaching the sea has been constant enough since 
+Brazos levees / delta deposited sediment that there's been a decently long pattern of that bay and/or channel
+being lowest path, not directly to sea to south. This has been due to high sediment supply 
+coming down Brazos and lower amounts of sediment coming out of San Jacinto & Trinity. 
+
+TODO: Plot
+- area of present day Brazos vs. San Jacinto vs. Trinity
+- elevation change of Braoze vs. San Jacinto vs. Trinity
+
+#### local erosional rivers valley morphology and branching morphology
+
+- faults and salt bodies that sometimes push rivers around a little
+
+TODO: Examples of effects and non-effects.
+
+TODO: Make case structural forces cause tiny short spatial and time scale effects in river paths, not 
+large scale direction of drainage.
+
+## Conclusion: Why does Buffalo Bayou flow west to east?
+
+Blame 
+1. the pancake coastal plain caused by gradual tectonics and sea level change.
+2. the high sediment coming out of the Brazos forming levees and delta lobes and preventing a bay
+3. the relatively low amount of sediment coming out of the Trinity leads to an eroded channel during lower sea level that forms a unfilled in bay during higher sea levels.
+
+This tilts the pancake surface between the Brazos and the Trinity ensuring the quickest route to the sea level is east, not south.
