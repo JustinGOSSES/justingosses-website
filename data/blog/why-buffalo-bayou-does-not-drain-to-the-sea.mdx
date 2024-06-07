@@ -1,9 +1,9 @@
 ---
-title: 'Why Buffalo Bayou does not drain to the sea'
-date: 2024-06-01T15:32:14Z
-lastmod: '2024-06-01'
+title: 'Houston has topography: Looking at why Buffalo Bayou does not drain to the sea, directly'
+date: 2024-06-06T15:32:14Z
+lastmod: '2024-06-06'
 tags: ['floodplain', 'open-data', 'gis','map','geospatial','tiff','shapefile','python','houston','geojson','river','hazards','data','relative elevation map','DEM']
-draft: true
+draft: false
 summary: 'What a relative elevation map referenced against large rivers and coastline can tell us about why Buffalo Bayou flows east instead of south south east like many rivers in the area.'
 layout: PostSimple
 bibliography: references-data.bib
@@ -14,19 +14,24 @@ canonicalUrl: https://justingosses.com/blog/why-buffalo-bayou-does-not-drain-to-
 <TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
 
 
-# Context
+## Introduction
 
-First, the title is a bit of misnomer to make it sound more interesting. Buffalo Bayou does, of course,
-drain to the sea, but it does so by flowing east to the Galveston Bay first, then it flows to the Gulf of Mexico. 
-Flowing west to east is a bit different than many other rivers in the area, which tend to flow south south east. 
-This post is about what a relative elevation map referenced against large rivers and coastline can 
-tell us about why Buffalo Bayou flows east instead of south south east like many rivers in the area.
+First, the title is a bit of misnomer to make it sound more interesting. Buffalo Bayou does, in fact,
+drain to the sea, but it does so by ignoring the Gulf of Mexico to its south, 
+flowing east to the Galveston Bay, and then from there into the Gulf of Mexico. 
+This is different from many of the other rivers in the area, which tend to flow south south east 
+on a more purposeful looking path to the sea. This blog post uses a DEM (Digital Elevation Map) 
+and relative elevation map (REM) to take a look at the topography of the greater Houston area 
+and see what it can tell us about why Buffalo bayou takes that particular path.
 
-This blog post will entirely consist of making observations regarding a relative elevation map (REM)
-created from a digital elevation map (DEM) of the greater Houston area. 
 The REM was created as part of looking at data for a Houston Geologic Society working group looking
-at better understanding the geology of the Buffalo Bayou. This post is not about that larger geological
-story but simply what you can see in the DEM and REM.
+at better understanding the geology of the Buffalo Bayou. This post is not about that larger and more detailed 
+geological story but simply what you can see in the REM and elevation profiles. I will link to that more complete and 
+scientific piece eventually. This blog post is mostly just to post some pretty pictures strung together with
+a bit of context. 
+
+> Houston generally feels like a very flat place living in it, so it is refreshing to see all the 
+topographical detail that can be made visible with a relative elevation map.
 
 ## What is a Digital Elevation Map (DEM) and Relative Elevation Map (REM)
 
@@ -86,6 +91,9 @@ put out by the USGS & EPA are region 12 of the
 The code will eventually put out on a public GitHub repository once I clean the git history of the 
 large TIF files. 
 
+You can find more details on this process in the Jupyter Notebook I used to create a small scale REM focused on 
+[Buffalo Bayou](https://github.com/JustinGOSSES/buffalo_bayou_geology/blob/main/python_data_processing/notebooks/ETL_v1clean.ipynb).
+
 ## Where are we
 
 ![texas state map with data extent](../static/images/blog/bayou/Texas_vs_rem.png)
@@ -116,7 +124,7 @@ on deposition and erosion patterns has reached. When rivers are close to sea lev
 energy to erode much of a valley or transport sediment and materials either immediately or progressively over
 time spread out and form a very even topography.
 
-### local erosional rivers vs. pass through rivers: Watershed extent
+### local erosional rivers vs. pass through rivers
 
 Another observations that's easy to make looking at the REM is that there are two 
 obvious classes of rivers. One is larger with active channels moving through larger valleys to either 
@@ -127,6 +135,33 @@ The other class of rivers are smaller with morphology that seems much more erosi
 evidence of storing reworked sediment in their much smaller values. They other have more branching behaviors 
 as well. These rivers are more local to the area of the REM and have much smaller drainage areas.
 Buffalo Bayou, Sims Bayou, Brays Bayou, and Clear Creek are examples.
+
+#### Watershed Extent: local erosional rivers vs. pass through rivers
+
+![river basins at state of Texas scale](../static/images/blog/bayou/Watersheds-texas-1024x1024.jpeg)
+_Map of river basin boundaries across the state of Texas. Brazos is area 12. Trinity is area 8.
+San Jacinto is area 9. All the bayous between Brazos and the Jan Jacinto are grouped in
+area 11._
+
+What is obvious from the map above is how much larger an area Brazos River drains compared to the 
+bayous in the Houston area. The Brazos drains additional area outside of this Texas state map.
+This large drainage area, the elevation it drains, and type of geology is covers contribute to it
+carrying a large sediment load. While the San Jacinto and Trinity rivers are also rather large, 
+they behave like many rivers of their size along the Texas coast and stop in bays. 
+The Brazos in contrast, has enough sediment to fill in what would be a bay and instead
+makes a delta right into the Gulf of Mexico shoreline.
+
+
+![Bayous around Houston](../static/images/blog/bayou/Watershed-map-houston.jpeg)
+_Map of the watersheds of the bayous around Houston. 
+Map from the Houston-Galveston Area Council, not for legal purposes._
+
+The map above shows the bayous around Houston. The Brazos is the large river to the west 
+that is not colored. The Trinity is the large river to the east that is not colored.
+Buffalo bayou is brown. One observation that is easy to make from this particular
+way of representing the bayous is that many of the bayous have more branches and longer
+branches on their north side versus their south side suggesting an asymmetry in their 
+individual basin shape.
 
 #### Pass through rivers: Valley morphology
 
@@ -153,53 +188,79 @@ Elevation profile of Buffalo Bayou.
 The elevation profile cuts through the main Buffalo Bayou channel and several small tributaries that drain into it. 
 Channels are relatively sharp and narrow with active river channel being a single order fraction of the width.
 
-### Differences in drainage area
+### Summary of observations so far
 
---------
-_TODO: show polygons & stats for buffalo bayou, sims bayou, etc. watershed acreage vs. Brazos._
+Although there are exceptions and dividing rivers into only two classes is a simplification,
+we can summarize a lot by diving rivers into two classes. 
 
-TODO: Suggest local rivers are smaller time scale responses to where is lower topgraphy
+One is larger rivers with active channels moving through larger valleys 
+that drain much larger areas. These rivers seem to have more sediment stored in 
+their floodplains and valleys. They flow mostly south south east before dumping their sediment 
+in a bay or the Gulf of Mexico. The other is smaller rivers with much smaller watershed areas
+that are more incised v-shaped valleys. They area more likely to flow west to east.
 
-TODO: Suggest regional rivers are longer lasting river that reach the sea somewhere
---------
+### Why does Buffalo Bayou flow west to east?
 
-### Brazos vs. other pass through rivers: sediment supply
+At this I'll need to get a bit into geology and not just observations from the REM.
+I previously mentioned that the Brazos River has a large watershed and carries sediment 
+all the way to the sea. Geologically, the Brazos River has been doing this for a long time
+with sediment cores showing a long history of sediment deposition in the Brazos delta.
+It has been able to do this area the rate of sediment coming out of the Brazos is high 
+enough to match rate of sea level rise. In contrast the Trinity and San Jacinto rivers
+have not been able to keep up with the rate of sea level rise. That's why there is a 
+Galveston bay that they flow into rather either river reaching the sea directly.
 
-TODO: Show how Brazos currently reaches the sea vs. other rivers that reach bay. It fills up its valley with sediment.
+This different in sediment transport might have also occurred in the past when sea level
+was lower. When sea level is lower, these rivers would have eroded a channel to the sea.
+When sea level rose, that accommodation space was filled with sediment and water.
+That lower San Jacinto channel also potentially explains why Buffalo Bayou flows east. 
+It would have been a nearby low point in the topography that was not filled in with sediment
+that was much closer than the shoreface farther to the south. As a result, river channels
+developed flowning east rather than south. An additional reason may be sediment from the 
+Brazos over topping its valley edge and depositing levees and delta lobes (at high sea levels)
+to its east. 
 
+This interpretation seems to be consistent with modern elevation profiles we can extract using 
+Google Earth Pro.
 
-TODO: Introduce concept of brazos river delta lobes and levees 
+![South South East elevation profile through buffalo bayou watershed](../static/images/blog/bayou/SSE_1.png)
+_REM map with elevation profile line drawn in south south east direction with red highlighted area
+being the extent of the Buffalo Bayou watershed._
 
+On this elevation profile, you can see on the elevation profile how the edges of the Buffalo Bayou 
+watershed are slightly higher and define the boundaries of the watershed. Although the perception
+in car driving down the beach in Galveston is that you're driving "down", you'll actually be driving 
+uphill for some of the drive, just hard to notice due to the relatively flat topography.
 
-#### Local erosional rivers: Drainage direction
+![West to East elevation profile through buffalo bayou watershed](../static/images/blog/bayou/WtoE_1.png)
+_REM map with elevation profile drawn west to east with red lighted area where there is evidence the
+the bottom of channels are at or below sea level._
 
-TODO: Suggest buffalo bayou west-east direction only seems odd as its one of the larger coastal plain constrained rivers
-whose direction is controlled by whatever is locally lowest topography. Smaller bayous actually have less tendendcy to 
-flow to sea.
+I am skeptical that the elevation data inside the ship channel is accurate as it is a repeatedly dredged
+channel. However, it is worth pointing out for the reason that once water reaches sea level, there's 
+less gravitational force to keep pushing it. This means water draining from most of the city of Houston
+reaches the elevation of sea level before it even gets into Galveston Bay or the Gulf of Mexico but 
+rather when it is still confined to the Buffalo Bayou channel.
 
-TODO: Make case that Trinity & San Jacinto rivers not reaching the sea has been constant enough since 
-Brazos levees / delta deposited sediment that there's been a decently long pattern of that bay and/or channel
-being lowest path, not directly to sea to south. This has been due to high sediment supply 
-coming down Brazos and lower amounts of sediment coming out of San Jacinto & Trinity. 
+## What about structural control?
 
-TODO: Plot
-- area of present day Brazos vs. San Jacinto vs. Trinity
-- elevation change of Braoze vs. San Jacinto vs. Trinity
-
-#### local erosional rivers valley morphology and branching morphology
-
-- faults and salt bodies that sometimes push rivers around a little
-
-TODO: Examples of effects and non-effects.
-
-TODO: Make case structural forces cause tiny short spatial and time scale effects in river paths, not 
-large scale direction of drainage.
+It doesn't seem like there's a lot of structural controls (faults, folds, salt bodies) 
+on regional flow direction of Buffalo Bayou.
+There REM does suggest very local faults and salt bodies might push bayous a little this way or that, but 
+the overall flow direction seems to be controlled by the topography and sediment supply.
+Looking at this aspect in detail with examples would require much more analysis and its own blog post, 
+ so I'll leave it at that for now.
 
 ## Conclusion: Why does Buffalo Bayou flow west to east?
 
-Blame 
-1. the pancake coastal plain caused by gradual tectonics and sea level change.
-2. the high sediment coming out of the Brazos forming levees and delta lobes and preventing a bay
-3. the relatively low amount of sediment coming out of the Trinity leads to an eroded channel during lower sea level that forms a unfilled in bay during higher sea levels.
+1. Sea level rise and fall has caused a relatively pancake coastal plain to develop.
+2. The San Jacinto river cut down during low level sea level creating an easier and quicker path to sea level than going 
+   south south east to the shoreline.
+3. The Brazos River transported relatively high levels of sediment and deposited levees and delta lobes of its eastern edge. 
 
-This tilts the pancake surface between the Brazos and the Trinity ensuring the quickest route to the sea level is east, not south.
+> In summary, blame it on Brazos river having too much sediment and the San Jacinto river not having enough.
+  Either way, it was much easier to incise into the coastal plain and flow to the east than south or west.
+
+** 
+NOTE: This post is in draft stage. References with links will be added in future 
+**
