@@ -11,9 +11,14 @@ Professionally, I’ve focused on reducing uncertainty and enabling decisions th
 
 ## Where I’ve Worked
 
-There is a geologist saying that whoever sees the most rocks wins. I’ve not seen the most rocks, but I’ve done alright. Clicking on the map will take you to a live interactive version of all the rocks I’ve worked with. Clicking on each dot brings up more information.
+There is a geologist saying that whoever sees the most rocks wins. I’ve not seen the most rocks, but I’ve done alright. 
+Clicking on
+<a href="https://jgosses82.carto.com/viz/a74cf9ea-8f1f-11e5-a802-0ecd1babdde5/embed_map">this link will take you to a live interactive version of all the rocks I’ve worked on </a> that is shown as a static image below.
+In the interactive version, clicking on each dot brings up more information.
 
+<a href="https://jgosses82.carto.com/viz/a74cf9ea-8f1f-11e5-a802-0ecd1babdde5/embed_map">
 !["World map of all the places Justin has done geology in some form"](/static/images/rock_map.jpg)
+</a>
 
 ## Previous Geologist Career
 
