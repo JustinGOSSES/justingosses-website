@@ -6,6 +6,8 @@ Next.js & Tailwind CSS deployed on Azure static web apps
 
 ## Installation
 
+You may first need to update your local node.js version of v20.11.0 or higher.
+
 ```bash
 npm install
 ```

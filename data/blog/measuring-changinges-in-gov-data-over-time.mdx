@@ -1,0 +1,57 @@
+---
+title: 'Measuring changes in government data over time with the Wayback Machine'
+date: 2025-02-06T01:32:14Z
+lastmod: '2025-02-06'
+tags: ['open-data', 'gov', data, python, internet-archive', Internet Archive, 'wayback-machine', 'data-dot-json']
+draft: false
+summary: 'Using Internet Archive Wayback Machine and data.json to detect missing datasets'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://justingosses.com/blog/why-buffalo-bayou-does-not-drain-to-the-sea/
+---
+
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Question: can we measure what is new or missing over time? 
+
+I used to work as a NASA contractor and a small part of my role was trying to ensure
+what NASA submitted in it's [data.json](https://data.nasa.gov/data.json) to
+[data.gov](https://data.gov/) was accurate and up to date.
+
+[Recent reporting](https://www.404media.co/archivists-work-to-identify-and-save-the-thousands-of-datasets-disappearing-from-data-gov/)
+discussed how the total number of datasets on data.gov had decreased over time
+based on looking at the total number of datasets reported in [data.gov](https://catalog.data.gov/dataset/).
+There was also some discussion about the [Internet Archive Wayback Machine](https://webcf.waybackmachine.org/)
+has been useful in preserving old copies of edited or deleted websites, but does not
+cover many datasets that require user interactions to download or have other
+complications related to size, format, etc.
+
+As (1.) a data.json is required to exist for all U.S. federal government agencies and be available
+at an URL, so it can be harvested into data.gov. (2.) And I knew data.json is a json file existing
+at the end of an URL so it should be snapshotted by the Internet Archive Wayback Machine, I wondered
+if we could use the Internet Archive Wayback Machine to measure changes in agency's data.json over time.
+
+It turns out we can, and I've put some experimental little scripts to do so in a repository
+called [data_dot_json_over_time](https://github.com/JustinGOSSES/data_dot_json_over_time).
+
+I have done initial analysis of Department of Commerce, Department of Education, and NASA.
+Only NASA shows drops in data in data.json across the January 20th 2025 boundary, but that
+may reflect the relevant update speed of some datasets in NASA's data.json versus the other two.
+More details found in the repository [data_dot_json_over_time](https://github.com/JustinGOSSES/data_dot_json_over_time).
+
+There's reason this information isn't quite a useful as you might hope. The biggest one being that
+data.json's and data.gov lag the actual state of the data. A dataset might be removed, updated, or
+unavailable for various reasons for weeks, months, or even in some cases years before it is reflected
+correctly in the data.json or data.gov. There's a number of reasons for this. Data.gov is a harvester of
+metadata from different agencies and each government agency has it's own process for updating or removing
+datasets. Each agency also has many different data systems or platforms that they use to host data and
+how and when the state of those systems get reflected in the data.json or data.gov is incredibly variable.
+There's very reasonable reasons for this, of course. Different types of data have different storage
+and collection requirements. Different types of data have very different usage patterns and so need
+access via different types of systems. The end result is the metadata describing datasets elsewhere
+you can find in an agency's data.json or in data.gov's catalog is both incredibly useful and highly
+imperfect.
+
+_If I continue working on this side project, I will update this blog post with what I learn._
+
