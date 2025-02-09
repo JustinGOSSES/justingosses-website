@@ -1,7 +1,7 @@
 ---
 title: 'Measuring changes in government data over time with the Wayback Machine'
 date: 2025-02-06T01:32:14Z
-lastmod: '2025-02-06'
+lastmod: '2025-02-08'
 tags: ['open-data', 'gov', data, python, internet-archive', Internet Archive, 'wayback-machine', 'data-dot-json']
 draft: false
 summary: 'Using Internet Archive Wayback Machine and data.json to detect missing datasets'
@@ -35,23 +35,69 @@ if we could use the Internet Archive Wayback Machine to measure changes in agenc
 It turns out we can, and I've put some experimental little scripts to do so in a repository
 called [data_dot_json_over_time](https://github.com/JustinGOSSES/data_dot_json_over_time).
 
+### Early learnings 
+
 I have done initial analysis of Department of Commerce, Department of Education, and NASA.
+
 Only NASA shows drops in data in data.json across the January 20th 2025 boundary, but that
 may reflect the relevant update speed of some datasets in NASA's data.json versus the other two.
-More details found in the repository [data_dot_json_over_time](https://github.com/JustinGOSSES/data_dot_json_over_time).
+More details found in the repository [data_dot_json_over_time](https://github.com/JustinGOSSES/data_dot_json_over_time). 
 
-There's reason this information isn't quite a useful as you might hope. The biggest one being that
-data.json's and data.gov lag the actual state of the data. A dataset might be removed, updated, or
-unavailable for various reasons for weeks, months, or even in some cases years before it is reflected
-correctly in the data.json or data.gov. There's a number of reasons for this. Data.gov is a harvester of
-metadata from different agencies and each government agency has it's own process for updating or removing
-datasets. Each agency also has many different data systems or platforms that they use to host data and
+#### Data.json lags reality 
+
+Department of Education and Department of Commerce (NOAA and others) don't have any datasets
+missing in data.json across the Biden/Trump administration boundary. Given reports of at least
+some NOAA datasets being taken down, at least temporarily, this may reflect data.json lagging
+reality, meaning updates to data.json likely occur some time after they dataset access has
+been removed or datasets no longer exist. This was somewhat expected, but confirmed by the data.
+
+Some of those lags between a dataset no longer being available and it being removed from 
+data.gov can be months or years. In some cases, the data might never be corrected. 
+A major reason of this is that data.gov is a harvester of metadata from different agencies and each government agency has
+it's own process for updating or removing
+datasets. In most cases, there are many intra-agency data systems or even layers of data systems
+with different types of manual or programmatic harvesting of metadata.
+Each agency also has many different data systems or platforms that they use to host data and
 how and when the state of those systems get reflected in the data.json or data.gov is incredibly variable.
-There's very reasonable reasons for this, of course. Different types of data have different storage
-and collection requirements. Different types of data have very different usage patterns and so need
-access via different types of systems. The end result is the metadata describing datasets elsewhere
-you can find in an agency's data.json or in data.gov's catalog is both incredibly useful and highly
-imperfect.
+Some are even manually added by researchers or data stewards and then never updated when the host for that
+data goes away. Others dataset descriptions in an agency's data.json are automatically updated by
+the same system that hosts a dataset, so those updates can be as quick as a day or within a month if the
+update script runs once a month.
+
+#### Some removed dataset identifiers appear to be version updates or identifier changes with no other changes but not all
+
+Of the 3 agencies in the initial analysis set, only NASA's' data.json showed datasets
+identifiers in the first snapshot not present in the second snapshot, totally 198 dataset identifiers.
+This compares data.json snapshots on 2024-10-09 and 2025-02-07.
+
+The 2024-10-09 data.json had 22,360 datasets described. The 2025-02-07 had 22,382 datasets,
+so even with some datasets seemingly missing in the newer data.json, the total number of
+datasets described by metadata went up.
+
+Of those 'missing' 198, it seems at least 33 were situations where the datset identifer changed but the
+title did not, suggesting these might just be identifer changes related to underlying system
+updates or version updates that didn't change dataset title.
+
+Of those 'missing' 198, another 32 had nearly the same dataset title with only the last part of the
+title changed in a way consistent with version updates. For example a long title and then 
+the end has "-v3" instead of "-v2". 
+
+Both of those situations likely do not reflect dataset removal so much as dataset evolution over time.
+
+148 of 198 did not fall into those two previous situation and require additional analysis to see
+if they are true dataset removals. Most of those 148 have landing page and distribution URls
+that give 200 status messages or mostly do, suggesting that data is still available.
+Others give 403 messages suggesting there is a need to sign in first, especially for
+some earth data systems that assume a user is signed in. There is a smaller subset that
+may indeed be gone but current programmatic checks here do not ensure this with high accuracy yet.
+
+### Possible future analysis pathways suggested by this analysis
+ 
+Some of the missing dataset's whose metadata doesn't appear in the more recent data.json
+have several dataset distribution URLs listed as well as a landing page. For several of the
+datasets, only some of the URLs return 404 statuses and others 200 or other statues.
+There might be value in analyzing those statuses and seeing if it possible to
+programmatically recognize when a landing page might be down but a download
+distribution URL still be up as those might be targets for archiving.
 
 _If I continue working on this side project, I will update this blog post with what I learn._
-
