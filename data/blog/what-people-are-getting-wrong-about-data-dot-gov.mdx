@@ -1,0 +1,214 @@
+---
+title: 'What people are getting wrong about data.gov'
+date: 2025-02-10T01:32:14Z
+lastmod: '2025-02-10'
+tags: ['open-data', 'gov', data, python, 'data-dot-json']
+draft: false
+summary: 'A primer on data dot gov for people talking about it in the news and on social media'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://justingosses.com/blog/what-people-are-getting-wrong-about-data-dot-gov/
+---
+
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Recent conversations about U.S. federal open data
+
+As I write this, it is several weeks after the start of the second Trump administration,
+and there's been a lot of discussion in the media and social media about government open
+data being removed. Some of these conversations touched on data.gov and the data.json's
+that get harvested into data.gov. I've seen some confusion about what data.gov is as well
+as some confusion about whether backing up a webpage or data.gov metadata actually
+backs up data too.
+
+_This post attempts to correct misunderstandings I've seen recently, and act as a primer for people who want to learn more._
+
+## Why care?
+
+Fundamentally, this is data that is paid for by the U.S. tax payer
+and should be available to the public. Taking open data and making it
+unavailable is akin to stealing information that tax payers have
+already paid for and that agencies have already done the work to make
+it available and accessible to all. 
+
+In a previous role several years ago
+I was responsible for ensuring that NASA's data.json existed and got
+harvested into the data.gov catalog, so I'm familiar with the process
+and the challenges. For users that are trying to use open data or
+preserve open data, understanding the processes and systems
+involved is important to achieving their desired outcomes.
+
+## What are people getting wrong?
+
+_I have structured this such that the text in pink is an error
+in understanding that I've seen and each section title is my
+attempt at providing a better description of reality._
+
+### Data.gov is a metadata catalog, not a data catalog
+
+_ERROR_: _`Data.gov holds government data`_
+
+In fact, Data.gov is a metadata catalog, not a data catalog. What this means
+is that it holds information that describe datasets, not the datasets
+themselves. 
+
+Specifically, data.gov holds metadata describing datasets
+following the [DCAT-US schema](https://resources.data.gov/resources/dcat-us/).
+This metadata is harvested into [data.gov's data catalog](https://catalog.data.gov/dataset/)
+via a JSON file that
+[each U.S. federal government agency makes available at an URL](https://resources.data.gov/resources/data-gov-open-data-howto/#:~:text=If%20you%20are%20providing%20a%20DCAT%2DUS%20catalog%2C,GSA%27s%20metadata%20can%20be%20found%20at%20gsa.gov/data.json.).
+You can see the data.json for NASA at
+[https://data.nasa.gov/data.json](https://data.nasa.gov/data.json). Be aware
+that it may take a few minutes to download.
+
+### Data.gov misses a lot 
+
+_ERROR_: _`Data.gov is a listing of all U.S. government open datasets.`_
+
+The data.json's that get harvested into [data.gov](https://data.gov) represent each
+agency's best faith effort to catalog all their open data, but it is by no means
+perfect or exhaustive. Some datasets exist as a single CSV file on a website and
+an agency might have thousands of websites, which each have hundreds to thousands
+of page.
+Others exists at part of data systems that are constantly changing. Certain
+data systems have existed for decades. Data.gov got started in the 2010s.
+In large agencies, like NASA, Department of Defense, or Department of Energy,
+there are simply a very large number of data systems and datasets making it
+hard to ensure everything is captured accurately.
+Data.gov is a great resource, but not a perfect one.
+
+### Data.gov lags reality
+
+_ERROR_: _`Changes in data.json reflect real time changes in dataset availability.`_
+
+Each agency's description of their datasets in their data.json tends to lag reality.
+It is not uncommon for data.json to lag reality by weeks or months for many datasets
+and some datasets are never updated or removed from data.json not matter their real
+status. While there are some systems that automatically update entries in their agency's
+data.json when a dataset's metadata is modified, a new version is available, or the
+dataset is replaced, this is more often unusual rather than the norm.
+
+This issue is discussed in more detail in this blog post
+[Measuring changes in gov data over time with the Internet Archive's Wayback machine](https://justingosses.com/blog/measuring-changes-in-gov-data-over-time/).
+
+
+### Government data websites and government open data are not exactly the same
+
+_ERROR_: _`Internet Archive backed up the websites so all the open data is backed up too.`_
+
+While there are datasets that exists at an URL and visiting that URL downloads the file,
+and some of these will be backed up by the Internet Archive, this only represents a
+subset of U.S. federal open data. Many datasets are behind a user interface that
+requires user interaction on the page to download a dataset, which wouldn't be
+harvested by the Internet Archive. Other datasets are are only available through an API
+or behind something that requires authentication. Unless these datasets are
+downloaded by other actions and uploaded to the Internet Archive, which sometimes occurs,
+they wouldn't be backed up by the Internet Archive.
+
+### What is a "dataset" is less straight forward than you might think
+
+_ERROR_: _`We just need to download all the files. Data.gov is a listing of all the files.`_
+
+Although some people imagine that datasets are all just excel, CSV, and JSON files that
+exist at different URLs and downloading them is as simple as hitting a download URL
+listed in a dataset's metadata on data.gov, the reality is more complex for a number
+of different reasons.
+
+#### Data, datasets, data collections, data products, data systems, data services, data tools, data visualizations, models, etc.
+
+Part of the complexity comes from the fact that the word "dataset" is used to describe
+many different things.
+What's a piece of data, dataset, data collection, data product, data system, data service,
+data tool, data visualization, or a model can decided differently by different people,
+which then changes what gets cataloged in data.gov. Sometimes models, data visualizations,
+or tools are cataloged in data.gov rather than the underlying data. More often the
+underlying data is cataloged, but not necessarily the experiences built on top. 
+
+#### Many "distributions" not just one
+
+In data.gov's [DCAT-US](https://resources.data.gov/resources/dcat-us/)
+metadata standard, the term "distribution" is used to describe an type
+of artifact related to the data. Most datasets have multiple "distributions".
+A "distribution" for a single dataset can include
+the documentation for the dataset collection methods, the documentation for the system
+that holds the data, the data itself in multiple formats, the data dictionary,
+a published paper that describes the datasets, or a DOI reference for the dataset
+that helps others reference it in published papers.
+Read the
+[official definition of "distribution" in the DCAT-US schema](https://resources.data.gov/resources/dcat-us/#distribution)
+for more details.
+While people might think there's a single file to download, there might be many
+"distributions" for a single dataset.
+
+#### Datasets are often behind unique interfaces and not available at a download URL
+
+Sometimes one of the distributions is an URL that when hit directly downloads a file,
+similar to how hitting [https://data.nasa.gov/data.json](https://data.nasa.gov/data.json)
+eventually will download a JSON file. However, often distribution
+URLs are not download file URLs, but are instead API endpoints or 
+URLs that go to a webpage that then requires some kind of authentication or
+user interaction to download the data.
+
+In many cases data is behind some sort of user interface in order to maximize
+usefulness for end users. They might not be technical enough to process a large
+dataset just to the part important to them or combine different datasets together
+into a useful data product or visualization. These data system user interfaces
+help with common tasks making data
+[F.A.I.R. (findable, accessible, interoperable, and reusable)](https://en.wikipedia.org/wiki/FAIR_data).
+As an example, many NASA earth science datasets of satellite data is available
+through the
+[Earth data search website](https://search.earthdata.nasa.gov/search?q=GVHRRATS6IMVIS),
+which requires users to use a web interface to select and filter data to a subset
+before they download.
+
+The existence of these types of datasets becomes important to remember when
+trying to programmatically download all the data
+from data.gov or an agency's data.json or another subset as you can't just hit
+`https://{agency}.gov/{dataset}.csv` and get a file of data for many datasets.
+Each data system has their own interfaces and processes, which makes it hard
+to automate.
+
+#### Size: some datasets are too big for anyone to download over the internet
+
+Other times, data is behind a user interface because
+it is simply too large to download all at once over an internet connection.
+Certain large NASA datasets would take years to download over my home internet.
+These extremely large datasets create their
+[own open data 'big data' challenges](https://highscalability.com/what-is-nasa-doing-with-big-data-check-this-out/)
+that have led in some cases to new file structure optimized for the web
+so that analysis can occur without having to move the data.
+
+As a result of these challenges of varied distribution types, large size, and
+user interface variation challengers, when people say they have downloaded
+"all the data" from data.gov or a specific agency, I cringe a bit.
+What they should be saying, most of the time, is they have downloaded all the
+data available from distribution download URLs in data.gov that goes directly
+to a file (CSV, Excel, JSON, etc.). This is not to say those efforts aren't
+super valuable and interesting but rather a minor quibble about language.
+
+## Where to learn about data.gov and U.S. Government open data?
+
+### Data.gov
+
+- [data.gov](https://data.gov/)
+- [data.gov metrics](https://data.gov/metrics/)
+- [Concepts, standards, and definitions for data.gov](https://resources.data.gov/standards/concepts/)
+- [information for getting data onboarded to data.gov, schema, etc.](https://resources.data.gov/)
+
+### Relevant laws and policies
+
+- [open data policy m-13-13](https://digital.gov/resources/open-data-policy-m-13-13/)
+- [Federal Data Strategy](https://strategy.data.gov/action-plan/#action-20-develop-a-data-standards-repository)
+
+### Agency specific data hubs
+
+- [List of links to U.S. federal government data hubs](https://resources.data.gov/resources/govt-data-hubs/)
+
+### Related blog post on this site
+
+- [Measuring changes in gov data over time with the Internet Archive's Wayback machine](https://justingosses.com/blog/measuring-changes-in-gov-data-over-time/)
+
+## Errors
+
+Please reach out if you see any errors in this post. I'm happy to correct them.
