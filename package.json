@@ -4,8 +4,8 @@
   "private": true,
   "engines": {
     "node": ">=20.0.0"
-},  
-"scripts": {
+  },
+  "scripts": {
     "start": "cross-env SOCKET=true node ./scripts/next-remote-watch.js ./data",
     "dev": "next dev",
     "buildOriginal": "next build && node ./scripts/generate-sitemap && next export",
@@ -27,7 +27,7 @@
     "gray-matter": "^4.0.2",
     "image-size": "1.0.2",
     "mdx-bundler": "9.0.1",
-    "next": "14.2.1",
+    "next": "^15.5.2",
     "next-themes": "^0.3.0",
     "postcss": "^8.4.31",
     "preact": "^10.6.2",

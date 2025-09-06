@@ -41,11 +41,11 @@ export default function Home({ posts }) {
 
           <p>Welcome to my website!</p>
           <p>
-            I use this website as a place to share information {' '} <Link href="/about"   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >  <a>about myself</a></Link>{' '} 
+            I use this website as a place to share information {' '} <Link href="/about"   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >about myself</Link>{' '} 
             , write 
-            {' '}<Link legacyBehavior href="/blog" className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"><a>blog posts</a></Link>{' '} 
+            {' '}<Link legacyBehavior href="/blog" className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">blog posts</Link>{' '} 
               , and establish a record of   
-              {' '}<Link legacyBehavior href="/code"  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"> <a>side projects</a></Link>{' '}  
+              {' '}<Link legacyBehavior href="/code"  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">side projects</Link>{' '}  
               as a self-hack to prioritize side projects  better.
           </p>
           {/* <p>
@@ -92,7 +92,7 @@ export default function Home({ posts }) {
                                 href={`/blog/${slug}`}
                                 className="text-gray-900 dark:text-gray-100"
                               >
-                                <a>{title}</a>
+                                {title}
                               </Link>
                             </h2>
                             <div className="flex flex-wrap">
