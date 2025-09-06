@@ -13,7 +13,12 @@ Putting them in a list is a bit of a self-hack to limit the sprawl and push thin
 It serves as a good reminder what isn't completely done and helps to prioritize.
 
 ### What types of code do I write?
-I write machine-learning, data visualization, and web development code. Mostly, I write in Python or JavaScript with smaller amounts of Ruby, R, PHP, sed/awk, C++, and Java. A lot of my side projects are in JavaScript as it is the easiest for me to jump into and quickly produce something with an easy to share visual.
+I write machine-learning, data visualization, and web development code. Mostly, I write in Python or JavaScript with smaller amounts of C#, R, Ruby, PHP, sed/awk, and Java. A lot of my side projects are in JavaScript as it is the easiest for me to jump into and quickly produce something with an easy to share visual.
+
+### More Recent Side-Projects
+- LLM Assisted Geology Descriptions of Arbitrary Locations = LAGDAL. [Code repository](https://github.com/JustinGOSSES/LAGDAL). and [blog post post mortem on what was learned](http://localhost:3000/blog/LLM-AI-bot-for-geology-field-trips-PostMortem)
+- Using Python to turn LIDAR topography datasets into relative elevation maps to [show Houston's topography](http://localhost:3000/blog/why-buffalo-bayou-does-not-drain-to-the-sea).
+- Automated [measurement and detection of changes in government datasets overtime](http://localhost:3000/blog/measuring-changinges-in-gov-data-over-time) (for those that don't provide versioning history) using the internet archive
 
 ### Previous Side-Projects
 - Assembled a <a href="https://54.87.153.110/raspberry-shake-personal-seismometer/">Raspberry Shake, a personal seismometer</a>.
@@ -45,6 +50,3 @@ I write machine-learning, data visualization, and web development code. Mostly, 
 - Finally attempted to organize my side projects a bit with a <a href="https://github.com/JustinGOSSES/sideproject_planning/blob/master/README.md">README</a> that splits out what is active, stalled, or just in idea phase.
 - Wrote a little draft Observable notebook that takes your location and uses text-to-speech web API and a geology API called Macrosoft to <a href="https://observablehq.com/@justingosses/stratigraphy-speech">tell you verbally about the geology of the rocks where you are</a>. This was prompted by a tweet by <a href="https://twitter.com/DynamicWebPaige">DynamicWebPaige</a> wanting an audio book about local geology she could use on a train and a previous Observable notebook by <a href="https://observablehq.com/@ananya-roy/stratigraphy-visualizer">Ananya Roy</a>. 
 - Redoing my website. I've been using a WordPress based site for 6 year and trying to recreate it in Next.js & tailwind.css with deployment to Azure Static Web Apps.
-
-### Side-Projects over the last couple months
-- LLM Assisted Geology Descriptions of Arbitrary Locations = LAGDAL. https://github.com/JustinGOSSES/LAGDAL with live site that might or might not still be up as its not free to run. https://app-lagdal.azurewebsites.net/
