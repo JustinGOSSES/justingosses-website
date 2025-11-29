@@ -1,9 +1,9 @@
 ---
-title: 'Instruction files to help copilot use less risky dependencies'
+title: 'Using instruction files to guide GitHub Copilot to help you consume less risky code dependencies'
 date: 2025-11-28T01:32:14Z
 lastmod: '2025-11-28'
-tags: ['llm','copilot','instruction.md','dependency','risk',dependency-risk','sustainability','opensource','software']
-draft: true
+tags: ['llm','copilot','instruction.md','dependency','risk','dependency-risk','sustainability','opensource','software']
+draft: false
 summary: 'Using instructions files to guide GitHub Copilot to research and report on dependency risks before use.'
 layout: PostSimple
 bibliography: references-data.bib
@@ -14,220 +14,229 @@ canonicalUrl: https://justingosses.com/blog/compliance-does-not-work-on-all-depe
 
 ## Executive Summary
 
-Modern software is built on layers of open source code written by others—these are called dependencies. While dependencies speed up development, they also introduce risks: security vulnerabilities, abandoned projects, or even malicious code that can end up in your application. Companies often use paid enterprise security tools to catch these problems, but these tools typically apply one-size-fits-all rules across all projects and focus primarily on known vulnerabilities and license compliance risk and miss sustainability risks like abandoned packages or projects at risk of sudden maintainer departure.
+Modern software depends on open source code written by others. These dependencies speed up development but introduce risks: security vulnerabilities, abandoned projects, even malicious code. Enterprise security tools catch some problems, but they apply one-size-fits-all rules and focus on known vulnerabilities and license compliance—often missing sustainability risks like abandoned packages or projects one commit away from losing their only maintainer.
 
-This post explores using "instruction files" to guide GitHub Copilot (an AI coding assistant) to automatically research and report on dependency risks right in your editor, before you ever use a new package. The result is a detailed, scannable report that helps developers make informed decisions—catching potential problems at the cheapest possible moment: before code is written.
+This post explores using GitHub Copilot instruction files to automatically research and report on dependency risks *before* you use a new package. You get a scannable report right in your editor, catching problems at the cheapest moment: before code is written.
 
-This approach won't replace paid enterprise security tools—it lacks enforcement mechanisms, isn't deterministic, and has no good distribution method across many repositories. However, it offers two compelling advantages: flexible, project-specific thresholds for acceptable risk levels, and better identification of sustainability risks that traditional tools often ignore. For developers in large companies who want to make more informed dependency choices beyond what their compliance-driven security tools provide, or individual developers who want some risk filtering without paying for enterprise-level tooling, this instruction file approach might offer an appealing complement to existing practices.
+This won't replace enterprise security tools—there's no enforcement, it's not deterministic, and distribution across repositories is manual. But it offers flexible, project-specific risk thresholds and surfaces sustainability risks that compliance tools ignore. Worth exploring if you want more informed dependency choices than your security tools provide, or you want risk filtering without enterprise pricing.
 
 ## What are dependency risk instruction files?
 
-Instruction files are markdown files in a code repository that customize
-[GitHub Copilot](https://docs.github.com/en/copilot) responses. While
-[agent.md](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents?versionId=free-pro-team%40latest&productId=copilot)
-customizes Copilot behavior when explicitly called, instruction files are 
-in a sense always "on", though there can be a "description" field defined
-at the top of them that described when the instructions should be used.
-For a more in-depth introduction to instruction files, see [the GitHub Copilot docs](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions).
+Instruction files are markdown files in a repository that customize [GitHub Copilot](https://docs.github.com/en/copilot) responses. Unlike [agent.md](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents) files that require explicit invocation, instruction files are always active (with optional scoping via a description field). See [the GitHub Copilot docs](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions) for more.
 
-Dependency risk instruction files are designed to provide detailed guidance for Copilot,
-when in agent mode, on where to get information and how to assess the risks of using a
-third-party package or library in software development, as well as how to format that
-information into a standardized dependency risk report in the chat window that is
-easily scannable and understandable by developers such that they make better informed
-decisions about dependency consumption. This improves GitHub Copilot behavior on
-these tasks considerably. It also helps avoid the
-[problem of AI assistants recommending non-existent dependencies](https://www.theregister.com/2024/03/28/ai_bots_hallucinate_software_packages/), or even worse, dependencies that were created as by malicious actors.
-Any packages with few to no downloads produce a risk report with many red flags.
+Dependency risk instruction files tell Copilot where to find package metadata,
+how to assess risks, and how to format findings into a standardized report.
+The result: developers get consistent, scannable risk assessments instead
+of Copilot's default (often vague) responses.
+This also helps avoid the
+[problem of AI recommending non-existent packages](https://www.theregister.com/2024/03/28/ai_bots_hallucinate_software_packages/)
+as any hallucinated package with zero, or near zero, downloads will trigger obvious red flags.
 
 
-## But wait...What do we mean when we say "less risky dependencies"?
+## But wait...What makes a dependency "risky"?
 
-Less risky dependencies are those that have been evaluated and found to have a lower
-likelihood of introducing security, legal, or maintenance related problems.
-These problems have cost in terms of both direct security, legal, and reputational
-impact as well as indirect operational cost of dealing with them later.
+Risky dependencies have a higher likelihood of causing security,
+legal, or maintenance problems—each with direct costs
+(breaches, lawsuits, outages) and
+indirect costs (developer time dealing with them later),
+not getting response to bug reports, abandoned dependencies,
+cost of having to swap in another dependency later, etc.
 
-#### Type of risk:
-- Malicious code:
-    - _"Code that was written in ways to do or enable malicious actors"_
-- Vulnerabilities:
-    - _"Code accidentally written in ways that can be exploited by malicious actors"_
-- Poor security posture:
-    - _"Code that is not vulnerable but at high risk of project take over, malicious code being snuck in, sabotage, etc."-
-- license risk:
-    - _"Code that does not have an open source license that would enable its use in the manner it is being used or that goes against company policy"._
-- Sustainability risk:
-    - _"Code that built by a community that is of most risk now or in future of not meeting implicit expectations around respond to issues or pull requests for security problems, new features, bug fixes, etc."_
+**Types of risk:**
+- **Malicious code**: Intentionally harmful code
+- **Vulnerabilities**: Accidentally exploitable code (CVEs)
+- **Poor security posture**: Not vulnerable yet, but at high risk of takeover or sabotage
+- **License risk**: Incompatible or missing licenses
+- **Sustainability risk**: Projects likely to stop responding to issues, PRs, or security reports
 
-#### Recognition of risk can be occur via:
+**How risks are detected:**
+- **Metadata**: Known CVEs, license info, community activity signals
+- **Scans**: Automated detection of unknown vulnerabilities, malicious code, license issues (mostly paid tools)
+- **Manual review**: Evaluating documentation, community health, code quality
 
-- Metadata:
-    - Become aware of known vulnerabilities (CVEs), often in specific versions.
-    - license compliance issues
-    - Generate a picture of community activity and related sustainability risks
-- Scans packages or package source repositories for:
-    - unknown security vulnerabilities
-    - malicious code
-    - license compliance issues
-- Manual review of dependency documentation and community activity
-    - Vulnerabilities
-    - Security posture
-    - Sustainability risks
+Most developers never systematically evaluate the security and community health of every dependency in their projects.
+Paid scanning tools help, but they're often only available for enterprise customers.
 
-The active scans in the second bullet point are largely only available from
-paid tooling, though sometimes tools are free for open source licensed public
-repositories.
+**When developers learn about risks matters:**
 
-While anyone could manually review each dependency before use, few developers can
-say they're ever evaluated the security and community health of every dependency
-in a single project.
+<table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600 my-4">
+  <thead>
+    <tr className="bg-gray-100 dark:bg-gray-700">
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Timing</th>
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Method</th>
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Cost to Fix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Before coding</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Manual research or IDE integration</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Lowest</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">During PR</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">CI/CD SAST checks</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Medium</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">After merge</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Dependabot-style alerts</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Highest</td>
+    </tr>
+  </tbody>
+</table>
 
-#### When do developers become aware of dependency risks?
+The earlier you catch a bad dependency, the cheaper it is to avoid. Not using something is always cheaper than replacing it later.
 
-When developers become aware of dependency risks is highly dependent on the
-tooling they use to detect risks. 
+## Enterprise SAST tools
 
-- Before writing any code:
-    - This might occur if they are doing manual web research into the safety of a possible new dependency.
-- When they write code in their IDE:
-    - If they have leveraging an IDE extension to evaluate dependency risk.
-- When submitting a pull request that contains the new dependency:
-    - Many paid SAST (Static Application Security Testing) tools operate as a CI/CD check.
-- After code is merged at some regular time interval:
-    - Dependabot operates like this.
+Enterprise tools like [Snyk](https://snyk.io/), [Black Duck](https://www.blackduck.com/), [Sonatype](https://www.sonatype.com/), [FOSSA](https://fossa.com/), and [GitHub Advanced Security](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security) integrate into CI/CD pipelines or IDEs to flag dependency risks.
 
-#### Types of actions that can be taken regarding dependency risks:
+Their strength is also their weakness: **they're built for compliance**.
+This works well for binary risks (known CVE? yes/no.
+Approved license? yes/no) where the same threshold applies company-wide.
+But it fails for continuous risks—where acceptable thresholds vary by project.
 
-- Decide to not start using the dependency
-- Blocked from merging a pull request with the dependency
-- Replace after initial use with another dependency or their own code
-- Update after initial use (for vulnerabilities that only impact a specific version)
-- Take action to improve sustainability of the community developing the dependency
-    - Upstream contribution, usually code contribution
-    - Financial contribution, usually via Open Collective or GitHub Sponsors
+### Binary vs. Continuous Risks
 
-To effectively take action before a dependency has been used, requires the information to
-be presented to the developer at the time they are first using the dependency or during
-evaluation of a dependency. This effectively means either tooling integrated into their
-IDE or a website they leave their IDE to looked at for guidance information.
-It is cheaper to not start using a dependency than it is to swap it out later,
-update to a different version, or take actions to improve the sustainability
-of the project.
+<table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600 my-4">
+  <thead>
+    <tr className="bg-gray-100 dark:bg-gray-700">
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Risk Class</th>
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Examples</th>
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Best Addressed By</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 font-semibold">Binary</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Known CVE, license violation, known malicious package</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Compliance (same rules everywhere)</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 font-semibold">Continuous</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Abandonment risk, bus factor, security posture</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Risk reduction (project-specific thresholds)</td>
+    </tr>
+  </tbody>
+</table>
 
-## Enterprise SAST Tooling to flag dependency risks
+A startup MVP might accept a package with only one maintainer; a banking system shouldn't. SAST tools can't express this nuance.
 
-There are a varity of enterprise tools that can help developers recognize and reduce
-dependency risks. These tools often integrate into the developer's IDE or CI/CD pipeline
-to provide real-time feedback on the dependencies being used. 
-A web search of "Popular SAST tools" returned:
-- [Snyk](https://snyk.io/)
-- [WhiteSource](https://www.mend.io/)
-- [Black Duck](https://www.blackduck.com/)
-- [Sonatype](https://www.sonatype.com/)
-- [FOSSA](https://fossa.com/)
-- [GitHub Advanced Security](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security)
+### What the dependency risk report covers and what it does not cover today
 
-### SAST tools' main strength/weakness is that they are focused on compliance 
+<table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600 my-4">
+  <thead>
+    <tr className="bg-gray-100 dark:bg-gray-700">
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Risk Class</th>
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Risk</th>
+      <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">What It Checks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Binary</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Vulnerability</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Public CVE databases via ecosyste.ms</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Binary</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">License</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">First detected license (not exhaustive)</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Binary</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Malicious</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Placeholder—use dedicated tooling</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Continuous</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Possibly abandoned (sustainability risk)</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Time since last release, archived repos</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Continuous</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Not enough eyeballs (sustainability risk)</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Download counts, dependent repos</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Continuous</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Bus factor (sustainability risk)</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Single maintainer, few contributors, sparse commits</td>
+    </tr>
+    <tr>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Continuous</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Poor security posture</td>
+      <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">OpenSSF Scorecard, dangerous workflow patterns</td>
+    </tr>
+  </tbody>
+</table>
 
-These tools are largely pitched at Enterprise's rather than individual developers
-for the most part. As a result, they are focused on company-wide compliance rather
-than risk reduction that takes into account each repository's needs and constraints.
-This compliance perspective means SAST tools typically aren't great at types of risk
-where not every repository would have the same cut off for what is acceptable.
+Sustainability risks are particularly well-suited to metadata-based assessment—they're fundamentally about community activity, which is publicly observable.
 
-### Differences Between Binary and Continuous Dependency Risks
+## Using instruction files for dependency risk reports
 
-It can be helpful to think of dependency risks in terms of two classes of dependency risks, continuous and binary.
-Binary risks are either present or not, with clear yes/no answers, which makes them fit well into compliance frameworks
-and compliance tooling that can be deployed across an entire organization with the same thresholds and rules.
-Continuous risks in contrast are risks that tend to exist on a continuous spectrum of risks and different projects
-can reasonably have different thresholds for what is acceptable risk.
+You can find example instruction files in [microsoft/ospo](https://github.com/microsoft/OSPO/tree/main/.github/instructions)
+with documentation in the [dependency-risk-README](https://github.com/microsoft/OSPO/blob/main/.github/instructions/dependency-risk-README.md). 
+The instructions are split across multiple files so base-level rules (managed centrally) stay separate from repository-specific customizations.
 
-| Risk Class  | Definition                                                                 | Impact Felt At What Scale | Impact Types                        | Risks Best Addressed By What Type of Framework?         |
-|-------------|----------------------------------------------------------------------------|--------------------------|-------------------------------------|---------------------------------------------------------|
-| Binary      | Risks that are either present or not, with clear yes/no answers.            | Company-scale            | $, reputation, trust                | compliance frameworks                                    |
-| Continuous  | Risk presence is a continuous spectrum. Always some risk.                   | Individual team          | unplanned for developer time        | risk-reduction frameworks                                |
+### How to use these instruction files in your repository.
 
-### Types of dependency risk considered by the dependency risk report
+Open the Github Copilot chat window, select agent mode, and ask it to
 
-| Risk Class    | Risk                      | Definition                                                                 | Factors Considered in Report                                                                                 |
-|---------------|---------------------------|----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| Binary        | Vulnerability             | Whether known security vulnerabilities are associated with the dependency based on a CVE.        | Report uses public vulnerability databases reflected in ecosyste.ms. and sometimes vulnerability information on source repository in GitHub. Use other tools for full assessment!                        |
-| Binary        | License                   | License of the package.            | Currently, only the first identified licenses is surfaced to the user.  Does not cover multiple licenses, modified licenses, whether copyleft license, tell you what licenses require extra steps, etc. Use other tooling for actual license compliance!              |
-| Binary        | Malicious                 | Whether the package contains known or suspected malicious code.               | Currently, this does nothing but tell you to use your own tooling and check for company instructions file for listed tooling. It is a placeholder.       |
-| Continuous    | Possibly abandoned _(sustainability)_        | Assesses if the dependency appears to be no longer maintained.              | Considers time since last release, lack of recent activity, if source repository is archived, etc.               |
-| Continuous    | Not enough eyeballs _(sustainability)_     | Evaluates if there are too few contributors or reviewers to catch issues.   | Considers number of downloads, number of dependent repositories.                   |
-| Continuous    | Contribution could stop suddenly _(sustainability)_ | Considers the risk that development may halt unexpectedly.           | Considers reliance on a single maintainer, if number of contributors is small, if only single version published, too few commits recently, etc.  |
-| Continuous    | Poor security posture     | Assesses the overall security posture of the project.  | Considers low OpenSSF Scorecard score, if uses a dangerous GitHub Action workflow pattern, etc. Note that not all packages will have pre-existing scans by OpenSSF Scorecard |
+```
+copy all the files that end in `.instructions.md` from https://github.com/microsoft/OSPO/tree/main/.github/instructions
+to this repository's `.github/instructions/` folder.
+```
 
-#### What parts of continuous risk can be assessed well with publicly available metadata alone as these instructions try to do?
+You'll need to approve several actions it does on your behalf,
+including creating the `.github/instructions/` folder if it doesn't exist.
 
-Continuous risks can be thought of as including three partially overlapping categories:
-sustainability risks, quality risks, and security posture risks.
-Sustainability risks can include "Possibly abandoned", "Not enough eyeballs to spot bugs", and
-"Contribution could stop suddenly". While sustainability risks are often possible to identify with
-package and source repository metadata publicly available in 2025 as they are largely activity-based
-and community-based measurements, quality risks and security posture risks often require either
-manual evaluation of the source code or additional scans of the source code itself to assess well.
+### What developers see
 
-## Copilot Instruction files that guide GitHub Copilot to creating a useful dependency risk report
+Whenever Copilot suggests a new dependency or a developer asks about a package's health, they get a structured risk report:
 
-_Now back to GitHub Copilot instruction files...._
+#### Example: Asking about the `welly` Python package
 
-As noted at the top of this post, we can use instruction.md files to guide GitHub
-Copilot to creating higher quality dependency risk report than if we just let it
-answer those questions without any guidance.
+<div className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 bg-gray-50 dark:bg-gray-800 mb-6">
 
-You can find an example of these instruction files in the repository [microsoft/ospo](https://github.com/microsoft/OSPO/tree/main/.github/instructions) with a explanation
-in the [https://github.com/microsoft/OSPO/blob/main/.github/instructions/dependency-risk-README.md](https://github.com/microsoft/OSPO/blob/main/.github/instructions/dependency-risk-README.md). The instruction files for dependency risk are spread
-across several different instruction files that are called by a single file.
-This approach is used to keep a set of basic instructions that could be
-managed in a public repository by a centralized team separate from repository
-specific instructions.
+<div className="bg-gray-600 dark:bg-gray-500 text-white px-3 py-2 rounded-md mb-3 inline-block font-semibold">
+User:
+</div>
 
-### The user experience 
-
-The end result is anytime Copilot suggests a new dependency to use or a developer
-asks about the community health of security of a package, a dependency risk report
-is created and presented to the user as a report in the chat window.
-
-#### Example dependency risk report
-
--------------------------------
--------------------------------
-
-**User:**
 Tell me about the community health and security of python package welly
 
-**Copilot:**
+<div className="bg-purple-600 text-white px-3 py-2 rounded-md mb-3 mt-4 inline-block font-semibold">
+Copilot:
+</div>
+
 Here is a detailed dependency risk report for the Python package welly (latest version: 0.5.2, PyPI):
 
---
+---
 
 **Indicators of risk: POSSIBLY ABANDONED**
 
 - ✅ The package itself is deprecated: No
 - ✅ The source repository is archived: No  
-  <https://github.com/agilescientific/welly>
+  [github.com/agilescientific/welly](https://github.com/agilescientific/welly)
 - ❌ The latest version of package was published more than 2 years ago: Yes (2022-02-28)
 
 **Indicators of risk: NOT ENOUGH EYEBALLS TO SPOT PROBLEMS**
 
-- ⚠️ Number of dependent repositories is <500: Yes (29)
-- ⚠️ Number of package downloads <10,000: Yes (1,273 last month)
+- ⚠️ Number of dependent repositories is less than 500: Yes (29)
+- ⚠️ Number of package downloads less than 10,000: Yes (1,273 last month)
 
 **Indicators of risk: CONTRIBUTION COULD STOP SUDDENLY**
 
-- ✅ Package created at date is < 90 days before today: No (created 2015-11-09)
-- ✅ Development distribution score (DDS) is < 0.15: No (0.53)
-- ✅ Number of contributors is < 4: No (18 contributors)
-- ✅ Number of package maintainers is <2: No (2 maintainers)
+- ✅ Package created at date is less than 90 days before today: No (created 2015-11-09)
+- ✅ Development distribution score (DDS) is less than 0.15: No (0.53)
+- ✅ Number of contributors is less than 4: No (18 contributors)
+- ✅ Number of package maintainers is less than 2: No (2 maintainers)
 - ✅ Only a single version of the package has ever been published: No (25 versions published)
-- ✅ There have been <3 commits in the past 365 days: No (many commits, including July 2025)
+- ✅ There have been less than 3 commits in the past 365 days: No (many commits, including July 2025)
 - ✅ All the commits in past 365 days are from 1 person: No (multiple contributors)
 - Pull request page:  
-  <https://github.com/agilescientific/welly/pulls>  
+  [github.com/agilescientific/welly/pulls](https://github.com/agilescientific/welly/pulls)  
   Follow this link to see if pull requests get responses.
 
 **Indicators of risk: POOR SECURITY POSTURE**
@@ -249,7 +258,7 @@ Here is a detailed dependency risk report for the Python package welly (latest v
 
 - License detected: Apache-2.0 (detected only; may not catch multiple licenses or compliance requirements)
 
--------------------------------
+---
 
 **Summary of triggered risks**
 
@@ -259,26 +268,20 @@ Here is a detailed dependency risk report for the Python package welly (latest v
 
 **Key links**
 
-- Ecosyste.ms:  
-  <https://packages.ecosyste.ms/api/v1/registries/pypi.org/packages/welly>
-- Source repository on GitHub:  
-  <https://github.com/agilescientific/welly>
-- Contributors graph:  
-  <https://github.com/agilescientific/welly/graphs/contributors>
-- Pull request page:  
-  <https://github.com/agilescientific/welly/pulls>
-- Commits over time:  
-  <https://github.com/agilescientific/welly/commits>
-- OpenSSF scorecard (API):  
-  <https://api.scorecard.dev/projects/github.com/agilescientific/welly>
-\
-Please confirm this information via the provided webpage links and understand users can provide fake information, especially via README or description so be careful with those sources.
+- Ecosyste.ms: [packages.ecosyste.ms/api/v1/registries/pypi.org/packages/welly](https://packages.ecosyste.ms/api/v1/registries/pypi.org/packages/welly)
+- Source repository on GitHub: [github.com/agilescientific/welly](https://github.com/agilescientific/welly)
+- Contributors graph: [github.com/agilescientific/welly/graphs/contributors](https://github.com/agilescientific/welly/graphs/contributors)
+- Pull request page: [github.com/agilescientific/welly/pulls](https://github.com/agilescientific/welly/pulls)
+- Commits over time: [github.com/agilescientific/welly/commits](https://github.com/agilescientific/welly/commits)
+- OpenSSF scorecard (API): [api.scorecard.dev/projects/github.com/agilescientific/welly](https://api.scorecard.dev/projects/github.com/agilescientific/welly)
 
-This report is not exhaustive and is not a substitute for actual compliance processes you may be required to follow.
+*Please confirm this information via the provided webpage links and understand users can provide fake information, especially via README or description so be careful with those sources.*
 
--------------------------------
+*This report is not exhaustive and is not a substitute for actual compliance processes you may be required to follow.*
 
-**Package name:** welly
+---
+
+**Package name:** welly  
 **Package type:** pypi  
 **Latest version considered:** 0.5.2
 
@@ -289,44 +292,23 @@ This report is not exhaustive and is not a substitute for actual compliance proc
 - dependencyRisk.repositoryLevel.instructions.md: 0.0.5
 - dependencyRisk.instructions.md: 0.0.4
 
-<!-- Version 0.1.01g -->
+</div>
 
--------------------------------
--------------------------------
+## Advantages and limitations
 
-### Advantages of using Copilot and instruction files as a SAST tool
+**Why this approach works well:**
+- **Early in the workflow**: Information appears before you write code, not after
+- **No contracts or payments**: Works with existing Copilot access
+- **Project-specific thresholds**: Your MVP can accept different risk levels than your production banking app. The only bar isn't one minimum compliance bar for the whole company.
+- **Conversational follow-up**: Ability to ask clarifying questions instead of getting a fixed report with no ability to extend or modify.
 
-An advantage of using an instructions file approach to guiding Copilot to surfacing
-these risks is that it allows for:
-- Project specific flexible cut offs for when a risk is surfaced to the developer rather than a one-size fits all threshold.
-- Easy follow up questions by the developer rather than a fixed set of information
-- Much faster developer cycle
-- Can be used without entering into a contract or paying a vendor
-- Information provided in the IDE before the developer writes any code using the dependency
-
-### Disadvantages of using Copilot and instruction files as a SAST tool
-
-- No method exists today to effectively distribute instruction files to many repositories.
-    - This is problematic as:
-        - Few users will be motivated enough to manually add instruction files for this purpose on their own.
-        - Adding the same instructions file for every repository you use is a pain.
-        - Developers typically do not like bulk pull requests to their repositories from centralized teams.
-        - Even if added once, it is not uncommon for instruction files to evolve over time, often in response to behavior of new models.
-- No enforcement mechanism.
-    - Users get information, but they can always ignore it. This is not a great compliance methodology.
-- Not deterministic
-    - Although the risk report worked well in testing with GPT-4o and Claude Sonnet4, other models resulted in occasional hallucination or more creative formatting than was wanted.
-- Require hitting APIs, which may not anticipate the increase in traffic.
-    - For example, significant parts of the data sourced by the instructions file comes from Ecosyste.ms API, which have a blog post about how the traffic already hitting [their free API](https://blog.ecosyste.ms/2025/09/01/rate-limiting-the-right-way.html) is not sustainable.
+**Where it falls short:**
+- **Manual distribution**: No good way to push instruction files across many repos. Few developers will add these manually, and bulk PRs from central teams are unpopular.
+- **No enforcement**: Developers can ignore the warnings. This is information, not a gate.
+- **Not deterministic**: Works well with GPT-4o and Claude Sonnet 4; other models sometimes hallucinate or reformat creatively.
+- **API sustainability**: The [ecosyste.ms API](https://blog.ecosyste.ms/2025/09/01/rate-limiting-the-right-way.html) that powers much of this data is already under pressure from increased traffic.
 
 ## Conclusion
 
-The limitations of this approach mean that is unlikely to be a replacement
-for paid enterprise SAST tools. However, it's advantages when it comes to
-flexible repository decided thresholds on what levels of risk are acceptable
-as well as its better ability to identify and address sustainability risks
-may make it an appealing avenue to explore for developers in large companies
-that want to make more informed dependency consumption choices or developers
-who aren't going to pay for SAST tools but want to apply a bit more risk
-filtering earlier in the process than the free options.
+This approach won't replace enterprise SAST tools. But for developers who want project-specific risk thresholds, better sustainability signals, or risk filtering without enterprise pricing, instruction-file-guided Copilot offers a useful complement to existing practices.
 
