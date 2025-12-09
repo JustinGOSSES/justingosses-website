@@ -1,10 +1,10 @@
 ---
-title: 'Compliance does not work on all dependency risks'
+title: 'Why compliance does not work well with sustainability related code dependency risks'
 date: 2025-09-06T01:32:14Z
 lastmod: '2025-02-10'
 tags: ['open-data', 'gov', data, python, 'data-dot-json']
 draft: true
-summary: 'The different shapes of types dependency risks explains why compliance does not work well for all risk types.'
+summary: 'While compliance approaches to software dependency risk works well with vulnerability, malicious code, and license risks, compliance is a poor match for reducing sustainability related risks and likely for security posture risks as well. In this blog post we explore why that is the case.'
 layout: PostSimple
 bibliography: references-data.bib
 canonicalUrl: https://justingosses.com/blog/compliance-does-not-work-on-all-dependency-risks/
@@ -14,21 +14,30 @@ canonicalUrl: https://justingosses.com/blog/compliance-does-not-work-on-all-depe
 <TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
 
 
-
-## The different shapes of different dependency risks explains why a compliance approach does not work well for all types of risks
-
+## Executive summary
 
 
-### The short summary without having to read anything else
 
-
+## Definitions
 
 
 ### Modern software's use of open source code dependencies
 
 
 
+## Why you might care? 
+
+
+
+
+## The different shapes of different dependency risks explains why a compliance approach does not work well for all types of risks
+
+
+
+
+
 ### Types of risks from open source code dependencies
+
 
 
 <INSERT TABLE FROM README IN MICROSOFT/OSPO GITHUB REPO>
@@ -86,4 +95,5 @@ canonicalUrl: https://justingosses.com/blog/compliance-does-not-work-on-all-depe
 #### Made up correlation chart
 
 
+## Missing social mechanisms
 
