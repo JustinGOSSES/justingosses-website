@@ -18,7 +18,7 @@
   "dependencies": {
     "@fontsource/inter": "4.5.12",
     "@mailchimp/mailchimp_marketing": "^3.0.78",
-    "@microsoft/applicationinsights-web": "^2.8.10",
+    "@microsoft/applicationinsights-web": "^3.3.10",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
     "autoprefixer": "^10.4.0",
