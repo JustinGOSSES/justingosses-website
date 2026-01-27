@@ -138,11 +138,26 @@ better grasp what's actually being evaluated and when we're likely to be fooled.
 Before getting into the examples, however, it is important to dive a bit deeper into what we mean by "being fooled" in the context of generative AI
 as it is a broader than the original Turing test.
 The original Turing test had one simple task—catch the bot. Modern AI interactions are harder because we're juggling multiple tasks simultaneously.
-Being fooled by generative AI isn't just about thinking a bot is human. It's about failing at any of the multiple tasks we're managing when we interact with AI. We can think of this along two dimensions:
+Being fooled by generative AI isn't just about thinking a bot is human. It's about failing at any of the multiple tasks we're managing when we interact with AI.
 
-**Dimension 1: Task Complexity** — What you're trying to accomplish
+We can think of this along two dimensions:
 
-The parameters of Awareness, Evaluator Goal, and Bot Goal determine how many tasks you're juggling:
+**Dimension 1: Failure Modes** — How you get fooled
+
+There many ways to categorize how we might get fooled by AI.
+These 6 are ordered by such that even people who know they are talking to a bot and have some expertise still might fall for the later ones:
+
+1. **Identity deception**: Thinking the bot is human when it's not (classic Turing test scenario)
+2. **Hybrid attribution**: Can't tell if work was done by human alone or human + bot collaboration
+3. **Topic Expertise gap**: Lacking the skill or ability to evaluate whether the bot's output is actually correct
+4. **Capability mismatch**: Wrong assumptions about what the bot can or can't do (either underestimating or overestimating based on poor prompting or outdated knowledge of model capabilities)
+5. **Hallucination acceptance**: Missing that the bot could be making up something entirely, because the context it has available might be insufficient
+6. **Attention/verification failures**: Knowing the hallucination risks but failing to check, being distracted, or skipping verification steps
+
+**Dimension 2: Task Complexity** — What you're trying to accomplish
+
+When there is awareness of the bot, there are more tasks involved to prevent being fooled. 
+Interactions often require the user to juggle multiple tasks simultaneously resulting in an increased cognitive load.
 
 <table>
   <thead>
@@ -165,20 +180,6 @@ The parameters of Awareness, Evaluator Goal, and Bot Goal determine how many tas
     <tr>
       <td>Yes</td>
       <td>Doing a task</td>
-      <td>Not getting fooled</td>
-      <td>none</td>
-      <td>none</td>
-    </tr>
-    <tr>
-      <td>Yes</td>
-      <td>Doing a task</td>
-      <td>Getting the bot to give good responses</td>
-      <td>Identifying when the bot shouldn't be trusted</td>
-      <td>none</td>
-    </tr>
-    <tr>
-      <td>Yes</td>
-      <td>Doing a task</td>
       <td>Getting the bot to give good responses</td>
       <td>Identifying when the bot shouldn't be trusted</td>
       <td>Verification of some aspect of bot responses</td>
@@ -186,29 +187,24 @@ The parameters of Awareness, Evaluator Goal, and Bot Goal determine how many tas
   </tbody>
 </table>
 
-The more tasks you're managing simultaneously, the higher your cognitive load and the more likely you are to be misled, even if your skill with generative AI tools is generally high.
-
-**Dimension 2: Failure Modes** — How you get fooled
-
-There are six core ways we get fooled by AI:
-
-1. **Identity deception**: Thinking the bot is human when it's not (classic Turing test scenario)
-2. **Hybrid attribution**: Can't tell if work was done by human alone or human + bot collaboration
-3. **Hallucination acceptance**: Trusting false information the bot presents confidently
-4. **Capability mismatch**: Wrong assumptions about what the bot can or can't do (either underestimating or overestimating based on poor prompting or outdated knowledge of model capabilities)
-5. **Attention/verification failures**: Knowing the risks but failing to check—distracted, over-trusting, or skipping verification steps
-6. **Expertise gaps**: Lacking the skill to evaluate whether the bot's output is actually correct
-
-The case studies below each highlight different combinations of these dimensions. Social media bots exploit identity deception with minimal task complexity. Documentation chatbots accept lower accuracy because the main task is getting help quickly. Coding assistants create attention failures under high cognitive load—you're focused on writing code while simultaneously trying to spot the bot's mistakes.
+The case studies below each highlight different combinations of these dimensions.
+{/* Social media bots exploit identity deception with minimal task complexity.
+Documentation chatbots accept lower accuracy because the main task is getting help quickly.
+Coding assistants create attention failures under high cognitive load—you're focused on writing code while simultaneously trying to spot all the bot's possible mistakes. */}
 
 ## Case Study 1: Social media bots—The abbreviated Turing test
 
 **Parameters varied:**
 - **Time**: Very short (seconds, not minutes)
 - **Interaction type**: One-shot or minimal back-and-forth
+- **Medium**: Text (social media posts/comments)
+- **Players**: One bot, many human readers
 - **Topic**: Constrained (emotional reactions, short opinions)
+- **Context**: Model only (no additional context retrieval)
 - **Bot Goal**: Fooling (appear human enough to not be detected)
 - **Evaluator Goal**: Not actively trying to catch the bot (just scrolling)
+- **Awareness**: Evaluator doesn't know it's a bot
+- **Success metric**: Percentage of users who don't recognize it as a bot
 
 Social media bots face a different challenge than Turing's original test. A 5-minute conversation provides many opportunities for a machine to reveal itself through inconsistencies, lack of cultural knowledge, or unnatural phrasing. But a single comment on Facebook or a brief exchange on Twitter? That's a much easier game.
 
@@ -221,11 +217,16 @@ The evaluator—someone scrolling through their feed—isn't actively trying to 
 ## Case Study 2: Essay writing in educational settings—The non-interactive test
 
 **Parameters varied:**
+- **Time**: Not applicable (asynchronous artifact evaluation)
 - **Interaction type**: One-shot (single artifact produced)
-- **Players**: Human + bot collaboration (not just bot alone)
-- **Awareness**: Evaluator doesn't know if it's AI-assisted
-- **Evaluator Goal**: Evaluating artifact (did student learn?) not catching bot
 - **Medium**: Written text (static document)
+- **Players**: Human + bot collaboration (not just bot alone)
+- **Topic**: Academic subject matter
+- **Context**: Model + potentially research materials
+- **Bot Goal**: Assisting with writing/research
+- **Evaluator Goal**: Evaluating artifact (did student learn?) not catching bot
+- **Awareness**: Evaluator doesn't know if it's AI-assisted
+- **Success metric**: Whether teacher can detect AI assistance and whether learning occurred
 
 When a student submits an essay, the teacher faces an evaluation challenge that differs fundamentally from Turing's conversational setup. There's no back-and-forth, no opportunity to probe with follow-up questions. The evaluator examines a static artifact.
 
@@ -238,11 +239,16 @@ When the interaction becomes one-directional, the test transforms from evaluatin
 ## Case Study 3: Documentation chatbots—When everyone knows it's a bot
 
 **Parameters varied:**
-- **Awareness**: Evaluator knows it's a bot from the start
-- **Bot Goal**: Being useful (solving user's problem)
-- **Evaluator Goal**: Getting help (not catching the bot)
+- **Time**: Short interaction (minutes)
+- **Interaction type**: Dynamic back-and-forth Q&A
+- **Medium**: Text (chat interface)
+- **Players**: One bot, one human user
 - **Topic**: Constrained domain (company's documentation/policies)
 - **Context**: Model + RAG (retrieval from documentation)
+- **Bot Goal**: Being useful (solving user's problem)
+- **Evaluator Goal**: Getting help (not catching the bot)
+- **Awareness**: Evaluator knows it's a bot from the start
+- **Success metric**: User problem solved / user satisfaction
 
 You've clicked through to a company's help center, and a chat window pops up. "Hi! I'm here to help. What can I assist you with today?" You know immediately it's a bot. There's no deception, no attempt to pass as human. The Turing test premise—fooling someone about your nature—simply doesn't apply.
 
@@ -257,10 +263,14 @@ Awareness changes everything. The test becomes about utility rather than decepti
 **Parameters varied:**
 - **Time**: Ongoing relationship (days/weeks, not minutes)
 - **Interaction type**: Dynamic back-and-forth over multiple sessions
+- **Medium**: Text (code editor or chat interface)
+- **Players**: One bot, one developer
+- **Topic**: Code generation, debugging, technical questions
 - **Context**: Model + full conversation history + code context
-- **Awareness**: Evaluator knows it's a bot
 - **Bot Goal**: Being useful in coding tasks (responsive to natural language)
 - **Evaluator Goal**: Doing task (getting work done efficiently) while maintaining skepticism (not getting fooled)
+- **Awareness**: Evaluator knows it's a bot
+- **Success metric**: Code quality, task completion, developer productivity
 
 Developers using [GitHub Copilot](https://github.com/features/copilot) or [Claude](https://claude.ai/) for coding navigate a peculiar cognitive challenge. They've learned that talking naturally to the AI—asking questions politely, providing context as they would to a colleague—produces better results. The AI responds more helpfully when addressed in conversational human language.
 
