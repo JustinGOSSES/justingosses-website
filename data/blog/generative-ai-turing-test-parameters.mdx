@@ -1,14 +1,13 @@
 ---
 title: 'Generative AI bots have us playing different versions of the Turing test game.'
 date: 2026-01-13T15:32:14Z
-lastmod: '2026-01-13'
+lastmod: '2026-02-02'
 tags: ['AI', 'game', 'game-dynamics', 'generative-ai', 'metaphor', 'turing-test', 'experiments', 'parameters','thought-experiment','conceptual-models','mental-models','ai', 'code', 'technology','tools','llm']
 draft: false
-summary: 'Using the original Turing Test for when humans get fooled by a machine intelligence as a conceptual metaphor, we vary test parameters to map the original test to the various bots we interact with today.'
-
+summary: 'Exploration of using the Turing tests imitation game as a conceptual model to think about different generative AI interactions in 2026 by varying the original game parameters to map to real-world scenarios.'
 layout: PostSimple
 bibliography: references-data.bib
-canonicalUrl: https://justingosses.com/blog/generative-ai-turing-test-parameters/
+canonicalUrl: https://justingosses.com/blog/generative-ai-experiences-today-as-modern-turing-test-games/
 ---
 
 ## Abstract
@@ -21,13 +20,14 @@ and vary the game parameters to map them to different real-world AI interactions
 The hypothesis is that by viewing different AI scenarios through the lens of shifting game dynamics, we can better categorize and think about what is going on.
 Additionally, this blog post focuses on being fooled by AI and not other modes of framing failure, such as accuracy, lying, bullshit, or hallucinations, as
 "being fooled" covers a broader range of ways AI systems can fail humans and fits better into a game-based framing.
+Finally, we discuss limitations of this conceptual model.
 
 ## Generative AI bots are everywhere in 2026
 
 In 2026, generative AI is embedded throughout our daily digital lives. Customer service chatbots answer questions about our orders.
 Coding assistants suggest the lines of code as we type. Content generation tools help draft emails, create images, and even write essays.
 Social media is filled with bot-generated comments and posts. Each day, we navigate dozens of interactions with AI systems, some obvious, many subtle.
-They sometimes reduce small bits of toil so we can focus on more complext tasks,
+They sometimes reduce small bits of toil so we can focus on more complex tasks,
 sometimes they work as multipliers, in some cases they replace work entirely.
 
 This pervasiveness creates a peculiar kind of cognitive load. We constantly make rapid decisions about when to trust AI outputs, how to use these tools effectively,
@@ -37,7 +37,7 @@ A coding assistant suggests a dependency—is it suggesting something current an
 A social media comment is generic and short—is it a bot? These aren't abstract questions. 
 We face them already and over time will increasingly face them repeatedly many times a day. 
 
-_We will have to continnuously ask ourselves: "Am I being fooled by a machine right now?"_
+_We will have to continuously ask ourselves: "Am I being fooled by a machine right now?"_
 
 
 ## Using mental models to organize thinking
@@ -48,22 +48,21 @@ The right conceptual model doesn't just describe—it helps us navigate, predict
 It doesn't necessarily have to capture every nuance to be helpful,
 sometimes a model is useful just because it helps to organize observations about the world.
 
-This blog post explores one possible conceptual model for thinking about generative AI interactions that I haven't seen written up elsewhere yet.
-I am writing it up in part to explore how well it holds up to scrutiny.
+_This blog post explores one possible conceptual model for thinking about generative AI interactions that I haven't seen written up elsewhere yet.
+It is written up here as an exercise to explore how well it holds up to scrutiny._
 
 ### Using the Turing test as a model for how to think about being fooled by AI
 
 Originally introduced in Alan Turing's 1950 paper "[Computing Machinery and Intelligence](https://www.cs.mcgill.ca/~dprecup/courses/AI/Materials/turing1950.pdf),"
-The Turing test provides a surprisingly useful framework for understanding modern AI interactions and thinking about whether we're being fooled.
-Rather than attempting to determine if a machine can "think", the test attempted instead to answer, via an immitation game, the more practical and definable
-question of when a human evaluator can be fooled into thinking a machine was human.
+Rather than attempting to determine if a machine can "think", the test attempted instead to answer, via an imitation game, the more practical
+and more easily defined question of when a human evaluator can be fooled into thinking a machine was human.
 
 _It is at this point, when humans are fooled, that machine pseudo-intelligence capabilities starts to become useful (and also troublesome) in the real world._
 
 Specifically, Turing said,
 
 > "I believe that in about fifty years' time it will be possible
-> to programme computers, with a storage capacity of about 10^9,
+> to program computers, with a storage capacity of about 10^9,
 > to make them play the imitation game so well that an average
 > interrogator will not have more than 70 percent chance of making
 > the right identification after five minutes of questioning. The
@@ -97,11 +96,10 @@ The original test had specific parameters:
 Turing's test was modeled off of a parlor game called the "imitation game," where an evaluator had to guess which of two hidden participants was
 a man and which was a women based solely on their written responses to questions.
 
-## Varying the parameters
+#### Varying the parameters to map to different real-world generative AI scenarios
 
-If you change those parameters, you're still playing an immitation game,
-just a different variation. 
-Key paramters and how they might vary in different real-world generative AI scenarios:
+If you change those parameters, you're still playing an imitation game,
+just a different variation. The bullets below show different possible parameter values.
 
 - **Time**: 
     - Few seconds
@@ -114,18 +112,18 @@ Key paramters and how they might vary in different real-world generative AI scen
 - **Medium**:
     - Text-only
     - voice
-    - multimodal
+    - multi-modal
 - **Players**:
     - One human and one bot
     - human + bot collaboration
     - or other combinations
 - **Topic**:
     - General
-    - Constrained domain
+    - Constrained to a specific domain
 - **Context**:
     - Model only
     - model + RAG
-    - model + internet search + conversation history
+    - model + internet search + conversation history + MCP etc.
 - **Bot Goal**:
     - Fooling the evaluator
     - Being useful
@@ -144,7 +142,7 @@ Key paramters and how they might vary in different real-world generative AI scen
     - User satisfaction with answers from bot
     - etc.
 
-By mapping real-world AI interactions onto this parameter space, we can frame different AI experiences as different variations of the Turing test game and 
+By mapping real-world AI interactions onto this parameter space, we can frame different AI experiences as different variations of a Turing test like game and 
 better grasp what's actually being evaluated and when we're likely to be fooled.
 
 ## Deeper dive into "being fooled" as a framing for generative AI failures
@@ -152,7 +150,7 @@ better grasp what's actually being evaluated and when we're likely to be fooled.
 ### Alternative framings for understanding human-AI failures
 
 This blog post focuses on game dynamics and "being fooled" as the framing for understanding generative AI failures.
-People also frame generative AI failures in other ways, such as accuracy, hallucination, lying, and bullshitting.
+People also frame generative AI failures using terms like accuracy, hallucination, lying, and bullshitting.
 Each of these has its own merits and use cases.
 
 #### Accuracy
@@ -160,25 +158,25 @@ Each of these has its own merits and use cases.
 _Accuracy_ focuses on whether the AI's output is correct or incorrect.
 This is useful for tasks with clear right/wrong answers, but it doesn't work as well when users can be misled by factually accurate responses
 or when there are responses that don't map directly to true or false. For example, a bot might provide an accurate but irrelevant answer.
-As another example, a bot might generate code that runs without errors (accurate in that sense) but contains security vulnerabilities (not accurate in a broader sense).
+As another example, a bot might generate code that runs without errors (accurate in that sense) but contains security vulnerabilities.
 The biggest advantage of the framing of accuracy is that it can be measured quantitatively leading to clearer success metrics and a pathway to performance improvements.
 
 #### Lying
 
 _Lying_ emphasizes intentional deception by the AI. This is important in scenarios where the AI is designed to mislead users,
 such as in the original Turing test or disinformation campaigns. However, most generative AI systems are not programmed to Intentionally deceive.
-Additionally, AI systems do not have conciousness, thoughts, or intentions, so attributing lying to them can be misleadin as it implies a level of agency that AI systems lack.
+Additionally, AI systems do not have consciousness, thoughts, or intentions, so attributing lying to them can be misleading as it implies a level of agency that AI systems lack.
 To lie, you have to know what is true and intend to present something false instead.
 
 #### Bullshitting
 
 _Bullshitting_ has been used at times as an alternative framing that focuses on the AI's tendency to produce plausible-sounding but ultimately meaningless or irrelevant responses.
-Bullshitting is an improvemnt on lying as a framing because it captures the idea that the AI isn't necessarily trying to deceive as a goal,
+Bullshitting is an improvement on lying as a framing because it captures the idea that the AI isn't necessarily trying to deceive as a goal,
 just generating content that sounds good without regard for truth or relevance.
 
-However, it can still be read to imply a level of intentionality or conciousness that AI systems lack.
+However, it can still be read to imply a level of intentionality or consciousness that AI systems lack.
 A human bullshitter simply does not care about what is true there is not typically a gradual spectrum of bullshitting.
-In constrast, AI sysyems can be constrained by design and prompt to stick close to relevant information or not.
+In contrast, AI systems can be constrained by design and prompt to stick close to relevant information or not.
 Bullshitting can't be measured easily like accuracy. It also does not capture the full range of ways AI can fail users expectations or needs.
 
 #### Hallucination
@@ -217,29 +215,29 @@ We can think of this along two dimensions:
 **Failure Modes** — How you get fooled
 
 There many ways to categorize how we might get fooled by AI.
-These 6 are ordered by such that even people who know they are talking to a bot and have some expertise still might fall for the later ones:
+These 6 are ordered by such that even people who know they are talking to a bot and have some expertise in both the domain at hand
+and using AI tooling might still fall for the later ones:
 
 1. **Identity deception**: Thinking the bot is human when it's not (classic Turing test scenario)
-2. **Attribution**: Can't tell if work was done by human alone or human + bot collaboration
-3. **Capability assumptions**: Wrong assumptions about what the bot can or can't do (either underestimating or overestimating based on poor prompting or outdated knowledge of model capabilities)
-4. **Hallucination misses**: Not understanding when these are more likely to occur due to context, prompt, or model limitations
-5. **Topic expertise gap**: Lacking the skill or ability to evaluate whether the bot's output is actually correct
+2. **Attribution deception**: Can't tell if work was done by human alone or human + bot collaboration
+3. **Topic expertise gap**: Lacking the skill or ability to evaluate whether the bot's output is actually correct
+4. **Capability assumptions**: Wrong assumptions about what the bot can or can't do (either underestimating or overestimating based on poor prompting or outdated knowledge of model capabilities)
+5. **Hallucination misses**: Not understanding when these are more likely to occur due to context, prompt, or model limitations
 6. **Attention/verification failures**: Knowing the hallucination risk types exist but failing to check, being distracted, or skipping verification steps
  
-**Task Complexity** — What you're trying to accomplish
+**Task Complexity** Cognitive load from managing AI interactions can sneak up
 
 In the original Turing test, there was one main task: catch the bot.
 In many of the AI-human interactions we have today, there are multiple tasks going on simultaneously.
-The main task in a user's head is often not about whether they are conversing wiht a bot or not. They know they are talking to a bot.
-Their many task might be writing code, looking up information, improving their writing, etc. However, they at the same time
-have secondary, tertiary, and even quaternary tasks going on in their head related to managing the AI interaction.
-They have be concerned about preventing each of the failure modes above from happening, so they have to think about
-"doing a task", "getting the bot to give good responses", "identifying when the bot shouldn't be trusted", and "when to invest time doing verification of some aspect of bot responses".
-AI interactions can require the user to juggle multiple tasks simultaneously resulting in an increased cognitive load.
+Users know they are talking to a bot, and their many task might be writing code, looking up information, improving their writing, etc.
+However, they at the same time have secondary, tertiary, and even quaternary tasks going on in their head
+as they have be concerned about preventing each of the failure modes above from happening.
+
+_These types of AI interactions may require the user to juggle multiple tasks simultaneously resulting in an increased cognitive load._
 
 ## Example games
 
-The case studies below, each framed as a different game, highlight different combinations of game paramters.
+The case studies below, each framed as a different game, highlight different combinations of game parameters.
 
 ### Game 1: Social media bots—The abbreviated Turing test
 
@@ -249,7 +247,7 @@ The case studies below, each framed as a different game, highlight different com
 - **Medium**: Text (social media posts/comments)
 - **Players**: One or more bots, many human readers
 - **Topic**: Constrained to political topics or news (emotional reactions, short opinions)
-- **Context**: Often only model and text in the thread, possibly additional context brought in to guide text generation towards what will get engagement
+- **Context**: Often only model and text in the thread, sometimes additional context brought in to guide text generation towards what will get engagement
 - **Bot Goal**: Fooling (appear human enough to not be detected) & amplification (spreading a message)
 - **Evaluator Goal**: Not actively trying to catch the bot (just scrolling)
 - **Awareness**: Evaluator doesn't know it's a bot
@@ -264,9 +262,9 @@ They avoid extended conversation that might expose them. When they do respond, r
 
 Additionally, the evaluator—someone scrolling through their feed—isn't for the most part actively trying to detect bots.
 They're not engaged in a deliberate evaluation exercise.
-This transforms the test entirely. The bots "win" by changing the game, making the interaction so brief that detection becomes nearly impossible for a distracted evaluator.
+This transforms the test entirely. The bots "win" by changing the game, making the interaction so brief that detection becomes nearly impossible for an evaluator that isn't entirely aware they're playing the game.
 
-_A Facebook politics bot is playing a variation of the Turing test where it uses abbreviated, mostly one-way, communications to shift the paramters of the game in its favor._
+_A Facebook politics bot is playing a variation of the Turing test where it uses abbreviated, mostly one-way, communications to shift the parameters of the game in its favor._
 
 ### Game 2: Essay writing in educational settings—The non-interactive test
 
@@ -295,7 +293,7 @@ Additionally, students could have used AI as a collaborator while still meeting 
 The essay isn't purely bot-generated or purely human-written—it's a hybrid. The student might use AI to brainstorm ideas, draft an outline, polish their prose, or check grammar.
 At what point does AI assistance cross from legitimate tool use to academic dishonesty? The line is blurry, and the Turing test framework wasn't designed for hybrid authorship.
 
-_An essay written with AI assistance is playing a variation of the Turing test where the evaluator must judge presence and extent of hybrid authorship from a static artifact._
+_An essay written with AI assistance is playing a variation of the Turing test where the evaluator must judge presence and extent of hybrid authorship from a static artifact. The one-way static interaction and hybrid authorship make evaluation challenging._
 
 ### Game 3: Documentation chatbots—When everyone knows it's a bot
 
@@ -312,22 +310,22 @@ _An essay written with AI assistance is playing a variation of the Turing test w
 - **Success metric**: User problem solved, user satisfaction/frustration, and/or human time saved
 
 You've clicked through to a company's help center, and a chat window pops up. "Hi! I'm here to help. What can I assist you with today?"
-You know immediately it's a bot. There's no deception, no attempt to pass as human. The Turing test premise—fooling someone about your nature—simply doesn't apply.
+You know immediately it's a bot. There's no deception, no attempt to pass as human. The Turing test premise, fooling someone about your nature, simply doesn't apply.
 
 Instead, you're playing a different game entirely. The question isn't "Is this human?" but "Can this bot solve my problem faster than finding a human would?"
 Success is measured by utility, not believability. The bot accesses the company's documentation, retrieves relevant passages, and attempts to answer your question.
-If it works, great. If it fails, you ask for a human or attempt to ask for a human.
+If it works, great. If it fails, you try to find the documentation site or a pathway to asking a human.
 
 The chatbot is constrained to a specific domain—the company's policies and procedures. It doesn't need to discuss philosophy or pass as human in general conversation.
 It just needs to be useful within a narrow scope. This reduction in scope makes the test easier for the bot. 
 
-_A documentation chatbot is playing a variation of the Turing test where the evaluator knows it's a bot and the goal is utility within a constrained domain._
+_A documentation chatbot is playing a variation of the Turing test where the evaluator knows it's a bot and the goal is utility within a constrained domain, which makes success easier to achieve._
 
 Success often depends on how well the documentation aligns with the user's question and how effectively the bot can leverage the documentation to solve user problems efficiently.
-The later is impoacted by prompt engineering, retrieval quality, and model capabilities. If relevant content is split across multiple documents and phrased differently than the user's question,
+The later is impacted by prompt engineering, retrieval quality, and model capabilities. If relevant content is split across multiple documents or phrased differently than the user's question,
 the bot may struggle to piece together a coherent answer.
 
-User frustration can occur when the bot clearly doesn't give any useful answers and there's not easy escape hatch to manually
+User frustration can occur when the bot clearly doesn't give any useful answers and there's no easy escape hatch to manually
 look through documentation or contact a human.
 This can be especially frustrating when there used to be a human available but now it's just a cheery but entirely time-wasting bot.
 People can find themselves forced to play a game they never signed up for.
@@ -349,7 +347,7 @@ People can find themselves forced to play a game they never signed up for.
 Developers using [GitHub Copilot](https://github.com/features/copilot) or [Claude](https://claude.ai/) for coding navigate a peculiar cognitive challenge.
 In some ways, this use of generative AI has probably been the most successful, at least in terms of revenue, adoption, productivity impact, and integration into daily workflows.
 The reasons for that success are many but include large amounts of training data, early integration into existing tools, built-in ways to test for first-level success (does the code run?),
-and cabilities for bringing in context that narrows the bot's possible outputs such that it tigthly fits the user's needs.
+and capabilities for bringing in context that narrows the bot's possible outputs such that it tightly fits the user's needs.
 
 Similar to documentation chatbots, developers know they're talking to a bot.
 There's no deception. The challenge is different: how to get the most useful responses while avoiding being fooled by the bot's limitations.
@@ -358,17 +356,13 @@ This creates a dual mental model. The developer must:
 2. Constantly remember it's a bot with bot flaws (to avoid being fooled)
 
 Part of the reason that can be hard is that developers have learned that talking naturally to the AI—asking questions politely,
-providing context as they would to a colleague—produces better results. The AI responds more helpfully when addressed in conversational human language.
-Yet simultaneously, they must remember it's not human and has bot-specific flaws.
-
-All the various failure modes and coginitive tasks [discussed earlier](#Now-there-is-more-than-one-way-to-be-fooled) are in play here.
-
+providing context as they would to a colleague produces better results. The AI responds more helpfully when addressed in conversational human language.
+Yet simultaneously, they must always be on look out for the bot-specific failure modes mentioned above in the section [Ways we can be fooled by generative AI](#Ways-we-can-be-fooled-by-generative-AI).
 
 The AI can generate plausible but incorrect code that doesn't run.
 It can also suggest outdated or insecure dependencies, as I discussed in my post on [using instruction files to help Copilot avoid risky dependencies](https://justingosses.com/blog/instruction-files-to-help-copilot-use-less-risky-dependencies).
-It can provide confident explanations that are completely wrong. It can misunderstand your intent, especially when context is incomplete.
-
-_For developers using code-assistant bots, managing that additional cognitive load to avoid being fooled is the cost of the increased productivity._
+It can provide confident explanations that are completely wrong. It can misunderstand your intent, especially when context is incomplete, leading to wasted time re-prompting or fixing errors.
+For developers using code-assistant bots, managing that additional cognitive load to avoid being fooled and even changing their workflows to minimize those errors is the cost of the increased productivity from the coding assistants.
 
 Developers have to learn which tasks it handles reliably and which require human verification.
 They have to develop a sense of when to trust its suggestions and when to double-check as well as when those
@@ -382,14 +376,12 @@ Some of those models might be better at certain tasks or prompts than others.
 Context engineering has also become both a skill and coding assistant product feature.
 Bringing in additional context for the bot to work from in addition to the prompt users put into the chat window
 can dramatically improve results. This includes other code files, related repositories, and external documentation.
-It also includes pre-written gudies in agent.md files or instruction files that help guide the bot's behavior when doing specific tasks.
+It also includes pre-written guides in agent.md files or [instruction files (as described in a previous blog post)](https://justingosses.com/blog/instruction-files-to-help-copilot-use-less-risky-dependencies) that help guide the bot's behavior when doing specific tasks.
 Bringing in these additional context sources helps reduce hallucinations and improve accuracy as it
 limits the bot's possible outputs to those that are more likely to be correct.
 
-_Using generrative AI coding assistants is playing a variation of the Turing test where the developer must help the bot be as human as possible to get the best results,
+_Using generative AI coding assistants is playing a variation of the Turing test where the developer must help the bot be as human as possible to get the best results,
 while still in the back of their head remembering all the different ways generative AIs bots can fail._
-
-There is sort of a dual game that must constantly go on in the developers head.
 
 ## Discussion 
 
@@ -404,7 +396,7 @@ In comparison, consider this other conceptual model that only takes a sentence t
 
 > "How would the world react if hammers were invented only a few years ago."
 
-People can immmediately start to apply that mental model to different aspect of AI and society. For example, there
+People can immediately start to apply that mental model to different aspect of AI and society. For example, there
 would be more than a few social media posts about how people had hit themselves in the face with a hammer and therefore hammers were dumb and pointless.
 Another example is there would be a lot of debate on hammers' economic and labor implications. How would we know if we're in a hammer bubble?
 There might also be a steady evolution of hammer design and associated tooling
@@ -421,8 +413,8 @@ For example, what tasks can targeted may change as different tasks become easier
 As another example, who is doing those tasks may change as AI changes the economics of labor and skill requirements.
 If certain coding tasks are easier for non-experts, that may shift who is doing those tasks and they might have different expectations and experiences
 that change code review dynamics, security practices, team workflows, etc.
-Additionally, the game-based framework tends to exclude tertiary impacts that are far outside the immediate task at hand but matter when milloins of games are played; for example, negative or positive externalities to productivity, user emotional well-being, or broader societal concerns.
-This conceptual model is somewhat moipicaly focused on the user and their immediate task at hand.
+Additionally, the game-based framework tends to exclude tertiary impacts that are far outside the immediate task at hand but matter when millions of games are played; for example, negative or positive externalities to productivity, user emotional well-being, or broader societal concerns.
+This conceptual model is somewhat myopically focused on the user and their immediate task at hand.
 
 ### Benefits of this conceptual framework
 
@@ -432,8 +424,9 @@ Secondly, the focus on "being fooled" helps capture a broad range of failure mod
 
 ### Conclusion
 
-We're not playing one Turing test in 2026, we're playing many. Each variation requires different expectations and strategies.
-A social media disinformation bot, a documentation chatbot, and a coding assistant are all "AI," but they present fundamentally different evaluation challenges.
+We're not playing the original Turing test in 2026, we're playing many slightly different Turing test like games.
+Each variation requires different expectations and strategies.
+A social media disinformation bot, a documentation chatbot, and a coding assistant are all "AI," but they present fundamentally different challenges and game dynamics.
 Understanding which variation you're in can help you design better strategies for playing each game effectively.
 
 
@@ -636,7 +629,7 @@ Make parameters visible in diagram.
 - Explains what the challenge is in this example in terms of being fooled or not fooled. Developers mental model is focused on "task to be completed" and "how might the bot be messing up" is separate thought process.
 - Paragraph that summarizes challenges from trying to build an agent.md that helps identify where the bot's previous responses might be wrong or might require verification.
 - For specific ways bots are wrong though we can right instructions.md or agent.md or MCP tools that help mitigate some of these risks or does the verification for us to limit manual work.
-    - Cite use of instruction files to limit Github Copilot from recommending old, out-of-date, insecure, or poor community health dependenceis: https://justingosses.com/blog/instruction-files-to-help-copilot-use-less-risky-dependencies via use of instructions.md files that evaluate dependency risk.
+    - Cite use of instruction files to limit Github Copilot from recommending old, out-of-date, insecure, or poor community health dependencies: https://justingosses.com/blog/instruction-files-to-help-copilot-use-less-risky-dependencies via use of instructions.md files that evaluate dependency risk.
 
 [Key line: "One of the main challenges of generative AI in this example is the user has to balance instructing the bot as if it was human, and letting it handle some tasks to get the most out of it but yet still keep in mind all the ways and reasons bots can fail, make mistakes, or mislead.]
 **Connection**: Even if you know the bot is a bot, you have to constantly remember it is a bot and has bot's flaws even as you constantly communicate with it as if it was human to get the best results." 
@@ -693,7 +686,7 @@ Make parameters visible in diagram.
 #### goal 
 - **Standard: Catching the bot** - Design the test to maximize chances of detecting AI
 - **Inverse: Fooling the human** - Design the test to maximize chances of AI being mistaken for human
-- **Not believeing bullshit** - Design the test to maximize/minimize recognition of when you shouldn't trust the AI.
+- **Not believing bullshit** - Design the test to maximize/minimize recognition of when you shouldn't trust the AI.
 - **Evaluating specific skills** - Focus on creativity, empathy, reasoning, etc.
 - **Evaluating ethics/morality** - Can the AI navigate ethical dilemmas as wanted by someone
 
@@ -725,7 +718,7 @@ Each case study should:
 1. Name the variation clearly
 2. State which parameters changed
 3. Give concrete example of real-world interaction
-4. Explain who is being fooled, how, and why it mattters
+4. Explain who is being fooled, how, and why it matters
 5. Connect to broader pattern
 
 ### Key Insights to Thread Throughout
@@ -742,7 +735,7 @@ By the end, readers should be able to:
 
 ## Writing Notes
 
-Things in **ITALICS** might be turned into headers or bolded key lines or columns in tables dependening on what makes most sense in different parts of the blog post.
+Things in **ITALICS** might be turned into headers or bolded key lines or columns in tables depending on what makes most sense in different parts of the blog post.
 Things in [] should be more or less turned into sentences or paragraphs.
 
 ### Tone
