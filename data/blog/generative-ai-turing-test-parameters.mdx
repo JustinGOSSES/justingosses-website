@@ -17,7 +17,7 @@ Each interaction requires rapid decisions about when to trust AI outputs and whe
 This blog post explores one possible conceptual model for thinking about these interactions and organizing disparate data points and experiences into a framework to help us think more clearly.
 We take the parameters of the original Turing test, which was designed to measure if machine intelligence could pretend to be human,
 and vary the game parameters to map them to different real-world AI interactions that we encounter today.
-The hypothesis is that by viewing different AI scenarios through the lens of shifting game dynamics, we can better categorize and think about what is going on.
+By viewing different AI scenarios through the lens of shifting game dynamics, we can better categorize and think about what is going on.
 Additionally, this blog post focuses on being fooled by AI and not other modes of framing failure, such as accuracy, lying, bullshit, or hallucinations, as
 "being fooled" covers a broader range of ways AI systems can fail humans and fits better into a game-based framing.
 Finally, we discuss limitations of this conceptual model.
@@ -54,8 +54,10 @@ It is written up here as an exercise to explore how well it holds up to scrutiny
 ### Using the Turing test as a model for how to think about being fooled by AI
 
 Originally introduced in Alan Turing's 1950 paper "[Computing Machinery and Intelligence](https://www.cs.mcgill.ca/~dprecup/courses/AI/Materials/turing1950.pdf),"
-Rather than attempting to determine if a machine can "think", the test attempted instead to answer, via an imitation game, the more practical
-and more easily defined question of when a human evaluator can be fooled into thinking a machine was human.
+the test attempted to determine, via an imitation game, whether a machine can pretend to be human well enough to fool a human evaluator.
+This reframing sidestepped more philosophical and ill-defined questions such as "Can machines think?", "when is a machine conscious?", and "what is consciousness?",
+[which are still very active questions today](https://www.scientificamerican.com/article/what-is-consciousness-science-faces-its-hardest-problem-yet/).
+In addition to replacing a fuzzy question with a more well defined one, the Turing test focuses squarely on the point where size and type of impacts change.
 
 _It is at this point, when humans are fooled, that machine pseudo-intelligence capabilities starts to become useful (and also troublesome) in the real world._
 
@@ -170,14 +172,16 @@ To lie, you have to know what is true and intend to present something false inst
 
 #### Bullshitting
 
-_Bullshitting_ has been used at times as an alternative framing that focuses on the AI's tendency to produce plausible-sounding but ultimately meaningless or irrelevant responses.
-Bullshitting is an improvement on lying as a framing because it captures the idea that the AI isn't necessarily trying to deceive as a goal,
+_Bullshitting_ has been used [at times as an alternative framing](https://thebullshitmachines.com/lesson-2-the-nature-of-bullshit/index.html)
+that focuses on the AI's tendency to produce plausible-sounding but ultimately meaningless or irrelevant responses.
+Bullshitting is an improvement on lying as a framing, because it captures the idea that the AI isn't necessarily trying to deceive as a goal,
 just generating content that sounds good without regard for truth or relevance.
 
-However, it can still be read to imply a level of intentionality or consciousness that AI systems lack.
-A human bullshitter simply does not care about what is true there is not typically a gradual spectrum of bullshitting.
-In contrast, AI systems can be constrained by design and prompt to stick close to relevant information or not.
-Bullshitting can't be measured easily like accuracy. It also does not capture the full range of ways AI can fail users expectations or needs.
+One limitation of the bullshitting framing is that it can still be read to imply a level of intentionality or consciousness that AI systems lack.
+Another limitation of the bullshitting framing is that there is not a gradual spectrum of bullshitting.
+Either someone is bullshitting you or they are not.
+As AI bots have no concept of truth and lies, they are technically bullshitting all the time, no matter if the information is true or false or useful or not.
+This limits the usefulness of the framing as bullshitting doesn't point to any specific error or failure mode that can be addressed or measured.
 
 #### Hallucination
 
@@ -253,6 +257,8 @@ The case studies below, each framed as a different game, highlight different com
 - **Awareness**: Evaluator doesn't know it's a bot
 - **Success metric**: Percentage of users who don't recognize it as a bot and are manipulated by it
 
+#### Game dynamics
+
 The main difference between social media bots and Turing's original test is the drastically reduced time and interaction type.
 While a 5-minute conversation provides many opportunities for a machine to reveal itself through inconsistencies, lack of cultural knowledge, or unnatural phrasing,
 a single comment on Facebook or a brief exchange on Twitter? That's a much easier game for a bot pretending to be a person.
@@ -265,6 +271,15 @@ They're not engaged in a deliberate evaluation exercise.
 This transforms the test entirely. The bots "win" by changing the game, making the interaction so brief that detection becomes nearly impossible for an evaluator that isn't entirely aware they're playing the game.
 
 _A Facebook politics bot is playing a variation of the Turing test where it uses abbreviated, mostly one-way, communications to shift the parameters of the game in its favor._
+
+#### Winning this game
+
+Social media bots vary in their sophistication. Some use simple templates and keyword matching, while others leverage advanced language models to generate more human-like text.
+Some have been around for years and are part of larger networks designed to amplify specific messages or sow discord. Others are likely months old and have impact through quantity not quality.
+While lower quality bot accounts are more likely to be suspected as bots as they might only post political content, post at inhuman hours, post at a well defined frequency (only at 5PM every day), or have other telltale signs,
+even these bots are hard to definitively identify as bots due to there being a number of real human users that post in the same way.
+
+Winning this game as a user can often mean not playing. Especially on news sites, igorning the comments section entirely or only reading comments of more than five sentences can help avoid bot interactions.
 
 ### Game 2: Essay writing in educational settings—The non-interactive test
 
@@ -280,20 +295,35 @@ _A Facebook politics bot is playing a variation of the Turing test where it uses
 - **Awareness**: Evaluator doesn't know if it's AI-assisted
 - **Success metric**: Whether teacher can detect AI assistance and/or whether learning occurred
 
-Another often discussed variation of the Turing test arises in educational settings where students use AI tools to help write essays or complete assignments, and those AI tools are not allowed.
+#### Game dynamics
 
-In this scenario, the evaluator (the teacher) is not engaging in a back-and-forth conversation with the student but rather evaluating a static artifact (the essay).
-There's no back-and-forth, no opportunity to probe with follow-up questions.
+Another variation of the Turing test arises in educational settings where students
+ use AI tools to help write essays or complete assignments,
+and those AI tools are not allowed. They might not be allowed because the educator wants to ensure the student understands the material.
+[Early studies suggest](https://arxiv.org/abs/2506.08872) heavy users of ChatGPT to help with writing assignments tend to perform worse on follow-up assessments of how well students understood their own writing.
 
-The question being evaluated has also shifted. Turing's test asks: "Is this a human or machine?"
-The evaluator is now asking: "Did this student write this essay themselves, or did they use AI assistance?"
-The might also be asking if the student actually understands the material, which is a different question entirely.
-These are different questions with different thresholds for acceptable answers.
-Additionally, students could have used AI as a collaborator while still meeting educational goals.
-The essay isn't purely bot-generated or purely human-written—it's a hybrid. The student might use AI to brainstorm ideas, draft an outline, polish their prose, or check grammar.
-At what point does AI assistance cross from legitimate tool use to academic dishonesty? The line is blurry, and the Turing test framework wasn't designed for hybrid authorship.
+In this scenario, the question being evaluated has also shifted. Turing's test asks: "Is this a human or machine?"
+The evaluator is now asking: "Did this student write this essay themselves, or did they use AI assistance?" 
+The student may have used AI assistance collaboratively to write or the student could have even fully generated the essay using AI.
+Even in cases where the writing was fully generated by AI, the student might have edited or curated the output to some degree.
+The essay isn't purely bot-generated or purely human-written—it's a hybrid.
+
+Additionally, the teacher is not engaging in a back-and-forth conversation with a participate that could be a human or a machine.
+Instead, they are evaluating a static artifact (the essay).
+There's no back-and-forth, no opportunity to probe with follow-up questions. This makes it harder to detect machine involvement.
 
 _An essay written with AI assistance is playing a variation of the Turing test where the evaluator must judge presence and extent of hybrid authorship from a static artifact. The one-way static interaction and hybrid authorship make evaluation challenging._
+
+#### Winning this game
+
+Although there are [services that claim to detect AI-generated text](https://guides.library.ttu.edu/artificialintelligencetools/detection),
+their [accuracy is limited](https://link.springer.com/article/10.1007/s00701-025-06622-4). As a result, any use of them will result in some false positives and false negatives,
+making programmatic enforcement of AI-free writing assignments policy fraught with ethical challenges.
+
+Shifting homework assignments to [formats and tasks](https://www.unr.edu/digital-learning/instructional-strategies/understanding-and-integrating-generative-ai-in-teaching/how-can-i-revise-my-assignments-to-deter-student-use-of-ai)
+that are less amenable to AI assistance is one approach educators are taking. Assignments can also be constructed to allow for usage of AI-based tools,
+but in [specific and monitored ways](https://tektonika.online/index.php/home/article/view/119/158).
+These approaches try to limit the need to "catch the bot" altogether. Users win by not playing the game.
 
 ### Game 3: Documentation chatbots—When everyone knows it's a bot
 
@@ -308,6 +338,8 @@ _An essay written with AI assistance is playing a variation of the Turing test w
 - **Evaluator Goal**: Getting help (not catching the bot)
 - **Awareness**: Evaluator knows it's a bot from the start
 - **Success metric**: User problem solved, user satisfaction/frustration, and/or human time saved
+
+#### Game dynamics
 
 You've clicked through to a company's help center, and a chat window pops up. "Hi! I'm here to help. What can I assist you with today?"
 You know immediately it's a bot. There's no deception, no attempt to pass as human. The Turing test premise, fooling someone about your nature, simply doesn't apply.
@@ -330,6 +362,15 @@ look through documentation or contact a human.
 This can be especially frustrating when there used to be a human available but now it's just a cheery but entirely time-wasting bot.
 People can find themselves forced to play a game they never signed up for.
 
+#### Winning this game
+
+One strategy for winning this game as a user is to be very specific and clear about your question. By providing context, you can help the bot retrieve more relevant information.
+
+Another strategy is to use different words to describe the same problem. Documentation is often written from the perspetive a user going though a specific workflow.
+If you're trying to start at a different point in that workflow or have a slightly different use case that leverages the same tool or policy, the bot may struggle to connect your question to the right documentation.
+
+Similarliy, looking at the structure and phrasing of the documentation and then go back to prompting the chat bot may help as it can align your phrasing with the documentation better.
+
 ### Game 4: Coding assistants—Speak to it like a human, but remember the many ways it is a bot
 
 **Parameters varied:**
@@ -343,6 +384,8 @@ People can find themselves forced to play a game they never signed up for.
 - **Evaluator Goal**: Doing task (getting work done efficiently) while maintaining skepticism (not getting fooled)
 - **Awareness**: Evaluator knows it's a bot
 - **Success metric**: Task completion, does code run, developer productivity, code quality, code security, etc.
+
+#### Game dynamics
 
 Developers using [GitHub Copilot](https://github.com/features/copilot) or [Claude](https://claude.ai/) for coding navigate a peculiar cognitive challenge.
 In some ways, this use of generative AI has probably been the most successful, at least in terms of revenue, adoption, productivity impact, and integration into daily workflows.
@@ -382,6 +425,30 @@ limits the bot's possible outputs to those that are more likely to be correct.
 
 _Using generative AI coding assistants is playing a variation of the Turing test where the developer must help the bot be as human as possible to get the best results,
 while still in the back of their head remembering all the different ways generative AIs bots can fail._
+
+#### Winning this game
+
+As there are many different success criteria for coding assistants that must be balacned simultaneously, winning this game involves multiple strategies.
+To avoid writing a book on just this topic, here are the high-level strategies:
+
+- Context, context, context:
+    - Use clear, specific prompts that provide context about what you're trying to achieve.
+    - Leverage instructions.md, agents.md, MCPs, and other context files to help guide the bot's behavior.
+        - Healthy dependencies
+        - Coding style
+        - Testing requirements
+        - Security reviews
+- Change workflows to align with AI tooling:
+    - More use of spec-driven development to help guide AI outputs.
+    - More tests to ensure functionality works as expected.
+- Keep considering bot limitations and the failure modes mentioned above:
+    - Think about where using the bot might take more time than it sames.
+    - Think about when there is assumptions, experiences, preferences, or best practices in your head that aren't in anything the bot has access to.
+    - Think about where you might not be able to recognize errors due to topic expertise gaps. What is your plan to address those risks?
+    - Think about when APIs, functional calls, or other parts of the code might be more likely to be hallucinated.
+    - Always review code before merging.
+    - Think about how to verify code outputs effectively.
+    - Test generated code.
 
 ## Discussion 
 
