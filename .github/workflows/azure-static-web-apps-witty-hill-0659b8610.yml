@@ -24,6 +24,11 @@ jobs:
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
+        env:
+          NEXT_PUBLIC_GISCUS_REPO: JustinGOSSES/justingosses-website
+          NEXT_PUBLIC_GISCUS_REPOSITORY_ID: R_kgDOG1W9Cw
+          NEXT_PUBLIC_GISCUS_CATEGORY: Blog-comments
+          NEXT_PUBLIC_GISCUS_CATEGORY_ID: DIC_kwDOG1W9C84C3TvD
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WITTY_HILL_0659B8610 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
