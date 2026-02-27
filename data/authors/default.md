@@ -96,11 +96,11 @@ https://orcid.org/0000-0002-5351-7295
 
 ### <a id="community-involvement"></a>Community Involvement
 
-<a href="https://innersourcecommons.org/about/">Member of the InnerSource Commons Foundation & ISPO working group</a>
+<a href="https://innersourcecommons.org/about/">Member of the InnerSource Commons Foundation & ISPO working group </a> (2022-2025)
 
-<a href="https://houstondatavis.github.io/">Houston Data Visualization Meetup</a> – co-lead
+<a href="https://houstondatavis.github.io/">Houston Data Visualization Meetup </a> – co-lead (2017-2025)
 
-<a href="http://www.gcssepm.org/">Gulf Coast Section of SEPM</a> (sedimentology geology) – former social media manager
+<a href="http://www.gcssepm.org/">Gulf Coast Section of SEPM</a> (sedimentology geology) – former social media manager (2015-2019)
 
 ### <a id="mistakes"></a>Mistakes
 
