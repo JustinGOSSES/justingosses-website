@@ -72,6 +72,10 @@ domain specific software applications couldn't quite be twisted into answering v
 
 ### <a id="recent-talks"></a>Recent Talks
 
+InnerSource Summit 2024, November 2024 (online) – "<a href="https://ntrs.nasa.gov/citations/20190033900">How the ISPO working group can help you</a>" (co-presented with Jeff Bailey, Nike)
+
+Open Source Summit North America 2024, April 2024, Seattle, WA – "<a href="https://ossna2024.sched.com/event/1aBPX/">Repository Cohorts: How OSPOs Can Programmatically Categorize All Their Repositories</a>" (co-presented with Natalia Luzuriaga, Remy DeCausemaker, and Issac Milarsky, CMS)
+
 AGU 2019, <a href="https://t.co/ylV3EGSbLg?amp=1">Poster Presentation</a> – <a href="https://agu.confex.com/agu/fm19/meetingapp.cgi/Paper/617308">“Reusing Data and Metadata to Create New Metadata through Machine-learning & Other Programmatic Methods“</a>
 
 Remote talk SpaceApps Lilv, Ukraine 2019 – <a href="https://docs.google.com/presentation/d/10xoC0N1jWOxEFwGml-Ivnn6GYxJ2_tbAZjdl7aRzaI8/edit?usp=sharing">“A Tour of NASA’s Data Universe for a SpaceApps Audience“</a>
@@ -92,9 +96,11 @@ https://orcid.org/0000-0002-5351-7295
 
 ### <a id="community-involvement"></a>Community Involvement
 
-<a href="https://houstondatavis.github.io/">Houston Data Visualization Meetup</a> – co-lead
+<a href="https://innersourcecommons.org/about/">Member of the InnerSource Commons Foundation & ISPO working group </a> (2022-2025)
 
-<a href="http://www.gcssepm.org/">Gulf Coast Section of SEPM</a> (sedimentology geology) – former social media manager
+<a href="https://houstondatavis.github.io/">Houston Data Visualization Meetup </a> – co-lead (2017-2025)
+
+<a href="http://www.gcssepm.org/">Gulf Coast Section of SEPM</a> (sedimentology geology) – former social media manager (2015-2019)
 
 ### <a id="mistakes"></a>Mistakes
 
